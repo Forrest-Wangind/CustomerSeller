@@ -1,0 +1,110 @@
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\bin\Debug\Model.exe
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\bin\Debug\Model.pdb
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\obj\Debug\Model.Form1.resources
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\obj\Debug\Model.Properties.Resources.resources
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\obj\Debug\Model.exe
+C:\Documents and Settings\Administrator\桌面\练习\Model\Model\obj\Debug\Model.pdb
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\Model.exe
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\Model.pdb
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\bin\Debug\Model.exe
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\bin\Debug\Model.pdb
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\ResolveAssemblyReference.cache
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\Model.Form1.resources
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\Model.Properties.Resources.resources
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\Model.Production_picking_management.resources
+F:\易理资料\亿利达\亿利达项目主界面-1\Model\obj\Debug\Model.Report_information_management.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.exe
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.pdb
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.Form_Main.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.Properties.Resources.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model._Login.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\bin\Debug\Model.exe
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\bin\Debug\Model.pdb
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.Control_add_Vip.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.Control_Inquire_Vip.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.UIL.User_Add.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.UIL.User_Update.resources
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\bin\Debug\DataBase_Link.txt
+C:\Users\Administrator\Desktop\姐夫的\亿利达项目主界面-1\Model\obj\Debug\Model.UIL.Main.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.exe
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.pdb
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\bin\Debug\DataBase_Link.txt
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\bin\Debug\Model.exe
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\bin\Debug\Model.pdb
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\ResolveAssemblyReference.cache
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.Form_Main.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.Control_add_Vip.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.Properties.Resources.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.Control_Inquire_Vip.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.UIL.Main.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.UIL.User_Add.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.UIL.User_Update.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model._Login.resources
+E:\My_Resource\我的资料\项目资料\VIP登记系统-1\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.exe
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.pdb
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\bin\Debug\DataBase_Link.txt
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\bin\Debug\Model.exe
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\bin\Debug\Model.pdb
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.Form_Main.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.Control_add_Vip.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.Control_Inquire_Vip.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.UIL.Main.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.UIL.User_Add.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.UIL.User_Update.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model._Login.resources
+C:\Users\Administrator\Desktop\Test\VIP登记系统-1\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.exe
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.pdb
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\bin\Debug\DataBase_Link.txt
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\bin\Debug\Model.exe
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\bin\Debug\Model.pdb
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.Form_Main.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.Control_add_Vip.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.Properties.Resources.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.Control_Inquire_Vip.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.UIL.Main.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.UIL.User_Add.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.UIL.User_Update.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model._Login.resources
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\VIP登记系统-1\Model\obj\Debug\Model.UIL.Control_TG.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.exe
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.pdb
+F:\新建文件夹 (3)\fruit\Model\bin\Debug\DataBase_Link.txt
+F:\新建文件夹 (3)\fruit\Model\bin\Debug\Model.exe
+F:\新建文件夹 (3)\fruit\Model\bin\Debug\Model.pdb
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.UIL.Control_TG.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.Form_Main.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.Control_add_Vip.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.Properties.Resources.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.Control_Inquire_Vip.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.UIL.Main.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.UIL.User_Add.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.UIL.User_Update.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model._Login.resources
+F:\新建文件夹 (3)\fruit\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+E:\share\fruit\Model\bin\Debug\DataBase_Link.txt
+E:\share\fruit\Model\bin\Debug\Model.exe.config
+E:\share\fruit\Model\bin\Debug\Model.exe
+E:\share\fruit\Model\bin\Debug\Model.pdb
+E:\share\fruit\Model\obj\Debug\TActionProject.PagerControl.resources
+E:\share\fruit\Model\obj\Debug\Model.Control_Customer.resources
+E:\share\fruit\Model\obj\Debug\Model.UIL.Form_CustomerDetail.resources
+E:\share\fruit\Model\obj\Debug\Model.Form_Main.resources
+E:\share\fruit\Model\obj\Debug\Model.Properties.Resources.resources
+E:\share\fruit\Model\obj\Debug\Model.UIL.Main.resources
+E:\share\fruit\Model\obj\Debug\Model._Login.resources
+E:\share\fruit\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+E:\share\fruit\Model\obj\Debug\Model.exe
+E:\share\fruit\Model\obj\Debug\Model.pdb
+E:\share\fruit\Model\obj\Debug\Model.UIL.AddCustomer.resources
+E:\share\fruit\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

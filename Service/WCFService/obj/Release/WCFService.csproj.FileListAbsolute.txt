@@ -1,0 +1,12 @@
+E:\share\CustomerWcf\WCFService\WCFService\bin\WCFService.dll.config
+E:\share\CustomerWcf\WCFService\WCFService\bin\WCFService.dll
+E:\share\CustomerWcf\WCFService\WCFService\bin\WCFService.pdb
+E:\share\CustomerWcf\WCFService\WCFService\obj\Release\WCFService.dll
+E:\share\CustomerWcf\WCFService\WCFService\obj\Release\WCFService.pdb
+E:\share\CustomerWcf\WCFService\WCFService\obj\Release\WCFService.csprojResolveAssemblyReference.cache
+E:\CustomerWcf\WCFService\WCFService\bin\WCFService.dll.config
+E:\CustomerWcf\WCFService\WCFService\bin\WCFService.dll
+E:\CustomerWcf\WCFService\WCFService\bin\WCFService.pdb
+E:\CustomerWcf\WCFService\WCFService\obj\Release\WCFService.csprojResolveAssemblyReference.cache
+E:\CustomerWcf\WCFService\WCFService\obj\Release\WCFService.dll
+E:\CustomerWcf\WCFService\WCFService\obj\Release\WCFService.pdb
