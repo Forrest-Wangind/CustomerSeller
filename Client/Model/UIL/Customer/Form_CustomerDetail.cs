@@ -19,6 +19,12 @@ namespace CustomerSeller.UIL
             get;
             set;
         }
+        public string  CustomerPhone
+        {
+            get;
+            set;
+        }
+
         public Form_CustomerDetail()
         {
             InitializeComponent();
@@ -43,10 +49,11 @@ namespace CustomerSeller.UIL
             this.tb_Agender.Text = dataset.Tables[0].Rows[0]["CustomerGender"].ToString();
             this.tb_CustomerAddress.Text = dataset.Tables[0].Rows[0]["CustomerAddress"].ToString();
             this.tb_CustomerName.Text = dataset.Tables[0].Rows[0]["CustomerName"].ToString();
-            this.tb_CustomerPhone.Text = dataset.Tables[0].Rows[0]["CustomerPhone"].ToString();
             this.tb_Remark.Text = dataset.Tables[0].Rows[0]["Remark"].ToString();
             this.dtp_SuccessTime.Value = Convert.ToDateTime(dataset.Tables[0].Rows[0]["DealTime"].ToString());
             SetStatus(dataset, dataset.Tables[0].Rows[0]["PhoneStratus"].ToString());
+            CustomerPhone = dataset.Tables[0].Rows[0]["CustomerPhone"].ToString();
+            this.tb_CustomerPhone.Text = CustomerPhone.Substring(0, 3) + "*****" + CustomerPhone.Substring(8, 3);
         }
 
         public void SetStatus(DataSet ds, string status)

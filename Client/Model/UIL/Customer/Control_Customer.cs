@@ -124,7 +124,7 @@ namespace CustomerSeller
                 new Form_CustomerDetail() { DR = row }.ShowDialog();
 
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBoxEx.Show("出现未知错误!", "提示");
             }

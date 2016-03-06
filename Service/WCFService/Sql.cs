@@ -12,7 +12,7 @@ namespace WCFService
                                              [CreateTime] 创建时间,[DealTime] 成交时间 FROM (
                                              SELECT ROW_NUMBER() OVER (ORDER BY CustomerID) AS RowNumber,[CustomerID],[CustomerName],[CustomerGender],STUFF([CustomerPhone],4,5,'*****') as CustomerPhone,[CustomerAddress],[PhoneStratus],[CreateTime],[DealTime]
 		                                     FROM CustomerInfo where 1=1 {2} ) A WHERE RowNumber > {0}*({1}-1)";
-        public static string CustomerInfo = @"select CustomerGender,	STUFF([CustomerPhone],4,5,'*****') as CustomerPhone,	CustomerAddress	,Remark	,PhoneStratus,	DealTime	,CustomerName from [dbo].[CustomerInfo] 
+        public static string CustomerInfo = @"select CustomerGender,CustomerPhone,CustomerAddress ,Remark	,PhoneStratus,	DealTime	,CustomerName from [dbo].[CustomerInfo] 
                                               where CustomerID='{0}'";
 
         public static string AllocateEmployeePhone ="exec AllocateEmployeePhone {0},{1},'{2}'";
