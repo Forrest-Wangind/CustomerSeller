@@ -35,7 +35,7 @@ namespace WCFService
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 if (dataSet.Tables.Count > 0)
                     result = dataSet;
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "GetCustomer", Result = result == null ? "null" : "a object" });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() {  Method = "GetCustomer", Result = result == null ? "null" : "a object" });
                 return result;
 
             }
@@ -53,36 +53,37 @@ namespace WCFService
             {
                 var execute_sql = string.Format(Sql.CustomerInfo, CustomerID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "GetCustomerDetail", Result = dataSet == null ? "null" : "a object" });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "CustomerID:" + CustomerID, Method = "GetCustomerDetail", Result = dataSet == null ? "null" : "a object" });
                 return dataSet;
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "GetCustomerDetail", Exception = ex.Message });
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "CustomerID:" + CustomerID,Method = "GetCustomerDetail", Exception = ex.Message });
                 return null;
             }
         }
 
-        public int UpdateCustomerInfo(string CustomerAddress = "", string Remark = "", string PhoneStratus = "", DateTime? DealTime = null, string CustomerID = "", string MobilePhone = "")
+        public int UpdateCustomerInfo(string CustomerAddress = "", string Remark = "", string PhoneStratus = "", DateTime? DealTime = null, string CustomerID = "", string MobilePhone = "",string CustomerName="")
         {
-
+            string setStr = string.Empty;
             try
             {
                 string sql = string.Empty;
-                string setStr = string.IsNullOrEmpty(CustomerAddress) ? string.Empty : string.Format(" CustomerAddress='{0}' ,", CustomerAddress);
+                setStr = string.IsNullOrEmpty(CustomerAddress) ? string.Empty : string.Format(" CustomerAddress='{0}' ,", CustomerAddress);
                 setStr += string.IsNullOrEmpty(Remark) ? string.Empty : string.Format(" Remark='{0}' ,", CustomerAddress);
                 setStr += string.IsNullOrEmpty(PhoneStratus) ? string.Empty : string.Format(" PhoneStratus='{0}' ,", PhoneStratus);
                 setStr += DealTime == null ? string.Empty : string.Format(" DealTime='{0}' ,", DealTime.ToString());
                 setStr += string.IsNullOrEmpty(MobilePhone) ? string.Empty : string.Format(" CustomerPhone='{0}' ,", MobilePhone.ToString());
+                setStr += string.IsNullOrEmpty(CustomerName) ? string.Empty : string.Format(" CustomerName='{0}' ,", CustomerName.ToString());
                 if (!string.IsNullOrEmpty(setStr))
                     sql = string.Format("update CustomerInfo set {0} where CustomerID='{1}'", setStr.TrimEnd(','), CustomerID);
                 var result = SqlServerHelper.ExecuteNonQuery(SqlServerHelper.Con, CommandType.Text, sql);
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "UpdateCustomerInfo", Result = result.ToString() });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request =setStr,Method = "UpdateCustomerInfo", Result = result.ToString() });
                 return result;
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "UpdateCustomerInfo", Exception = ex.Message });
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = setStr, Method = "UpdateCustomerInfo", Exception = ex.Message });
                 return -1;
             }
 
@@ -115,12 +116,12 @@ namespace WCFService
             {
                 var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings["MaxCount"], ConfigurationManager.AppSettings["DailyMaxCount"], UserID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "AllocateEmployeePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "UserID:" + UserID, Method = "AllocateEmployeePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "AllocateEmployeePhone", Exception = ex.Message });
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "UserID:" + UserID,Method = "AllocateEmployeePhone", Exception = ex.Message });
                 return result;
             }
         }
@@ -132,12 +133,12 @@ namespace WCFService
             {
                 var execute_sql = string.Format(Sql.RecycleCustomerPhone, customerID, employeeID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "RecycleCustomerPhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "customerID:"+customerID+",employeeID:"+employeeID, Method = "RecycleCustomerPhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "RecycleCustomerPhone", Exception = ex.Message });
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "customerID:" + customerID + ",employeeID:" + employeeID,Method = "RecycleCustomerPhone", Exception = ex.Message });
                 return result;
             }
         }
@@ -155,7 +156,8 @@ namespace WCFService
         }
 
         public User GetSingleUser(string userId)
-        {
+        {   
+            
             User user = new User();
             List<SqlParameter> paras = new List<SqlParameter>();
             paras.Add(new SqlParameter("@id", userId));

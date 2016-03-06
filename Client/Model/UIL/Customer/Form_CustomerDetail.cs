@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CustomerSeller.DAL;
 
 namespace CustomerSeller.UIL
 {
@@ -65,10 +66,10 @@ namespace CustomerSeller.UIL
             try
             {
                 DateTime? dt = null;
-                CustomerSeller.ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
-                client.UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, string.IsNullOrEmpty(this.tb_Remark.Text) ? string.Empty : this.tb_Remark.Text,
+                CustomerInfo.GetServiceInstance().UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, string.IsNullOrEmpty(this.tb_Remark.Text) ? string.Empty : this.tb_Remark.Text,
                     string.IsNullOrEmpty(this.cb_PhoneStatus.Text) ? string.Empty : this.cb_PhoneStatus.Text, this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
-                    !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty);
+                    !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty,
+                     string.IsNullOrEmpty(this.tb_CustomerName.Text) ? string.Empty : this.tb_CustomerName.Text);
                 MessageBoxEx.Show("用户信息修改成功!");
             }
             catch (Exception ex)
@@ -82,7 +83,7 @@ namespace CustomerSeller.UIL
         {        
             try
             {
-                var enployeeID = "T04471";
+                var enployeeID = UserInfo.Get_User().User_Id;
                 var result = CustomerInfo.GetServiceInstance().RecycleCustomerPhone(DR["CustomerID"].ToString(),enployeeID);
                
                 switch (result)

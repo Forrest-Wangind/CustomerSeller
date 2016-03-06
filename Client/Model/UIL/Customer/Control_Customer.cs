@@ -33,8 +33,7 @@ namespace CustomerSeller
         {
 
             List<KeyValuePair<string, string>> listParameters = new List<KeyValuePair<string, string>>();
-            string str = "T04471";
-            listParameters.Add(new KeyValuePair<string, string>("EmployeeID=", str));
+            listParameters.Add(new KeyValuePair<string, string>("EmployeeID=",UserInfo.Get_User().User_Id ));
 
             if (!string.IsNullOrEmpty(this.tb_Customer_Name.Text))
                 listParameters.Add(new KeyValuePair<string, string>("CustomerName like ", string.Format("%{0}%", tb_Customer_Name.Text)));
@@ -58,14 +57,11 @@ namespace CustomerSeller
         {
             try
             {
-
                 var condition = GetCondition();
-                Service1Client client = new Service1Client();
-                var dataset = client.GetCustomer(this.pagerControl1.PageSize, this.pagerControl1.PageIndex, condition.ToArray());
+                var dataset = CustomerInfo.GetServiceInstance().GetCustomer(this.pagerControl1.PageSize, this.pagerControl1.PageIndex, condition.ToArray());
                 this.dgv_Customer.DataSource = dataset.Tables[1];
                 this.dgv_Customer.Columns["CustomerID"].Visible = false;
                 pagerControl1.DrawControl(Convert.ToInt32(dataset.Tables[0].Rows[0][0]));
-                client.Close();
 
             }
             catch (Exception ex)
@@ -93,7 +89,7 @@ namespace CustomerSeller
         private void bt_GetPhone_Click(object sender, EventArgs e)
         {
             //员工静态信息获取添加进来
-            var enployeeID = string.Empty;
+            var enployeeID = UserInfo.Get_User().User_Id;
             var result = CustomerInfo.GetServiceInstance().AllocateEmployeePhone(enployeeID);
             switch (result)
             {
@@ -102,6 +98,12 @@ namespace CustomerSeller
                     break;
                 case 1:
                     MessageBoxEx.Show("电话获取成功，可以在刷新后看到!", "提示");
+                    break;
+                case 2:
+                    MessageBoxEx.Show("已经超过你可以获取的电话的总数!", "提示");
+                    break;
+                case 3:
+                    MessageBoxEx.Show("已经超过每天可以取的电话的总数!", "提示");
                     break;
                 default:
                     MessageBoxEx.Show("电话分配出现异常!", "提示");
