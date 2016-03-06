@@ -15,9 +15,14 @@ namespace WCFService
         public static string CustomerInfo = @"select CustomerGender,	STUFF([CustomerPhone],4,5,'*****') as CustomerPhone,	CustomerAddress	,Remark	,PhoneStratus,	DealTime	,CustomerName from [dbo].[CustomerInfo] 
                                               where CustomerID='{0}'";
 
-        public static string AllocateEmployeePhone = "exec AllocateEmployeePhone {0},{1},'{2}'";
+        public static string AllocateEmployeePhone ="exec AllocateEmployeePhone {0},{1},'{2}'";
 
-        public static string RecycleCustomerPhone = "exec RecycleCustomerPhone '{0}','{1}'"; 
+        public static string RecycleCustomerPhone ="exec RecycleCustomerPhone '{0}','{1}'";
+        public static string JudgePhoneExists = @" if(exists(select 1 from [dbo].[CustomerInfo]with (nolock) where CustomerPhone='{0}'))
+                                                select 1;
+                                                else
+                                                select -1 ";
+
 
     }
 }

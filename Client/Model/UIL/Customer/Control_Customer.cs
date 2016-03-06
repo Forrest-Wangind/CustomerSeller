@@ -26,6 +26,7 @@ namespace CustomerSeller
             this.Dock = DockStyle.Fill;
             this.pagerControl1.OnPageChanged += pagerControl1_OnPageChanged;
             this.dgv_Customer.AllowUserToAddRows = false;
+            this.dgv_Customer.ReadOnly = true;
         }
 
         private List<KeyValuePair<string, string>> GetCondition()

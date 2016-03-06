@@ -30,12 +30,8 @@ namespace CustomerSeller
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lb_Customer_Name = new DevComponents.DotNetBar.LabelX();
-            this.lb_Customer_Phone = new DevComponents.DotNetBar.LabelX();
-            this.tb_Customer_Phone = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.tb_Customer_Name = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.bt_Query = new DevComponents.DotNetBar.ButtonX();
-            this.bt_Del = new DevComponents.DotNetBar.ButtonX();
+            this.panelData = new System.Windows.Forms.Panel();
+            this.dgv_Customer = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtp_End_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtp_Create_EndTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -43,82 +39,58 @@ namespace CustomerSeller
             this.dtp_Start_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.bt_GetPhone = new DevComponents.DotNetBar.ButtonX();
             this.cb_status = new System.Windows.Forms.ComboBox();
+            this.bt_Del = new DevComponents.DotNetBar.ButtonX();
+            this.bt_Query = new DevComponents.DotNetBar.ButtonX();
             this.lb_Status = new DevComponents.DotNetBar.LabelX();
             this.lb_Success_StartTime = new DevComponents.DotNetBar.LabelX();
             this.lb_Success_EndTime = new DevComponents.DotNetBar.LabelX();
             this.lb_Create_StartTime = new DevComponents.DotNetBar.LabelX();
             this.lb_Create_EndTime = new DevComponents.DotNetBar.LabelX();
-            this.panelData = new System.Windows.Forms.Panel();
-            this.dgv_Customer = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.lb_Customer_Name = new DevComponents.DotNetBar.LabelX();
+            this.tb_Customer_Name = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lb_Customer_Phone = new DevComponents.DotNetBar.LabelX();
+            this.tb_Customer_Phone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.pagerControl1 = new TActionProject.PagerControl();
+            this.panelData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_End_DealTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_EndTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_StartTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_Start_DealTime)).BeginInit();
-            this.panelData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).BeginInit();
             this.SuspendLayout();
             // 
-            // lb_Customer_Name
+            // panelData
             // 
-            this.lb_Customer_Name.Location = new System.Drawing.Point(20, 20);
-            this.lb_Customer_Name.Name = "lb_Customer_Name";
-            this.lb_Customer_Name.Size = new System.Drawing.Size(67, 21);
-            this.lb_Customer_Name.TabIndex = 0;
-            this.lb_Customer_Name.Text = "客户姓名:";
+            this.panelData.Controls.Add(this.dgv_Customer);
+            this.panelData.Controls.Add(this.groupBox1);
+            this.panelData.Controls.Add(this.pagerControl1);
+            this.panelData.Location = new System.Drawing.Point(0, 3);
+            this.panelData.Margin = new System.Windows.Forms.Padding(100, 3, 3, 3);
+            this.panelData.Name = "panelData";
+            this.panelData.Size = new System.Drawing.Size(912, 480);
+            this.panelData.TabIndex = 19;
             // 
-            // lb_Customer_Phone
+            // dgv_Customer
             // 
-            this.lb_Customer_Phone.Location = new System.Drawing.Point(196, 14);
-            this.lb_Customer_Phone.Name = "lb_Customer_Phone";
-            this.lb_Customer_Phone.Size = new System.Drawing.Size(64, 33);
-            this.lb_Customer_Phone.TabIndex = 4;
-            this.lb_Customer_Phone.Text = "客户手机:";
-            // 
-            // tb_Customer_Phone
-            // 
-            // 
-            // 
-            // 
-            this.tb_Customer_Phone.Border.Class = "TextBoxBorder";
-            this.tb_Customer_Phone.Location = new System.Drawing.Point(278, 20);
-            this.tb_Customer_Phone.Name = "tb_Customer_Phone";
-            this.tb_Customer_Phone.Size = new System.Drawing.Size(105, 21);
-            this.tb_Customer_Phone.TabIndex = 10;
-            // 
-            // tb_Customer_Name
-            // 
-            // 
-            // 
-            // 
-            this.tb_Customer_Name.Border.Class = "TextBoxBorder";
-            this.tb_Customer_Name.Location = new System.Drawing.Point(93, 20);
-            this.tb_Customer_Name.Name = "tb_Customer_Name";
-            this.tb_Customer_Name.Size = new System.Drawing.Size(88, 21);
-            this.tb_Customer_Name.TabIndex = 8;
-            // 
-            // bt_Query
-            // 
-            this.bt_Query.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.bt_Query.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_Query.Location = new System.Drawing.Point(18, 113);
-            this.bt_Query.Name = "bt_Query";
-            this.bt_Query.Size = new System.Drawing.Size(75, 23);
-            this.bt_Query.TabIndex = 12;
-            this.bt_Query.Text = "查询";
-            this.bt_Query.Click += new System.EventHandler(this.bt_Query_Click);
-            // 
-            // bt_Del
-            // 
-            this.bt_Del.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.bt_Del.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_Del.Location = new System.Drawing.Point(141, 113);
-            this.bt_Del.Name = "bt_Del";
-            this.bt_Del.Size = new System.Drawing.Size(75, 23);
-            this.bt_Del.TabIndex = 13;
-            this.bt_Del.Text = "清空";
-            this.bt_Del.Click += new System.EventHandler(this.bt_Del_Click);
+            this.dgv_Customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Customer.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_Customer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Customer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgv_Customer.Location = new System.Drawing.Point(0, 161);
+            this.dgv_Customer.Name = "dgv_Customer";
+            this.dgv_Customer.RowTemplate.Height = 23;
+            this.dgv_Customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Customer.Size = new System.Drawing.Size(912, 290);
+            this.dgv_Customer.TabIndex = 2;
+            this.dgv_Customer.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgv_Customer_DoubleClick);
             // 
             // groupBox1
             // 
@@ -139,10 +111,11 @@ namespace CustomerSeller
             this.groupBox1.Controls.Add(this.tb_Customer_Name);
             this.groupBox1.Controls.Add(this.lb_Customer_Phone);
             this.groupBox1.Controls.Add(this.tb_Customer_Phone);
-            this.groupBox1.Location = new System.Drawing.Point(3, 53);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(869, 161);
-            this.groupBox1.TabIndex = 14;
+            this.groupBox1.Size = new System.Drawing.Size(912, 161);
+            this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
             // 
@@ -333,6 +306,28 @@ namespace CustomerSeller
             this.cb_status.Size = new System.Drawing.Size(87, 20);
             this.cb_status.TabIndex = 18;
             // 
+            // bt_Del
+            // 
+            this.bt_Del.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_Del.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_Del.Location = new System.Drawing.Point(141, 113);
+            this.bt_Del.Name = "bt_Del";
+            this.bt_Del.Size = new System.Drawing.Size(75, 23);
+            this.bt_Del.TabIndex = 13;
+            this.bt_Del.Text = "清空";
+            this.bt_Del.Click += new System.EventHandler(this.bt_Del_Click);
+            // 
+            // bt_Query
+            // 
+            this.bt_Query.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_Query.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_Query.Location = new System.Drawing.Point(18, 113);
+            this.bt_Query.Name = "bt_Query";
+            this.bt_Query.Size = new System.Drawing.Size(75, 23);
+            this.bt_Query.TabIndex = 12;
+            this.bt_Query.Text = "查询";
+            this.bt_Query.Click += new System.EventHandler(this.bt_Query_Click);
+            // 
             // lb_Status
             // 
             this.lb_Status.Location = new System.Drawing.Point(20, 65);
@@ -373,36 +368,43 @@ namespace CustomerSeller
             this.lb_Create_EndTime.TabIndex = 12;
             this.lb_Create_EndTime.Text = "获取截止时间：";
             // 
-            // panelData
+            // lb_Customer_Name
             // 
-            this.panelData.Controls.Add(this.dgv_Customer);
-            this.panelData.Controls.Add(this.pagerControl1);
-            this.panelData.Location = new System.Drawing.Point(10, 220);
-            this.panelData.Margin = new System.Windows.Forms.Padding(100, 3, 3, 3);
-            this.panelData.Name = "panelData";
-            this.panelData.Size = new System.Drawing.Size(872, 276);
-            this.panelData.TabIndex = 15;
+            this.lb_Customer_Name.Location = new System.Drawing.Point(20, 20);
+            this.lb_Customer_Name.Name = "lb_Customer_Name";
+            this.lb_Customer_Name.Size = new System.Drawing.Size(67, 21);
+            this.lb_Customer_Name.TabIndex = 0;
+            this.lb_Customer_Name.Text = "客户姓名:";
             // 
-            // dgv_Customer
+            // tb_Customer_Name
             // 
-            this.dgv_Customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Customer.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_Customer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_Customer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgv_Customer.Location = new System.Drawing.Point(0, 0);
-            this.dgv_Customer.Name = "dgv_Customer";
-            this.dgv_Customer.RowTemplate.Height = 23;
-            this.dgv_Customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Customer.Size = new System.Drawing.Size(872, 247);
-            this.dgv_Customer.TabIndex = 2;
-            this.dgv_Customer.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgv_Customer_DoubleClick);
+            // 
+            // 
+            // 
+            this.tb_Customer_Name.Border.Class = "TextBoxBorder";
+            this.tb_Customer_Name.Location = new System.Drawing.Point(93, 20);
+            this.tb_Customer_Name.Name = "tb_Customer_Name";
+            this.tb_Customer_Name.Size = new System.Drawing.Size(88, 21);
+            this.tb_Customer_Name.TabIndex = 8;
+            // 
+            // lb_Customer_Phone
+            // 
+            this.lb_Customer_Phone.Location = new System.Drawing.Point(196, 14);
+            this.lb_Customer_Phone.Name = "lb_Customer_Phone";
+            this.lb_Customer_Phone.Size = new System.Drawing.Size(64, 33);
+            this.lb_Customer_Phone.TabIndex = 4;
+            this.lb_Customer_Phone.Text = "客户手机:";
+            // 
+            // tb_Customer_Phone
+            // 
+            // 
+            // 
+            // 
+            this.tb_Customer_Phone.Border.Class = "TextBoxBorder";
+            this.tb_Customer_Phone.Location = new System.Drawing.Point(278, 20);
+            this.tb_Customer_Phone.Name = "tb_Customer_Phone";
+            this.tb_Customer_Phone.Size = new System.Drawing.Size(105, 21);
+            this.tb_Customer_Phone.TabIndex = 10;
             // 
             // pagerControl1
             // 
@@ -410,12 +412,12 @@ namespace CustomerSeller
             this.pagerControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pagerControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(78)))), ((int)(((byte)(151)))));
             this.pagerControl1.JumpText = "Go";
-            this.pagerControl1.Location = new System.Drawing.Point(0, 247);
+            this.pagerControl1.Location = new System.Drawing.Point(0, 451);
             this.pagerControl1.Name = "pagerControl1";
             this.pagerControl1.PageIndex = 1;
             this.pagerControl1.PageSize = 100;
             this.pagerControl1.RecordCount = 0;
-            this.pagerControl1.Size = new System.Drawing.Size(872, 29);
+            this.pagerControl1.Size = new System.Drawing.Size(912, 29);
             this.pagerControl1.TabIndex = 1;
             // 
             // Control_Customer
@@ -424,45 +426,46 @@ namespace CustomerSeller
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panelData);
-            this.Controls.Add(this.groupBox1);
             this.Name = "Control_Customer";
-            this.Size = new System.Drawing.Size(1080, 515);
+            this.Size = new System.Drawing.Size(916, 515);
+            this.panelData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtp_End_DealTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_EndTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_StartTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_Start_DealTime)).EndInit();
-            this.panelData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.LabelX lb_Customer_Name;
-        private PagerControl pagerControl1;
-        private DevComponents.DotNetBar.LabelX lb_Customer_Phone;
-        private DevComponents.DotNetBar.Controls.TextBoxX tb_Customer_Phone;
-        private DevComponents.DotNetBar.Controls.TextBoxX tb_Customer_Name;
-        private DevComponents.DotNetBar.ButtonX bt_Query;
-        private DevComponents.DotNetBar.ButtonX bt_Del;
+        private System.Windows.Forms.Panel panelData;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgv_Customer;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_End_DealTime;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_EndTime;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_StartTime;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Start_DealTime;
+        private DevComponents.DotNetBar.ButtonX bt_GetPhone;
         private System.Windows.Forms.ComboBox cb_status;
+        private DevComponents.DotNetBar.ButtonX bt_Del;
+        private DevComponents.DotNetBar.ButtonX bt_Query;
         private DevComponents.DotNetBar.LabelX lb_Status;
         private DevComponents.DotNetBar.LabelX lb_Success_StartTime;
         private DevComponents.DotNetBar.LabelX lb_Success_EndTime;
         private DevComponents.DotNetBar.LabelX lb_Create_StartTime;
         private DevComponents.DotNetBar.LabelX lb_Create_EndTime;
-        private System.Windows.Forms.Panel panelData;
-        private DevComponents.DotNetBar.ButtonX bt_GetPhone;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Start_DealTime;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_EndTime;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_StartTime;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_End_DealTime;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgv_Customer;
+        private DevComponents.DotNetBar.LabelX lb_Customer_Name;
+        private DevComponents.DotNetBar.Controls.TextBoxX tb_Customer_Name;
+        private DevComponents.DotNetBar.LabelX lb_Customer_Phone;
+        private DevComponents.DotNetBar.Controls.TextBoxX tb_Customer_Phone;
+        private PagerControl pagerControl1;
 
-            
+
+
+
 
 
 

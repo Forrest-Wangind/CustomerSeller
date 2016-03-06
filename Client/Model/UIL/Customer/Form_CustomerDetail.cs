@@ -25,13 +25,13 @@ namespace CustomerSeller.UIL
 
         private void bt_Cancer_Click(object sender, EventArgs e)
         {
-            this.tb_Agender.Clear();
+            this.tb_Agender.SelectedIndex=-1;
             this.tb_CustomerAddress.Clear();
             this.tb_CustomerName.Clear();
             this.tb_CustomerPhone.Clear();
             this.tb_Remark.Clear();
             this.cb_PhoneStatus.SelectedIndex = 0;
-            this.dtp_SuccessTime.Text = string.Empty;
+            this.dtp_SuccessTime.ResetText();
         }
 
         private void Form_CustomerDetail_Load(object sender, EventArgs e)
@@ -69,6 +69,7 @@ namespace CustomerSeller.UIL
                 client.UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, string.IsNullOrEmpty(this.tb_Remark.Text) ? string.Empty : this.tb_Remark.Text,
                     string.IsNullOrEmpty(this.cb_PhoneStatus.Text) ? string.Empty : this.cb_PhoneStatus.Text, this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
                     !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty);
+                MessageBoxEx.Show("用户信息修改成功!");
             }
             catch (Exception ex)
             {
@@ -99,6 +100,11 @@ namespace CustomerSeller.UIL
             {
                 MessageBoxEx.Show("网络异常，稍后再试!", "提示");
             }
+
+        }
+
+        private void bt_CallPhone_Click(object sender, EventArgs e)
+        {
 
         }
 

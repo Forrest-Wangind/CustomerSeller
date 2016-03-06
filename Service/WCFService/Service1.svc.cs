@@ -32,8 +32,7 @@ namespace WCFService
                     condition += string.Format("and {0}'{1}' ", item.Key, item.Value);
                 });
                 var execute_sql = string.Format(Sql.customerTotalNumber, condition) + ";" + string.Format(Sql.customerInfoDetail, PageSize, CurrentPage, condition);
-                var s = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                var dataSet = SqlServerHelper.ExecuteDataset(s, CommandType.Text, execute_sql);
+                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 if (dataSet.Tables.Count > 0)
                     result = dataSet;
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "GetCustomer", Result = result == null ? "null" : "a object" });
@@ -96,6 +95,7 @@ namespace WCFService
                 var dataTable = CustomerInfoHelper.FillDataTable(ds);
                 var dataSet = new DataSet();
                 dataSet.Tables.Add(dataTable);
+                FilterTheSamePhone(dataSet);
                 CustomerInfoHelper.BatchWriteToDB(dataSet);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "BatchImportCustomerInfo", Result = true.ToString() });
                 return true;
@@ -192,5 +192,45 @@ namespace WCFService
                 return null;
             }
         }
+
+        public  void FilterTheSamePhone(DataSet ds)
+        {   
+            //文件本身去重
+            //保存电话
+            List<string>  phoneCollection   = new List<string>   ();
+            List<DataRow> dataRowCollection = new  List<DataRow> ();
+             
+            //数据库去重
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    if(phoneCollection.Contains(dr["CustomerPhone"].ToString()))
+                    {
+                        dataRowCollection.Add(dr);
+                    }
+                    else
+                    {
+                        phoneCollection.Add(dr["CustomerPhone"].ToString());
+                    }
+                }
+
+            }
+            dataRowCollection.ForEach(item=>ds.Tables[0].Rows.Remove(item));
+            //数据库去重
+            if(ds.Tables[0].Rows.Count>0)
+            {
+                dataRowCollection.Clear();
+                foreach(DataRow dr in ds.Tables[0].Rows)
+                {
+                    //查询数据库
+                    var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, string.Format(Sql.JudgePhoneExists, dr["CustomerPhone"].ToString()));
+                    if (dataSet.Tables[0].Rows[0][0].ToString().Equals("1"))
+                        dataRowCollection.Add(dr);
+                }
+            }
+            dataRowCollection.ForEach(item => ds.Tables[0].Rows.Remove(item));
+        }
+
     }
 }

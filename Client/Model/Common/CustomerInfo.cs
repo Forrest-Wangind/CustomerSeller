@@ -86,7 +86,7 @@ namespace CustomerSeller.Common
                 }
                 DataSet dsOfCustomerInfo = new DataSet();
                 dsOfCustomerInfo.Tables.Add(dataTable);
-                //CustomerInfo.GetServiceInstance().BatchImportCustomerInfo(dsOfCustomerInfo);
+                CustomerInfo.GetServiceInstance().BatchImportCustomerInfo(dsOfCustomerInfo);
                 MessageBoxEx.Show("数据导入成功！", "提示");
 
             }
