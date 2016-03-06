@@ -84,22 +84,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UIL\AddCustomer.cs">
+    <Compile Include="UIL\Customer\AddCustomer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UIL\AddCustomer.Designer.cs">
+    <Compile Include="UIL\Customer\AddCustomer.Designer.cs">
       <DependentUpon>AddCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIL\Control_Customer.cs">
+    <Compile Include="UIL\Customer\Control_Customer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UIL\Control_Customer.Designer.cs">
+    <Compile Include="UIL\Customer\Control_Customer.Designer.cs">
       <DependentUpon>Control_Customer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIL\Form_CustomerDetail.cs">
+    <Compile Include="UIL\Customer\Form_CustomerDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIL\Form_CustomerDetail.Designer.cs">
+    <Compile Include="UIL\Customer\Form_CustomerDetail.Designer.cs">
       <DependentUpon>Form_CustomerDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -107,14 +107,14 @@
     <EmbeddedResource Include="Control\PagerControl.resx">
       <DependentUpon>PagerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIL\AddCustomer.resx">
+    <EmbeddedResource Include="UIL\Customer\AddCustomer.resx">
       <DependentUpon>AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIL\Control_Customer.resx">
+    <EmbeddedResource Include="UIL\Customer\Control_Customer.resx">
       <DependentUpon>Control_Customer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIL\Form_CustomerDetail.resx">
+    <EmbeddedResource Include="UIL\Customer\Form_CustomerDetail.resx">
       <DependentUpon>Form_CustomerDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -214,7 +214,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UIL\Customer\" />
     <Folder Include="UIL\Role\" />
   </ItemGroup>
   <ItemGroup>
