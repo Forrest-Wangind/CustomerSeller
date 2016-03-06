@@ -12,6 +12,7 @@ using System.Text;
 using WCFService.DAL;
 using WCFService.Model;
 using Common.Log;
+using WCFService.Common;
 
 namespace WCFService
 {
@@ -22,54 +23,124 @@ namespace WCFService
 
         public DataSet GetCustomer(int PageSize, int CurrentPage, List<KeyValuePair<string, string>> Parameters)
         {
-           
             try
             {
                 var condition = string.Empty;
+                DataSet result = null;
                 Parameters.ToList().ForEach(item =>
                 {
                     condition += string.Format("and {0}'{1}' ", item.Key, item.Value);
                 });
                 var execute_sql = string.Format(Sql.customerTotalNumber, condition) + ";" + string.Format(Sql.customerInfoDetail, PageSize, CurrentPage, condition);
-                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
+                var s = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                var dataSet = SqlServerHelper.ExecuteDataset(s, CommandType.Text, execute_sql);
                 if (dataSet.Tables.Count > 0)
-                    return dataSet;
-                else
-                    return null;
+                    result = dataSet;
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "GetCustomer", Result = result == null ? "null" : "a object" });
+                return result;
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "GetCustomer", Exception = ex.Message });
                 return null;
             }
+
         }
 
         public DataSet GetCustomerDetail(string CustomerID)
         {
             try
             {
-                var execute_sql = string.Format(Sql.CustomerInfo,CustomerID);
+                var execute_sql = string.Format(Sql.CustomerInfo, CustomerID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "GetCustomerDetail", Result = dataSet == null ? "null" : "a object" });
                 return dataSet;
             }
             catch (Exception ex)
             {
+                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "GetCustomerDetail", Exception = ex.Message });
                 return null;
             }
         }
 
-        public int UpdateCustomerDetail(string sql)
+        public int UpdateCustomerInfo(string CustomerAddress = "", string Remark = "", string PhoneStratus = "", DateTime? DealTime = null, string CustomerID = "", string MobilePhone = "")
+        {
+
+            try
+            {
+                string sql = string.Empty;
+                string setStr = string.IsNullOrEmpty(CustomerAddress) ? string.Empty : string.Format(" CustomerAddress='{0}' ,", CustomerAddress);
+                setStr += string.IsNullOrEmpty(Remark) ? string.Empty : string.Format(" Remark='{0}' ,", CustomerAddress);
+                setStr += string.IsNullOrEmpty(PhoneStratus) ? string.Empty : string.Format(" PhoneStratus='{0}' ,", PhoneStratus);
+                setStr += DealTime == null ? string.Empty : string.Format(" DealTime='{0}' ,", DealTime.ToString());
+                setStr += string.IsNullOrEmpty(MobilePhone) ? string.Empty : string.Format(" CustomerPhone='{0}' ,", MobilePhone.ToString());
+                if (!string.IsNullOrEmpty(setStr))
+                    sql = string.Format("update CustomerInfo set {0} where CustomerID='{1}'", setStr.TrimEnd(','), CustomerID);
+                var result = SqlServerHelper.ExecuteNonQuery(SqlServerHelper.Con, CommandType.Text, sql);
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "UpdateCustomerInfo", Result = result.ToString() });
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "UpdateCustomerInfo", Exception = ex.Message });
+                return -1;
+            }
+
+        }
+
+        public Boolean BatchImportCustomerInfo(DataSet ds)
         {
             try
             {
-                return SqlServerHelper.ExecuteNonQuery(SqlServerHelper.Con, CommandType.Text,sql);
+                var dataTable = CustomerInfoHelper.FillDataTable(ds);
+                var dataSet = new DataSet();
+                dataSet.Tables.Add(dataTable);
+                CustomerInfoHelper.BatchWriteToDB(dataSet);
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "BatchImportCustomerInfo", Result = true.ToString() });
+                return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return -1;
-            }          
-           
+                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "BatchImportCustomerInfo", Exception = ex.Message });
+                return false;
+            }
+
         }
 
+        public int AllocateEmployeePhone(string UserID)
+        {
+            int result = 0;
+            try
+            {
+                var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings["MaxCount"], ConfigurationManager.AppSettings["DailyMaxCount"], UserID);
+                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "AllocateEmployeePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
+                return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "AllocateEmployeePhone", Exception = ex.Message });
+                return result;
+            }
+        }
+
+        public int RecycleCustomerPhone(string customerID, string employeeID)
+        {
+            int result = 0;
+            try
+            {
+                var execute_sql = string.Format(Sql.RecycleCustomerPhone, customerID, employeeID);
+                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "RecycleCustomerPhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
+                return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError(new LogInfo() { Method = "RecycleCustomerPhone", Exception = ex.Message });
+                return result;
+            }
+        }
         public DataSet GetUsers(User user)
         {
             try

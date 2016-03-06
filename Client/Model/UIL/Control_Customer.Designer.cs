@@ -36,6 +36,7 @@ namespace CustomerSeller
             this.bt_Query = new DevComponents.DotNetBar.ButtonX();
             this.bt_Del = new DevComponents.DotNetBar.ButtonX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_GetPhone = new DevComponents.DotNetBar.ButtonX();
             this.cb_status = new System.Windows.Forms.ComboBox();
             this.lb_Status = new DevComponents.DotNetBar.LabelX();
             this.dtp_End_DealTime = new System.Windows.Forms.DateTimePicker();
@@ -48,11 +49,12 @@ namespace CustomerSeller
             this.lb_Create_EndTime = new DevComponents.DotNetBar.LabelX();
             this.panelData = new System.Windows.Forms.Panel();
             this.dgv_Customer = new System.Windows.Forms.DataGridView();
-            this.bt_GetPhone = new DevComponents.DotNetBar.ButtonX();
             this.pagerControl1 = new TActionProject.PagerControl();
+            this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupBox1.SuspendLayout();
             this.panelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_Customer_Name
@@ -117,6 +119,7 @@ namespace CustomerSeller
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimeInput1);
             this.groupBox1.Controls.Add(this.bt_GetPhone);
             this.groupBox1.Controls.Add(this.cb_status);
             this.groupBox1.Controls.Add(this.bt_Del);
@@ -140,6 +143,17 @@ namespace CustomerSeller
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
+            // 
+            // bt_GetPhone
+            // 
+            this.bt_GetPhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_GetPhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_GetPhone.Location = new System.Drawing.Point(278, 113);
+            this.bt_GetPhone.Name = "bt_GetPhone";
+            this.bt_GetPhone.Size = new System.Drawing.Size(75, 23);
+            this.bt_GetPhone.TabIndex = 19;
+            this.bt_GetPhone.Text = "取电话";
+            this.bt_GetPhone.Click += new System.EventHandler(this.bt_GetPhone_Click);
             // 
             // cb_status
             // 
@@ -238,21 +252,12 @@ namespace CustomerSeller
             this.dgv_Customer.Location = new System.Drawing.Point(0, 0);
             this.dgv_Customer.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
             this.dgv_Customer.Name = "dgv_Customer";
+            this.dgv_Customer.ReadOnly = true;
             this.dgv_Customer.RowTemplate.Height = 23;
+            this.dgv_Customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Customer.Size = new System.Drawing.Size(872, 244);
             this.dgv_Customer.TabIndex = 0;
             this.dgv_Customer.DoubleClick += new System.EventHandler(this.dgv_Customer_DoubleClick);
-            // 
-            // bt_GetPhone
-            // 
-            this.bt_GetPhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.bt_GetPhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_GetPhone.Location = new System.Drawing.Point(278, 113);
-            this.bt_GetPhone.Name = "bt_GetPhone";
-            this.bt_GetPhone.Size = new System.Drawing.Size(75, 23);
-            this.bt_GetPhone.TabIndex = 19;
-            this.bt_GetPhone.Text = "取电话";
-            this.bt_GetPhone.Click += new System.EventHandler(this.bt_GetPhone_Click);
             // 
             // pagerControl1
             // 
@@ -268,6 +273,48 @@ namespace CustomerSeller
             this.pagerControl1.Size = new System.Drawing.Size(872, 29);
             this.pagerControl1.TabIndex = 1;
             // 
+            // dateTimeInput1
+            // 
+            // 
+            // 
+            // 
+            this.dateTimeInput1.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dateTimeInput1.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dateTimeInput1.ButtonDropDown.Visible = true;
+            this.dateTimeInput1.Location = new System.Drawing.Point(733, 72);
+            // 
+            // 
+            // 
+            this.dateTimeInput1.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateTimeInput1.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dateTimeInput1.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dateTimeInput1.MonthCalendar.DisplayMonth = new System.DateTime(2016, 3, 1, 0, 0, 0, 0);
+            this.dateTimeInput1.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dateTimeInput1.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dateTimeInput1.MonthCalendar.TodayButtonVisible = true;
+            this.dateTimeInput1.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dateTimeInput1.Name = "dateTimeInput1";
+            this.dateTimeInput1.Size = new System.Drawing.Size(106, 21);
+            this.dateTimeInput1.TabIndex = 20;
+            // 
             // Control_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -280,6 +327,7 @@ namespace CustomerSeller
             this.groupBox1.ResumeLayout(false);
             this.panelData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,6 +355,7 @@ namespace CustomerSeller
         private System.Windows.Forms.Panel panelData;
         private System.Windows.Forms.DataGridView dgv_Customer;
         private DevComponents.DotNetBar.ButtonX bt_GetPhone;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
 
             
 

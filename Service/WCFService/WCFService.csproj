@@ -66,11 +66,15 @@
     <Content Include="Service1.svc" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CustomerInfoHelper.cs" />
+    <Compile Include="Common\Encrypt.cs" />
     <Compile Include="Common\HttpHelper.cs" />
     <Compile Include="Common\ILoggerWrapper.cs" />
     <Compile Include="Common\LoggerWrapper.cs" />
+    <Compile Include="Common\LogInfo.cs" />
     <Compile Include="Common\SqlHelper.cs" />
     <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="Entity\Phone.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

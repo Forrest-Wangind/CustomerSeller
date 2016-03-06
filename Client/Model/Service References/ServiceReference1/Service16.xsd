@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
-  <xs:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
+  <xs:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
   <xs:element name="GetCustomer">
     <xs:complexType>
       <xs:sequence>
@@ -57,17 +57,77 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateCustomerDetail">
+  <xs:element name="UpdateCustomerInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="sql" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CustomerAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PhoneStratus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DealTime" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateCustomerDetailResponse">
+  <xs:element name="UpdateCustomerInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UpdateCustomerDetailResult" type="xs:int" />
+        <xs:element minOccurs="0" name="UpdateCustomerInfoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchImportCustomerInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ds" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchImportCustomerInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BatchImportCustomerInfoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllocateEmployeePhone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllocateEmployeePhoneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AllocateEmployeePhoneResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecycleCustomerPhone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employeeID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecycleCustomerPhoneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RecycleCustomerPhoneResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

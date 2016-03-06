@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
-      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd3" />
-      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
+      <xsd:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd3" />
+      <xsd:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetCustomer_InputMessage">
@@ -22,11 +22,29 @@
   <wsdl:message name="IService1_GetCustomerDetail_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCustomerDetailResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_UpdateCustomerDetail_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateCustomerDetail" />
+  <wsdl:message name="IService1_UpdateCustomerInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerInfo" />
   </wsdl:message>
-  <wsdl:message name="IService1_UpdateCustomerDetail_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateCustomerDetailResponse" />
+  <wsdl:message name="IService1_UpdateCustomerInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BatchImportCustomerInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:BatchImportCustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BatchImportCustomerInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BatchImportCustomerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllocateEmployeePhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateEmployeePhone" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllocateEmployeePhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateEmployeePhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RecycleCustomerPhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecycleCustomerPhone" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RecycleCustomerPhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecycleCustomerPhoneResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetUserPermissions_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserPermissions" />
@@ -61,9 +79,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCustomerDetail" message="tns:IService1_GetCustomerDetail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCustomerDetailResponse" message="tns:IService1_GetCustomerDetail_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateCustomerDetail">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateCustomerDetail" message="tns:IService1_UpdateCustomerDetail_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateCustomerDetailResponse" message="tns:IService1_UpdateCustomerDetail_OutputMessage" />
+    <wsdl:operation name="UpdateCustomerInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateCustomerInfo" message="tns:IService1_UpdateCustomerInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateCustomerInfoResponse" message="tns:IService1_UpdateCustomerInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchImportCustomerInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BatchImportCustomerInfo" message="tns:IService1_BatchImportCustomerInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BatchImportCustomerInfoResponse" message="tns:IService1_BatchImportCustomerInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllocateEmployeePhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AllocateEmployeePhone" message="tns:IService1_AllocateEmployeePhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AllocateEmployeePhoneResponse" message="tns:IService1_AllocateEmployeePhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecycleCustomerPhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RecycleCustomerPhone" message="tns:IService1_RecycleCustomerPhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RecycleCustomerPhoneResponse" message="tns:IService1_RecycleCustomerPhone_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserPermissions">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserPermissions" message="tns:IService1_GetUserPermissions_InputMessage" />
@@ -102,8 +132,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateCustomerDetail">
-      <soap:operation soapAction="http://tempuri.org/IService1/UpdateCustomerDetail" style="document" />
+    <wsdl:operation name="UpdateCustomerInfo">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateCustomerInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchImportCustomerInfo">
+      <soap:operation soapAction="http://tempuri.org/IService1/BatchImportCustomerInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllocateEmployeePhone">
+      <soap:operation soapAction="http://tempuri.org/IService1/AllocateEmployeePhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecycleCustomerPhone">
+      <soap:operation soapAction="http://tempuri.org/IService1/RecycleCustomerPhone" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -150,7 +207,7 @@
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="service" binding="tns:service">
-      <soap:address location="http://xb-201601042137:8081/Service1.svc/CustomerSellerService" />
+      <soap:address location="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc/CustomerSellerService" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

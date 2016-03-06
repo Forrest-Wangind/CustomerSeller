@@ -154,11 +154,29 @@ namespace CustomerSeller.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCustomerDetail", ReplyAction="http://tempuri.org/IService1/GetCustomerDetailResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> GetCustomerDetailAsync(string CustomerID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCustomerDetail", ReplyAction="http://tempuri.org/IService1/UpdateCustomerDetailResponse")]
-        int UpdateCustomerDetail(string sql);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCustomerInfo", ReplyAction="http://tempuri.org/IService1/UpdateCustomerInfoResponse")]
+        int UpdateCustomerInfo(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCustomerDetail", ReplyAction="http://tempuri.org/IService1/UpdateCustomerDetailResponse")]
-        System.Threading.Tasks.Task<int> UpdateCustomerDetailAsync(string sql);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCustomerInfo", ReplyAction="http://tempuri.org/IService1/UpdateCustomerInfoResponse")]
+        System.Threading.Tasks.Task<int> UpdateCustomerInfoAsync(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BatchImportCustomerInfo", ReplyAction="http://tempuri.org/IService1/BatchImportCustomerInfoResponse")]
+        bool BatchImportCustomerInfo(System.Data.DataSet ds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BatchImportCustomerInfo", ReplyAction="http://tempuri.org/IService1/BatchImportCustomerInfoResponse")]
+        System.Threading.Tasks.Task<bool> BatchImportCustomerInfoAsync(System.Data.DataSet ds);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AllocateEmployeePhone", ReplyAction="http://tempuri.org/IService1/AllocateEmployeePhoneResponse")]
+        int AllocateEmployeePhone(string UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AllocateEmployeePhone", ReplyAction="http://tempuri.org/IService1/AllocateEmployeePhoneResponse")]
+        System.Threading.Tasks.Task<int> AllocateEmployeePhoneAsync(string UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RecycleCustomerPhone", ReplyAction="http://tempuri.org/IService1/RecycleCustomerPhoneResponse")]
+        int RecycleCustomerPhone(string customerID, string employeeID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RecycleCustomerPhone", ReplyAction="http://tempuri.org/IService1/RecycleCustomerPhoneResponse")]
+        System.Threading.Tasks.Task<int> RecycleCustomerPhoneAsync(string customerID, string employeeID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserPermissions", ReplyAction="http://tempuri.org/IService1/GetUserPermissionsResponse")]
         string[] GetUserPermissions(string userId);
@@ -228,12 +246,36 @@ namespace CustomerSeller.ServiceReference1 {
             return base.Channel.GetCustomerDetailAsync(CustomerID);
         }
         
-        public int UpdateCustomerDetail(string sql) {
-            return base.Channel.UpdateCustomerDetail(sql);
+        public int UpdateCustomerInfo(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone) {
+            return base.Channel.UpdateCustomerInfo(CustomerAddress, Remark, PhoneStratus, DealTime, CustomerID, MobilePhone);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateCustomerDetailAsync(string sql) {
-            return base.Channel.UpdateCustomerDetailAsync(sql);
+        public System.Threading.Tasks.Task<int> UpdateCustomerInfoAsync(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone) {
+            return base.Channel.UpdateCustomerInfoAsync(CustomerAddress, Remark, PhoneStratus, DealTime, CustomerID, MobilePhone);
+        }
+        
+        public bool BatchImportCustomerInfo(System.Data.DataSet ds) {
+            return base.Channel.BatchImportCustomerInfo(ds);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BatchImportCustomerInfoAsync(System.Data.DataSet ds) {
+            return base.Channel.BatchImportCustomerInfoAsync(ds);
+        }
+        
+        public int AllocateEmployeePhone(string UserID) {
+            return base.Channel.AllocateEmployeePhone(UserID);
+        }
+        
+        public System.Threading.Tasks.Task<int> AllocateEmployeePhoneAsync(string UserID) {
+            return base.Channel.AllocateEmployeePhoneAsync(UserID);
+        }
+        
+        public int RecycleCustomerPhone(string customerID, string employeeID) {
+            return base.Channel.RecycleCustomerPhone(customerID, employeeID);
+        }
+        
+        public System.Threading.Tasks.Task<int> RecycleCustomerPhoneAsync(string customerID, string employeeID) {
+            return base.Channel.RecycleCustomerPhoneAsync(customerID, employeeID);
         }
         
         public string[] GetUserPermissions(string userId) {

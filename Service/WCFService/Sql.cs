@@ -14,7 +14,10 @@ namespace WCFService
 		                                     FROM CustomerInfo where 1=1 {2} ) A WHERE RowNumber > {0}*({1}-1)";
         public static string CustomerInfo = @"select CustomerGender,	STUFF([CustomerPhone],4,5,'*****') as CustomerPhone,	CustomerAddress	,Remark	,PhoneStratus,	DealTime	,CustomerName from [dbo].[CustomerInfo] 
                                               where CustomerID='{0}'";
-       
+
+        public static string AllocateEmployeePhone = "exec AllocateEmployeePhone {0},{1},'{2}'";
+
+        public static string RecycleCustomerPhone = "exec RecycleCustomerPhone '{0}','{1}'"; 
 
     }
 }

@@ -62,18 +62,18 @@ namespace CustomerSeller.UIL
 
         private void bt_Save_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    DateTime? dt = null;
-            //    CustomerSeller.ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
-            //    client.UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, string.IsNullOrEmpty(this.tb_Remark.Text) ? string.Empty : this.tb_Remark.Text,
-            //        string.IsNullOrEmpty(this.cb_PhoneStatus.Text) ? string.Empty : this.cb_PhoneStatus.Text, this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
-            //        !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBoxEx.Show("网络异常，请稍后再试!");
-            //}
+            try
+            {
+                DateTime? dt = null;
+                CustomerSeller.ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
+                client.UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, string.IsNullOrEmpty(this.tb_Remark.Text) ? string.Empty : this.tb_Remark.Text,
+                    string.IsNullOrEmpty(this.cb_PhoneStatus.Text) ? string.Empty : this.cb_PhoneStatus.Text, this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
+                    !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxEx.Show("网络异常，请稍后再试!");
+            }
 
         }
 
@@ -81,18 +81,19 @@ namespace CustomerSeller.UIL
         {        
             try
             {
-                var enployeeID = string.Empty;
-                //var result = CustomerInfo.GetServiceInstance().RecycleCustomerPhone(DR["CustomerID"].ToString(),enployeeID);
+                var enployeeID = "T04471";
+                var result = CustomerInfo.GetServiceInstance().RecycleCustomerPhone(DR["CustomerID"].ToString(),enployeeID);
                
-                //switch (result)
-                //{
-                //    case 1:
-                //        MessageBoxEx.Show("电话资源回收成功!", "提示");
-                //        break;
-                //    default:
-                //        MessageBoxEx.Show("没有可回收的电话资源或回收异常!", "提示");
-                //        break;
-                //}
+                switch (result)
+                {
+                    case 1:
+                        MessageBoxEx.Show("电话资源回收成功!", "提示");
+                        break;
+                    default:
+                        MessageBoxEx.Show("没有可回收的电话资源或回收异常!", "提示");
+                        break;
+                }
+
             }
             catch (Exception ex)
             {

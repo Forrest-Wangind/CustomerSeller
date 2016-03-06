@@ -40,7 +40,7 @@ namespace CustomerSeller.UIL
                 customerInfoDataTable.Rows.Add(dr);
                 var ds = new DataSet();
                 ds.Tables.Add(customerInfoDataTable);
-                //CustomerInfo.GetServiceInstance().BatchImportCustomerInfo(ds);
+                CustomerInfo.GetServiceInstance().BatchImportCustomerInfo(ds);
                 MessageBoxEx.Show("客户信息添加成功!","提示");
             }
             catch

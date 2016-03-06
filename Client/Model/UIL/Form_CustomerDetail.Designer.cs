@@ -99,7 +99,7 @@
             // 
             this.dtp_SuccessTime.Location = new System.Drawing.Point(114, 223);
             this.dtp_SuccessTime.Name = "dtp_SuccessTime";
-            this.dtp_SuccessTime.Size = new System.Drawing.Size(117, 21);
+            this.dtp_SuccessTime.Size = new System.Drawing.Size(177, 21);
             this.dtp_SuccessTime.TabIndex = 27;
             // 
             // label7
@@ -121,7 +121,7 @@
             "无意向"});
             this.cb_PhoneStatus.Location = new System.Drawing.Point(114, 185);
             this.cb_PhoneStatus.Name = "cb_PhoneStatus";
-            this.cb_PhoneStatus.Size = new System.Drawing.Size(117, 20);
+            this.cb_PhoneStatus.Size = new System.Drawing.Size(177, 20);
             this.cb_PhoneStatus.TabIndex = 25;
             // 
             // label6
@@ -154,7 +154,7 @@
             // 
             this.tb_CustomerAddress.Location = new System.Drawing.Point(114, 141);
             this.tb_CustomerAddress.Name = "tb_CustomerAddress";
-            this.tb_CustomerAddress.Size = new System.Drawing.Size(117, 21);
+            this.tb_CustomerAddress.Size = new System.Drawing.Size(177, 21);
             this.tb_CustomerAddress.TabIndex = 21;
             // 
             // label3
@@ -170,7 +170,7 @@
             // 
             this.tb_CustomerPhone.Location = new System.Drawing.Point(114, 104);
             this.tb_CustomerPhone.Name = "tb_CustomerPhone";
-            this.tb_CustomerPhone.Size = new System.Drawing.Size(117, 21);
+            this.tb_CustomerPhone.Size = new System.Drawing.Size(177, 21);
             this.tb_CustomerPhone.TabIndex = 19;
             // 
             // label4
@@ -186,7 +186,7 @@
             // 
             this.tb_Agender.Location = new System.Drawing.Point(114, 66);
             this.tb_Agender.Name = "tb_Agender";
-            this.tb_Agender.Size = new System.Drawing.Size(117, 21);
+            this.tb_Agender.Size = new System.Drawing.Size(177, 21);
             this.tb_Agender.TabIndex = 17;
             // 
             // label2
@@ -202,7 +202,7 @@
             // 
             this.tb_CustomerName.Location = new System.Drawing.Point(114, 29);
             this.tb_CustomerName.Name = "tb_CustomerName";
-            this.tb_CustomerName.Size = new System.Drawing.Size(117, 21);
+            this.tb_CustomerName.Size = new System.Drawing.Size(177, 21);
             this.tb_CustomerName.TabIndex = 15;
             // 
             // label1

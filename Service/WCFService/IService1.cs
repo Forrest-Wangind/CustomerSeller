@@ -24,7 +24,16 @@ namespace WCFService
         DataSet GetCustomerDetail(string CustomerID);
 
         [OperationContract]
-        int UpdateCustomerDetail(string sql);
+        int UpdateCustomerInfo(string CustomerAddress = "", string Remark = "", string PhoneStratus = "", DateTime? DealTime = null, string CustomerID = "", string MobilePhone = "");
+
+        [OperationContract]
+        Boolean BatchImportCustomerInfo(DataSet ds);
+
+        [OperationContract]
+        int AllocateEmployeePhone(string UserID);
+
+        [OperationContract]
+        int RecycleCustomerPhone(string customerID, string employeeID);
 
         [OperationContract]
         string[] GetUserPermissions(string userId);
