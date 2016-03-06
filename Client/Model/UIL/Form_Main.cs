@@ -250,9 +250,16 @@ namespace CustomerSeller
                 openFileDialog1.FilterIndex = 2;
                 openFileDialog1.RestoreDirectory = true;
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
                     resultFile = openFileDialog1.FileName;
-                Thread t = new Thread(CustomerInfo.Run);
-                t.Start(resultFile);
+                    Thread t = new Thread(CustomerInfo.Run);
+                    t.Start(resultFile);
+                }
+                else
+                {
+                    return;
+                }
+
             }
             catch (Exception ex)
             {

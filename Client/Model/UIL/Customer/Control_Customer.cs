@@ -39,15 +39,15 @@ namespace CustomerSeller
                 listParameters.Add(new KeyValuePair<string, string>("CustomerName like ", string.Format("%{0}%", tb_Customer_Name.Text)));
             if (!string.IsNullOrEmpty(this.tb_Customer_Phone.Text))
                 listParameters.Add(new KeyValuePair<string, string>("CustomerPhone=", tb_Customer_Phone.Text));
-            if (this.dtp_Create_StartTime.Checked)
+            if (!this.dtp_Create_StartTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("AllocateTime>=", this.dtp_Create_StartTime.Value.ToString("yyyy-MM-dd")));
-            if (this.dtp_Create_EndTime.Checked)
+            if (!this.dtp_Create_EndTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("AllocateTime<=", this.dtp_Create_EndTime.Value.ToString("yyyy-MM-dd")));
             if (!string.IsNullOrEmpty(this.cb_status.Text))
                 listParameters.Add(new KeyValuePair<string, string>("PhoneStratus=", this.cb_status.Text));
-            if (this.dtp_Start_DealTime.Checked)
+            if (!this.dtp_Start_DealTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("DealTime>=", this.dtp_Start_DealTime.Value.ToString("yyyy-MM-dd")));
-            if (this.dtp_End_DealTime.Checked)
+            if (!this.dtp_End_DealTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("DealTime<=", this.dtp_End_DealTime.Value.ToString("yyyy-MM-dd")));
             return listParameters;
 
@@ -78,35 +78,15 @@ namespace CustomerSeller
             //将控件里面的信息清空
             this.tb_Customer_Name.Clear();
             this.tb_Customer_Phone.Clear();
-            this.dtp_End_DealTime.Checked = false;
-            this.dtp_Start_DealTime.Checked = false;
-            this.dtp_Create_StartTime.Checked = false;
-            this.dtp_Create_EndTime.Checked = false;
+            this.dtp_End_DealTime.ResetText();
+            this.dtp_Start_DealTime.ResetText();
+            this.dtp_Create_StartTime.ResetText();
+            this.dtp_Create_EndTime.ResetText();
 
         }
         private void bt_Query_Click(object sender, EventArgs e)
         {
             pagerControl1_OnPageChanged(null, null);
-        }
-
-        private void dgv_Customer_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {   
-                var dataGridRow=this.dgv_Customer.CurrentRow;
-
-                if (dataGridRow == null)
-                    MessageBoxEx.Show("没有选中任何一条电话记录","提示");
-                int index = dataGridRow.Index;    //取得选中行的索引   
-                var row = (this.dgv_Customer.DataSource as DataTable).Rows[index];
-                new Form_CustomerDetail() { DR = row }.ShowDialog();
-
-            }
-            catch
-            {
-                MessageBoxEx.Show("出现未知错误!", "提示");
-            }
-
         }
 
         private void bt_GetPhone_Click(object sender, EventArgs e)
@@ -125,6 +105,25 @@ namespace CustomerSeller
                 default:
                     MessageBoxEx.Show("电话分配出现异常!", "提示");
                     break;
+            }
+        }
+
+        private void dgv_Customer_DoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                var dataGridRow = this.dgv_Customer.CurrentRow;
+
+                if (dataGridRow == null)
+                    MessageBoxEx.Show("没有选中任何一条电话记录", "提示");
+                int index = dataGridRow.Index;    //取得选中行的索引   
+                var row = (this.dgv_Customer.DataSource as DataTable).Rows[index];
+                new Form_CustomerDetail() { DR = row }.ShowDialog();
+
+            }
+            catch
+            {
+                MessageBoxEx.Show("出现未知错误!", "提示");
             }
         }
     }

@@ -29,6 +29,7 @@ namespace CustomerSeller
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lb_Customer_Name = new DevComponents.DotNetBar.LabelX();
             this.lb_Customer_Phone = new DevComponents.DotNetBar.LabelX();
             this.tb_Customer_Phone = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -36,25 +37,27 @@ namespace CustomerSeller
             this.bt_Query = new DevComponents.DotNetBar.ButtonX();
             this.bt_Del = new DevComponents.DotNetBar.ButtonX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtp_End_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dtp_Create_EndTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dtp_Create_StartTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dtp_Start_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.bt_GetPhone = new DevComponents.DotNetBar.ButtonX();
             this.cb_status = new System.Windows.Forms.ComboBox();
             this.lb_Status = new DevComponents.DotNetBar.LabelX();
-            this.dtp_End_DealTime = new System.Windows.Forms.DateTimePicker();
-            this.dtp_Create_EndTime = new System.Windows.Forms.DateTimePicker();
-            this.dtp_Start_DealTime = new System.Windows.Forms.DateTimePicker();
-            this.dtp_Create_StartTime = new System.Windows.Forms.DateTimePicker();
             this.lb_Success_StartTime = new DevComponents.DotNetBar.LabelX();
             this.lb_Success_EndTime = new DevComponents.DotNetBar.LabelX();
             this.lb_Create_StartTime = new DevComponents.DotNetBar.LabelX();
             this.lb_Create_EndTime = new DevComponents.DotNetBar.LabelX();
             this.panelData = new System.Windows.Forms.Panel();
-            this.dgv_Customer = new System.Windows.Forms.DataGridView();
+            this.dgv_Customer = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.pagerControl1 = new TActionProject.PagerControl();
-            this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_End_DealTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_EndTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_StartTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_Start_DealTime)).BeginInit();
             this.panelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_Customer_Name
@@ -119,16 +122,15 @@ namespace CustomerSeller
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimeInput1);
+            this.groupBox1.Controls.Add(this.dtp_End_DealTime);
+            this.groupBox1.Controls.Add(this.dtp_Create_EndTime);
+            this.groupBox1.Controls.Add(this.dtp_Create_StartTime);
+            this.groupBox1.Controls.Add(this.dtp_Start_DealTime);
             this.groupBox1.Controls.Add(this.bt_GetPhone);
             this.groupBox1.Controls.Add(this.cb_status);
             this.groupBox1.Controls.Add(this.bt_Del);
             this.groupBox1.Controls.Add(this.bt_Query);
             this.groupBox1.Controls.Add(this.lb_Status);
-            this.groupBox1.Controls.Add(this.dtp_End_DealTime);
-            this.groupBox1.Controls.Add(this.dtp_Create_EndTime);
-            this.groupBox1.Controls.Add(this.dtp_Start_DealTime);
-            this.groupBox1.Controls.Add(this.dtp_Create_StartTime);
             this.groupBox1.Controls.Add(this.lb_Success_StartTime);
             this.groupBox1.Controls.Add(this.lb_Success_EndTime);
             this.groupBox1.Controls.Add(this.lb_Create_StartTime);
@@ -143,6 +145,174 @@ namespace CustomerSeller
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
+            // 
+            // dtp_End_DealTime
+            // 
+            // 
+            // 
+            // 
+            this.dtp_End_DealTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtp_End_DealTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtp_End_DealTime.ButtonDropDown.Visible = true;
+            this.dtp_End_DealTime.Location = new System.Drawing.Point(513, 64);
+            // 
+            // 
+            // 
+            this.dtp_End_DealTime.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_End_DealTime.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dtp_End_DealTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtp_End_DealTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtp_End_DealTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_End_DealTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtp_End_DealTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtp_End_DealTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtp_End_DealTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtp_End_DealTime.MonthCalendar.DisplayMonth = new System.DateTime(2016, 3, 1, 0, 0, 0, 0);
+            this.dtp_End_DealTime.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dtp_End_DealTime.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_End_DealTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtp_End_DealTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_End_DealTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtp_End_DealTime.MonthCalendar.TodayButtonVisible = true;
+            this.dtp_End_DealTime.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dtp_End_DealTime.Name = "dtp_End_DealTime";
+            this.dtp_End_DealTime.Size = new System.Drawing.Size(106, 21);
+            this.dtp_End_DealTime.TabIndex = 23;
+            // 
+            // dtp_Create_EndTime
+            // 
+            // 
+            // 
+            // 
+            this.dtp_Create_EndTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtp_Create_EndTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtp_Create_EndTime.ButtonDropDown.Visible = true;
+            this.dtp_Create_EndTime.Location = new System.Drawing.Point(733, 21);
+            // 
+            // 
+            // 
+            this.dtp_Create_EndTime.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_Create_EndTime.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dtp_Create_EndTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtp_Create_EndTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtp_Create_EndTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_Create_EndTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtp_Create_EndTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtp_Create_EndTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtp_Create_EndTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtp_Create_EndTime.MonthCalendar.DisplayMonth = new System.DateTime(2016, 3, 1, 0, 0, 0, 0);
+            this.dtp_Create_EndTime.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dtp_Create_EndTime.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_Create_EndTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtp_Create_EndTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_Create_EndTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtp_Create_EndTime.MonthCalendar.TodayButtonVisible = true;
+            this.dtp_Create_EndTime.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dtp_Create_EndTime.Name = "dtp_Create_EndTime";
+            this.dtp_Create_EndTime.Size = new System.Drawing.Size(106, 21);
+            this.dtp_Create_EndTime.TabIndex = 22;
+            // 
+            // dtp_Create_StartTime
+            // 
+            // 
+            // 
+            // 
+            this.dtp_Create_StartTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtp_Create_StartTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtp_Create_StartTime.ButtonDropDown.Visible = true;
+            this.dtp_Create_StartTime.Location = new System.Drawing.Point(513, 21);
+            // 
+            // 
+            // 
+            this.dtp_Create_StartTime.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_Create_StartTime.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dtp_Create_StartTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtp_Create_StartTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtp_Create_StartTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_Create_StartTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtp_Create_StartTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtp_Create_StartTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtp_Create_StartTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtp_Create_StartTime.MonthCalendar.DisplayMonth = new System.DateTime(2016, 3, 1, 0, 0, 0, 0);
+            this.dtp_Create_StartTime.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dtp_Create_StartTime.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_Create_StartTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtp_Create_StartTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_Create_StartTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtp_Create_StartTime.MonthCalendar.TodayButtonVisible = true;
+            this.dtp_Create_StartTime.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dtp_Create_StartTime.Name = "dtp_Create_StartTime";
+            this.dtp_Create_StartTime.Size = new System.Drawing.Size(106, 21);
+            this.dtp_Create_StartTime.TabIndex = 21;
+            // 
+            // dtp_Start_DealTime
+            // 
+            // 
+            // 
+            // 
+            this.dtp_Start_DealTime.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtp_Start_DealTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtp_Start_DealTime.ButtonDropDown.Visible = true;
+            this.dtp_Start_DealTime.Location = new System.Drawing.Point(278, 64);
+            // 
+            // 
+            // 
+            this.dtp_Start_DealTime.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_Start_DealTime.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dtp_Start_DealTime.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtp_Start_DealTime.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtp_Start_DealTime.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_Start_DealTime.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtp_Start_DealTime.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtp_Start_DealTime.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtp_Start_DealTime.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtp_Start_DealTime.MonthCalendar.DisplayMonth = new System.DateTime(2016, 3, 1, 0, 0, 0, 0);
+            this.dtp_Start_DealTime.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dtp_Start_DealTime.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtp_Start_DealTime.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtp_Start_DealTime.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtp_Start_DealTime.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtp_Start_DealTime.MonthCalendar.TodayButtonVisible = true;
+            this.dtp_Start_DealTime.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dtp_Start_DealTime.Name = "dtp_Start_DealTime";
+            this.dtp_Start_DealTime.Size = new System.Drawing.Size(106, 21);
+            this.dtp_Start_DealTime.TabIndex = 20;
             // 
             // bt_GetPhone
             // 
@@ -170,38 +340,6 @@ namespace CustomerSeller
             this.lb_Status.Size = new System.Drawing.Size(67, 21);
             this.lb_Status.TabIndex = 17;
             this.lb_Status.Text = "成交状态:";
-            // 
-            // dtp_End_DealTime
-            // 
-            this.dtp_End_DealTime.Location = new System.Drawing.Point(513, 65);
-            this.dtp_End_DealTime.Name = "dtp_End_DealTime";
-            this.dtp_End_DealTime.ShowCheckBox = true;
-            this.dtp_End_DealTime.Size = new System.Drawing.Size(106, 21);
-            this.dtp_End_DealTime.TabIndex = 16;
-            // 
-            // dtp_Create_EndTime
-            // 
-            this.dtp_Create_EndTime.Location = new System.Drawing.Point(733, 14);
-            this.dtp_Create_EndTime.Name = "dtp_Create_EndTime";
-            this.dtp_Create_EndTime.ShowCheckBox = true;
-            this.dtp_Create_EndTime.Size = new System.Drawing.Size(106, 21);
-            this.dtp_Create_EndTime.TabIndex = 16;
-            // 
-            // dtp_Start_DealTime
-            // 
-            this.dtp_Start_DealTime.Location = new System.Drawing.Point(278, 65);
-            this.dtp_Start_DealTime.Name = "dtp_Start_DealTime";
-            this.dtp_Start_DealTime.ShowCheckBox = true;
-            this.dtp_Start_DealTime.Size = new System.Drawing.Size(107, 21);
-            this.dtp_Start_DealTime.TabIndex = 15;
-            // 
-            // dtp_Create_StartTime
-            // 
-            this.dtp_Create_StartTime.Location = new System.Drawing.Point(513, 19);
-            this.dtp_Create_StartTime.Name = "dtp_Create_StartTime";
-            this.dtp_Create_StartTime.ShowCheckBox = true;
-            this.dtp_Create_StartTime.Size = new System.Drawing.Size(107, 21);
-            this.dtp_Create_StartTime.TabIndex = 15;
             // 
             // lb_Success_StartTime
             // 
@@ -248,16 +386,23 @@ namespace CustomerSeller
             // dgv_Customer
             // 
             this.dgv_Customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Customer.Dock = System.Windows.Forms.DockStyle.Top;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Customer.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_Customer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_Customer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgv_Customer.Location = new System.Drawing.Point(0, 0);
-            this.dgv_Customer.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
             this.dgv_Customer.Name = "dgv_Customer";
-            this.dgv_Customer.ReadOnly = true;
             this.dgv_Customer.RowTemplate.Height = 23;
             this.dgv_Customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Customer.Size = new System.Drawing.Size(872, 244);
-            this.dgv_Customer.TabIndex = 0;
-            this.dgv_Customer.DoubleClick += new System.EventHandler(this.dgv_Customer_DoubleClick);
+            this.dgv_Customer.Size = new System.Drawing.Size(872, 247);
+            this.dgv_Customer.TabIndex = 2;
+            this.dgv_Customer.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgv_Customer_DoubleClick);
             // 
             // pagerControl1
             // 
@@ -273,48 +418,6 @@ namespace CustomerSeller
             this.pagerControl1.Size = new System.Drawing.Size(872, 29);
             this.pagerControl1.TabIndex = 1;
             // 
-            // dateTimeInput1
-            // 
-            // 
-            // 
-            // 
-            this.dateTimeInput1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateTimeInput1.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateTimeInput1.ButtonDropDown.Visible = true;
-            this.dateTimeInput1.Location = new System.Drawing.Point(733, 72);
-            // 
-            // 
-            // 
-            this.dateTimeInput1.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.dateTimeInput1.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateTimeInput1.MonthCalendar.DisplayMonth = new System.DateTime(2016, 3, 1, 0, 0, 0, 0);
-            this.dateTimeInput1.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dateTimeInput1.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateTimeInput1.MonthCalendar.TodayButtonVisible = true;
-            this.dateTimeInput1.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dateTimeInput1.Name = "dateTimeInput1";
-            this.dateTimeInput1.Size = new System.Drawing.Size(106, 21);
-            this.dateTimeInput1.TabIndex = 20;
-            // 
             // Control_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -325,9 +428,12 @@ namespace CustomerSeller
             this.Name = "Control_Customer";
             this.Size = new System.Drawing.Size(1080, 515);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_End_DealTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_EndTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_Create_StartTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtp_Start_DealTime)).EndInit();
             this.panelData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,18 +450,17 @@ namespace CustomerSeller
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cb_status;
         private DevComponents.DotNetBar.LabelX lb_Status;
-        private System.Windows.Forms.DateTimePicker dtp_End_DealTime;
-        private System.Windows.Forms.DateTimePicker dtp_Create_EndTime;
-        private System.Windows.Forms.DateTimePicker dtp_Start_DealTime;
-        private System.Windows.Forms.DateTimePicker dtp_Create_StartTime;
         private DevComponents.DotNetBar.LabelX lb_Success_StartTime;
         private DevComponents.DotNetBar.LabelX lb_Success_EndTime;
         private DevComponents.DotNetBar.LabelX lb_Create_StartTime;
         private DevComponents.DotNetBar.LabelX lb_Create_EndTime;
         private System.Windows.Forms.Panel panelData;
-        private System.Windows.Forms.DataGridView dgv_Customer;
         private DevComponents.DotNetBar.ButtonX bt_GetPhone;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Start_DealTime;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_EndTime;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_StartTime;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_End_DealTime;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgv_Customer;
 
             
 
