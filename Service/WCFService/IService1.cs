@@ -42,7 +42,7 @@ namespace WCFService
         DataSet GetUsers(User user);
 
         [OperationContract]
-        User GetSingleUser(User user);
+        User GetSingleUser(string userId);
 
         [OperationContract]
         int test(int a);

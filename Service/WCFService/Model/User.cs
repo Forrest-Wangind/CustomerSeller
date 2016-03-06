@@ -16,6 +16,9 @@ namespace WCFService.Model
         public string userName { get; set; }
 
         [DataMember]
+        public string password { get; set; }
+
+        [DataMember]
         public string gender { get; set; }
 
         [DataMember]
