@@ -154,9 +154,24 @@ namespace WCFService
             }
         }
 
-        public User GetSingleUser(User user)
+        public User GetSingleUser(string userId)
         {
-            throw new NotImplementedException();
+            User user = new User();
+            List<SqlParameter> paras = new List<SqlParameter>();
+            paras.Add(new SqlParameter("@id", userId));
+            SqlDataReader reader = SqlServerHelper.ExecuteReader(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_getUserPermissions", paras.ToArray());
+            while (reader.Read())
+            {
+                if (reader != null && reader.FieldCount > 0)
+                {
+                    user.userID = reader[0].ToString();
+                    user.userName = reader[1].ToString();
+                    user.password = reader[2].ToString();
+                    user.gender = reader[3].ToString();
+                    user.entryTimeStart = DateTime.Parse(reader[4].ToString());
+                }
+            }
+            return user;
         }
 
         public int test(int a)
