@@ -171,6 +171,7 @@ namespace WCFService
                     user.entryTimeStart = DateTime.Parse(reader[4].ToString());
                 }
             }
+
             return user;
         }
 
