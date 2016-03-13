@@ -12,12 +12,18 @@ using System.Threading;
 using CustomerSeller.UIL;
 using CustomerSeller.DAL;
 using CustomerSeller.Common;
+using System.Runtime.InteropServices;
+
+
+
+
 
 namespace CustomerSeller
-{
+{   
+    
     public partial class Form_Main : Office2007Form
     {
-      
+       
         public Form_Main()
         {   
             InitializeComponent();
@@ -196,7 +202,7 @@ namespace CustomerSeller
         {
             if (DialogResult.Yes == MessageBoxEx.Show("是否返回主界面", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                this.Main_panel.Controls.Clear();          
+                this.Main_panel.Controls.Clear();
                 Exit_Message_Notice("正在返回系统主界面.");
                 Application.DoEvents();
                 Thread.Sleep(50);
@@ -379,10 +385,10 @@ namespace CustomerSeller
             Main m = new Main();
             m.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(m);
-            if (UserInfo.Get_User().User_Grade=="0")
-            {
-                this.sideBar1.Panels.Remove("user_ManageMent");
-            }
+            //if (UserInfo.Get_User().User_Grade=="0")
+            //{
+            //    this.sideBar1.Panels.Remove("user_ManageMent");
+            //}
         }
 
         private void bi_profit_Click(object sender, EventArgs e)
