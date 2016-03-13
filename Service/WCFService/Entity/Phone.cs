@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WCFService.Entity
 {
-    public class PhoneRequest
+    public class CallPhoneRequest
     {
         public String action { get; set; }
         public int companyid { get; set; }
@@ -19,5 +19,15 @@ namespace WCFService.Entity
     public class PhoneResponse
     {
         public int Reault { get; set; }
+    }
+
+
+    public class HandupPhoneRequest
+    {
+        public String action { get; set; }
+        public int companyid { get; set; }
+        public String auth { get; set; }
+        public String exten { get; set; }
+       
     }
 }

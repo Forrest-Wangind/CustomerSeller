@@ -13,6 +13,8 @@ using WCFService.DAL;
 using WCFService.Model;
 using Common.Log;
 using WCFService.Common;
+using WCFService.Entity;
+using Newtonsoft.Json;
 
 namespace WCFService
 {
@@ -35,7 +37,7 @@ namespace WCFService
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 if (dataSet.Tables.Count > 0)
                     result = dataSet;
-                LoggerWrapper.Instance().LogInfo(new LogInfo() {  Method = "GetCustomer", Result = result == null ? "null" : "a object" });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "GetCustomer", Result = result == null ? "null" : "a object" });
                 return result;
 
             }
@@ -58,12 +60,12 @@ namespace WCFService
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "CustomerID:" + CustomerID,Method = "GetCustomerDetail", Exception = ex.Message });
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "CustomerID:" + CustomerID, Method = "GetCustomerDetail", Exception = ex.Message });
                 return null;
             }
         }
 
-        public int UpdateCustomerInfo(string CustomerAddress = "", string Remark = "", string PhoneStratus = "", DateTime? DealTime = null, string CustomerID = "", string MobilePhone = "",string CustomerName="")
+        public int UpdateCustomerInfo(string CustomerAddress = "", string Remark = "", string PhoneStratus = "", DateTime? DealTime = null, string CustomerID = "", string MobilePhone = "", string CustomerName = "")
         {
             string setStr = string.Empty;
             try
@@ -78,7 +80,7 @@ namespace WCFService
                 if (!string.IsNullOrEmpty(setStr))
                     sql = string.Format("update CustomerInfo set {0} where CustomerID='{1}'", setStr.TrimEnd(','), CustomerID);
                 var result = SqlServerHelper.ExecuteNonQuery(SqlServerHelper.Con, CommandType.Text, sql);
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request =setStr,Method = "UpdateCustomerInfo", Result = result.ToString() });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = setStr, Method = "UpdateCustomerInfo", Result = result.ToString() });
                 return result;
             }
             catch (Exception ex)
@@ -121,7 +123,7 @@ namespace WCFService
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "UserID:" + UserID,Method = "AllocateEmployeePhone", Exception = ex.Message });
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "UserID:" + UserID, Method = "AllocateEmployeePhone", Exception = ex.Message });
                 return result;
             }
         }
@@ -133,12 +135,12 @@ namespace WCFService
             {
                 var execute_sql = string.Format(Sql.RecycleCustomerPhone, customerID, employeeID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "customerID:"+customerID+",employeeID:"+employeeID, Method = "RecycleCustomerPhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "customerID:" + customerID + ",employeeID:" + employeeID, Method = "RecycleCustomerPhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "customerID:" + customerID + ",employeeID:" + employeeID,Method = "RecycleCustomerPhone", Exception = ex.Message });
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "customerID:" + customerID + ",employeeID:" + employeeID, Method = "RecycleCustomerPhone", Exception = ex.Message });
                 return result;
             }
         }
@@ -156,8 +158,8 @@ namespace WCFService
         }
 
         public User GetSingleUser(string userId)
-        {   
-            
+        {
+
             User user = new User();
             List<SqlParameter> paras = new List<SqlParameter>();
             paras.Add(new SqlParameter("@id", userId));
@@ -195,19 +197,19 @@ namespace WCFService
             }
         }
 
-        public  void FilterTheSamePhone(DataSet ds)
-        {   
+        public void FilterTheSamePhone(DataSet ds)
+        {
             //文件本身去重
             //保存电话
-            List<string>  phoneCollection   = new List<string>   ();
-            List<DataRow> dataRowCollection = new  List<DataRow> ();
-             
+            List<string> phoneCollection = new List<string>();
+            List<DataRow> dataRowCollection = new List<DataRow>();
+
             //数据库去重
             if (ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    if(phoneCollection.Contains(dr["CustomerPhone"].ToString()))
+                    if (phoneCollection.Contains(dr["CustomerPhone"].ToString()))
                     {
                         dataRowCollection.Add(dr);
                     }
@@ -218,12 +220,12 @@ namespace WCFService
                 }
 
             }
-            dataRowCollection.ForEach(item=>ds.Tables[0].Rows.Remove(item));
+            dataRowCollection.ForEach(item => ds.Tables[0].Rows.Remove(item));
             //数据库去重
-            if(ds.Tables[0].Rows.Count>0)
+            if (ds.Tables[0].Rows.Count > 0)
             {
                 dataRowCollection.Clear();
-                foreach(DataRow dr in ds.Tables[0].Rows)
+                foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     //查询数据库
                     var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, string.Format(Sql.JudgePhoneExists, dr["CustomerPhone"].ToString()));
@@ -232,6 +234,56 @@ namespace WCFService
                 }
             }
             dataRowCollection.ForEach(item => ds.Tables[0].Rows.Remove(item));
+        }
+       
+        public Boolean CallMobilePhone(string phone, string employeeID, string employeeExten)
+        {
+           
+            try
+            {
+                var phoneRequest = new CallPhoneRequest()
+                {
+                    action = ConfigurationManager.AppSettings["CallAction"],
+                    auth = ConfigurationManager.AppSettings["auth"],
+                    codeid_1 = "",
+                    codeid_2 = "",
+                    companyid = Convert.ToInt32(ConfigurationManager.AppSettings["companyid"]),
+                    exten = employeeExten,
+                    phonenum = phone,
+                    staffid = employeeID
+
+                };
+                var result=HttpsHelper.HttpsPost(ConfigurationManager.AppSettings["CallCenter"], JsonConvert.SerializeObject(phoneRequest)).Equals("1");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError(string.Format("phone:{0},Message:{1},StackMessage:{2}",phone,ex.Message,ex.StackTrace));
+                return false;
+            }
+          
+        }
+       
+        public Boolean HandupMobilePhone(string employeeID, string employeeExten)
+        {
+            try
+            {
+                var phoneRequest = new HandupPhoneRequest()
+                {
+                    action = ConfigurationManager.AppSettings["HandUpAction"],
+                    auth = ConfigurationManager.AppSettings["auth"],
+                    companyid = Convert.ToInt32(ConfigurationManager.AppSettings["companyid"]),
+                    exten = employeeExten
+                };
+                var result = HttpsHelper.HttpsPost(ConfigurationManager.AppSettings["CallCenter"], JsonConvert.SerializeObject(phoneRequest)).Equals("1");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError(string.Format("phone:{0},Message:{1},StackMessage:{2}",  ex.Message, ex.StackTrace));
+                return false;
+            }
+
         }
 
     }

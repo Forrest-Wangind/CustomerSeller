@@ -51,13 +51,13 @@
             this.expandableSplitter2 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.panel4 = new System.Windows.Forms.Panel();
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
-            this.user_ManageMent = new DevComponents.DotNetBar.SideBarPanelItem();
-            this.AllUsers = new DevComponents.DotNetBar.ButtonItem();
+            this.RoleManagement = new DevComponents.DotNetBar.SideBarPanelItem();
             this.VIP_Management = new DevComponents.DotNetBar.SideBarPanelItem();
             this.add_Fruit = new DevComponents.DotNetBar.ButtonItem();
             this.del_Fruit = new DevComponents.DotNetBar.ButtonItem();
             this.change_Fruit = new DevComponents.DotNetBar.ButtonItem();
-            this.RoleManagement = new DevComponents.DotNetBar.SideBarPanelItem();
+            this.user_ManageMent = new DevComponents.DotNetBar.SideBarPanelItem();
+            this.AllUsers = new DevComponents.DotNetBar.ButtonItem();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -346,25 +346,12 @@
             this.sideBar1.TabIndex = 0;
             this.sideBar1.Text = "删除用户";
             // 
-            // user_ManageMent
+            // RoleManagement
             // 
-            this.user_ManageMent.FontBold = true;
-            this.user_ManageMent.Icon = ((System.Drawing.Icon)(resources.GetObject("user_ManageMent.Icon")));
-            this.user_ManageMent.Name = "user_ManageMent";
-            this.user_ManageMent.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.AllUsers});
-            this.user_ManageMent.Text = "用户信息管理";
-            this.user_ManageMent.Visible = false;
-            // 
-            // AllUsers
-            // 
-            this.AllUsers.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.AllUsers.ImagePaddingHorizontal = 8;
-            this.AllUsers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.AllUsers.Name = "AllUsers";
-            this.AllUsers.Text = "所有用户";
-            this.AllUsers.Visible = false;
-            this.AllUsers.Click += new System.EventHandler(this.AllUsers_Click);
+            this.RoleManagement.FontBold = true;
+            this.RoleManagement.Name = "RoleManagement";
+            this.RoleManagement.Text = "角色管理";
+            this.RoleManagement.Visible = false;
             // 
             // VIP_Management
             // 
@@ -405,12 +392,25 @@
             this.change_Fruit.Text = "导入用户数据";
             this.change_Fruit.Click += new System.EventHandler(this.change_Vip_Click);
             // 
-            // RoleManagement
+            // user_ManageMent
             // 
-            this.RoleManagement.FontBold = true;
-            this.RoleManagement.Name = "RoleManagement";
-            this.RoleManagement.Text = "角色管理";
-            this.RoleManagement.Visible = false;
+            this.user_ManageMent.FontBold = true;
+            this.user_ManageMent.Icon = ((System.Drawing.Icon)(resources.GetObject("user_ManageMent.Icon")));
+            this.user_ManageMent.Name = "user_ManageMent";
+            this.user_ManageMent.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.AllUsers});
+            this.user_ManageMent.Text = "用户信息管理";
+            this.user_ManageMent.Visible = false;
+            // 
+            // AllUsers
+            // 
+            this.AllUsers.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.AllUsers.ImagePaddingHorizontal = 8;
+            this.AllUsers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.AllUsers.Name = "AllUsers";
+            this.AllUsers.Text = "所有用户";
+            this.AllUsers.Visible = false;
+            this.AllUsers.Click += new System.EventHandler(this.AllUsers_Click);
             // 
             // Form_Main
             // 
@@ -421,7 +421,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Main";
-            this.Text = "水果信息查询系统--主界面";
+            this.Text = "客户销售管理系统--主界面";
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);

@@ -79,6 +79,7 @@ namespace CustomerSeller
             this.dtp_Start_DealTime.ResetText();
             this.dtp_Create_StartTime.ResetText();
             this.dtp_Create_EndTime.ResetText();
+            this.cb_status.SelectedIndex = -1;
 
         }
         private void bt_Query_Click(object sender, EventArgs e)

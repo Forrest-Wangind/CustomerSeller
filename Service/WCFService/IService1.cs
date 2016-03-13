@@ -46,5 +46,11 @@ namespace WCFService
 
         [OperationContract]
         int test(int a);
+
+        [OperationContract]
+        Boolean CallMobilePhone(string phone, string employeeID, string employeeExten);
+
+        [OperationContract]
+        Boolean HandupMobilePhone(string employeeID, string employeeExten);
     }
 }
