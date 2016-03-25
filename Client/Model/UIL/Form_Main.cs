@@ -12,6 +12,7 @@ using System.Threading;
 using CustomerSeller.UIL;
 using CustomerSeller.DAL;
 using CustomerSeller.Common;
+using CustomerSeller.Control;
 
 namespace CustomerSeller
 {
@@ -365,8 +366,14 @@ namespace CustomerSeller
             {
                 this.Main_panel.Controls.Clear();
                 Control_Customer control = new Control_Customer();
-                control.Dock = DockStyle.Left;
-                this.Main_panel.Controls.Add(control);
+                TabControlUser m = new TabControlUser();
+                control.Dock = DockStyle.Fill;
+                var page = new TabPage("12");
+                page.Controls.Add(control);
+                m.MainTabControl.TabPages.Add(page);
+                //m.PageControl.MainTabControl.TabPages.Add(page);
+                this.Main_panel.Controls.Add(m);
+
             }
             catch (Exception ex)
             {
@@ -403,9 +410,56 @@ namespace CustomerSeller
         private void AllUsers_Click(object sender, EventArgs e)
         {
             this.Main_panel.Controls.Clear();
-            UIL.User.UserList userlist = new UIL.User.UserList();
-            userlist.Dock = DockStyle.Left;
+            UIL.User.UserList userlist = new UIL.User.UserList(this);
+            userlist.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(userlist);
+        }
+
+        private void singleUser_Click(object sender, EventArgs e)
+        {
+            addUserPanel("select", UserInfo.Get_User().User_Id);
+        }
+
+        private void btn_update_user_Click(object sender, EventArgs e)
+        {
+            addUserPanel("update", UserInfo.Get_User().User_Id);
+        }
+
+        private void AddUser_Click(object sender, EventArgs e)
+        {
+            addUserPanel("add", string.Empty);
+        }
+
+        public void addUserPanel(string panelName, string userId)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.User.SingleUser singleUser = new UIL.User.SingleUser(panelName, userId);
+            singleUser.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(singleUser);
+        }
+
+        public void addRolePanel(string panelName, string roleId)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.Role.RoleDetail roleDetail = new UIL.Role.RoleDetail(panelName, roleId);
+            roleDetail.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(roleDetail);
+        }
+
+        private void AllRoles_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.Role.RoleList roleList = new UIL.Role.RoleList(this);
+            roleList.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(roleList);
+        }
+
+        private void RoleDetail_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.Role.RoleDetail roleList = new UIL.Role.RoleDetail();
+            roleList.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(roleList);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace CustomerSeller.UIL
 {
     public partial class Main : UserControl
     {
+        
         public Main()
         {
             InitializeComponent();

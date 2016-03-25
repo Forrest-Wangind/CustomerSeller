@@ -4,9 +4,9 @@ IF OBJECT_ID ( 'pro_getUsers', 'P' ) IS NOT NULL
     DROP PROCEDURE pro_getUsers;
 GO
 CREATE PROCEDURE pro_getUsers
-	@id varchar(50),
-	@name varchar(20),
-	@gender varchar(20),
+	@id nvarchar(50),
+	@name nvarchar(20),
+	@gender nvarchar(20),
 	@entryTimeStart datetime,
 	@entryTimeEnd datetime
 AS

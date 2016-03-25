@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_select = new System.Windows.Forms.Button();
             this.cb_gender = new System.Windows.Forms.ComboBox();
@@ -43,11 +44,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgv_userList = new System.Windows.Forms.DataGridView();
+            this.cms_user = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsm_add = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_update = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_delete = new System.Windows.Forms.ToolStripMenuItem();
             this.pagerControl1 = new TActionProject.PagerControl();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_userList)).BeginInit();
+            this.cms_user.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -185,13 +191,47 @@
             // 
             // dgv_userList
             // 
+            this.dgv_userList.AllowUserToAddRows = false;
             this.dgv_userList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_userList.ContextMenuStrip = this.cms_user;
             this.dgv_userList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_userList.Location = new System.Drawing.Point(0, 0);
             this.dgv_userList.Name = "dgv_userList";
             this.dgv_userList.RowTemplate.Height = 23;
             this.dgv_userList.Size = new System.Drawing.Size(1030, 392);
             this.dgv_userList.TabIndex = 1;
+            this.dgv_userList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_userList_CellMouseDown);
+            // 
+            // cms_user
+            // 
+            this.cms_user.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_add,
+            this.tsm_update,
+            this.tsm_delete});
+            this.cms_user.Name = "cms_user";
+            this.cms_user.Size = new System.Drawing.Size(101, 70);
+            this.cms_user.Text = "操作";
+            // 
+            // tsm_add
+            // 
+            this.tsm_add.Name = "tsm_add";
+            this.tsm_add.Size = new System.Drawing.Size(100, 22);
+            this.tsm_add.Text = "添加";
+            this.tsm_add.Click += new System.EventHandler(this.tsm_add_Click);
+            // 
+            // tsm_update
+            // 
+            this.tsm_update.Name = "tsm_update";
+            this.tsm_update.Size = new System.Drawing.Size(100, 22);
+            this.tsm_update.Text = "修改";
+            this.tsm_update.Click += new System.EventHandler(this.tsm_update_Click);
+            // 
+            // tsm_delete
+            // 
+            this.tsm_delete.Name = "tsm_delete";
+            this.tsm_delete.Size = new System.Drawing.Size(100, 22);
+            this.tsm_delete.Text = "删除";
+            this.tsm_delete.Click += new System.EventHandler(this.tsm_delete_Click);
             // 
             // pagerControl1
             // 
@@ -220,6 +260,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_userList)).EndInit();
+            this.cms_user.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -242,5 +283,9 @@
         private System.Windows.Forms.Label label1;
         private TActionProject.PagerControl pagerControl1;
         private System.Windows.Forms.DataGridView dgv_userList;
+        private System.Windows.Forms.ContextMenuStrip cms_user;
+        private System.Windows.Forms.ToolStripMenuItem tsm_add;
+        private System.Windows.Forms.ToolStripMenuItem tsm_update;
+        private System.Windows.Forms.ToolStripMenuItem tsm_delete;
     }
 }

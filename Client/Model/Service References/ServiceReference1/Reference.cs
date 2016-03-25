@@ -15,6 +15,99 @@ namespace CustomerSeller.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Role", Namespace="http://schemas.datacontract.org/2004/07/WCFService.Model")]
+    [System.SerializableAttribute()]
+    public partial class Role : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] functionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string roleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string roleNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string roleRemarkField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] functions {
+            get {
+                return this.functionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.functionsField, value) != true)) {
+                    this.functionsField = value;
+                    this.RaisePropertyChanged("functions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string roleID {
+            get {
+                return this.roleIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.roleIDField, value) != true)) {
+                    this.roleIDField = value;
+                    this.RaisePropertyChanged("roleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string roleName {
+            get {
+                return this.roleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.roleNameField, value) != true)) {
+                    this.roleNameField = value;
+                    this.RaisePropertyChanged("roleName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string roleRemark {
+            get {
+                return this.roleRemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.roleRemarkField, value) != true)) {
+                    this.roleRemarkField = value;
+                    this.RaisePropertyChanged("roleRemark");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/WCFService.Model")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -29,10 +122,19 @@ namespace CustomerSeller.ServiceReference1 {
         private System.DateTime entryTimeStartField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string extenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string genderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] permissionsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string roleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string userIDField;
@@ -77,6 +179,19 @@ namespace CustomerSeller.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string exten {
+            get {
+                return this.extenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.extenField, value) != true)) {
+                    this.extenField = value;
+                    this.RaisePropertyChanged("exten");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string gender {
             get {
                 return this.genderField;
@@ -90,6 +205,19 @@ namespace CustomerSeller.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string[] permissions {
             get {
                 return this.permissionsField;
@@ -98,6 +226,19 @@ namespace CustomerSeller.ServiceReference1 {
                 if ((object.ReferenceEquals(this.permissionsField, value) != true)) {
                     this.permissionsField = value;
                     this.RaisePropertyChanged("permissions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string role {
+            get {
+                return this.roleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.roleField, value) != true)) {
+                    this.roleField = value;
+                    this.RaisePropertyChanged("role");
                 }
             }
         }
@@ -155,10 +296,10 @@ namespace CustomerSeller.ServiceReference1 {
         System.Threading.Tasks.Task<System.Data.DataSet> GetCustomerDetailAsync(string CustomerID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCustomerInfo", ReplyAction="http://tempuri.org/IService1/UpdateCustomerInfoResponse")]
-        int UpdateCustomerInfo(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone);
+        int UpdateCustomerInfo(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone, string CustomerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCustomerInfo", ReplyAction="http://tempuri.org/IService1/UpdateCustomerInfoResponse")]
-        System.Threading.Tasks.Task<int> UpdateCustomerInfoAsync(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone);
+        System.Threading.Tasks.Task<int> UpdateCustomerInfoAsync(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone, string CustomerName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BatchImportCustomerInfo", ReplyAction="http://tempuri.org/IService1/BatchImportCustomerInfoResponse")]
         bool BatchImportCustomerInfo(System.Data.DataSet ds);
@@ -184,6 +325,30 @@ namespace CustomerSeller.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserPermissions", ReplyAction="http://tempuri.org/IService1/GetUserPermissionsResponse")]
         System.Threading.Tasks.Task<string[]> GetUserPermissionsAsync(string userId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoleFunctions", ReplyAction="http://tempuri.org/IService1/GetRoleFunctionsResponse")]
+        System.Data.DataSet GetRoleFunctions(string roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoleFunctions", ReplyAction="http://tempuri.org/IService1/GetRoleFunctionsResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetRoleFunctionsAsync(string roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserRoles", ReplyAction="http://tempuri.org/IService1/GetUserRolesResponse")]
+        System.Data.DataSet GetUserRoles(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserRoles", ReplyAction="http://tempuri.org/IService1/GetUserRolesResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetUserRolesAsync(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoles", ReplyAction="http://tempuri.org/IService1/GetRolesResponse")]
+        System.Data.DataSet GetRoles(CustomerSeller.ServiceReference1.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoles", ReplyAction="http://tempuri.org/IService1/GetRolesResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetRolesAsync(CustomerSeller.ServiceReference1.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPermissions", ReplyAction="http://tempuri.org/IService1/GetPermissionsResponse")]
+        System.Data.DataSet GetPermissions(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPermissions", ReplyAction="http://tempuri.org/IService1/GetPermissionsResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetPermissionsAsync(string userId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsers", ReplyAction="http://tempuri.org/IService1/GetUsersResponse")]
         System.Data.DataSet GetUsers(CustomerSeller.ServiceReference1.User user);
         
@@ -191,10 +356,52 @@ namespace CustomerSeller.ServiceReference1 {
         System.Threading.Tasks.Task<System.Data.DataSet> GetUsersAsync(CustomerSeller.ServiceReference1.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSingleUser", ReplyAction="http://tempuri.org/IService1/GetSingleUserResponse")]
-        CustomerSeller.ServiceReference1.User GetSingleUser(CustomerSeller.ServiceReference1.User user);
+        CustomerSeller.ServiceReference1.User GetSingleUser(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSingleUser", ReplyAction="http://tempuri.org/IService1/GetSingleUserResponse")]
-        System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.User> GetSingleUserAsync(CustomerSeller.ServiceReference1.User user);
+        System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.User> GetSingleUserAsync(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUser", ReplyAction="http://tempuri.org/IService1/AddUserResponse")]
+        bool AddUser(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUser", ReplyAction="http://tempuri.org/IService1/AddUserResponse")]
+        System.Threading.Tasks.Task<bool> AddUserAsync(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddRole", ReplyAction="http://tempuri.org/IService1/AddRoleResponse")]
+        bool AddRole(CustomerSeller.ServiceReference1.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddRole", ReplyAction="http://tempuri.org/IService1/AddRoleResponse")]
+        System.Threading.Tasks.Task<bool> AddRoleAsync(CustomerSeller.ServiceReference1.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateUser", ReplyAction="http://tempuri.org/IService1/UpdateUserResponse")]
+        bool UpdateUser(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateUser", ReplyAction="http://tempuri.org/IService1/UpdateUserResponse")]
+        System.Threading.Tasks.Task<bool> UpdateUserAsync(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateRole", ReplyAction="http://tempuri.org/IService1/UpdateRoleResponse")]
+        bool UpdateRole(CustomerSeller.ServiceReference1.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateRole", ReplyAction="http://tempuri.org/IService1/UpdateRoleResponse")]
+        System.Threading.Tasks.Task<bool> UpdateRoleAsync(CustomerSeller.ServiceReference1.Role role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
+        bool DeleteUser(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
+        System.Threading.Tasks.Task<bool> DeleteUserAsync(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteRole", ReplyAction="http://tempuri.org/IService1/DeleteRoleResponse")]
+        bool DeleteRole(string roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteRole", ReplyAction="http://tempuri.org/IService1/DeleteRoleResponse")]
+        System.Threading.Tasks.Task<bool> DeleteRoleAsync(string roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoleDetail", ReplyAction="http://tempuri.org/IService1/GetRoleDetailResponse")]
+        CustomerSeller.ServiceReference1.Role GetRoleDetail(string roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoleDetail", ReplyAction="http://tempuri.org/IService1/GetRoleDetailResponse")]
+        System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.Role> GetRoleDetailAsync(string roleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/test", ReplyAction="http://tempuri.org/IService1/testResponse")]
         int test(int a);
@@ -246,12 +453,12 @@ namespace CustomerSeller.ServiceReference1 {
             return base.Channel.GetCustomerDetailAsync(CustomerID);
         }
         
-        public int UpdateCustomerInfo(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone) {
-            return base.Channel.UpdateCustomerInfo(CustomerAddress, Remark, PhoneStratus, DealTime, CustomerID, MobilePhone);
+        public int UpdateCustomerInfo(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone, string CustomerName) {
+            return base.Channel.UpdateCustomerInfo(CustomerAddress, Remark, PhoneStratus, DealTime, CustomerID, MobilePhone, CustomerName);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateCustomerInfoAsync(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone) {
-            return base.Channel.UpdateCustomerInfoAsync(CustomerAddress, Remark, PhoneStratus, DealTime, CustomerID, MobilePhone);
+        public System.Threading.Tasks.Task<int> UpdateCustomerInfoAsync(string CustomerAddress, string Remark, string PhoneStratus, System.Nullable<System.DateTime> DealTime, string CustomerID, string MobilePhone, string CustomerName) {
+            return base.Channel.UpdateCustomerInfoAsync(CustomerAddress, Remark, PhoneStratus, DealTime, CustomerID, MobilePhone, CustomerName);
         }
         
         public bool BatchImportCustomerInfo(System.Data.DataSet ds) {
@@ -286,6 +493,38 @@ namespace CustomerSeller.ServiceReference1 {
             return base.Channel.GetUserPermissionsAsync(userId);
         }
         
+        public System.Data.DataSet GetRoleFunctions(string roleId) {
+            return base.Channel.GetRoleFunctions(roleId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetRoleFunctionsAsync(string roleId) {
+            return base.Channel.GetRoleFunctionsAsync(roleId);
+        }
+        
+        public System.Data.DataSet GetUserRoles(string userId) {
+            return base.Channel.GetUserRoles(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetUserRolesAsync(string userId) {
+            return base.Channel.GetUserRolesAsync(userId);
+        }
+        
+        public System.Data.DataSet GetRoles(CustomerSeller.ServiceReference1.Role role) {
+            return base.Channel.GetRoles(role);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetRolesAsync(CustomerSeller.ServiceReference1.Role role) {
+            return base.Channel.GetRolesAsync(role);
+        }
+        
+        public System.Data.DataSet GetPermissions(string userId) {
+            return base.Channel.GetPermissions(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetPermissionsAsync(string userId) {
+            return base.Channel.GetPermissionsAsync(userId);
+        }
+        
         public System.Data.DataSet GetUsers(CustomerSeller.ServiceReference1.User user) {
             return base.Channel.GetUsers(user);
         }
@@ -294,12 +533,68 @@ namespace CustomerSeller.ServiceReference1 {
             return base.Channel.GetUsersAsync(user);
         }
         
-        public CustomerSeller.ServiceReference1.User GetSingleUser(CustomerSeller.ServiceReference1.User user) {
-            return base.Channel.GetSingleUser(user);
+        public CustomerSeller.ServiceReference1.User GetSingleUser(string userId) {
+            return base.Channel.GetSingleUser(userId);
         }
         
-        public System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.User> GetSingleUserAsync(CustomerSeller.ServiceReference1.User user) {
-            return base.Channel.GetSingleUserAsync(user);
+        public System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.User> GetSingleUserAsync(string userId) {
+            return base.Channel.GetSingleUserAsync(userId);
+        }
+        
+        public bool AddUser(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.AddUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddUserAsync(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.AddUserAsync(user);
+        }
+        
+        public bool AddRole(CustomerSeller.ServiceReference1.Role role) {
+            return base.Channel.AddRole(role);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddRoleAsync(CustomerSeller.ServiceReference1.Role role) {
+            return base.Channel.AddRoleAsync(role);
+        }
+        
+        public bool UpdateUser(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.UpdateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateUserAsync(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.UpdateUserAsync(user);
+        }
+        
+        public bool UpdateRole(CustomerSeller.ServiceReference1.Role role) {
+            return base.Channel.UpdateRole(role);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateRoleAsync(CustomerSeller.ServiceReference1.Role role) {
+            return base.Channel.UpdateRoleAsync(role);
+        }
+        
+        public bool DeleteUser(string userId) {
+            return base.Channel.DeleteUser(userId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteUserAsync(string userId) {
+            return base.Channel.DeleteUserAsync(userId);
+        }
+        
+        public bool DeleteRole(string roleId) {
+            return base.Channel.DeleteRole(roleId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteRoleAsync(string roleId) {
+            return base.Channel.DeleteRoleAsync(roleId);
+        }
+        
+        public CustomerSeller.ServiceReference1.Role GetRoleDetail(string roleId) {
+            return base.Channel.GetRoleDetail(roleId);
+        }
+        
+        public System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.Role> GetRoleDetailAsync(string roleId) {
+            return base.Channel.GetRoleDetailAsync(roleId);
         }
         
         public int test(int a) {

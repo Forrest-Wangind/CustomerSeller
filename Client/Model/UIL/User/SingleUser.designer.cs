@@ -40,14 +40,19 @@
             this.tb_password = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.gp_password = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tb_password_again = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.cb_change_pass = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.tb_passKey = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.tree_role = new System.Windows.Forms.TreeView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.tb_passKey = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.tb_password_again = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cb_change_pass = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.tb_extension = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dt_entryTine)).BeginInit();
             this.gp_password.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelX1
@@ -110,7 +115,7 @@
             // 
             // labelX4
             // 
-            this.labelX4.Location = new System.Drawing.Point(222, 309);
+            this.labelX4.Location = new System.Drawing.Point(222, 353);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 6;
@@ -125,7 +130,7 @@
             this.dt_entryTine.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dt_entryTine.ButtonDropDown.Visible = true;
             this.dt_entryTine.Enabled = false;
-            this.dt_entryTine.Location = new System.Drawing.Point(303, 312);
+            this.dt_entryTine.Location = new System.Drawing.Point(303, 356);
             // 
             // 
             // 
@@ -164,7 +169,7 @@
             // 
             this.btn_submit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_submit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btn_submit.Location = new System.Drawing.Point(303, 389);
+            this.btn_submit.Location = new System.Drawing.Point(303, 448);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 8;
@@ -178,7 +183,7 @@
             // 
             // 
             this.tb_password.Border.Class = "TextBoxBorder";
-            this.tb_password.Location = new System.Drawing.Point(117, 30);
+            this.tb_password.Location = new System.Drawing.Point(139, 39);
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(100, 21);
@@ -186,7 +191,7 @@
             // 
             // labelX5
             // 
-            this.labelX5.Location = new System.Drawing.Point(19, 30);
+            this.labelX5.Location = new System.Drawing.Point(41, 39);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(75, 23);
             this.labelX5.TabIndex = 9;
@@ -196,13 +201,8 @@
             // 
             this.gp_password.CanvasColor = System.Drawing.SystemColors.Control;
             this.gp_password.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.gp_password.Controls.Add(this.labelX8);
-            this.gp_password.Controls.Add(this.tb_passKey);
-            this.gp_password.Controls.Add(this.labelX7);
-            this.gp_password.Controls.Add(this.tb_password_again);
-            this.gp_password.Controls.Add(this.labelX6);
-            this.gp_password.Controls.Add(this.tb_password);
-            this.gp_password.Controls.Add(this.labelX5);
+            this.gp_password.Controls.Add(this.tree_role);
+            this.gp_password.Controls.Add(this.panel1);
             this.gp_password.Location = new System.Drawing.Point(550, 47);
             this.gp_password.Name = "gp_password";
             this.gp_password.Size = new System.Drawing.Size(426, 513);
@@ -230,25 +230,77 @@
             this.gp_password.Text = "修改密码";
             this.gp_password.Visible = false;
             // 
+            // tree_role
+            // 
+            this.tree_role.CheckBoxes = true;
+            this.tree_role.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tree_role.Location = new System.Drawing.Point(0, 206);
+            this.tree_role.Name = "tree_role";
+            this.tree_role.Size = new System.Drawing.Size(420, 283);
+            this.tree_role.TabIndex = 17;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tb_password);
+            this.panel1.Controls.Add(this.labelX8);
+            this.panel1.Controls.Add(this.labelX5);
+            this.panel1.Controls.Add(this.tb_passKey);
+            this.panel1.Controls.Add(this.labelX6);
+            this.panel1.Controls.Add(this.labelX7);
+            this.panel1.Controls.Add(this.tb_password_again);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(420, 206);
+            this.panel1.TabIndex = 16;
+            // 
+            // labelX8
+            // 
+            this.labelX8.Location = new System.Drawing.Point(272, 144);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(89, 23);
+            this.labelX8.TabIndex = 15;
+            this.labelX8.Text = "密钥必须为8位";
+            // 
+            // tb_passKey
+            // 
+            // 
+            // 
+            // 
+            this.tb_passKey.Border.Class = "TextBoxBorder";
+            this.tb_passKey.Location = new System.Drawing.Point(139, 144);
+            this.tb_passKey.Name = "tb_passKey";
+            this.tb_passKey.Size = new System.Drawing.Size(100, 21);
+            this.tb_passKey.TabIndex = 14;
+            this.tb_passKey.Text = "12345678";
+            // 
+            // labelX6
+            // 
+            this.labelX6.Location = new System.Drawing.Point(41, 85);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(75, 23);
+            this.labelX6.TabIndex = 11;
+            this.labelX6.Text = "确认密码：";
+            // 
+            // labelX7
+            // 
+            this.labelX7.Location = new System.Drawing.Point(41, 144);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(75, 23);
+            this.labelX7.TabIndex = 13;
+            this.labelX7.Text = "密钥：";
+            // 
             // tb_password_again
             // 
             // 
             // 
             // 
             this.tb_password_again.Border.Class = "TextBoxBorder";
-            this.tb_password_again.Location = new System.Drawing.Point(117, 76);
+            this.tb_password_again.Location = new System.Drawing.Point(139, 85);
             this.tb_password_again.Name = "tb_password_again";
             this.tb_password_again.PasswordChar = '*';
             this.tb_password_again.Size = new System.Drawing.Size(100, 21);
             this.tb_password_again.TabIndex = 12;
-            // 
-            // labelX6
-            // 
-            this.labelX6.Location = new System.Drawing.Point(19, 76);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(75, 23);
-            this.labelX6.TabIndex = 11;
-            this.labelX6.Text = "确认密码：";
             // 
             // cb_change_pass
             // 
@@ -260,38 +312,32 @@
             this.cb_change_pass.Visible = false;
             this.cb_change_pass.CheckedChanged += new System.EventHandler(this.cb_change_pass_CheckedChanged);
             // 
-            // tb_passKey
+            // tb_extension
             // 
             // 
             // 
             // 
-            this.tb_passKey.Border.Class = "TextBoxBorder";
-            this.tb_passKey.Location = new System.Drawing.Point(117, 135);
-            this.tb_passKey.Name = "tb_passKey";
-            this.tb_passKey.Size = new System.Drawing.Size(100, 21);
-            this.tb_passKey.TabIndex = 14;
-            this.tb_passKey.Text = "12345678";
+            this.tb_extension.Border.Class = "TextBoxBorder";
+            this.tb_extension.Enabled = false;
+            this.tb_extension.Location = new System.Drawing.Point(303, 308);
+            this.tb_extension.Name = "tb_extension";
+            this.tb_extension.Size = new System.Drawing.Size(100, 21);
+            this.tb_extension.TabIndex = 15;
             // 
-            // labelX7
+            // labelX9
             // 
-            this.labelX7.Location = new System.Drawing.Point(19, 135);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(75, 23);
-            this.labelX7.TabIndex = 13;
-            this.labelX7.Text = "密钥：";
-            // 
-            // labelX8
-            // 
-            this.labelX8.Location = new System.Drawing.Point(250, 135);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(89, 23);
-            this.labelX8.TabIndex = 15;
-            this.labelX8.Text = "密钥必须为8位";
+            this.labelX9.Location = new System.Drawing.Point(222, 307);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(75, 23);
+            this.labelX9.TabIndex = 14;
+            this.labelX9.Text = "分机号：";
             // 
             // SingleUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tb_extension);
+            this.Controls.Add(this.labelX9);
             this.Controls.Add(this.cb_change_pass);
             this.Controls.Add(this.gp_password);
             this.Controls.Add(this.btn_submit);
@@ -307,6 +353,7 @@
             this.Size = new System.Drawing.Size(1011, 639);
             ((System.ComponentModel.ISupportInitialize)(this.dt_entryTine)).EndInit();
             this.gp_password.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -331,5 +378,9 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tb_passKey;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.LabelX labelX8;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TreeView tree_role;
+        private DevComponents.DotNetBar.Controls.TextBoxX tb_extension;
+        private DevComponents.DotNetBar.LabelX labelX9;
     }
 }
