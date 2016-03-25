@@ -38,7 +38,6 @@ namespace CustomerSeller
             this.dtp_Create_StartTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtp_Start_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.bt_GetPhone = new DevComponents.DotNetBar.ButtonX();
-            this.cb_status = new System.Windows.Forms.ComboBox();
             this.bt_Del = new DevComponents.DotNetBar.ButtonX();
             this.bt_Query = new DevComponents.DotNetBar.ButtonX();
             this.lb_Status = new DevComponents.DotNetBar.LabelX();
@@ -51,6 +50,11 @@ namespace CustomerSeller
             this.lb_Customer_Phone = new DevComponents.DotNetBar.LabelX();
             this.tb_Customer_Phone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.pagerControl1 = new TActionProject.PagerControl();
+            this.cb_status = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbItemmind = new DevComponents.Editors.ComboItem();
+            this.cbItemNearSuccess = new DevComponents.Editors.ComboItem();
+            this.cbItemSuccess = new DevComponents.Editors.ComboItem();
+            this.cbItemNoMind = new DevComponents.Editors.ComboItem();
             this.panelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -94,12 +98,12 @@ namespace CustomerSeller
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cb_status);
             this.groupBox1.Controls.Add(this.dtp_End_DealTime);
             this.groupBox1.Controls.Add(this.dtp_Create_EndTime);
             this.groupBox1.Controls.Add(this.dtp_Create_StartTime);
             this.groupBox1.Controls.Add(this.dtp_Start_DealTime);
             this.groupBox1.Controls.Add(this.bt_GetPhone);
-            this.groupBox1.Controls.Add(this.cb_status);
             this.groupBox1.Controls.Add(this.bt_Del);
             this.groupBox1.Controls.Add(this.bt_Query);
             this.groupBox1.Controls.Add(this.lb_Status);
@@ -127,7 +131,7 @@ namespace CustomerSeller
             this.dtp_End_DealTime.BackgroundStyle.Class = "DateTimeInputBackground";
             this.dtp_End_DealTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtp_End_DealTime.ButtonDropDown.Visible = true;
-            this.dtp_End_DealTime.Location = new System.Drawing.Point(513, 64);
+            this.dtp_End_DealTime.Location = new System.Drawing.Point(546, 64);
             // 
             // 
             // 
@@ -169,7 +173,7 @@ namespace CustomerSeller
             this.dtp_Create_EndTime.BackgroundStyle.Class = "DateTimeInputBackground";
             this.dtp_Create_EndTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtp_Create_EndTime.ButtonDropDown.Visible = true;
-            this.dtp_Create_EndTime.Location = new System.Drawing.Point(733, 21);
+            this.dtp_Create_EndTime.Location = new System.Drawing.Point(766, 21);
             // 
             // 
             // 
@@ -211,7 +215,7 @@ namespace CustomerSeller
             this.dtp_Create_StartTime.BackgroundStyle.Class = "DateTimeInputBackground";
             this.dtp_Create_StartTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtp_Create_StartTime.ButtonDropDown.Visible = true;
-            this.dtp_Create_StartTime.Location = new System.Drawing.Point(513, 21);
+            this.dtp_Create_StartTime.Location = new System.Drawing.Point(546, 21);
             // 
             // 
             // 
@@ -253,7 +257,7 @@ namespace CustomerSeller
             this.dtp_Start_DealTime.BackgroundStyle.Class = "DateTimeInputBackground";
             this.dtp_Start_DealTime.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtp_Start_DealTime.ButtonDropDown.Visible = true;
-            this.dtp_Start_DealTime.Location = new System.Drawing.Point(278, 64);
+            this.dtp_Start_DealTime.Location = new System.Drawing.Point(311, 64);
             // 
             // 
             // 
@@ -298,14 +302,6 @@ namespace CustomerSeller
             this.bt_GetPhone.Text = "取电话";
             this.bt_GetPhone.Click += new System.EventHandler(this.bt_GetPhone_Click);
             // 
-            // cb_status
-            // 
-            this.cb_status.FormattingEnabled = true;
-            this.cb_status.Location = new System.Drawing.Point(94, 65);
-            this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(87, 20);
-            this.cb_status.TabIndex = 18;
-            // 
             // bt_Del
             // 
             this.bt_Del.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -338,7 +334,7 @@ namespace CustomerSeller
             // 
             // lb_Success_StartTime
             // 
-            this.lb_Success_StartTime.Location = new System.Drawing.Point(196, 65);
+            this.lb_Success_StartTime.Location = new System.Drawing.Point(229, 65);
             this.lb_Success_StartTime.Name = "lb_Success_StartTime";
             this.lb_Success_StartTime.Size = new System.Drawing.Size(87, 21);
             this.lb_Success_StartTime.TabIndex = 11;
@@ -346,7 +342,7 @@ namespace CustomerSeller
             // 
             // lb_Success_EndTime
             // 
-            this.lb_Success_EndTime.Location = new System.Drawing.Point(409, 60);
+            this.lb_Success_EndTime.Location = new System.Drawing.Point(442, 60);
             this.lb_Success_EndTime.Name = "lb_Success_EndTime";
             this.lb_Success_EndTime.Size = new System.Drawing.Size(99, 33);
             this.lb_Success_EndTime.TabIndex = 12;
@@ -354,7 +350,7 @@ namespace CustomerSeller
             // 
             // lb_Create_StartTime
             // 
-            this.lb_Create_StartTime.Location = new System.Drawing.Point(409, 20);
+            this.lb_Create_StartTime.Location = new System.Drawing.Point(442, 20);
             this.lb_Create_StartTime.Name = "lb_Create_StartTime";
             this.lb_Create_StartTime.Size = new System.Drawing.Size(98, 21);
             this.lb_Create_StartTime.TabIndex = 11;
@@ -362,7 +358,7 @@ namespace CustomerSeller
             // 
             // lb_Create_EndTime
             // 
-            this.lb_Create_EndTime.Location = new System.Drawing.Point(644, 11);
+            this.lb_Create_EndTime.Location = new System.Drawing.Point(677, 11);
             this.lb_Create_EndTime.Name = "lb_Create_EndTime";
             this.lb_Create_EndTime.Size = new System.Drawing.Size(99, 33);
             this.lb_Create_EndTime.TabIndex = 12;
@@ -384,12 +380,12 @@ namespace CustomerSeller
             this.tb_Customer_Name.Border.Class = "TextBoxBorder";
             this.tb_Customer_Name.Location = new System.Drawing.Point(93, 20);
             this.tb_Customer_Name.Name = "tb_Customer_Name";
-            this.tb_Customer_Name.Size = new System.Drawing.Size(88, 21);
+            this.tb_Customer_Name.Size = new System.Drawing.Size(123, 21);
             this.tb_Customer_Name.TabIndex = 8;
             // 
             // lb_Customer_Phone
             // 
-            this.lb_Customer_Phone.Location = new System.Drawing.Point(196, 14);
+            this.lb_Customer_Phone.Location = new System.Drawing.Point(229, 14);
             this.lb_Customer_Phone.Name = "lb_Customer_Phone";
             this.lb_Customer_Phone.Size = new System.Drawing.Size(64, 33);
             this.lb_Customer_Phone.TabIndex = 4;
@@ -401,7 +397,7 @@ namespace CustomerSeller
             // 
             // 
             this.tb_Customer_Phone.Border.Class = "TextBoxBorder";
-            this.tb_Customer_Phone.Location = new System.Drawing.Point(278, 20);
+            this.tb_Customer_Phone.Location = new System.Drawing.Point(311, 20);
             this.tb_Customer_Phone.Name = "tb_Customer_Phone";
             this.tb_Customer_Phone.Size = new System.Drawing.Size(105, 21);
             this.tb_Customer_Phone.TabIndex = 10;
@@ -419,6 +415,38 @@ namespace CustomerSeller
             this.pagerControl1.RecordCount = 0;
             this.pagerControl1.Size = new System.Drawing.Size(912, 29);
             this.pagerControl1.TabIndex = 1;
+            // 
+            // cb_status
+            // 
+            this.cb_status.DisplayMember = "Text";
+            this.cb_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cb_status.FormattingEnabled = true;
+            this.cb_status.ItemHeight = 15;
+            this.cb_status.Items.AddRange(new object[] {
+            this.cbItemmind,
+            this.cbItemNearSuccess,
+            this.cbItemSuccess,
+            this.cbItemNoMind});
+            this.cb_status.Location = new System.Drawing.Point(93, 65);
+            this.cb_status.Name = "cb_status";
+            this.cb_status.Size = new System.Drawing.Size(123, 21);
+            this.cb_status.TabIndex = 24;
+            // 
+            // cbItemmind
+            // 
+            this.cbItemmind.Text = "有意向";
+            // 
+            // cbItemNearSuccess
+            // 
+            this.cbItemNearSuccess.Text = "预成交";
+            // 
+            // cbItemSuccess
+            // 
+            this.cbItemSuccess.Text = "已成交";
+            // 
+            // cbItemNoMind
+            // 
+            this.cbItemNoMind.Text = "无意向";
             // 
             // Control_Customer
             // 
@@ -449,7 +477,6 @@ namespace CustomerSeller
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_StartTime;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Start_DealTime;
         private DevComponents.DotNetBar.ButtonX bt_GetPhone;
-        private System.Windows.Forms.ComboBox cb_status;
         private DevComponents.DotNetBar.ButtonX bt_Del;
         private DevComponents.DotNetBar.ButtonX bt_Query;
         private DevComponents.DotNetBar.LabelX lb_Status;
@@ -462,6 +489,11 @@ namespace CustomerSeller
         private DevComponents.DotNetBar.LabelX lb_Customer_Phone;
         private DevComponents.DotNetBar.Controls.TextBoxX tb_Customer_Phone;
         private PagerControl pagerControl1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cb_status;
+        private DevComponents.Editors.ComboItem cbItemmind;
+        private DevComponents.Editors.ComboItem cbItemNearSuccess;
+        private DevComponents.Editors.ComboItem cbItemSuccess;
+        private DevComponents.Editors.ComboItem cbItemNoMind;
 
 
 
