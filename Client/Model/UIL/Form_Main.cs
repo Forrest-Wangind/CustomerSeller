@@ -13,6 +13,7 @@ using CustomerSeller.UIL;
 using CustomerSeller.DAL;
 using CustomerSeller.Common;
 using System.Runtime.InteropServices;
+using CustomerSeller.UIL.Customer;
 
 
 
@@ -48,9 +49,10 @@ namespace CustomerSeller
                         break;
                     case "002":
                         this.RoleManagement.Visible = true;
+                        this.btitemPhoneParams.Visible = true;
                         break;
                     case "003":
-                        this.VIP_Management.Visible = true;
+                        this.Customer_Management.Visible = true;
                         break;
                     default:
                         break;
@@ -373,6 +375,8 @@ namespace CustomerSeller
                 Control_Customer control = new Control_Customer();
                 control.Dock = DockStyle.Left;
                 this.Main_panel.Controls.Add(control);
+               
+       
             }
             catch (Exception ex)
             {
@@ -412,6 +416,14 @@ namespace CustomerSeller
             UIL.User.UserList userlist = new UIL.User.UserList();
             userlist.Dock = DockStyle.Left;
             this.Main_panel.Controls.Add(userlist);
+        }
+
+        private void buttonItem1_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            PhoneParamSetting control = new PhoneParamSetting();
+            control.Dock = DockStyle.Left;
+            this.Main_panel.Controls.Add(control);
         }
     }
 }

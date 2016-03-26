@@ -116,11 +116,11 @@ namespace CustomerSeller.UIL
         private void bt_CallPhone_Click(object sender, EventArgs e)
         {
             try
-            {   var Exten=string.Empty;
+            {
+                var Exten = UserInfo.Get_User().User_Id;
                 var employeeID = UserInfo.Get_User().User_Id;
                 if(!CustomerInfo.GetServiceInstance().CallMobilePhone(CustomerPhone.Trim(), employeeID, Exten))
                     throw new Exception("异常");
-
             }
             catch
             {

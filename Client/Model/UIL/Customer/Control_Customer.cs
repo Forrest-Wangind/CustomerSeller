@@ -14,6 +14,7 @@ using CustomerSeller.UIL;
 using System.Data.SqlClient;
 using CustomerSeller.ServiceReference1;
 using CustomerSeller.Common;
+using CustomerSeller.UIL.Customer;
 
 namespace CustomerSeller
 {
@@ -123,7 +124,7 @@ namespace CustomerSeller
                 int index = dataGridRow.Index;    //取得选中行的索引   
                 var row = (this.dgv_Customer.DataSource as DataTable).Rows[index];
                 new Form_CustomerDetail() { DR = row }.ShowDialog();
-
+         
             }
             catch(Exception ex)
             {

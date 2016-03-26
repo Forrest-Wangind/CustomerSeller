@@ -286,5 +286,18 @@ namespace WCFService
 
         }
 
+
+        public Boolean SetPhoneParams(string dailyNumber, string totalNumber)
+        {
+            Configuration config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+            AppSettingsSection appSettings = config.AppSettings;
+            config.AppSettings.Settings["MaxCount"].Value = totalNumber;
+            config.AppSettings.Settings["DailyMaxCount"].Value = dailyNumber;
+            config.Save();
+            System.Configuration.ConfigurationManager.RefreshSection("appSettings");
+            return true;
+        }
+
+       
     }
 }

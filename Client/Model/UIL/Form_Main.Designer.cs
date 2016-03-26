@@ -52,12 +52,13 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
             this.RoleManagement = new DevComponents.DotNetBar.SideBarPanelItem();
-            this.VIP_Management = new DevComponents.DotNetBar.SideBarPanelItem();
-            this.add_Fruit = new DevComponents.DotNetBar.ButtonItem();
-            this.del_Fruit = new DevComponents.DotNetBar.ButtonItem();
-            this.change_Fruit = new DevComponents.DotNetBar.ButtonItem();
+            this.Customer_Management = new DevComponents.DotNetBar.SideBarPanelItem();
+            this.Query_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
+            this.Add_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
+            this.Import_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
             this.user_ManageMent = new DevComponents.DotNetBar.SideBarPanelItem();
             this.AllUsers = new DevComponents.DotNetBar.ButtonItem();
+            this.btitemPhoneParams = new DevComponents.DotNetBar.ButtonItem();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -333,12 +334,12 @@
             this.sideBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
             this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.None;
             this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sideBar1.ExpandedPanel = this.RoleManagement;
+            this.sideBar1.ExpandedPanel = this.user_ManageMent;
             this.sideBar1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.sideBar1.Location = new System.Drawing.Point(0, 0);
             this.sideBar1.Name = "sideBar1";
             this.sideBar1.Panels.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.VIP_Management,
+            this.Customer_Management,
             this.user_ManageMent,
             this.RoleManagement});
             this.sideBar1.Size = new System.Drawing.Size(170, 376);
@@ -353,44 +354,44 @@
             this.RoleManagement.Text = "角色管理";
             this.RoleManagement.Visible = false;
             // 
-            // VIP_Management
+            // Customer_Management
             // 
-            this.VIP_Management.FontBold = true;
-            this.VIP_Management.Icon = ((System.Drawing.Icon)(resources.GetObject("VIP_Management.Icon")));
-            this.VIP_Management.Name = "VIP_Management";
-            this.VIP_Management.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.add_Fruit,
-            this.del_Fruit,
-            this.change_Fruit});
-            this.VIP_Management.Text = "客户信息管理";
-            this.VIP_Management.Visible = false;
+            this.Customer_Management.FontBold = true;
+            this.Customer_Management.Icon = ((System.Drawing.Icon)(resources.GetObject("Customer_Management.Icon")));
+            this.Customer_Management.Name = "Customer_Management";
+            this.Customer_Management.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.Query_CustomerInfo,
+            this.Add_CustomerInfo,
+            this.Import_CustomerInfo});
+            this.Customer_Management.Text = "客户信息管理";
+            this.Customer_Management.Visible = false;
             // 
-            // add_Fruit
+            // Query_CustomerInfo
             // 
-            this.add_Fruit.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.add_Fruit.ImagePaddingHorizontal = 8;
-            this.add_Fruit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.add_Fruit.Name = "add_Fruit";
-            this.add_Fruit.Text = "查询用户数据";
-            this.add_Fruit.Click += new System.EventHandler(this.add_Vip_Click);
+            this.Query_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.Query_CustomerInfo.ImagePaddingHorizontal = 8;
+            this.Query_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.Query_CustomerInfo.Name = "Query_CustomerInfo";
+            this.Query_CustomerInfo.Text = "查询用户数据";
+            this.Query_CustomerInfo.Click += new System.EventHandler(this.add_Vip_Click);
             // 
-            // del_Fruit
+            // Add_CustomerInfo
             // 
-            this.del_Fruit.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.del_Fruit.ImagePaddingHorizontal = 8;
-            this.del_Fruit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.del_Fruit.Name = "del_Fruit";
-            this.del_Fruit.Text = "新增用户数据";
-            this.del_Fruit.Click += new System.EventHandler(this.del_Vip_Click);
+            this.Add_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.Add_CustomerInfo.ImagePaddingHorizontal = 8;
+            this.Add_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.Add_CustomerInfo.Name = "Add_CustomerInfo";
+            this.Add_CustomerInfo.Text = "新增用户数据";
+            this.Add_CustomerInfo.Click += new System.EventHandler(this.del_Vip_Click);
             // 
-            // change_Fruit
+            // Import_CustomerInfo
             // 
-            this.change_Fruit.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.change_Fruit.ImagePaddingHorizontal = 8;
-            this.change_Fruit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.change_Fruit.Name = "change_Fruit";
-            this.change_Fruit.Text = "导入用户数据";
-            this.change_Fruit.Click += new System.EventHandler(this.change_Vip_Click);
+            this.Import_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.Import_CustomerInfo.ImagePaddingHorizontal = 8;
+            this.Import_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.Import_CustomerInfo.Name = "Import_CustomerInfo";
+            this.Import_CustomerInfo.Text = "导入用户数据";
+            this.Import_CustomerInfo.Click += new System.EventHandler(this.change_Vip_Click);
             // 
             // user_ManageMent
             // 
@@ -398,7 +399,8 @@
             this.user_ManageMent.Icon = ((System.Drawing.Icon)(resources.GetObject("user_ManageMent.Icon")));
             this.user_ManageMent.Name = "user_ManageMent";
             this.user_ManageMent.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.AllUsers});
+            this.AllUsers,
+            this.btitemPhoneParams});
             this.user_ManageMent.Text = "用户信息管理";
             this.user_ManageMent.Visible = false;
             // 
@@ -411,6 +413,15 @@
             this.AllUsers.Text = "所有用户";
             this.AllUsers.Visible = false;
             this.AllUsers.Click += new System.EventHandler(this.AllUsers_Click);
+            // 
+            // btitemPhoneParams
+            // 
+            this.btitemPhoneParams.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.btitemPhoneParams.ImagePaddingHorizontal = 8;
+            this.btitemPhoneParams.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btitemPhoneParams.Name = "btitemPhoneParams";
+            this.btitemPhoneParams.Text = "修改电话分配数量";
+            this.btitemPhoneParams.Click += new System.EventHandler(this.buttonItem1_Click);
             // 
             // Form_Main
             // 
@@ -458,12 +469,13 @@
         private System.Windows.Forms.Panel panel4;
         private DevComponents.DotNetBar.SideBar sideBar1;
         private DevComponents.DotNetBar.SideBarPanelItem user_ManageMent;
-        private DevComponents.DotNetBar.SideBarPanelItem VIP_Management;
-        private DevComponents.DotNetBar.ButtonItem add_Fruit;
-        private DevComponents.DotNetBar.ButtonItem del_Fruit;
-        private DevComponents.DotNetBar.ButtonItem change_Fruit;
+        private DevComponents.DotNetBar.SideBarPanelItem Customer_Management;
+        private DevComponents.DotNetBar.ButtonItem Query_CustomerInfo;
+        private DevComponents.DotNetBar.ButtonItem Add_CustomerInfo;
+        private DevComponents.DotNetBar.ButtonItem Import_CustomerInfo;
         private DevComponents.DotNetBar.ButtonItem AllUsers;
         private DevComponents.DotNetBar.SideBarPanelItem RoleManagement;
+        private DevComponents.DotNetBar.ButtonItem btitemPhoneParams;
     }
 }
 

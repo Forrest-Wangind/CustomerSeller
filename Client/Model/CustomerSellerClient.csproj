@@ -84,6 +84,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="UIL\AllocatePhoneParamsSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIL\AllocatePhoneParamsSetting.Designer.cs">
+      <DependentUpon>AllocatePhoneParamsSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIL\Customer\AddCustomer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     <Compile Include="UIL\Customer\Control_Customer.Designer.cs">
       <DependentUpon>Control_Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIL\Customer\CustomerUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIL\Customer\CustomerUserControl.Designer.cs">
+      <DependentUpon>CustomerUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIL\Customer\Form_CustomerDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,12 +119,18 @@
     <EmbeddedResource Include="Control\PagerControl.resx">
       <DependentUpon>PagerControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIL\AllocatePhoneParamsSetting.resx">
+      <DependentUpon>AllocatePhoneParamsSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIL\Customer\AddCustomer.resx">
       <DependentUpon>AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIL\Customer\Control_Customer.resx">
       <DependentUpon>Control_Customer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIL\Customer\CustomerUserControl.resx">
+      <DependentUpon>CustomerUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIL\Customer\Form_CustomerDetail.resx">
       <DependentUpon>Form_CustomerDetail.cs</DependentUpon>

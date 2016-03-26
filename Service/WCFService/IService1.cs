@@ -52,5 +52,8 @@ namespace WCFService
 
         [OperationContract]
         Boolean HandupMobilePhone(string employeeID, string employeeExten);
+
+        [OperationContract]
+        Boolean SetPhoneParams(string dailyNumber, string totalNumber);
     }
 }

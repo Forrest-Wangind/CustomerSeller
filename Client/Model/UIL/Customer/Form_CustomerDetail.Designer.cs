@@ -53,8 +53,8 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_CallPhone = new DevComponents.DotNetBar.ButtonX();
-            this.bt_RecycleCustomerPhone = new DevComponents.DotNetBar.ButtonX();
             this.bt_HandupPhone = new DevComponents.DotNetBar.ButtonX();
+            this.bt_RecycleCustomerPhone = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_SuccessTime)).BeginInit();
             this.panel2.SuspendLayout();
@@ -109,7 +109,7 @@
             // 
             // 
             this.tb_Remark.Border.Class = "TextBoxBorder";
-            this.tb_Remark.Location = new System.Drawing.Point(491, 33);
+            this.tb_Remark.Location = new System.Drawing.Point(491, 34);
             this.tb_Remark.Multiline = true;
             this.tb_Remark.Name = "tb_Remark";
             this.tb_Remark.Size = new System.Drawing.Size(356, 221);
@@ -323,17 +323,6 @@
             this.bt_CallPhone.Text = "拨打电话";
             this.bt_CallPhone.Click += new System.EventHandler(this.bt_CallPhone_Click);
             // 
-            // bt_RecycleCustomerPhone
-            // 
-            this.bt_RecycleCustomerPhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.bt_RecycleCustomerPhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_RecycleCustomerPhone.Location = new System.Drawing.Point(427, 4);
-            this.bt_RecycleCustomerPhone.Name = "bt_RecycleCustomerPhone";
-            this.bt_RecycleCustomerPhone.Size = new System.Drawing.Size(75, 23);
-            this.bt_RecycleCustomerPhone.TabIndex = 15;
-            this.bt_RecycleCustomerPhone.Text = "回收电话";
-            this.bt_RecycleCustomerPhone.Click += new System.EventHandler(this.bt_RecycleCustomerPhone_Click);
-            // 
             // bt_HandupPhone
             // 
             this.bt_HandupPhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -344,6 +333,17 @@
             this.bt_HandupPhone.TabIndex = 15;
             this.bt_HandupPhone.Text = "挂断电话";
             this.bt_HandupPhone.Click += new System.EventHandler(this.bt_HandupPhone_Click);
+            // 
+            // bt_RecycleCustomerPhone
+            // 
+            this.bt_RecycleCustomerPhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_RecycleCustomerPhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_RecycleCustomerPhone.Location = new System.Drawing.Point(427, 4);
+            this.bt_RecycleCustomerPhone.Name = "bt_RecycleCustomerPhone";
+            this.bt_RecycleCustomerPhone.Size = new System.Drawing.Size(75, 23);
+            this.bt_RecycleCustomerPhone.TabIndex = 15;
+            this.bt_RecycleCustomerPhone.Text = "回收电话";
+            this.bt_RecycleCustomerPhone.Click += new System.EventHandler(this.bt_RecycleCustomerPhone_Click);
             // 
             // Form_CustomerDetail
             // 
