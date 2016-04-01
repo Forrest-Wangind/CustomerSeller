@@ -54,7 +54,7 @@ namespace WCFService
             try
             {
                 var execute_sql = string.Format(Sql.CustomerInfo, CustomerID);
-                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
+                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "CustomerID:" + CustomerID, Method = "GetCustomerDetail", Result = dataSet == null ? "null" : "a object" });
                 return dataSet;
             }
@@ -111,12 +111,12 @@ namespace WCFService
 
         }
 
-        public int AllocateEmployeePhone(string UserID)
+        public int AllocateEmployeePhone(string UserID, string phoneType)
         {
             int result = 0;
             try
             {
-                var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings["MaxCount"], ConfigurationManager.AppSettings["DailyMaxCount"], UserID);
+                var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings[string.Format("{0}_MaxCount", phoneType)], ConfigurationManager.AppSettings[string.Format("{0}_DailyMaxCount", phoneType)], UserID, phoneType);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "UserID:" + UserID, Method = "AllocateEmployeePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
@@ -152,31 +152,22 @@ namespace WCFService
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError("getUsers fail. " + ex.Message);
+                LoggerWrapper.Instance().LogError("get users fail. " + ex.Message);
                 return null;
             }
         }
 
         public User GetSingleUser(string userId)
         {
-
-            User user = new User();
-            List<SqlParameter> paras = new List<SqlParameter>();
-            paras.Add(new SqlParameter("@id", userId));
-            SqlDataReader reader = SqlServerHelper.ExecuteReader(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_getUserPermissions", paras.ToArray());
-            while (reader.Read())
+            try
             {
-                if (reader != null && reader.FieldCount > 0)
-                {
-                    user.userID = reader[0].ToString();
-                    user.userName = reader[1].ToString();
-                    user.password = reader[2].ToString();
-                    user.gender = reader[3].ToString();
-                    user.entryTimeStart = DateTime.Parse(reader[4].ToString());
-                }
+                return UserDAL.GetSingleUser(userId);
             }
-
-            return user;
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("get single user fail. " + ex.Message);
+                return null;
+            }
         }
 
         public int test(int a)
@@ -192,7 +183,7 @@ namespace WCFService
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError("getUsers fail. " + ex.Message);
+                LoggerWrapper.Instance().LogError("get user permissions fail. " + ex.Message);
                 return null;
             }
         }
@@ -235,69 +226,221 @@ namespace WCFService
             }
             dataRowCollection.ForEach(item => ds.Tables[0].Rows.Remove(item));
         }
-       
         public Boolean CallMobilePhone(string phone, string employeeID, string employeeExten)
         {
-           
+
             try
             {
                 var phoneRequest = new CallPhoneRequest()
                 {
                     action = ConfigurationManager.AppSettings["CallAction"],
                     auth = ConfigurationManager.AppSettings["auth"],
-                    codeid_1 = "",
-                    codeid_2 = "",
                     companyid = Convert.ToInt32(ConfigurationManager.AppSettings["companyid"]),
-                    exten = employeeExten,
                     phonenum = phone,
-                    staffid = employeeID
-
+                    staffid = employeeExten
                 };
-                var result=HttpsHelper.HttpsPost(ConfigurationManager.AppSettings["CallCenter"], JsonConvert.SerializeObject(phoneRequest)).Equals("1");
-                return result;
+                var resultStr = HttpsHelper.HttpsGet(ConfigurationManager.AppSettings["CallCenter"] + string.Format("?action={0}&auth={1}&companyid={2}&staffid={3}&phonenum={4}",
+                                                    phoneRequest.action, phoneRequest.auth, phoneRequest.companyid, phoneRequest.staffid, phoneRequest.phonenum));
+                var response = JsonConvert.DeserializeObject<Response<Object>>(resultStr);
+                return response.errno.Equals("1");
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(string.Format("phone:{0},Message:{1},StackMessage:{2}",phone,ex.Message,ex.StackTrace));
+                LoggerWrapper.Instance().LogError(string.Format("phone:{0},Message:{1},StackMessage:{2}", phone, ex.Message, ex.StackTrace));
                 return false;
             }
-          
+
         }
-       
-        public Boolean HandupMobilePhone(string employeeID, string employeeExten)
+
+        public bool AddUser(User user)
         {
             try
             {
-                var phoneRequest = new HandupPhoneRequest()
+                SqlResult result = UserDAL.AddUser(user);
+                if (result.flag != FlagType.success)
                 {
-                    action = ConfigurationManager.AppSettings["HandUpAction"],
-                    auth = ConfigurationManager.AppSettings["auth"],
-                    companyid = Convert.ToInt32(ConfigurationManager.AppSettings["companyid"]),
-                    exten = employeeExten
-                };
-                var result = HttpsHelper.HttpsPost(ConfigurationManager.AppSettings["CallCenter"], JsonConvert.SerializeObject(phoneRequest)).Equals("1");
-                return result;
+                    LoggerWrapper.Instance().LogError("fail when add user. " + user);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError(string.Format("phone:{0},Message:{1},StackMessage:{2}",  ex.Message, ex.StackTrace));
+                LoggerWrapper.Instance().LogError("fail when add user. " + ex.Message);
                 return false;
             }
-
+        }
+        public bool AddRole(Role role)
+        {
+            try
+            {
+                SqlResult result = RoleDAL.AddRole(role);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when add role. " + role);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when add role. " + ex.Message);
+                return false;
+            }
         }
 
+        public bool UpdateUser(User user)
+        {
+            try
+            {
+                SqlResult result = UserDAL.UpdateUser(user);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when update user. " + user);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when update user. " + ex.Message);
+                return false;
+            }
+        }
 
-        public Boolean SetPhoneParams(string dailyNumber, string totalNumber)
+        public bool UpdateRole(Role role)
+        {
+            try
+            {
+                SqlResult result = RoleDAL.UpdateRole(role);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when update role. " + role);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when update role. " + ex.Message);
+                return false;
+            }
+        }
+
+        public Boolean SetPhoneParams(string dailyNumber, string totalNumber, string phoneType)
         {
             Configuration config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
             AppSettingsSection appSettings = config.AppSettings;
-            config.AppSettings.Settings["MaxCount"].Value = totalNumber;
-            config.AppSettings.Settings["DailyMaxCount"].Value = dailyNumber;
+            config.AppSettings.Settings[string.Format("{0}_MaxCount", phoneType.Trim())].Value = totalNumber;
+            config.AppSettings.Settings[string.Format("{0}_DailyMaxCount", phoneType.Trim())].Value = dailyNumber;
             config.Save();
             System.Configuration.ConfigurationManager.RefreshSection("appSettings");
             return true;
         }
 
-       
+        public DataSet GetUserRoles(string userId)
+        {
+            try
+            {
+                DataSet roles = UserDAL.GetUserRoles(userId);
+                return roles;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when get roles. " + ex.Message);
+            }
+
+            return null;
+        }
+
+        public DataSet GetRoles(Role role)
+        {
+            try
+            {
+                DataSet roles = RoleDAL.GetRoles(role);
+                return roles;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when get roles. " + ex.Message);
+            }
+
+            return null;
+        }
+
+        public bool DeleteUser(string userId)
+        {
+            try
+            {
+                SqlResult result = UserDAL.DeleteUser(userId);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when delete user. " + userId);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when delete user. " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool DeleteRole(string roleId)
+        {
+            try
+            {
+                SqlResult result = RoleDAL.DeleteRole(roleId);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when delete role. " + roleId);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when delete role. " + ex.Message);
+                return false;
+            }
+        }
+
+        public DataSet GetPermissions(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Role GetRoleDetail(string roleId)
+        {
+            try
+            {
+                return RoleDAL.GetRoleDetail(roleId);
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("get single user fail. " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataSet GetRoleFunctions(string roleId)
+        {
+            try
+            {
+                return RoleDAL.GetRoleFunctions(roleId);
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("get user permissions fail. " + ex.Message);
+                return null;
+            }
+        }
     }
 }

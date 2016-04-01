@@ -22,6 +22,12 @@ namespace WCFService.Model
         public string gender { get; set; }
 
         [DataMember]
+        public string role { get; set; }
+
+        [DataMember]
+        public string exten { get; set; }
+
+        [DataMember]
         public DateTime entryTimeStart { get; set; }
 
         [DataMember]

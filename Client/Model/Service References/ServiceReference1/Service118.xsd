@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
-  <xs:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://5kww3mhj8u6mqro/CustomerWcf/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
+  <xs:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
   <xs:element name="GetCustomer">
     <xs:complexType>
       <xs:sequence>
@@ -66,6 +66,7 @@
         <xs:element minOccurs="0" name="DealTime" nillable="true" type="xs:dateTime" />
         <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -106,6 +107,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phoneType" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,14 +176,14 @@
   <xs:element name="GetSingleUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="user" nillable="true" type="q4:User" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetSingleUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetSingleUserResult" nillable="true" type="q5:User" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFService.Model" minOccurs="0" name="GetSingleUserResult" nillable="true" type="q4:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -196,6 +198,38 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="testResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CallMobilePhone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employeeID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employeeExten" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CallMobilePhoneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CallMobilePhoneResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetPhoneParams">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dailyNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phoneType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetPhoneParamsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetPhoneParamsResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

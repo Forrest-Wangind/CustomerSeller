@@ -128,21 +128,7 @@ namespace CustomerSeller.UIL
             }
         }
 
-        private void bt_HandupPhone_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var Exten = string.Empty;
-                var employeeID = UserInfo.Get_User().User_Id;
-                if (!CustomerInfo.GetServiceInstance().HandupMobilePhone(employeeID,Exten))
-                    throw new Exception("异常");
-
-            }
-            catch
-            {
-                MessageBoxEx.Show("网络异常，稍后再试!", "提示");
-            }
-        }
+       
 
     }
 

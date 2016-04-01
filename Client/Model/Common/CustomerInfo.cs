@@ -26,7 +26,8 @@ namespace CustomerSeller.Common
                 new DataColumn("CustomerGender",typeof(string)),
                 new DataColumn("CustomerPhone",typeof(string)),
                 new DataColumn("CustomerAddress",typeof(string)),
-                new DataColumn("CustomerName",typeof(string))
+                new DataColumn("CustomerName",typeof(string)),
+                new DataColumn("PhoneType",typeof(string))
             });
 
             return dt;
@@ -82,6 +83,7 @@ namespace CustomerSeller.Common
                     _dr["CustomerPhone"] = dr["CustomerPhone"];
                     _dr["CustomerAddress"] = dr["CustomerAddress"];
                     _dr["CustomerName"] = dr["CustomerName"];
+                    _dr["PhoneType"] = dr["PhoneType"];
                     dataTable.Rows.Add(_dr);
                 }
                 DataSet dsOfCustomerInfo = new DataSet();

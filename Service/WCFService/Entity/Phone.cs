@@ -30,4 +30,13 @@ namespace WCFService.Entity
         public String exten { get; set; }
        
     }
+
+
+    public class Response<T>
+    {
+        public string errno { get; set; }
+        public string message { get; set; }
+        public T data { get; set; }
+    }
+
 }

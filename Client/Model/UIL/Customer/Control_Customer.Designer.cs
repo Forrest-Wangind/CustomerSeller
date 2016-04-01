@@ -33,6 +33,11 @@ namespace CustomerSeller
             this.panelData = new System.Windows.Forms.Panel();
             this.dgv_Customer = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_status = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.cbItemmind = new DevComponents.Editors.ComboItem();
+            this.cbItemNearSuccess = new DevComponents.Editors.ComboItem();
+            this.cbItemSuccess = new DevComponents.Editors.ComboItem();
+            this.cbItemNoMind = new DevComponents.Editors.ComboItem();
             this.dtp_End_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtp_Create_EndTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtp_Create_StartTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -50,11 +55,8 @@ namespace CustomerSeller
             this.lb_Customer_Phone = new DevComponents.DotNetBar.LabelX();
             this.tb_Customer_Phone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.pagerControl1 = new TActionProject.PagerControl();
-            this.cb_status = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.cbItemmind = new DevComponents.Editors.ComboItem();
-            this.cbItemNearSuccess = new DevComponents.Editors.ComboItem();
-            this.cbItemSuccess = new DevComponents.Editors.ComboItem();
-            this.cbItemNoMind = new DevComponents.Editors.ComboItem();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.panelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -98,6 +100,8 @@ namespace CustomerSeller
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonX2);
+            this.groupBox1.Controls.Add(this.buttonX1);
             this.groupBox1.Controls.Add(this.cb_status);
             this.groupBox1.Controls.Add(this.dtp_End_DealTime);
             this.groupBox1.Controls.Add(this.dtp_Create_EndTime);
@@ -122,6 +126,38 @@ namespace CustomerSeller
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
+            // 
+            // cb_status
+            // 
+            this.cb_status.DisplayMember = "Text";
+            this.cb_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cb_status.FormattingEnabled = true;
+            this.cb_status.ItemHeight = 15;
+            this.cb_status.Items.AddRange(new object[] {
+            this.cbItemmind,
+            this.cbItemNearSuccess,
+            this.cbItemSuccess,
+            this.cbItemNoMind});
+            this.cb_status.Location = new System.Drawing.Point(93, 65);
+            this.cb_status.Name = "cb_status";
+            this.cb_status.Size = new System.Drawing.Size(123, 21);
+            this.cb_status.TabIndex = 24;
+            // 
+            // cbItemmind
+            // 
+            this.cbItemmind.Text = "有意向";
+            // 
+            // cbItemNearSuccess
+            // 
+            this.cbItemNearSuccess.Text = "预成交";
+            // 
+            // cbItemSuccess
+            // 
+            this.cbItemSuccess.Text = "已成交";
+            // 
+            // cbItemNoMind
+            // 
+            this.cbItemNoMind.Text = "无意向";
             // 
             // dtp_End_DealTime
             // 
@@ -299,7 +335,8 @@ namespace CustomerSeller
             this.bt_GetPhone.Name = "bt_GetPhone";
             this.bt_GetPhone.Size = new System.Drawing.Size(75, 23);
             this.bt_GetPhone.TabIndex = 19;
-            this.bt_GetPhone.Text = "取电话";
+            this.bt_GetPhone.Tag = "A";
+            this.bt_GetPhone.Text = "取A类电话";
             this.bt_GetPhone.Click += new System.EventHandler(this.bt_GetPhone_Click);
             // 
             // bt_Del
@@ -416,37 +453,29 @@ namespace CustomerSeller
             this.pagerControl1.Size = new System.Drawing.Size(912, 29);
             this.pagerControl1.TabIndex = 1;
             // 
-            // cb_status
+            // buttonX1
             // 
-            this.cb_status.DisplayMember = "Text";
-            this.cb_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cb_status.FormattingEnabled = true;
-            this.cb_status.ItemHeight = 15;
-            this.cb_status.Items.AddRange(new object[] {
-            this.cbItemmind,
-            this.cbItemNearSuccess,
-            this.cbItemSuccess,
-            this.cbItemNoMind});
-            this.cb_status.Location = new System.Drawing.Point(93, 65);
-            this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(123, 21);
-            this.cb_status.TabIndex = 24;
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(386, 113);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(75, 23);
+            this.buttonX1.TabIndex = 25;
+            this.buttonX1.Tag = "B";
+            this.buttonX1.Text = "取B类电话";
+            this.buttonX1.Click += new System.EventHandler(this.bt_GetPhone_Click);
             // 
-            // cbItemmind
+            // buttonX2
             // 
-            this.cbItemmind.Text = "有意向";
-            // 
-            // cbItemNearSuccess
-            // 
-            this.cbItemNearSuccess.Text = "预成交";
-            // 
-            // cbItemSuccess
-            // 
-            this.cbItemSuccess.Text = "已成交";
-            // 
-            // cbItemNoMind
-            // 
-            this.cbItemNoMind.Text = "无意向";
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX2.Location = new System.Drawing.Point(493, 113);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Size = new System.Drawing.Size(75, 23);
+            this.buttonX2.TabIndex = 26;
+            this.buttonX2.Tag = "C";
+            this.buttonX2.Text = "取C类电话";
+            this.buttonX2.Click += new System.EventHandler(this.bt_GetPhone_Click);
             // 
             // Control_Customer
             // 
@@ -494,6 +523,8 @@ namespace CustomerSeller
         private DevComponents.Editors.ComboItem cbItemNearSuccess;
         private DevComponents.Editors.ComboItem cbItemSuccess;
         private DevComponents.Editors.ComboItem cbItemNoMind;
+        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
 
 
 

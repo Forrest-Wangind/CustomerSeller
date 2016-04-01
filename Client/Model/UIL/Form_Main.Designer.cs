@@ -57,7 +57,12 @@
             this.Add_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
             this.Import_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
             this.user_ManageMent = new DevComponents.DotNetBar.SideBarPanelItem();
+            this.AllRoles = new DevComponents.DotNetBar.ButtonItem();
             this.AllUsers = new DevComponents.DotNetBar.ButtonItem();
+            this.RoleDetail = new DevComponents.DotNetBar.ButtonItem();
+            this.singleUser = new DevComponents.DotNetBar.ButtonItem();
+            this.AddUser = new DevComponents.DotNetBar.ButtonItem();
+            this.btn_update_user = new DevComponents.DotNetBar.ButtonItem();
             this.btitemPhoneParams = new DevComponents.DotNetBar.ButtonItem();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -351,10 +356,31 @@
             // 
             this.RoleManagement.FontBold = true;
             this.RoleManagement.Name = "RoleManagement";
+            this.RoleManagement.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.AllRoles,
+            this.RoleDetail});
             this.RoleManagement.Text = "角色管理";
             this.RoleManagement.Visible = false;
             // 
-            // Customer_Management
+            // AllRoles
+            // 
+            this.AllRoles.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.AllRoles.ImagePaddingHorizontal = 8;
+            this.AllRoles.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.AllRoles.Name = "AllRoles";
+            this.AllRoles.Text = "所有角色";
+            this.AllRoles.Click += new System.EventHandler(this.AllRoles_Click);
+            // 
+            // RoleDetail
+            // 
+            this.RoleDetail.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.RoleDetail.ImagePaddingHorizontal = 8;
+            this.RoleDetail.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.RoleDetail.Name = "RoleDetail";
+            this.RoleDetail.Text = "角色明细";
+            this.RoleDetail.Click += new System.EventHandler(this.RoleDetail_Click);
+            // 
+            // VIP_Management
             // 
             this.Customer_Management.FontBold = true;
             this.Customer_Management.Icon = ((System.Drawing.Icon)(resources.GetObject("Customer_Management.Icon")));
@@ -400,6 +426,9 @@
             this.user_ManageMent.Name = "user_ManageMent";
             this.user_ManageMent.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.AllUsers,
+            this.singleUser,
+            this.AddUser,
+            this.btn_update_user,
             this.btitemPhoneParams});
             this.user_ManageMent.Text = "用户信息管理";
             this.user_ManageMent.Visible = false;
@@ -413,6 +442,33 @@
             this.AllUsers.Text = "所有用户";
             this.AllUsers.Visible = false;
             this.AllUsers.Click += new System.EventHandler(this.AllUsers_Click);
+            // 
+            // singleUser
+            // 
+            this.singleUser.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.singleUser.ImagePaddingHorizontal = 8;
+            this.singleUser.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.singleUser.Name = "singleUser";
+            this.singleUser.Text = "当前用户";
+            this.singleUser.Click += new System.EventHandler(this.singleUser_Click);
+            // 
+            // AddUser
+            // 
+            this.AddUser.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.AddUser.ImagePaddingHorizontal = 8;
+            this.AddUser.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.AddUser.Name = "AddUser";
+            this.AddUser.Text = "添加用户";
+            this.AddUser.Click += new System.EventHandler(this.AddUser_Click);
+            // 
+            // btn_update_user
+            // 
+            this.btn_update_user.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.btn_update_user.ImagePaddingHorizontal = 8;
+            this.btn_update_user.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btn_update_user.Name = "btn_update_user";
+            this.btn_update_user.Text = "修改用户";
+            this.btn_update_user.Click += new System.EventHandler(this.btn_update_user_Click);
             // 
             // btitemPhoneParams
             // 
@@ -475,6 +531,11 @@
         private DevComponents.DotNetBar.ButtonItem Import_CustomerInfo;
         private DevComponents.DotNetBar.ButtonItem AllUsers;
         private DevComponents.DotNetBar.SideBarPanelItem RoleManagement;
+        private DevComponents.DotNetBar.ButtonItem singleUser;
+        private DevComponents.DotNetBar.ButtonItem AddUser;
+        private DevComponents.DotNetBar.ButtonItem btn_update_user;
+        private DevComponents.DotNetBar.ButtonItem AllRoles;
+        private DevComponents.DotNetBar.ButtonItem RoleDetail;
         private DevComponents.DotNetBar.ButtonItem btitemPhoneParams;
     }
 }

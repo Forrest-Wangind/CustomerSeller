@@ -24,16 +24,20 @@ namespace CustomerSeller.UIL.User
             InitializeComponent();
         }
 
-        public SingleUser(string _operation)
+        public SingleUser(string _operation, string userId)
         {
             InitializeComponent();
             this.operation = _operation;
             ArrayList lists = new ArrayList();
             lists.Add(new Model.comBoxItem("男", "m"));
             lists.Add(new Model.comBoxItem("女", "f"));
+            lists.Add(new Model.comBoxItem("未知", "u"));
             this.cb_gender.DisplayMember = "pkey";
             this.cb_gender.ValueMember = "pvalue";
             this.cb_gender.DataSource = lists;
+
+            //显示系统中所有的角色
+            showRoles();
 
             switch (operation)
             {
@@ -47,15 +51,15 @@ namespace CustomerSeller.UIL.User
                     initButtonSubmit("修改");
                     this.cb_change_pass.Visible = true;
                     this.dt_entryTine.Enabled = true;
-                    showUser();
+                    showUser(userId);
                     //显示该用户的当前信息
                     break;
                 case "delete":
                     initButtonSubmit("删除");
-                    showUser();
+                    showUser(userId);
                     break;
                 default:
-                    showUser();
+                    showUser(userId);
                     break;
             }
         }
@@ -66,17 +70,79 @@ namespace CustomerSeller.UIL.User
             this.btn_submit.Text = name;
         }
 
-        private void showUser()
+        /// <summary>
+        /// 显示系统中所有的角色
+        /// </summary>
+        private void showRoles()
         {
-            user = CustomerSellerService.getService().GetSingleUser(UserInfo.Get_User().User_Id);
-            if(user != null)
+            DataSet roles = CustomerSellerService.getService().GetUserRoles(UserInfo.Get_User().User_Id);
+            if (roles != null && roles.Tables[0].Rows.Count > 0)
             {
-                this.tb_user_id.Text = user.userID;
-                this.tb_user_name.Text = user.userName;
-                this.tb_password.Text = user.password;
-                this.tb_password_again.Text = user.password;
-                this.cb_gender.SelectedIndex = user.gender == "m" ? 0 : 1;
-                this.dt_entryTine.Value = user.entryTimeStart;
+                int index = 0;
+                while (index < roles.Tables[0].Rows.Count)
+                {
+                    TreeNode role = new TreeNode();
+                    role.Text = roles.Tables[0].Rows[index]["name"].ToString();
+                    role.Name = roles.Tables[0].Rows[index]["id"].ToString();
+                    this.tree_role.Nodes.Add(role);
+
+                    index++;
+                }
+            }
+
+            if (roles.Tables.Count > 1)
+            {
+                int index = 0;
+                while (index < roles.Tables[1].Rows.Count)
+                {
+                    SelectTree(this.tree_role, roles.Tables[1].Rows[index]["id"].ToString());
+                    index++;
+                }
+            }
+        }
+
+        private void SelectTree(TreeView tree, string node)
+        {
+            foreach(TreeNode tn in tree.Nodes)
+            {
+                if (tn.Name == node)
+                {
+                    tn.Checked = true;
+                    break;
+                }
+            }
+        }
+
+        private string getSelectedTree(TreeView tree)
+        {
+            string selectedRole = string.Empty;
+            foreach (TreeNode tn in tree.Nodes)
+            {
+                if (tn.Checked)
+                {
+                    selectedRole = tn.Name;
+                    break;
+                }
+            }
+
+            return selectedRole;
+        }
+
+        public void showUser(string userId)
+        {
+            if (!string.IsNullOrEmpty(userId))
+            {
+                user = CustomerSellerService.getService().GetSingleUser(userId);
+                if (user != null)
+                {
+                    this.tb_user_id.Text = user.userID;
+                    this.tb_user_name.Text = user.userName;
+                    this.tb_password.Text = user.password;
+                    this.tb_password_again.Text = user.password;
+                    this.cb_gender.SelectedIndex = user.gender == "m" ? 0 : (user.gender == "f" ? 1 : 2);
+                    this.tb_extension.Text = user.exten;
+                    this.dt_entryTine.Value = user.entryTimeStart;
+                }
             }
         }
 
@@ -107,7 +173,10 @@ namespace CustomerSeller.UIL.User
                     user = new ServiceReference1.User();
                     user.userID = this.tb_user_id.Text.Trim();
                     user.userName = this.tb_user_name.Text.Trim();
-                    user.password = Encrypt.DESEncrypt(this.tb_password.Text, "12345678");
+                    string passKey = string.IsNullOrEmpty(tb_passKey.Text) ? "12345678" : tb_passKey.Text;
+                    user.password = Encrypt.DESEncrypt(this.tb_password.Text, passKey);
+                    user.role = getSelectedTree(this.tree_role);
+                    user.exten = this.tb_extension.Text.Trim();
                     user.gender = this.cb_gender.SelectedValue.ToString();
                     user.entryTimeStart = this.dt_entryTine.Value;
 
@@ -160,6 +229,7 @@ namespace CustomerSeller.UIL.User
                         string passKey = string.IsNullOrEmpty(tb_passKey.Text) ? "12345678" : tb_passKey.Text;
                         user.password = this.cb_change_pass.Checked ? Encrypt.DESEncrypt(this.tb_password.Text, passKey) : string.Empty;
                         user.gender = this.cb_gender.SelectedValue.ToString();
+                        user.exten = this.tb_extension.Text.Trim();
                         user.entryTimeStart = this.dt_entryTine.Value;
 
                         if (CustomerSellerService.getService().UpdateUser(user))
@@ -184,7 +254,25 @@ namespace CustomerSeller.UIL.User
 
         private void deleteUser()
         {
-
+            string userId = this.tb_user_id.Text.Trim();
+            if (!string.IsNullOrEmpty(userId))
+            {
+                try
+                {
+                    if (CustomerSellerService.getService().DeleteUser(userId))
+                    {
+                        MessageBoxEx.Show("删除用户成功");
+                    }
+                    else
+                    {
+                        MessageBoxEx.Show("删除用户失败，请仔细核对您输入的信息");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxEx.Show(ex.Message, "错误:");
+                }
+            }
         }
     }
 }

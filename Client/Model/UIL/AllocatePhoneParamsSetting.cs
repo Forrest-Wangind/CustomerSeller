@@ -29,8 +29,19 @@ namespace CustomerSeller.UIL
         {
             try
             {
+                var PhoneType = string.Empty;
+                switch(comboBoxExPhoneType.SelectedIndex)
+                {
+                    case 0:
+                        PhoneType = "A";break;
+                    case 1:
+                        PhoneType = "B"; break;
+                    case 2:
+                        PhoneType = "C"; break;
+
+                }
                 CustomerInfo.GetServiceInstance().SetPhoneParams(this.tb_DailyPhoneNumber.Text.Trim(),
-                                 this.tb_PhoneTotalNumber.Text.Trim());
+                                 this.tb_PhoneTotalNumber.Text.Trim(), PhoneType);
                 MessageBoxEx.Show("修改成功!", "提示");
             }
             catch

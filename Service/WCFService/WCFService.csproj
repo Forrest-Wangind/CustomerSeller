@@ -77,8 +77,12 @@
     <Compile Include="Common\LoggerWrapper.cs" />
     <Compile Include="Common\LogInfo.cs" />
     <Compile Include="Common\SqlHelper.cs" />
+    <Compile Include="DAL\RoleDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="Entity\FlagType.cs" />
     <Compile Include="Entity\Phone.cs" />
+    <Compile Include="Entity\SqlResult.cs" />
+    <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

@@ -35,7 +35,6 @@ D:\CustomerSeller\Client\Model\obj\Debug\Model.exe
 D:\CustomerSeller\Client\Model\obj\Debug\Model.pdb
 D:\CustomerSeller\Client\Model\bin\Debug\Model.exe
 D:\CustomerSeller\Client\Model\bin\Debug\Model.pdb
-D:\CustomerSeller\Client\Model\obj\Debug\CustomerSellerClient.csprojResolveAssemblyReference.cache
 D:\CustomerSeller\Client\Model\obj\Debug\TActionProject.PagerControl.resources
 D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.AddCustomer.resources
 D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.Control_Customer.resources
@@ -46,3 +45,9 @@ D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.Main.resources
 D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.User.UserList.resources
 D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller._Login.resources
 D:\CustomerSeller\Client\Model\obj\Debug\CustomerSellerClient.csproj.GenerateResource.Cache
+D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.PhoneParamSetting.resources
+D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.Customer.CustomerUserControl.resources
+D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.Role.RoleDetail.resources
+D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.Role.RoleList.resources
+D:\CustomerSeller\Client\Model\obj\Debug\CustomerSeller.UIL.User.SingleUser.resources
+D:\CustomerSeller\Client\Model\obj\Debug\CustomerSellerClient.csprojResolveAssemblyReference.cache

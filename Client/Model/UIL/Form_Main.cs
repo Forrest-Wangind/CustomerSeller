@@ -12,19 +12,14 @@ using System.Threading;
 using CustomerSeller.UIL;
 using CustomerSeller.DAL;
 using CustomerSeller.Common;
-using System.Runtime.InteropServices;
+using CustomerSeller.Control;
 using CustomerSeller.UIL.Customer;
 
-
-
-
-
 namespace CustomerSeller
-{   
-    
+{
     public partial class Form_Main : Office2007Form
     {
-       
+      
         public Form_Main()
         {   
             InitializeComponent();
@@ -204,7 +199,6 @@ namespace CustomerSeller
         {
             if (DialogResult.Yes == MessageBoxEx.Show("是否返回主界面", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                this.Main_panel.Controls.Clear();
                 Exit_Message_Notice("正在返回系统主界面.");
                 Application.DoEvents();
                 Thread.Sleep(50);
@@ -295,24 +289,7 @@ namespace CustomerSeller
            
         }
 
-        //查询贵宾信息
-        private void Inquire_Vip_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //this.Main_panel.Controls.Clear();
-                //Control_Inquire_Vip control = new Control_Inquire_Vip();
-                //control.Dock = DockStyle.Left;
-                //control.setEdit(false);
-                //control.Update_Visible(false);
-                //control.Del_Visible(false);
-                //this.Main_panel.Controls.Add(control);
-            }
-            catch (Exception ex)
-            {
-                MessageBoxEx.Show(ex.Message);
-            }
-        }
+      
 
 
         //添加用户
@@ -332,39 +309,7 @@ namespace CustomerSeller
             }
         }
 
-        //修改密码
-        private void change_Pwd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //this.Main_panel.Controls.Clear();
-                //User_Update control = new User_Update();
-                //control.Dock = DockStyle.Left;
-                //this.Main_panel.Controls.Add(control);
-            }
-            catch (Exception ex)
-            {
-                MessageBoxEx.Show(ex.Message);
-            }
-        }
-
-        //删除用户
-        private void del_User_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //this.Main_panel.Controls.Clear();
-                //User_Add control = new User_Add();
-                //control.set_Ok_Visible(false);
-                //control.set_Visible(true);
-                //control.Dock = DockStyle.Left;
-                //this.Main_panel.Controls.Add(control);
-            }
-            catch (Exception ex)
-            {
-                MessageBoxEx.Show(ex.Message);
-            }
-        }
+      
 
         //添加贵宾信息
         private void add_Vip_Click(object sender, EventArgs e)
@@ -375,7 +320,6 @@ namespace CustomerSeller
                 Control_Customer control = new Control_Customer();
                 control.Dock = DockStyle.Left;
                 this.Main_panel.Controls.Add(control);
-               
        
             }
             catch (Exception ex)
@@ -389,10 +333,10 @@ namespace CustomerSeller
             Main m = new Main();
             m.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(m);
-            //if (UserInfo.Get_User().User_Grade=="0")
-            //{
-            //    this.sideBar1.Panels.Remove("user_ManageMent");
-            //}
+            if (UserInfo.Get_User().User_Grade=="0")
+            {
+                this.sideBar1.Panels.Remove("user_ManageMent");
+            }
         }
 
         private void bi_profit_Click(object sender, EventArgs e)
@@ -410,20 +354,67 @@ namespace CustomerSeller
             }
         }
 
-        private void AllUsers_Click(object sender, EventArgs e)
-        {
-            this.Main_panel.Controls.Clear();
-            UIL.User.UserList userlist = new UIL.User.UserList();
-            userlist.Dock = DockStyle.Left;
-            this.Main_panel.Controls.Add(userlist);
-        }
-
         private void buttonItem1_Click(object sender, EventArgs e)
         {
             this.Main_panel.Controls.Clear();
             PhoneParamSetting control = new PhoneParamSetting();
             control.Dock = DockStyle.Left;
             this.Main_panel.Controls.Add(control);
+        }
+
+        private void AllUsers_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.User.UserList userlist = new UIL.User.UserList(this);
+            userlist.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(userlist);
+        }
+
+        private void singleUser_Click(object sender, EventArgs e)
+        {
+            addUserPanel("select", UserInfo.Get_User().User_Id);
+        }
+
+        private void btn_update_user_Click(object sender, EventArgs e)
+        {
+            addUserPanel("update", UserInfo.Get_User().User_Id);
+        }
+
+        private void AddUser_Click(object sender, EventArgs e)
+        {
+            addUserPanel("add", string.Empty);
+        }
+
+        public void addUserPanel(string panelName, string userId)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.User.SingleUser singleUser = new UIL.User.SingleUser(panelName, userId);
+            singleUser.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(singleUser);
+        }
+
+        public void addRolePanel(string panelName, string roleId)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.Role.RoleDetail roleDetail = new UIL.Role.RoleDetail(panelName, roleId);
+            roleDetail.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(roleDetail);
+        }
+
+        private void AllRoles_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.Role.RoleList roleList = new UIL.Role.RoleList(this);
+            roleList.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(roleList);
+        }
+
+        private void RoleDetail_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.Role.RoleDetail roleList = new UIL.Role.RoleDetail();
+            roleList.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(roleList);
         }
     }
 }

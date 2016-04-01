@@ -30,7 +30,7 @@ namespace WCFService
         Boolean BatchImportCustomerInfo(DataSet ds);
 
         [OperationContract]
-        int AllocateEmployeePhone(string UserID);
+        int AllocateEmployeePhone(string UserID, string phoneType);
 
         [OperationContract]
         int RecycleCustomerPhone(string customerID, string employeeID);
@@ -39,10 +39,43 @@ namespace WCFService
         string[] GetUserPermissions(string userId);
 
         [OperationContract]
+        DataSet GetRoleFunctions(string roleId);
+
+        [OperationContract]
+        DataSet GetUserRoles(string userId);
+
+        [OperationContract]
+        DataSet GetRoles(Role role);
+
+        [OperationContract]
+        DataSet GetPermissions(string userId);
+
+        [OperationContract]
         DataSet GetUsers(User user);
 
         [OperationContract]
         User GetSingleUser(string userId);
+
+        [OperationContract]
+        bool AddUser(User user);
+
+        [OperationContract]
+        bool AddRole(Role role);
+
+        [OperationContract]
+        bool UpdateUser(User user);
+
+        [OperationContract]
+        bool UpdateRole(Role role);
+
+        [OperationContract]
+        bool DeleteUser(string userId);
+
+        [OperationContract]
+        bool DeleteRole(string roleId);
+
+        [OperationContract]
+        Role GetRoleDetail(string roleId);
 
         [OperationContract]
         int test(int a);
@@ -51,9 +84,6 @@ namespace WCFService
         Boolean CallMobilePhone(string phone, string employeeID, string employeeExten);
 
         [OperationContract]
-        Boolean HandupMobilePhone(string employeeID, string employeeExten);
-
-        [OperationContract]
-        Boolean SetPhoneParams(string dailyNumber, string totalNumber);
+        Boolean SetPhoneParams(string dailyNumber, string totalNumber, string phoneType);
     }
 }

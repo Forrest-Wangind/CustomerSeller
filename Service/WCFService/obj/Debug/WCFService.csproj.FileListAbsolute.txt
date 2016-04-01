@@ -17,3 +17,4 @@ D:\CustomerSeller\Service\WCFService\bin\WCFService.dll
 D:\CustomerSeller\Service\WCFService\bin\WCFService.pdb
 D:\CustomerSeller\Service\WCFService\bin\log4net.dll
 D:\CustomerSeller\Service\WCFService\obj\Debug\WCFService.pdb
+D:\CustomerSeller\Service\WCFService\bin\Newtonsoft.Json.dll

@@ -92,7 +92,8 @@ namespace CustomerSeller
         {
             //员工静态信息获取添加进来
             var enployeeID = UserInfo.Get_User().User_Id;
-            var result = CustomerInfo.GetServiceInstance().AllocateEmployeePhone(enployeeID);
+            var phoneType=(sender as DevComponents.DotNetBar.ButtonX).Tag.ToString();
+            var result = CustomerInfo.GetServiceInstance().AllocateEmployeePhone(enployeeID, phoneType);
             switch (result)
             {
                 case 0:

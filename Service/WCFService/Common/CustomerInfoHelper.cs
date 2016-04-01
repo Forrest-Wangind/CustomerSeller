@@ -22,7 +22,8 @@ namespace WCFService.Common
                 new DataColumn("CustomerPhone",typeof(string)),
                 new DataColumn("CustomerAddress",typeof(string)),
                 new DataColumn("CreateTime",typeof(DateTime)),
-                new DataColumn("CustomerName",typeof(string))
+                new DataColumn("CustomerName",typeof(string)),
+                new DataColumn("PhoneType",typeof(string))
             });
 
             return dt;
@@ -37,6 +38,7 @@ namespace WCFService.Common
             sqlbulk.ColumnMappings.Add("CustomerAddress", "CustomerAddress");
             sqlbulk.ColumnMappings.Add("CreateTime", "CreateTime");
             sqlbulk.ColumnMappings.Add("CustomerName", "CustomerName");
+            sqlbulk.ColumnMappings.Add("PhoneType", "PhoneType");
         }
         internal static DataTable FillDataTable(DataSet ds)
         {
@@ -54,6 +56,7 @@ namespace WCFService.Common
                     customerInfoRow["CustomerAddress"] = ds.Tables[0].Rows[i]["CustomerAddress"]; ; ;
                     customerInfoRow["CreateTime"] = System.DateTime.Now;
                     customerInfoRow["CustomerName"] = ds.Tables[0].Rows[i]["CustomerName"];
+                    customerInfoRow["PhoneType"] = ds.Tables[0].Rows[i]["PhoneType"];
                     customerInfoTable.Rows.Add(customerInfoRow);
                 }
                 return customerInfoTable;
@@ -70,8 +73,8 @@ namespace WCFService.Common
         //批量更新数据库信息
         internal static void BatchWriteToDB(DataSet ds)
         {
-          
-            using (DbConnection con =SqlServerHelper.Con)
+
+            using (DbConnection con = SqlServerHelper.Con)
             {
                 con.Open();
                 DbTransaction tran = con.BeginTransaction();
