@@ -25,6 +25,14 @@ namespace WCFService.DAL
             return SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_getUsers", paras.ToArray());
         }
 
+        internal static DataSet GetUserInfo(User user)
+        {
+            //传递users的参数
+            List<SqlParameter> paras = new List<SqlParameter>();
+            paras.Add(new SqlParameter("@UserID", user.userID));
+            paras.Add(new SqlParameter("@Password", user.password));
+            return SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_getUserInfo", paras.ToArray());
+        }
         internal static string[] GetUserPermissions(string userId)
         {
             List<string> permissions = new List<string>();

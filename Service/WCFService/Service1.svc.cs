@@ -442,5 +442,19 @@ namespace WCFService
                 return null;
             }
         }
+
+
+        public DataSet GetUserInfo(User user)
+        {
+            try
+            {
+                return UserDAL.GetUserInfo(user);
+            }
+            catch(Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("get user permissions fail. " + ex.Message);
+                return null;
+            }
+        }
     }
 }

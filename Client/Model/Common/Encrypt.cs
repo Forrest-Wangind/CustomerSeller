@@ -10,6 +10,7 @@ namespace WCFService.Common
 {
     public class Encrypt
     {
+        public const string EncryptKey = "12345678";
         #region DES 加密解密
         /// <summary>
         /// DES 加密(数据加密标准，速度较快，适用于加密大量数据的场合)

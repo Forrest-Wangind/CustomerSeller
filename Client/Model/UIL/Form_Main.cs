@@ -241,7 +241,7 @@ namespace CustomerSeller
         }
 
         //修改
-        private void change_Vip_Click(object sender, EventArgs e)
+        private void Import_CustomerInfo_Click(object sender, EventArgs e)
         {
             try
             {   
@@ -273,7 +273,7 @@ namespace CustomerSeller
 
 
         //删除贵宾信息
-        private void del_Vip_Click(object sender, EventArgs e)
+        private void Add_CustomerInfo_Click(object sender, EventArgs e)
         {
             try
             {
@@ -312,7 +312,7 @@ namespace CustomerSeller
       
 
         //添加贵宾信息
-        private void add_Vip_Click(object sender, EventArgs e)
+        private void Query_CustomerInfo_Click(object sender, EventArgs e)
         {
             try
             {
@@ -354,7 +354,7 @@ namespace CustomerSeller
             }
         }
 
-        private void buttonItem1_Click(object sender, EventArgs e)
+        private void btitemPhoneParams_Click(object sender, EventArgs e)
         {
             this.Main_panel.Controls.Clear();
             PhoneParamSetting control = new PhoneParamSetting();

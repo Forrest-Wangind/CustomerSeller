@@ -34,8 +34,8 @@ namespace CustomerSeller
         {
 
             List<KeyValuePair<string, string>> listParameters = new List<KeyValuePair<string, string>>();
+            if (!UserInfo.Get_User().User_Grade.Trim().Equals("admin"))
             listParameters.Add(new KeyValuePair<string, string>("EmployeeID=",UserInfo.Get_User().User_Id ));
-
             if (!string.IsNullOrEmpty(this.tb_Customer_Name.Text))
                 listParameters.Add(new KeyValuePair<string, string>("CustomerName like ", string.Format("%{0}%", tb_Customer_Name.Text)));
             if (!string.IsNullOrEmpty(this.tb_Customer_Phone.Text))
@@ -91,9 +91,9 @@ namespace CustomerSeller
         private void bt_GetPhone_Click(object sender, EventArgs e)
         {
             //员工静态信息获取添加进来
-            var enployeeID = UserInfo.Get_User().User_Id;
+            var employeeID = UserInfo.Get_User().User_Id;
             var phoneType=(sender as DevComponents.DotNetBar.ButtonX).Tag.ToString();
-            var result = CustomerInfo.GetServiceInstance().AllocateEmployeePhone(enployeeID, phoneType);
+            var result = CustomerInfo.GetServiceInstance().AllocateEmployeePhone(employeeID, phoneType);
             switch (result)
             {
                 case 0:
@@ -119,7 +119,6 @@ namespace CustomerSeller
             try
             {
                 var dataGridRow = this.dgv_Customer.CurrentRow;
-
                 if (dataGridRow == null)
                     MessageBoxEx.Show("没有选中任何一条电话记录", "提示");
                 int index = dataGridRow.Index;    //取得选中行的索引   

@@ -73,6 +73,7 @@ namespace CustomerSeller.DAL
                     UserInfo.Get_User().User_Grade = ds.Tables[0].Rows[0]["user_Grade"].ToString();
                     UserInfo.Get_User().User_Pwd = ds.Tables[0].Rows[0]["user_Pwd"].ToString();
                     UserInfo.Get_User().User_Id = ds.Tables[0].Rows[0]["user_Id"].ToString();
+                    UserInfo.Get_User().User_Exten = ds.Tables[0].Rows[0]["Exten"].ToString();
                     return true;
                 }
                 else

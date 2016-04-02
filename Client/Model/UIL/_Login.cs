@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
-using CustomerSeller.BIL;
 using CustomerSeller.DAL;
+using CustomerSeller.Common;
+using CustomerSeller.ServiceReference1;
+using WCFService.Common;
 
 namespace CustomerSeller
 {
@@ -46,8 +48,7 @@ namespace CustomerSeller
             {
                 UserInfo.Get_User().User_Id = this.tb_userId.Text.Trim();
                 UserInfo.Get_User().User_Pwd = this.tb_Pwd.Text.Trim();
-                if (Logon._Login())
-                    Login();
+                Login();
             }
         }
 
@@ -74,15 +75,36 @@ namespace CustomerSeller
             {
                 UserInfo.Get_User().User_Id = this.tb_userId.Text.Trim();
                 UserInfo.Get_User().User_Pwd = this.tb_Pwd.Text.Trim();
-                UserInfo.Get_User().get_permissions();
-                this.Hide();
-                Form_Main fm = new Form_Main();
-                fm.Show();
-                fm.Activate();
-                this.Hide();
+                //用户名和密码匹配
+                if (JudgeUserExists(UserInfo.Get_User().User_Id, UserInfo.Get_User().User_Pwd))
+                {
+                    UserInfo.Get_User().get_permissions();
+                    this.Hide();
+                    Form_Main fm = new Form_Main();
+                    fm.Show();
+                    fm.Activate();
+                    this.Hide();
+                }
+
             }
         }
 
-
+        private Boolean JudgeUserExists(string UserID,string PassWord)
+        {   
+            var result=false;
+            var loginUser = new User() { userID = UserID, password = Encrypt.DESEncrypt(PassWord, Encrypt.EncryptKey) };
+            var ds = CustomerInfo.GetServiceInstance().GetUserInfo(loginUser);
+            if(ds!=null&&ds.Tables[0].Rows.Count>0)
+            {   var flag= ds.Tables[0].Rows[0][0].ToString();
+                if(!flag.Equals("-1")&&!flag.Equals("-2"))
+                {
+                    UserInfo.Get_User().User_Id = ds.Tables[0].Rows[0]["UserID"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["UserID"].ToString();
+                    UserInfo.Get_User().User_Exten =  ds.Tables[0].Rows[0]["Exten"]==DBNull.Value ? string.Empty:ds.Tables[0].Rows[0]["Exten"].ToString();
+                    UserInfo.Get_User().User_Grade = ds.Tables[0].Rows[0]["RoleName"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["RoleName"].ToString();
+                    result = true;
+                }
+            }
+            return result;
+        }
     }
 }

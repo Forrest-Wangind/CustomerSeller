@@ -85,5 +85,8 @@ namespace WCFService
 
         [OperationContract]
         Boolean SetPhoneParams(string dailyNumber, string totalNumber, string phoneType);
+
+        [OperationContract]
+        DataSet GetUserInfo(User user);
     }
 }

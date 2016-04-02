@@ -92,8 +92,8 @@ namespace CustomerSeller.UIL
         {        
             try
             {
-                var enployeeID = UserInfo.Get_User().User_Id;
-                var result = CustomerInfo.GetServiceInstance().RecycleCustomerPhone(DR["CustomerID"].ToString(),enployeeID);
+                var employeeID = UserInfo.Get_User().User_Id;
+                var result = CustomerInfo.GetServiceInstance().RecycleCustomerPhone(DR["CustomerID"].ToString(),employeeID);
                
                 switch (result)
                 {
@@ -106,7 +106,7 @@ namespace CustomerSeller.UIL
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBoxEx.Show("网络异常，稍后再试!", "提示");
             }
@@ -117,7 +117,7 @@ namespace CustomerSeller.UIL
         {
             try
             {
-                var Exten = UserInfo.Get_User().User_Id;
+                var Exten = UserInfo.Get_User().User_Exten;
                 var employeeID = UserInfo.Get_User().User_Id;
                 if(!CustomerInfo.GetServiceInstance().CallMobilePhone(CustomerPhone.Trim(), employeeID, Exten))
                     throw new Exception("异常");

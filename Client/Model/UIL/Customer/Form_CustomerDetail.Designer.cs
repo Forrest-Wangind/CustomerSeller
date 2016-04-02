@@ -305,9 +305,9 @@
             this.panel2.Controls.Add(this.bt_Save);
             this.panel2.Controls.Add(this.bt_RecycleCustomerPhone);
             this.panel2.Controls.Add(this.bt_Cancer);
-            this.panel2.Location = new System.Drawing.Point(12, 396);
+            this.panel2.Location = new System.Drawing.Point(12, 380);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(605, 33);
+            this.panel2.Size = new System.Drawing.Size(412, 33);
             this.panel2.TabIndex = 17;
             // 
             // bt_CallPhone

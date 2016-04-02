@@ -64,7 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BIL\Logon.cs" />
     <Compile Include="CommonControl.cs" />
     <Compile Include="Common\CustomerInfo.cs" />
     <Compile Include="Common\Encrypt.cs" />
@@ -83,7 +82,6 @@
       <DependentUpon>TabControlUser.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\CustomerSellerService.cs" />
-    <Compile Include="DAL\D_Login.cs" />
     <Compile Include="DAL\UserInfo.cs" />
     <Compile Include="Model\comBoxItem.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
@@ -270,7 +268,9 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BIL\" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
