@@ -32,9 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_select = new System.Windows.Forms.Button();
             this.cb_gender = new System.Windows.Forms.ComboBox();
-            this.dtp_endDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.dtp_startDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_user_id = new System.Windows.Forms.TextBox();
@@ -49,20 +47,24 @@
             this.tsm_update = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_delete = new System.Windows.Forms.ToolStripMenuItem();
             this.pagerControl1 = new TActionProject.PagerControl();
+            this.dti_startDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dti_endDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_userList)).BeginInit();
             this.cms_user.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dti_startDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dti_endDate)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dti_endDate);
+            this.groupBox1.Controls.Add(this.dti_startDate);
             this.groupBox1.Controls.Add(this.btn_select);
             this.groupBox1.Controls.Add(this.cb_gender);
-            this.groupBox1.Controls.Add(this.dtp_endDate);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.dtp_startDate);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tb_user_id);
@@ -95,14 +97,6 @@
             this.cb_gender.Size = new System.Drawing.Size(200, 20);
             this.cb_gender.TabIndex = 10;
             // 
-            // dtp_endDate
-            // 
-            this.dtp_endDate.Location = new System.Drawing.Point(367, 154);
-            this.dtp_endDate.Name = "dtp_endDate";
-            this.dtp_endDate.ShowCheckBox = true;
-            this.dtp_endDate.Size = new System.Drawing.Size(200, 21);
-            this.dtp_endDate.TabIndex = 9;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -111,14 +105,6 @@
             this.label3.Size = new System.Drawing.Size(17, 12);
             this.label3.TabIndex = 8;
             this.label3.Text = "到";
-            // 
-            // dtp_startDate
-            // 
-            this.dtp_startDate.Location = new System.Drawing.Point(121, 154);
-            this.dtp_startDate.Name = "dtp_startDate";
-            this.dtp_startDate.ShowCheckBox = true;
-            this.dtp_startDate.Size = new System.Drawing.Size(200, 21);
-            this.dtp_startDate.TabIndex = 7;
             // 
             // label2
             // 
@@ -247,6 +233,92 @@
             this.pagerControl1.Size = new System.Drawing.Size(1030, 29);
             this.pagerControl1.TabIndex = 0;
             // 
+            // dti_startDate
+            // 
+            // 
+            // 
+            // 
+            this.dti_startDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dti_startDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dti_startDate.ButtonDropDown.Visible = true;
+            this.dti_startDate.Location = new System.Drawing.Point(121, 156);
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dti_startDate.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dti_startDate.MonthCalendar.DisplayMonth = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
+            this.dti_startDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dti_startDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dti_startDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dti_startDate.MonthCalendar.TodayButtonVisible = true;
+            this.dti_startDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dti_startDate.Name = "dti_startDate";
+            this.dti_startDate.Size = new System.Drawing.Size(200, 21);
+            this.dti_startDate.TabIndex = 12;
+            // 
+            // dti_endDate
+            // 
+            // 
+            // 
+            // 
+            this.dti_endDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dti_endDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dti_endDate.ButtonDropDown.Visible = true;
+            this.dti_endDate.Location = new System.Drawing.Point(367, 156);
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dti_endDate.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dti_endDate.MonthCalendar.DisplayMonth = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
+            this.dti_endDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dti_endDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dti_endDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dti_endDate.MonthCalendar.TodayButtonVisible = true;
+            this.dti_endDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dti_endDate.Name = "dti_endDate";
+            this.dti_endDate.Size = new System.Drawing.Size(200, 21);
+            this.dti_endDate.TabIndex = 13;
+            // 
             // UserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -261,6 +333,8 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_userList)).EndInit();
             this.cms_user.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dti_startDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dti_endDate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,9 +350,7 @@
         private System.Windows.Forms.Label lab_user_id;
         private System.Windows.Forms.Button btn_select;
         private System.Windows.Forms.ComboBox cb_gender;
-        private System.Windows.Forms.DateTimePicker dtp_endDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtp_startDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private TActionProject.PagerControl pagerControl1;
@@ -287,5 +359,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsm_add;
         private System.Windows.Forms.ToolStripMenuItem tsm_update;
         private System.Windows.Forms.ToolStripMenuItem tsm_delete;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dti_endDate;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dti_startDate;
     }
 }

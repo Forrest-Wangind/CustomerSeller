@@ -41,10 +41,16 @@ namespace CustomerSeller
                         break;
                     case "001001":
                         this.AllUsers.Visible = true;
+                        this.AddUser.Visible = true;
+                        break;
+                    case "001002":
+                        this.AllUsers.Visible = true;
+                        break;
+                    case "001006":
+                        this.btitemPhoneParams.Visible = true;
                         break;
                     case "002":
                         this.RoleManagement.Visible = true;
-                        this.btitemPhoneParams.Visible = true;
                         break;
                     case "003":
                         this.Customer_Management.Visible = true;

@@ -43,8 +43,8 @@ namespace CustomerSeller.UIL.User
             user.userID = this.tb_user_id.Text.Trim();
             user.userName = this.tb_user_name.Text.Trim();
             user.gender = this.cb_gender.SelectedValue.ToString() == "u" ? "" : this.cb_gender.SelectedValue.ToString();
-            user.entryTimeStart = this.dtp_startDate.Checked ? this.dtp_startDate.Value : DateTime.Parse("1900-01-01");
-            user.entryTimeEnd = this.dtp_endDate.Checked ? this.dtp_endDate.Value: DateTime.Parse("2999-12-31");
+            user.entryTimeStart = this.dti_startDate.IsEmpty ? DateTime.Parse("1900-01-01") : this.dti_startDate.Value;
+            user.entryTimeEnd = this.dti_endDate.IsEmpty ? DateTime.Parse("2999-12-31") : this.dti_endDate.Value;
 
             var users = DAL.CustomerSellerService.getService().GetUsers(user);
             if (users != null)

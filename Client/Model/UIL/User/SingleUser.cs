@@ -46,11 +46,18 @@ namespace CustomerSeller.UIL.User
                     this.dt_entryTine.Enabled = true;
                     this.gp_password.Visible = true;
                     this.tb_user_id.Enabled = true;
+                    this.tb_extension.Enabled = true;
                     break;
                 case "update":
                     initButtonSubmit("修改");
                     this.cb_change_pass.Visible = true;
                     this.dt_entryTine.Enabled = true;
+                    //如果有修改分机号的权限
+                    if (UserInfo.Get_User().User_permissions.Contains("001005"))
+                    {
+                        this.tb_extension.Enabled = true;
+                    }
+
                     showUser(userId);
                     //显示该用户的当前信息
                     break;
@@ -103,7 +110,7 @@ namespace CustomerSeller.UIL.User
 
         private void SelectTree(TreeView tree, string node)
         {
-            foreach(TreeNode tn in tree.Nodes)
+            foreach (TreeNode tn in tree.Nodes)
             {
                 if (tn.Name == node)
                 {
@@ -173,8 +180,7 @@ namespace CustomerSeller.UIL.User
                     user = new ServiceReference1.User();
                     user.userID = this.tb_user_id.Text.Trim();
                     user.userName = this.tb_user_name.Text.Trim();
-                    string passKey = string.IsNullOrEmpty(tb_passKey.Text) ? "12345678" : tb_passKey.Text;
-                    user.password = Encrypt.DESEncrypt(this.tb_password.Text, passKey);
+                    user.password = Encrypt.DESEncrypt(this.tb_password.Text, UserInfo.pwdKey);
                     user.role = getSelectedTree(this.tree_role);
                     user.exten = this.tb_extension.Text.Trim();
                     user.gender = this.cb_gender.SelectedValue.ToString();
@@ -226,8 +232,7 @@ namespace CustomerSeller.UIL.User
                         user = new ServiceReference1.User();
                         user.userID = this.tb_user_id.Text.Trim();
                         user.userName = this.tb_user_name.Text.Trim();
-                        string passKey = string.IsNullOrEmpty(tb_passKey.Text) ? "12345678" : tb_passKey.Text;
-                        user.password = this.cb_change_pass.Checked ? Encrypt.DESEncrypt(this.tb_password.Text, passKey) : string.Empty;
+                        user.password = Encrypt.DESEncrypt(this.tb_password.Text, UserInfo.pwdKey);
                         user.gender = this.cb_gender.SelectedValue.ToString();
                         user.exten = this.tb_extension.Text.Trim();
                         user.entryTimeStart = this.dt_entryTine.Value;
@@ -241,7 +246,7 @@ namespace CustomerSeller.UIL.User
                             MessageBoxEx.Show("修改用户失败，请仔细核对您输入的信息");
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBoxEx.Show(ex.Message, "错误:");
                     }

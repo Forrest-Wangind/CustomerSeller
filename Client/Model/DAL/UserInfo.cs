@@ -16,7 +16,7 @@ namespace CustomerSeller.DAL
     class UserInfo
     {
         private static UserInfo user;//用户信息
-
+        public static string pwdKey = "12345678";
         private string user_Id;//用户编号
         private string user_pwd;//密码
         private string user_grade;//级别

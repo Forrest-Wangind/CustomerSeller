@@ -42,10 +42,7 @@
             this.gp_password = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.tree_role = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.tb_passKey = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.tb_password_again = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cb_change_pass = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.tb_extension = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -183,7 +180,7 @@
             // 
             // 
             this.tb_password.Border.Class = "TextBoxBorder";
-            this.tb_password.Location = new System.Drawing.Point(139, 39);
+            this.tb_password.Location = new System.Drawing.Point(212, 38);
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(100, 21);
@@ -191,7 +188,7 @@
             // 
             // labelX5
             // 
-            this.labelX5.Location = new System.Drawing.Point(41, 39);
+            this.labelX5.Location = new System.Drawing.Point(114, 38);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(75, 23);
             this.labelX5.TabIndex = 9;
@@ -234,61 +231,30 @@
             // 
             this.tree_role.CheckBoxes = true;
             this.tree_role.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tree_role.Location = new System.Drawing.Point(0, 206);
+            this.tree_role.Location = new System.Drawing.Point(0, 158);
             this.tree_role.Name = "tree_role";
-            this.tree_role.Size = new System.Drawing.Size(420, 283);
+            this.tree_role.Size = new System.Drawing.Size(420, 331);
             this.tree_role.TabIndex = 17;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tb_password);
-            this.panel1.Controls.Add(this.labelX8);
             this.panel1.Controls.Add(this.labelX5);
-            this.panel1.Controls.Add(this.tb_passKey);
             this.panel1.Controls.Add(this.labelX6);
-            this.panel1.Controls.Add(this.labelX7);
             this.panel1.Controls.Add(this.tb_password_again);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 206);
+            this.panel1.Size = new System.Drawing.Size(420, 158);
             this.panel1.TabIndex = 16;
-            // 
-            // labelX8
-            // 
-            this.labelX8.Location = new System.Drawing.Point(272, 144);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(89, 23);
-            this.labelX8.TabIndex = 15;
-            this.labelX8.Text = "密钥必须为8位";
-            // 
-            // tb_passKey
-            // 
-            // 
-            // 
-            // 
-            this.tb_passKey.Border.Class = "TextBoxBorder";
-            this.tb_passKey.Location = new System.Drawing.Point(139, 144);
-            this.tb_passKey.Name = "tb_passKey";
-            this.tb_passKey.Size = new System.Drawing.Size(100, 21);
-            this.tb_passKey.TabIndex = 14;
-            this.tb_passKey.Text = "12345678";
             // 
             // labelX6
             // 
-            this.labelX6.Location = new System.Drawing.Point(41, 85);
+            this.labelX6.Location = new System.Drawing.Point(114, 84);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(75, 23);
             this.labelX6.TabIndex = 11;
             this.labelX6.Text = "确认密码：";
-            // 
-            // labelX7
-            // 
-            this.labelX7.Location = new System.Drawing.Point(41, 144);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(75, 23);
-            this.labelX7.TabIndex = 13;
-            this.labelX7.Text = "密钥：";
             // 
             // tb_password_again
             // 
@@ -296,7 +262,7 @@
             // 
             // 
             this.tb_password_again.Border.Class = "TextBoxBorder";
-            this.tb_password_again.Location = new System.Drawing.Point(139, 85);
+            this.tb_password_again.Location = new System.Drawing.Point(212, 84);
             this.tb_password_again.Name = "tb_password_again";
             this.tb_password_again.PasswordChar = '*';
             this.tb_password_again.Size = new System.Drawing.Size(100, 21);
@@ -375,9 +341,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX tb_password_again;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.CheckBoxX cb_change_pass;
-        private DevComponents.DotNetBar.Controls.TextBoxX tb_passKey;
-        private DevComponents.DotNetBar.LabelX labelX7;
-        private DevComponents.DotNetBar.LabelX labelX8;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TreeView tree_role;
         private DevComponents.DotNetBar.Controls.TextBoxX tb_extension;
