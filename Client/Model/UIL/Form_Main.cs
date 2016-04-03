@@ -38,6 +38,7 @@ namespace CustomerSeller
             set_Text((object)this.Date_label);
             this.WindowState = FormWindowState.Maximized;
             showPermissions();
+            this.FormClosing += new FormClosingEventHandler(this.Exit);
         }
 
         private void showPermissions()
@@ -121,20 +122,30 @@ namespace CustomerSeller
 
         private void panel7_Click(object sender, EventArgs e)
         {
-            this.Main_panel.Controls.Clear();
-            Application.DoEvents();
-            Thread.Sleep(50);
-            Main m = new Main();
-            m.Dock = DockStyle.Fill;
-            this.Main_panel.Controls.Add(m);
-            this.Hide();
-            this.loginForm.Show();
+            if (DialogResult.Yes == MessageBox.Show("是否注销", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+            {
+                Exit_Message_Notice("正在注销...");
+                this.Main_panel.Controls.Clear();
+                Application.DoEvents();
+                Thread.Sleep(50);
+                Main m = new Main();
+                m.Dock = DockStyle.Fill;
+                this.Main_panel.Controls.Add(m);
+                this.loginForm.Show();
+                this.FormClosing -= new FormClosingEventHandler(this.Exit);
+                this.Close();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void panel8_MouseEnter(object sender, EventArgs e)
         {
             Set_MouseEnter(sender);
         }
+
         private void Set_MouseEnter(object sender)
         {
             ((Panel)sender).BorderStyle = BorderStyle.Fixed3D;
@@ -150,8 +161,6 @@ namespace CustomerSeller
             Set_MouseLeave(sender);
         }
 
-
-
         private void panel9_MouseEnter(object sender, EventArgs e)
         {
             Set_MouseEnter(sender);
@@ -162,14 +171,15 @@ namespace CustomerSeller
             Set_MouseLeave(sender);
         }
 
-        private void panel9_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
-
         private void panel9_Click(object sender, EventArgs e)
         {
-            this.Exit();
+            this.Main_panel.Controls.Clear();
+            Application.DoEvents();
+            Thread.Sleep(50);
+            Main m = new Main();
+            m.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(m);
+            App_Exit();
         }
 
         /// <summary>
@@ -198,6 +208,7 @@ namespace CustomerSeller
             this.Main_panel.Controls.Remove(L);
             Application.DoEvents();
         }
+
         /// <summary>
         /// 关闭系统
         /// </summary>
@@ -206,8 +217,6 @@ namespace CustomerSeller
             if (DialogResult.Yes == MessageBox.Show("是否关闭系统", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
                 Exit_Message_Notice("正在关闭系统.");
-                //Exit_Message_Notice("正在关闭系统..");
-                //Exit_Message_Notice("正在关闭系统...");
                 ShutDown.App_Exit();
             }
             else
@@ -215,6 +224,7 @@ namespace CustomerSeller
                 ;
             }
         }
+
         private void App_Return()
         {
             if (DialogResult.Yes == MessageBoxEx.Show("是否返回主界面", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
@@ -229,7 +239,7 @@ namespace CustomerSeller
             }
             else
             {
-                ;
+                return;
             }
         }
 
@@ -239,6 +249,7 @@ namespace CustomerSeller
         {
             App_Return();
         }
+
         private void set_Text(object sender)
         {
             string Datastr = null;
@@ -249,13 +260,6 @@ namespace CustomerSeller
             day = System.DateTime.Today.Day;
             Datastr=ShutDown.CaculateWeekDay(year, month, day);
             ((LabelX)sender).Text = year.ToString() + "年" + month.ToString() + "月" + day.ToString() + "日  " + Datastr+" ";
-        }
-
-
-        //
-        private void buttonItem4_Click(object sender, EventArgs e)
-        {
-            
         }
 
         //修改
@@ -287,9 +291,6 @@ namespace CustomerSeller
             }
         }
 
-
-
-
         //删除贵宾信息
         private void Add_CustomerInfo_Click(object sender, EventArgs e)
         {
@@ -306,28 +307,6 @@ namespace CustomerSeller
             }
            
         }
-
-      
-
-
-        //添加用户
-        private void add_User_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //this.Main_panel.Controls.Clear();
-                //User_Add control = new User_Add();
-                //control.set_Visible(false);
-                //control.Dock = DockStyle.Left;
-                //this.Main_panel.Controls.Add(control);
-            }
-            catch (Exception ex)
-            {
-                MessageBoxEx.Show(ex.Message);
-            }
-        }
-
-      
 
         //添加贵宾信息
         private void Query_CustomerInfo_Click(object sender, EventArgs e)
@@ -354,21 +333,6 @@ namespace CustomerSeller
             if (UserInfo.Get_User().User_Grade=="0")
             {
                 this.sideBar1.Panels.Remove("user_ManageMent");
-            }
-        }
-
-        private void bi_profit_Click(object sender, EventArgs e)
-        {
-             try
-            {
-                //this.Main_panel.Controls.Clear();
-                //Control_TG control = new Control_TG();
-                //control.Dock = DockStyle.Left;
-                //this.Main_panel.Controls.Add(control);
-            }
-            catch (Exception ex)
-            {
-                MessageBoxEx.Show(ex.Message);
             }
         }
 
@@ -435,12 +399,7 @@ namespace CustomerSeller
             this.Main_panel.Controls.Add(roleList);
         }
 
-        private void Form_Main_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Exit();
-        }
-
-        private void Exit()
+        private void Exit(object sender, FormClosingEventArgs e)
         {
             this.Main_panel.Controls.Clear();
             Application.DoEvents();
@@ -448,7 +407,15 @@ namespace CustomerSeller
             Main m = new Main();
             m.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(m);
-            App_Exit();
+            if (DialogResult.Yes == MessageBox.Show("是否关闭系统", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+            {
+                Exit_Message_Notice("正在关闭系统.");
+                ShutDown.App_Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

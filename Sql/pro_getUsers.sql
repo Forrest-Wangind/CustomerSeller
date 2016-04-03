@@ -11,7 +11,17 @@ CREATE PROCEDURE pro_getUsers
 	@entryTimeEnd datetime
 AS
 BEGIN
-	SELECT * FROM UserInfo
+	SELECT UserID as '用户编号',
+	UserName as '姓名',
+	'性别'=
+	CASE
+		WHEN UserGender = 'm' THEN '男'
+		WHEN UserGender = 'f' THEN '女'
+		ELSE '未知'
+	END,
+	EntryTime as '入职时间',
+	Exten as '分机号'
+	FROM UserInfo
 	WHERE 
 		((UserID like '%' + @id + '%') or (@id is null))
 		AND ((UserName like '%' + @name + '%') or (UserName is null))
@@ -21,5 +31,7 @@ END
 
 select GETDATE();
 
-execute pro_getUsers 'T','','m','','2016-02-28'
+execute pro_getUsers '','','','',''
+
+SELECT * FROM UserInfo
 

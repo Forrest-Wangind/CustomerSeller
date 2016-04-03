@@ -156,7 +156,6 @@
             this.panel9.Size = new System.Drawing.Size(36, 48);
             this.panel9.TabIndex = 5;
             this.panel9.Click += new System.EventHandler(this.panel9_Click);
-            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             this.panel9.MouseEnter += new System.EventHandler(this.panel9_MouseEnter);
             this.panel9.MouseLeave += new System.EventHandler(this.panel9_MouseLeave);
             // 
@@ -491,7 +490,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Main";
             this.Text = "客户销售管理系统--主界面";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Main_FormClosed);
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);

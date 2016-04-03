@@ -47,6 +47,7 @@ namespace CustomerSeller.UIL.User
                     this.gp_password.Text = "新密码";
                     this.gp_password.Visible = true;
                     this.tb_user_id.Enabled = true;
+                    this.gp_role.Visible = true;
                     this.tb_extension.Enabled = true;
                     break;
                 case "update":
@@ -55,7 +56,7 @@ namespace CustomerSeller.UIL.User
                     this.gp_password.Visible = true;
                     this.dt_entryTine.Enabled = true;
                     //如果有修改其他用户的权限
-                    if(UserInfo.Get_User().User_permissions.Contains("001004"))
+                    if (UserInfo.Get_User().User_permissions.Contains("001004"))
                     {
                         this.gp_role.Visible = true;
                     }
@@ -193,10 +194,17 @@ namespace CustomerSeller.UIL.User
                     user.gender = this.cb_gender.SelectedValue.ToString();
                     user.entryTimeStart = this.dt_entryTine.Value;
 
-                    if (CustomerSellerService.getService().AddUser(user))
-                        MessageBoxEx.Show("添加用户成功！");
+                    if (!user.role.Equals(string.Empty))
+                    {
+                        if (CustomerSellerService.getService().AddUser(user))
+                            MessageBoxEx.Show("添加用户成功！");
+                        else
+                            MessageBoxEx.Show("添加用户失败，请仔细核对您输入的信息！");
+                    }
                     else
-                        MessageBoxEx.Show("添加用户失败，请仔细核对您输入的信息！");
+                    {
+                        MessageBoxEx.Show("请给该用户选择一个角色");
+                    }
                 }
             }
             else {
@@ -240,17 +248,25 @@ namespace CustomerSeller.UIL.User
                         user.userID = this.tb_user_id.Text.Trim();
                         user.userName = this.tb_user_name.Text.Trim();
                         user.password = Encrypt.DESEncrypt(this.tb_password.Text, UserInfo.pwdKey);
+                        user.role = getSelectedTree(this.tree_role);
                         user.gender = this.cb_gender.SelectedValue.ToString();
                         user.exten = this.tb_extension.Text.Trim();
                         user.entryTimeStart = this.dt_entryTine.Value;
 
-                        if (CustomerSellerService.getService().UpdateUser(user))
+                        if (!user.role.Equals(string.Empty))
                         {
-                            MessageBoxEx.Show("修改用户成功");
+                            if (CustomerSellerService.getService().UpdateUser(user))
+                            {
+                                MessageBoxEx.Show("修改用户成功");
+                            }
+                            else
+                            {
+                                MessageBoxEx.Show("修改用户失败，请仔细核对您输入的信息");
+                            }
                         }
                         else
                         {
-                            MessageBoxEx.Show("修改用户失败，请仔细核对您输入的信息");
+                            MessageBoxEx.Show("请给该用户选择一个角色");
                         }
                     }
                     catch (Exception ex)
@@ -283,6 +299,24 @@ namespace CustomerSeller.UIL.User
                 catch (Exception ex)
                 {
                     MessageBoxEx.Show(ex.Message, "错误:");
+                }
+            }
+        }
+
+        private void tree_role_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (e.Action == TreeViewAction.ByKeyboard || e.Action == TreeViewAction.ByMouse)
+            {
+                if (e.Node.Checked)
+                {
+
+                    foreach (TreeNode node in tree_role.Nodes)
+                    {
+                        if (node.Name != e.Node.Name)
+                        {
+                            node.Checked = false;
+                        }
+                    }
                 }
             }
         }

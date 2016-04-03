@@ -16,8 +16,6 @@ namespace CustomerSeller
 {
     public partial class _Login : Office2007Form
     {
-        internal Form_Main Home;
-
         public _Login()
         {
             InitializeComponent();
@@ -76,11 +74,7 @@ namespace CustomerSeller
                 {    
                     UserInfo.Get_User().get_permissions();
                     this.Hide();
-                    if (Home != null)
-                    {
-                        Home.Dispose();
-                    }
-                    Home = new Form_Main(this);
+                    Form_Main Home = new Form_Main(this);
                     Home.Show();
                     Home.Activate();
                     this.Hide();

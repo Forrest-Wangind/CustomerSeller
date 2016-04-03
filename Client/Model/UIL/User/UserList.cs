@@ -86,7 +86,7 @@ namespace CustomerSeller.UIL.User
         private void dgv_userList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex != -1)
-                selectedUserId = this.dgv_userList.Rows[e.RowIndex].Cells["UserID"].Value.ToString();
+                selectedUserId = this.dgv_userList.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
     }
 }

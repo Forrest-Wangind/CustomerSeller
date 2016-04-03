@@ -9,7 +9,10 @@ CREATE PROCEDURE pro_getRoles
 	@remark nvarchar(1000)
 AS
 BEGIN
-	SELECT * FROM RoleInfo
+	SELECT RoleID as '½ÇÉ«±àºÅ',
+		RoleName as 'Ãû³Æ',
+		RoleRemark as '±¸×¢'
+	FROM RoleInfo
 	WHERE 
 		((RoleID like '%' + @id + '%') or (@id is null))
 		AND ((RoleName like '%' + @name + '%') or (@name is null))

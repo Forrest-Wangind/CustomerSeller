@@ -58,7 +58,7 @@ namespace CustomerSeller.UIL.Role
         private void dgv_roles_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex != -1)
-                selectedRoleId = this.dgv_roles.Rows[e.RowIndex].Cells["RoleID"].Value.ToString();
+                selectedRoleId = this.dgv_roles.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
     }
 }

@@ -330,6 +330,7 @@
             this.tree_role.Name = "tree_role";
             this.tree_role.Size = new System.Drawing.Size(420, 211);
             this.tree_role.TabIndex = 18;
+            this.tree_role.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tree_role_AfterCheck);
             // 
             // SingleUser
             // 
