@@ -19,7 +19,7 @@ namespace CustomerSeller.UIL
             get;
             set;
         }
-        public string  CustomerPhone
+        public string CustomerPhone
         {
             get;
             set;
@@ -32,7 +32,7 @@ namespace CustomerSeller.UIL
 
         private void bt_Cancer_Click(object sender, EventArgs e)
         {
-            this.tb_Agender.SelectedIndex=-1;
+            this.tb_Agender.SelectedIndex = -1;
             this.tb_CustomerAddress.Clear();
             this.tb_CustomerName.Clear();
             this.tb_CustomerPhone.Clear();
@@ -46,14 +46,14 @@ namespace CustomerSeller.UIL
             var id = DR["CustomerID"].ToString();
             var client = CustomerInfo.GetServiceInstance();
             var dataset = client.GetCustomerDetail(id);
-            this.tb_Agender.Text = dataset.Tables[0].Rows[0]["CustomerGender"].ToString();
-            this.tb_CustomerAddress.Text = dataset.Tables[0].Rows[0]["CustomerAddress"].ToString();
-            this.tb_CustomerName.Text = dataset.Tables[0].Rows[0]["CustomerName"].ToString();
-            this.tb_Remark.Text = dataset.Tables[0].Rows[0]["Remark"].ToString();
-            this.dtp_SuccessTime.Value = Convert.ToDateTime(dataset.Tables[0].Rows[0]["DealTime"].ToString());
-            SetStatus(dataset, dataset.Tables[0].Rows[0]["PhoneStratus"].ToString());
-            CustomerPhone = dataset.Tables[0].Rows[0]["CustomerPhone"].ToString();
-            this.tb_CustomerPhone.Text = CustomerPhone.Substring(0, 3) + "*****" + CustomerPhone.Substring(8, 3);
+            this.tb_Agender.Text = dataset.Tables[0].Rows[0]["CustomerGender"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["CustomerGender"].ToString();
+            this.tb_CustomerAddress.Text = dataset.Tables[0].Rows[0]["CustomerAddress"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["CustomerAddress"].ToString();
+            this.tb_CustomerName.Text = dataset.Tables[0].Rows[0]["CustomerName"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["CustomerName"].ToString();
+            this.tb_Remark.Text = dataset.Tables[0].Rows[0]["Remark"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["Remark"].ToString();
+            this.dtp_SuccessTime.Value = Convert.ToDateTime(dataset.Tables[0].Rows[0]["DealTime"] == DBNull.Value ? null : dataset.Tables[0].Rows[0]["DealTime"]);
+            SetStatus(dataset, dataset.Tables[0].Rows[0]["PhoneStratus"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["PhoneStratus"].ToString());
+            CustomerPhone = dataset.Tables[0].Rows[0]["CustomerPhone"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["CustomerPhone"].ToString();
+            this.tb_CustomerPhone.Text = CustomerPhone.Length == 11 ? CustomerPhone.Substring(0, 3) + "*****" + CustomerPhone.Substring(8, 3) : string.Empty;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 
         }
@@ -89,12 +89,12 @@ namespace CustomerSeller.UIL
         }
 
         private void bt_RecycleCustomerPhone_Click(object sender, EventArgs e)
-        {        
+        {
             try
             {
                 var employeeID = UserInfo.Get_User().User_Id;
-                var result = CustomerInfo.GetServiceInstance().RecycleCustomerPhone(DR["CustomerID"].ToString(),employeeID);
-               
+                var result = CustomerInfo.GetServiceInstance().RecycleCustomerPhone(DR["CustomerID"].ToString(), employeeID);
+
                 switch (result)
                 {
                     case 1:
@@ -117,9 +117,14 @@ namespace CustomerSeller.UIL
         {
             try
             {
+                if(string.IsNullOrEmpty(CustomerPhone))
+                {
+                    MessageBoxEx.Show("不是有效的电话！", "提示");
+                    return;
+                }
                 var Exten = UserInfo.Get_User().User_Exten;
                 var employeeID = UserInfo.Get_User().User_Id;
-                if(!CustomerInfo.GetServiceInstance().CallMobilePhone(CustomerPhone.Trim(), employeeID, Exten))
+                if (!CustomerInfo.GetServiceInstance().CallMobilePhone(CustomerPhone.Trim(), employeeID, Exten))
                     throw new Exception("异常");
             }
             catch
@@ -128,7 +133,7 @@ namespace CustomerSeller.UIL
             }
         }
 
-       
+
 
     }
 

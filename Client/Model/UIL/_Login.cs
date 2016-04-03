@@ -16,14 +16,11 @@ namespace CustomerSeller
 {
     public partial class _Login : Office2007Form
     {
+        internal Form_Main Home;
+
         public _Login()
         {
             InitializeComponent();
-        }
-
-        private void _Login_Load(object sender, EventArgs e)
-        {
-            this.ControlBox = false;
         }
 
         private void tb_userId_KeyDown(object sender, KeyEventArgs e)
@@ -36,7 +33,6 @@ namespace CustomerSeller
                 this.tb_Pwd.Focus();
 
         }
-
 
         private void tb_Pwd_KeyDown(object sender, KeyEventArgs e)
         {
@@ -77,29 +73,41 @@ namespace CustomerSeller
                 UserInfo.Get_User().User_Pwd = this.tb_Pwd.Text.Trim();
                 //用户名和密码匹配
                 if (JudgeUserExists(UserInfo.Get_User().User_Id, UserInfo.Get_User().User_Pwd))
-                {
+                {    
                     UserInfo.Get_User().get_permissions();
                     this.Hide();
-                    Form_Main fm = new Form_Main(this);
-                    fm.Show();
-                    fm.Activate();
+                    if (Home != null)
+                    {
+                        Home.Dispose();
+                    }
+                    Home = new Form_Main(this);
+                    Home.Show();
+                    Home.Activate();
                     this.Hide();
+                }
+                else
+                {
+                    MessageBoxEx.Show("用户名和密码不正确!", "提示");
+                    this.tb_Pwd.Clear();
+                    this.tb_userId.Clear();
+                    this.tb_userId.Focus();
                 }
 
             }
         }
 
-        private Boolean JudgeUserExists(string UserID,string PassWord)
-        {   
-            var result=false;
-            var loginUser = new User() { userID = UserID, password = Encrypt.DESEncrypt(PassWord, Encrypt.EncryptKey) };
+        private Boolean JudgeUserExists(string UserID, string PassWord)
+        {
+            var result = false;
+            var loginUser = new User() { userID = UserID, password = Encrypt.DESEncrypt(PassWord, UserInfo.pwdKey) };
             var ds = CustomerInfo.GetServiceInstance().GetUserInfo(loginUser);
-            if(ds!=null&&ds.Tables[0].Rows.Count>0)
-            {   var flag= ds.Tables[0].Rows[0][0].ToString();
-                if(!flag.Equals("-1")&&!flag.Equals("-2"))
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                var flag = ds.Tables[0].Rows[0][0].ToString();
+                if (!flag.Equals("-1") && !flag.Equals("-2"))
                 {
                     UserInfo.Get_User().User_Id = ds.Tables[0].Rows[0]["UserID"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["UserID"].ToString();
-                    UserInfo.Get_User().User_Exten =  ds.Tables[0].Rows[0]["Exten"]==DBNull.Value ? string.Empty:ds.Tables[0].Rows[0]["Exten"].ToString();
+                    UserInfo.Get_User().User_Exten = ds.Tables[0].Rows[0]["Exten"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["Exten"].ToString();
                     UserInfo.Get_User().User_Grade = ds.Tables[0].Rows[0]["RoleName"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["RoleName"].ToString();
                     result = true;
                 }

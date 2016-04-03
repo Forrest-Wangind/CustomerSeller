@@ -127,8 +127,8 @@ namespace CustomerSeller
             Main m = new Main();
             m.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(m);
+            this.Hide();
             this.loginForm.Show();
-            this.Close();
         }
 
         private void panel8_MouseEnter(object sender, EventArgs e)
@@ -164,19 +164,14 @@ namespace CustomerSeller
 
         private void panel9_Paint(object sender, PaintEventArgs e)
         {
-            //ShutDown.App_Exit();
+           
         }
 
         private void panel9_Click(object sender, EventArgs e)
         {
-            this.Main_panel.Controls.Clear();
-            Application.DoEvents();
-            Thread.Sleep(50);
-            Main m = new Main();
-            m.Dock = DockStyle.Fill;
-            this.Main_panel.Controls.Add(m);
-            App_Exit();
+            this.Exit();
         }
+
         /// <summary>
         /// 设置信息条的信息
         /// </summary>
@@ -230,8 +225,6 @@ namespace CustomerSeller
                 Main m = new Main();
                 m.Dock = DockStyle.Fill;
                 this.Main_panel.Controls.Add(m);
-                //Exit_Message_Notice("正在返回系统主界面..");
-                //Exit_Message_Notice("正在返回系统主界面...");
                 ShutDown.Set_Panel_Message(this.Put_panel, this.Main_panel);
             }
             else
@@ -440,6 +433,22 @@ namespace CustomerSeller
             UIL.Role.RoleDetail roleList = new UIL.Role.RoleDetail();
             roleList.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(roleList);
+        }
+
+        private void Form_Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Exit();
+        }
+
+        private void Exit()
+        {
+            this.Main_panel.Controls.Clear();
+            Application.DoEvents();
+            Thread.Sleep(50);
+            Main m = new Main();
+            m.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(m);
+            App_Exit();
         }
     }
 }

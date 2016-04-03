@@ -62,7 +62,6 @@
             this.tb_userId.Name = "tb_userId";
             this.tb_userId.Size = new System.Drawing.Size(157, 21);
             this.tb_userId.TabIndex = 2;
-            this.tb_userId.Text = "T04471";
             this.tb_userId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_userId_KeyDown);
             // 
             // tb_Pwd
@@ -76,7 +75,6 @@
             this.tb_Pwd.PasswordChar = '*';
             this.tb_Pwd.Size = new System.Drawing.Size(157, 21);
             this.tb_Pwd.TabIndex = 3;
-            this.tb_Pwd.Text = "123";
             this.tb_Pwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_Pwd_KeyDown);
             // 
             // bt_Ok
@@ -117,7 +115,6 @@
             this.MinimizeBox = false;
             this.Name = "_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this._Login_Load);
             this.ResumeLayout(false);
 
         }
