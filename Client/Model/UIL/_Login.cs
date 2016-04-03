@@ -80,7 +80,7 @@ namespace CustomerSeller
                 {
                     UserInfo.Get_User().get_permissions();
                     this.Hide();
-                    Form_Main fm = new Form_Main();
+                    Form_Main fm = new Form_Main(this);
                     fm.Show();
                     fm.Activate();
                     this.Hide();

@@ -19,14 +19,24 @@ namespace CustomerSeller
 {
     public partial class Form_Main : Office2007Form
     {
-      
+        private _Login loginForm;
+
         public Form_Main()
         {   
             InitializeComponent();
             this.DoubleBuffered = true;
             set_Text((object)this.Date_label);
             this.WindowState = FormWindowState.Maximized;
+            showPermissions();
+        }
 
+        public Form_Main(_Login login)
+        {
+            InitializeComponent();
+            this.loginForm = login;
+            this.DoubleBuffered = true;
+            set_Text((object)this.Date_label);
+            this.WindowState = FormWindowState.Maximized;
             showPermissions();
         }
 
@@ -44,7 +54,7 @@ namespace CustomerSeller
                         this.AddUser.Visible = true;
                         break;
                     case "001002":
-                        this.AllUsers.Visible = true;
+                        this.AddUser.Visible = true;
                         break;
                     case "001006":
                         this.btitemPhoneParams.Visible = true;
@@ -53,6 +63,15 @@ namespace CustomerSeller
                         this.RoleManagement.Visible = true;
                         break;
                     case "003":
+                        this.Customer_Management.Visible = true;
+                        break;
+                    case "003001":
+                        this.Import_CustomerInfo.Visible = true;
+                        break;
+                    case "003002":
+                        this.Add_CustomerInfo.Visible = true;
+                        break;
+                    case "003003":
                         this.Customer_Management.Visible = true;
                         break;
                     default:
@@ -74,7 +93,6 @@ namespace CustomerSeller
             this.Time_label.Text = System.DateTime.Now.ToString("HH:mm:ss");
         }
 
-      
         private void wsd()
         {
             if (DialogResult.Yes == MessageBoxEx.Show("是否关机", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
@@ -109,7 +127,8 @@ namespace CustomerSeller
             Main m = new Main();
             m.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(m);
-            wsd();
+            this.loginForm.Show();
+            this.Close();
         }
 
         private void panel8_MouseEnter(object sender, EventArgs e)

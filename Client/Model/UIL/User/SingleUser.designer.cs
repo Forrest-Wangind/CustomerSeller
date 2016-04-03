@@ -40,16 +40,18 @@
             this.tb_password = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.gp_password = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.tree_role = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.tb_password_again = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cb_change_pass = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.tb_extension = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.gp_role = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.tree_role = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.dt_entryTine)).BeginInit();
             this.gp_password.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.gp_role.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelX1
@@ -198,11 +200,10 @@
             // 
             this.gp_password.CanvasColor = System.Drawing.SystemColors.Control;
             this.gp_password.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.gp_password.Controls.Add(this.tree_role);
             this.gp_password.Controls.Add(this.panel1);
             this.gp_password.Location = new System.Drawing.Point(550, 47);
             this.gp_password.Name = "gp_password";
-            this.gp_password.Size = new System.Drawing.Size(426, 513);
+            this.gp_password.Size = new System.Drawing.Size(426, 196);
             // 
             // 
             // 
@@ -227,25 +228,16 @@
             this.gp_password.Text = "修改密码";
             this.gp_password.Visible = false;
             // 
-            // tree_role
-            // 
-            this.tree_role.CheckBoxes = true;
-            this.tree_role.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tree_role.Location = new System.Drawing.Point(0, 158);
-            this.tree_role.Name = "tree_role";
-            this.tree_role.Size = new System.Drawing.Size(420, 331);
-            this.tree_role.TabIndex = 17;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tb_password);
             this.panel1.Controls.Add(this.labelX5);
             this.panel1.Controls.Add(this.labelX6);
             this.panel1.Controls.Add(this.tb_password_again);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 158);
+            this.panel1.Size = new System.Drawing.Size(420, 172);
             this.panel1.TabIndex = 16;
             // 
             // labelX6
@@ -298,10 +290,52 @@
             this.labelX9.TabIndex = 14;
             this.labelX9.Text = "分机号：";
             // 
+            // gp_role
+            // 
+            this.gp_role.CanvasColor = System.Drawing.SystemColors.Control;
+            this.gp_role.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.gp_role.Controls.Add(this.tree_role);
+            this.gp_role.Location = new System.Drawing.Point(550, 256);
+            this.gp_role.Name = "gp_role";
+            this.gp_role.Size = new System.Drawing.Size(426, 235);
+            // 
+            // 
+            // 
+            this.gp_role.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.gp_role.Style.BackColorGradientAngle = 90;
+            this.gp_role.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.gp_role.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.gp_role.Style.BorderBottomWidth = 1;
+            this.gp_role.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.gp_role.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.gp_role.Style.BorderLeftWidth = 1;
+            this.gp_role.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.gp_role.Style.BorderRightWidth = 1;
+            this.gp_role.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.gp_role.Style.BorderTopWidth = 1;
+            this.gp_role.Style.CornerDiameter = 4;
+            this.gp_role.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.gp_role.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.gp_role.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.gp_role.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            this.gp_role.TabIndex = 16;
+            this.gp_role.Text = "修改角色";
+            this.gp_role.Visible = false;
+            // 
+            // tree_role
+            // 
+            this.tree_role.CheckBoxes = true;
+            this.tree_role.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tree_role.Location = new System.Drawing.Point(0, 0);
+            this.tree_role.Name = "tree_role";
+            this.tree_role.Size = new System.Drawing.Size(420, 211);
+            this.tree_role.TabIndex = 18;
+            // 
             // SingleUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gp_role);
             this.Controls.Add(this.tb_extension);
             this.Controls.Add(this.labelX9);
             this.Controls.Add(this.cb_change_pass);
@@ -320,6 +354,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dt_entryTine)).EndInit();
             this.gp_password.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.gp_role.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -342,8 +377,9 @@
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.CheckBoxX cb_change_pass;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TreeView tree_role;
         private DevComponents.DotNetBar.Controls.TextBoxX tb_extension;
         private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.DotNetBar.Controls.GroupPanel gp_role;
+        private System.Windows.Forms.TreeView tree_role;
     }
 }

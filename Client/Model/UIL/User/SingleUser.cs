@@ -37,13 +37,14 @@ namespace CustomerSeller.UIL.User
             this.cb_gender.DataSource = lists;
 
             //显示系统中所有的角色
-            showRoles();
+            showRoles(userId);
 
             switch (operation)
             {
                 case "add":
                     initButtonSubmit("添加");
                     this.dt_entryTine.Enabled = true;
+                    this.gp_password.Text = "新密码";
                     this.gp_password.Visible = true;
                     this.tb_user_id.Enabled = true;
                     this.tb_extension.Enabled = true;
@@ -51,7 +52,13 @@ namespace CustomerSeller.UIL.User
                 case "update":
                     initButtonSubmit("修改");
                     this.cb_change_pass.Visible = true;
+                    this.gp_password.Visible = true;
                     this.dt_entryTine.Enabled = true;
+                    //如果有修改其他用户的权限
+                    if(UserInfo.Get_User().User_permissions.Contains("001004"))
+                    {
+                        this.gp_role.Visible = true;
+                    }
                     //如果有修改分机号的权限
                     if (UserInfo.Get_User().User_permissions.Contains("001005"))
                     {
@@ -80,9 +87,9 @@ namespace CustomerSeller.UIL.User
         /// <summary>
         /// 显示系统中所有的角色
         /// </summary>
-        private void showRoles()
+        private void showRoles(string userId)
         {
-            DataSet roles = CustomerSellerService.getService().GetUserRoles(UserInfo.Get_User().User_Id);
+            DataSet roles = CustomerSellerService.getService().GetUserRoles(userId);
             if (roles != null && roles.Tables[0].Rows.Count > 0)
             {
                 int index = 0;

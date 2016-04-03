@@ -51,16 +51,16 @@
             this.expandableSplitter2 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.panel4 = new System.Windows.Forms.Panel();
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
-            this.Customer_Management = new DevComponents.DotNetBar.SideBarPanelItem();
-            this.Query_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
-            this.Add_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
-            this.Import_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
             this.user_ManageMent = new DevComponents.DotNetBar.SideBarPanelItem();
             this.AllUsers = new DevComponents.DotNetBar.ButtonItem();
             this.singleUser = new DevComponents.DotNetBar.ButtonItem();
             this.AddUser = new DevComponents.DotNetBar.ButtonItem();
             this.btn_update_user = new DevComponents.DotNetBar.ButtonItem();
             this.btitemPhoneParams = new DevComponents.DotNetBar.ButtonItem();
+            this.Customer_Management = new DevComponents.DotNetBar.SideBarPanelItem();
+            this.Query_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
+            this.Add_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
+            this.Import_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
             this.RoleManagement = new DevComponents.DotNetBar.SideBarPanelItem();
             this.AllRoles = new DevComponents.DotNetBar.ButtonItem();
             this.RoleDetail = new DevComponents.DotNetBar.ButtonItem();
@@ -175,7 +175,7 @@
             this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel7.Location = new System.Drawing.Point(110, 11);
+            this.panel7.Location = new System.Drawing.Point(111, 11);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(39, 49);
             this.panel7.TabIndex = 0;
@@ -352,45 +352,6 @@
             this.sideBar1.TabIndex = 0;
             this.sideBar1.Text = "删除用户";
             // 
-            // Customer_Management
-            // 
-            this.Customer_Management.FontBold = true;
-            this.Customer_Management.Icon = ((System.Drawing.Icon)(resources.GetObject("Customer_Management.Icon")));
-            this.Customer_Management.Name = "Customer_Management";
-            this.Customer_Management.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.Query_CustomerInfo,
-            this.Add_CustomerInfo,
-            this.Import_CustomerInfo});
-            this.Customer_Management.Text = "客户信息管理";
-            this.Customer_Management.Visible = false;
-            // 
-            // Query_CustomerInfo
-            // 
-            this.Query_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.Query_CustomerInfo.ImagePaddingHorizontal = 8;
-            this.Query_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.Query_CustomerInfo.Name = "Query_CustomerInfo";
-            this.Query_CustomerInfo.Text = "查询客户数据";
-            this.Query_CustomerInfo.Click += new System.EventHandler(this.Query_CustomerInfo_Click);
-            // 
-            // Add_CustomerInfo
-            // 
-            this.Add_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.Add_CustomerInfo.ImagePaddingHorizontal = 8;
-            this.Add_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.Add_CustomerInfo.Name = "Add_CustomerInfo";
-            this.Add_CustomerInfo.Text = "新增客户数据";
-            this.Add_CustomerInfo.Click += new System.EventHandler(this.Add_CustomerInfo_Click);
-            // 
-            // Import_CustomerInfo
-            // 
-            this.Import_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.Import_CustomerInfo.ImagePaddingHorizontal = 8;
-            this.Import_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.Import_CustomerInfo.Name = "Import_CustomerInfo";
-            this.Import_CustomerInfo.Text = "导入客户数据";
-            this.Import_CustomerInfo.Click += new System.EventHandler(this.Import_CustomerInfo_Click);
-            // 
             // user_ManageMent
             // 
             this.user_ManageMent.FontBold = true;
@@ -452,6 +413,45 @@
             this.btitemPhoneParams.Text = "修改电话分配数量";
             this.btitemPhoneParams.Visible = false;
             this.btitemPhoneParams.Click += new System.EventHandler(this.btitemPhoneParams_Click);
+            // 
+            // Customer_Management
+            // 
+            this.Customer_Management.FontBold = true;
+            this.Customer_Management.Icon = ((System.Drawing.Icon)(resources.GetObject("Customer_Management.Icon")));
+            this.Customer_Management.Name = "Customer_Management";
+            this.Customer_Management.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.Query_CustomerInfo,
+            this.Add_CustomerInfo,
+            this.Import_CustomerInfo});
+            this.Customer_Management.Text = "客户信息管理";
+            this.Customer_Management.Visible = false;
+            // 
+            // Query_CustomerInfo
+            // 
+            this.Query_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.Query_CustomerInfo.ImagePaddingHorizontal = 8;
+            this.Query_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.Query_CustomerInfo.Name = "Query_CustomerInfo";
+            this.Query_CustomerInfo.Text = "查询客户数据";
+            this.Query_CustomerInfo.Click += new System.EventHandler(this.Query_CustomerInfo_Click);
+            // 
+            // Add_CustomerInfo
+            // 
+            this.Add_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.Add_CustomerInfo.ImagePaddingHorizontal = 8;
+            this.Add_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.Add_CustomerInfo.Name = "Add_CustomerInfo";
+            this.Add_CustomerInfo.Text = "新增客户数据";
+            this.Add_CustomerInfo.Click += new System.EventHandler(this.Add_CustomerInfo_Click);
+            // 
+            // Import_CustomerInfo
+            // 
+            this.Import_CustomerInfo.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.Import_CustomerInfo.ImagePaddingHorizontal = 8;
+            this.Import_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.Import_CustomerInfo.Name = "Import_CustomerInfo";
+            this.Import_CustomerInfo.Text = "导入客户数据";
+            this.Import_CustomerInfo.Click += new System.EventHandler(this.Import_CustomerInfo_Click);
             // 
             // RoleManagement
             // 
