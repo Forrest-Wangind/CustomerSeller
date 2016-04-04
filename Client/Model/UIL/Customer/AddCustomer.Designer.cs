@@ -40,6 +40,11 @@
             this.cb_Agender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItemMen = new DevComponents.Editors.ComboItem();
             this.comboItemWomen = new DevComponents.Editors.ComboItem();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxExPhoneType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItemA = new DevComponents.Editors.ComboItem();
+            this.comboItemB = new DevComponents.Editors.ComboItem();
+            this.comboItemC = new DevComponents.Editors.ComboItem();
             this.SuspendLayout();
             // 
             // bt_Del
@@ -152,10 +157,47 @@
             // 
             this.comboItemWomen.Text = "女";
             // 
+            // labelX2
+            // 
+            this.labelX2.Location = new System.Drawing.Point(23, 132);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(75, 23);
+            this.labelX2.TabIndex = 35;
+            this.labelX2.Text = "电话类型:";
+            // 
+            // comboBoxExPhoneType
+            // 
+            this.comboBoxExPhoneType.DisplayMember = "Text";
+            this.comboBoxExPhoneType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxExPhoneType.FormattingEnabled = true;
+            this.comboBoxExPhoneType.ItemHeight = 15;
+            this.comboBoxExPhoneType.Items.AddRange(new object[] {
+            this.comboItemA,
+            this.comboItemB,
+            this.comboItemC});
+            this.comboBoxExPhoneType.Location = new System.Drawing.Point(117, 132);
+            this.comboBoxExPhoneType.Name = "comboBoxExPhoneType";
+            this.comboBoxExPhoneType.Size = new System.Drawing.Size(194, 21);
+            this.comboBoxExPhoneType.TabIndex = 34;
+            // 
+            // comboItemA
+            // 
+            this.comboItemA.Text = "A类型电话";
+            // 
+            // comboItemB
+            // 
+            this.comboItemB.Text = "B类型电话";
+            // 
+            // comboItemC
+            // 
+            this.comboItemC.Text = "C类型电话";
+            // 
             // AddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelX2);
+            this.Controls.Add(this.comboBoxExPhoneType);
             this.Controls.Add(this.cb_Agender);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.tb_CustomerAddress);
@@ -186,5 +228,10 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx cb_Agender;
         private DevComponents.Editors.ComboItem comboItemMen;
         private DevComponents.Editors.ComboItem comboItemWomen;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxExPhoneType;
+        private DevComponents.Editors.ComboItem comboItemA;
+        private DevComponents.Editors.ComboItem comboItemB;
+        private DevComponents.Editors.ComboItem comboItemC;
     }
 }
