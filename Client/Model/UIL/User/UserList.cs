@@ -29,9 +29,9 @@ namespace CustomerSeller.UIL.User
         {
             InitializeComponent();
             ArrayList lists = new ArrayList();
+            lists.Add(new Model.comBoxItem("未知", "u"));
             lists.Add(new Model.comBoxItem("男", "m"));
             lists.Add(new Model.comBoxItem("女", "f"));
-            lists.Add(new Model.comBoxItem("未知", "u"));
             this.cb_gender.DisplayMember = "pkey";
             this.cb_gender.ValueMember = "pvalue";
             this.cb_gender.DataSource = lists;

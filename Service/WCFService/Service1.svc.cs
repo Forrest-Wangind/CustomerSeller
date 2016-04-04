@@ -458,5 +458,45 @@ namespace WCFService
                 return null;
             }
         }
+
+        public bool ChangeUserPwd(User user)
+        {
+            try
+            {
+                SqlResult result = UserDAL.ChangeUserPwd(user);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when change user password. " + user);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when change user password. " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool LogoutUser(string userId)
+        {
+            try
+            {
+                SqlResult result = UserDAL.LogoutUser(userId);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when logout user " + userId);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when when logout user. " + ex.Message);
+                return false;
+            }
+        }
     }
 }

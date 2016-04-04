@@ -157,5 +157,52 @@ namespace WCFService.DAL
             SqlResult result = new SqlResult(Convert.ToInt16(flagPara.Value), Convert.ToString(messagePara.Value));
             return result;
         }
+
+        internal static SqlResult ChangeUserPwd(User user)
+        {
+            int flag = 0;
+            string message = string.Empty;
+            List<SqlParameter> paras = new List<SqlParameter>();
+            paras.Add(new SqlParameter("@id", user.userID));
+            paras.Add(new SqlParameter("@pass", user.password));
+
+            SqlParameter flagPara = new SqlParameter("@flag", flag);
+            SqlParameter messagePara = new SqlParameter("@message", message);
+            flagPara.Direction = ParameterDirection.Output;
+            messagePara.Direction = ParameterDirection.Output;
+            messagePara.SqlDbType = SqlDbType.VarChar;
+            messagePara.Size = 100;
+            paras.Add(flagPara);
+            paras.Add(messagePara);
+
+            SqlServerHelper.ExecuteNonQuery(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_changeUserPwd", paras.ToArray());
+            flag = Convert.ToInt16(flagPara.Value);
+            message = Convert.ToString(messagePara.Value);
+            SqlResult result = new SqlResult(Convert.ToInt16(flagPara.Value), Convert.ToString(messagePara.Value));
+            return result;
+        }
+
+        internal static SqlResult LogoutUser(string userId)
+        {
+            int flag = 0;
+            string message = string.Empty;
+            List<SqlParameter> paras = new List<SqlParameter>();
+            paras.Add(new SqlParameter("@id", userId));
+
+            SqlParameter flagPara = new SqlParameter("@flag", flag);
+            SqlParameter messagePara = new SqlParameter("@message", message);
+            flagPara.Direction = ParameterDirection.Output;
+            messagePara.Direction = ParameterDirection.Output;
+            messagePara.SqlDbType = SqlDbType.VarChar;
+            messagePara.Size = 100;
+            paras.Add(flagPara);
+            paras.Add(messagePara);
+
+            SqlServerHelper.ExecuteNonQuery(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_logoutUser", paras.ToArray());
+            flag = Convert.ToInt16(flagPara.Value);
+            message = Convert.ToString(messagePara.Value);
+            SqlResult result = new SqlResult(Convert.ToInt16(flagPara.Value), Convert.ToString(messagePara.Value));
+            return result;
+        }
     }
 }

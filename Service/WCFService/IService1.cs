@@ -88,5 +88,12 @@ namespace WCFService
 
         [OperationContract]
         DataSet GetUserInfo(User user);
+
+        [OperationContract]
+        bool ChangeUserPwd(User user);
+
+        [OperationContract]
+        bool LogoutUser(string userId);
+
     }
 }

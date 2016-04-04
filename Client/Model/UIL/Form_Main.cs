@@ -20,6 +20,7 @@ namespace CustomerSeller
     public partial class Form_Main : Office2007Form
     {
         private _Login loginForm;
+        private UserInfo loginUser = UserInfo.Get_User();
 
         public Form_Main()
         {   
@@ -35,6 +36,9 @@ namespace CustomerSeller
             InitializeComponent();
             this.loginForm = login;
             this.DoubleBuffered = true;
+            this.lbl_user.Text = "工号：" + loginUser.User_Id;
+            this.lbl_user.Text += "  /姓名" + loginUser.UserName;
+            this.lbl_user.Text += "  /坐席工号" + loginUser.User_Exten;
             set_Text((object)this.Date_label);
             this.WindowState = FormWindowState.Maximized;
             showPermissions();
@@ -43,7 +47,7 @@ namespace CustomerSeller
 
         private void showPermissions()
         {
-            foreach (string permission in UserInfo.Get_User().User_permissions)
+            foreach (string permission in loginUser.User_permissions)
             {
                 switch (permission)
                 {
@@ -55,6 +59,9 @@ namespace CustomerSeller
                         this.AddUser.Visible = true;
                         break;
                     case "001002":
+                        this.AddUser.Visible = true;
+                        break;
+                    case "001004":
                         this.AddUser.Visible = true;
                         break;
                     case "001006":
@@ -94,22 +101,6 @@ namespace CustomerSeller
             this.Time_label.Text = System.DateTime.Now.ToString("HH:mm:ss");
         }
 
-        private void wsd()
-        {
-            if (DialogResult.Yes == MessageBoxEx.Show("是否关机", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
-            {   
-                
-                Exit_Message_Notice("正在关机.");
-                
-                ShutDown.DoExitWin(ShutDown.EWX_SHUTDOWN);
-            }
-            else
-            {
-                ;
-            }
-
-        }
-
         private void panel7_MouseEnter(object sender, EventArgs e)
         {
             Set_MouseEnter(sender);
@@ -125,15 +116,22 @@ namespace CustomerSeller
             if (DialogResult.Yes == MessageBox.Show("是否注销", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
                 Exit_Message_Notice("正在注销...");
-                this.Main_panel.Controls.Clear();
-                Application.DoEvents();
-                Thread.Sleep(50);
-                Main m = new Main();
-                m.Dock = DockStyle.Fill;
-                this.Main_panel.Controls.Add(m);
-                this.loginForm.Show();
-                this.FormClosing -= new FormClosingEventHandler(this.Exit);
-                this.Close();
+                if (logout())
+                {
+                    this.Main_panel.Controls.Clear();
+                    Application.DoEvents();
+                    Thread.Sleep(50);
+                    Main m = new Main();
+                    m.Dock = DockStyle.Fill;
+                    this.Main_panel.Controls.Add(m);
+                    this.loginForm.Show();
+                    this.FormClosing -= new FormClosingEventHandler(this.Exit);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("用户注销失败, 请联系系统管理员!");
+                }
             }
             else
             {
@@ -217,11 +215,18 @@ namespace CustomerSeller
             if (DialogResult.Yes == MessageBox.Show("是否关闭系统", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
                 Exit_Message_Notice("正在关闭系统.");
-                ShutDown.App_Exit();
+                if (logout())
+                {
+                    ShutDown.App_Exit();
+                }
+                else
+                {
+                    MessageBox.Show("用户退出失败, 请联系系统管理员!");
+                }
             }
             else
             {
-                ;
+                return;
             }
         }
 
@@ -330,7 +335,7 @@ namespace CustomerSeller
             Main m = new Main();
             m.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(m);
-            if (UserInfo.Get_User().User_Grade=="0")
+            if (loginUser.User_Grade=="0")
             {
                 this.sideBar1.Panels.Remove("user_ManageMent");
             }
@@ -354,12 +359,12 @@ namespace CustomerSeller
 
         private void singleUser_Click(object sender, EventArgs e)
         {
-            addUserPanel("select", UserInfo.Get_User().User_Id);
+            addUserPanel("changePWD", loginUser.User_Id);
         }
 
         private void btn_update_user_Click(object sender, EventArgs e)
         {
-            addUserPanel("update", UserInfo.Get_User().User_Id);
+            addUserPanel("update", loginUser.User_Id);
         }
 
         private void AddUser_Click(object sender, EventArgs e)
@@ -410,12 +415,30 @@ namespace CustomerSeller
             if (DialogResult.Yes == MessageBox.Show("是否关闭系统", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
                 Exit_Message_Notice("正在关闭系统.");
-                ShutDown.App_Exit();
+                if (logout())
+                {
+                    ShutDown.App_Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("用户退出失败, 请联系系统管理员!");
+                }
             }
             else
             {
                 e.Cancel = true;
             }
+        }
+
+        private bool logout()
+        {
+            if (!string.IsNullOrEmpty(loginUser.User_Id))
+            {
+                return CustomerSellerService.getService().LogoutUser(loginUser.User_Id);
+            }
+
+            return false;
         }
     }
 }

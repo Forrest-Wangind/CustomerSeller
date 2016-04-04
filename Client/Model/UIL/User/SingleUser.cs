@@ -29,9 +29,9 @@ namespace CustomerSeller.UIL.User
             InitializeComponent();
             this.operation = _operation;
             ArrayList lists = new ArrayList();
+            lists.Add(new Model.comBoxItem("未知", "u"));
             lists.Add(new Model.comBoxItem("男", "m"));
             lists.Add(new Model.comBoxItem("女", "f"));
-            lists.Add(new Model.comBoxItem("未知", "u"));
             this.cb_gender.DisplayMember = "pkey";
             this.cb_gender.ValueMember = "pvalue";
             this.cb_gender.DataSource = lists;
@@ -45,6 +45,7 @@ namespace CustomerSeller.UIL.User
                     initButtonSubmit("添加");
                     this.dt_entryTine.Enabled = true;
                     this.gp_password.Text = "新密码";
+                    this.gp_user_info.Visible = true;
                     this.gp_password.Visible = true;
                     this.tb_user_id.Enabled = true;
                     this.gp_role.Visible = true;
@@ -53,7 +54,7 @@ namespace CustomerSeller.UIL.User
                 case "update":
                     initButtonSubmit("修改");
                     this.cb_change_pass.Visible = true;
-                    this.gp_password.Visible = true;
+                    this.gp_user_info.Visible = true;
                     this.dt_entryTine.Enabled = true;
                     //如果有修改其他用户的权限
                     if (UserInfo.Get_User().User_permissions.Contains("001004"))
@@ -70,11 +71,19 @@ namespace CustomerSeller.UIL.User
                     //显示该用户的当前信息
                     break;
                 case "delete":
+                    this.gp_user_info.Visible = true;
                     initButtonSubmit("删除");
                     showUser(userId);
                     break;
                 default:
                     showUser(userId);
+                    //调整修改密码panel居中显示
+                    Point location = new Point();
+                    location.X = (this.btn_submit.Width - this.gp_password.Width) / 2 + this.btn_submit.Location.X;
+                    location.Y = (this.Height - this.gp_password.Height) / 2 + this.Location.Y;
+                    this.gp_password.Visible = true;
+                    this.gp_password.Location = location;
+                    initButtonSubmit("修改");
                     break;
             }
         }
@@ -174,6 +183,9 @@ namespace CustomerSeller.UIL.User
                 case "delete":
                     deleteUser();
                     break;
+                case "changePWD":
+                    changePassword();
+                    break;
                 default:
                     break;
             }
@@ -209,6 +221,28 @@ namespace CustomerSeller.UIL.User
             }
             else {
                 MessageBoxEx.Show("请输入用户编号！");
+            }
+        }
+
+        private void changePassword()
+        {
+            if (!string.IsNullOrEmpty(UserInfo.Get_User().User_Id))
+            {
+                if (isPasswordSame())
+                {
+                    user = new ServiceReference1.User();
+                    user.userID = UserInfo.Get_User().User_Id;
+                    user.password = Encrypt.DESEncrypt(this.tb_password.Text, UserInfo.pwdKey);
+
+                    if (CustomerSellerService.getService().ChangeUserPwd(user))
+                        MessageBoxEx.Show("修改密码成功！");
+                    else
+                        MessageBoxEx.Show("修改密码失败，请联系管理员！");
+                }
+            }
+            else
+            {
+                MessageBoxEx.Show("用户编号为空，请重新登录！");
             }
         }
 

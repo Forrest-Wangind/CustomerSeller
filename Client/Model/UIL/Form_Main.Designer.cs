@@ -53,9 +53,9 @@
             this.sideBar1 = new DevComponents.DotNetBar.SideBar();
             this.user_ManageMent = new DevComponents.DotNetBar.SideBarPanelItem();
             this.AllUsers = new DevComponents.DotNetBar.ButtonItem();
-            this.singleUser = new DevComponents.DotNetBar.ButtonItem();
+            this.ChangePWD = new DevComponents.DotNetBar.ButtonItem();
             this.AddUser = new DevComponents.DotNetBar.ButtonItem();
-            this.btn_update_user = new DevComponents.DotNetBar.ButtonItem();
+            this.UpdateUser = new DevComponents.DotNetBar.ButtonItem();
             this.btitemPhoneParams = new DevComponents.DotNetBar.ButtonItem();
             this.Customer_Management = new DevComponents.DotNetBar.SideBarPanelItem();
             this.Query_CustomerInfo = new DevComponents.DotNetBar.ButtonItem();
@@ -64,6 +64,7 @@
             this.RoleManagement = new DevComponents.DotNetBar.SideBarPanelItem();
             this.AllRoles = new DevComponents.DotNetBar.ButtonItem();
             this.RoleDetail = new DevComponents.DotNetBar.ButtonItem();
+            this.lbl_user = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -220,6 +221,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.lbl_user);
             this.panel3.Controls.Add(this.Date_label);
             this.panel3.Controls.Add(this.Time);
             this.panel3.Controls.Add(this.Time_label);
@@ -358,9 +360,9 @@
             this.user_ManageMent.Name = "user_ManageMent";
             this.user_ManageMent.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.AllUsers,
-            this.singleUser,
+            this.ChangePWD,
             this.AddUser,
-            this.btn_update_user,
+            this.UpdateUser,
             this.btitemPhoneParams});
             this.user_ManageMent.Text = "用户信息管理";
             this.user_ManageMent.Visible = false;
@@ -375,14 +377,14 @@
             this.AllUsers.Visible = false;
             this.AllUsers.Click += new System.EventHandler(this.AllUsers_Click);
             // 
-            // singleUser
+            // ChangePWD
             // 
-            this.singleUser.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.singleUser.ImagePaddingHorizontal = 8;
-            this.singleUser.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.singleUser.Name = "singleUser";
-            this.singleUser.Text = "当前用户";
-            this.singleUser.Click += new System.EventHandler(this.singleUser_Click);
+            this.ChangePWD.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.ChangePWD.ImagePaddingHorizontal = 8;
+            this.ChangePWD.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.ChangePWD.Name = "ChangePWD";
+            this.ChangePWD.Text = "修改密码";
+            this.ChangePWD.Click += new System.EventHandler(this.singleUser_Click);
             // 
             // AddUser
             // 
@@ -394,14 +396,15 @@
             this.AddUser.Visible = false;
             this.AddUser.Click += new System.EventHandler(this.AddUser_Click);
             // 
-            // btn_update_user
+            // UpdateUser
             // 
-            this.btn_update_user.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
-            this.btn_update_user.ImagePaddingHorizontal = 8;
-            this.btn_update_user.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btn_update_user.Name = "btn_update_user";
-            this.btn_update_user.Text = "修改用户";
-            this.btn_update_user.Click += new System.EventHandler(this.btn_update_user_Click);
+            this.UpdateUser.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.UpdateUser.ImagePaddingHorizontal = 8;
+            this.UpdateUser.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.UpdateUser.Name = "UpdateUser";
+            this.UpdateUser.Text = "修改用户";
+            this.UpdateUser.Visible = false;
+            this.UpdateUser.Click += new System.EventHandler(this.btn_update_user_Click);
             // 
             // btitemPhoneParams
             // 
@@ -432,6 +435,7 @@
             this.Query_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.Query_CustomerInfo.Name = "Query_CustomerInfo";
             this.Query_CustomerInfo.Text = "查询客户数据";
+            this.Query_CustomerInfo.Visible = false;
             this.Query_CustomerInfo.Click += new System.EventHandler(this.Query_CustomerInfo_Click);
             // 
             // Add_CustomerInfo
@@ -441,6 +445,7 @@
             this.Add_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.Add_CustomerInfo.Name = "Add_CustomerInfo";
             this.Add_CustomerInfo.Text = "新增客户数据";
+            this.Add_CustomerInfo.Visible = false;
             this.Add_CustomerInfo.Click += new System.EventHandler(this.Add_CustomerInfo_Click);
             // 
             // Import_CustomerInfo
@@ -450,6 +455,7 @@
             this.Import_CustomerInfo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.Import_CustomerInfo.Name = "Import_CustomerInfo";
             this.Import_CustomerInfo.Text = "导入客户数据";
+            this.Import_CustomerInfo.Visible = false;
             this.Import_CustomerInfo.Click += new System.EventHandler(this.Import_CustomerInfo_Click);
             // 
             // RoleManagement
@@ -480,6 +486,15 @@
             this.RoleDetail.Text = "角色明细";
             this.RoleDetail.Click += new System.EventHandler(this.RoleDetail_Click);
             // 
+            // lbl_user
+            // 
+            this.lbl_user.AutoSize = true;
+            this.lbl_user.Location = new System.Drawing.Point(11, 5);
+            this.lbl_user.Name = "lbl_user";
+            this.lbl_user.Size = new System.Drawing.Size(29, 12);
+            this.lbl_user.TabIndex = 3;
+            this.lbl_user.Text = "用户";
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -495,6 +510,7 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.Put_panel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -532,12 +548,13 @@
         private DevComponents.DotNetBar.ButtonItem Import_CustomerInfo;
         private DevComponents.DotNetBar.ButtonItem AllUsers;
         private DevComponents.DotNetBar.SideBarPanelItem RoleManagement;
-        private DevComponents.DotNetBar.ButtonItem singleUser;
+        private DevComponents.DotNetBar.ButtonItem ChangePWD;
         private DevComponents.DotNetBar.ButtonItem AddUser;
-        private DevComponents.DotNetBar.ButtonItem btn_update_user;
+        private DevComponents.DotNetBar.ButtonItem UpdateUser;
         private DevComponents.DotNetBar.ButtonItem AllRoles;
         private DevComponents.DotNetBar.ButtonItem RoleDetail;
         private DevComponents.DotNetBar.ButtonItem btitemPhoneParams;
+        private System.Windows.Forms.Label lbl_user;
     }
 }
 
