@@ -75,7 +75,8 @@ namespace CustomerSeller.UIL
             try
             {
                 DateTime? dt = null;
-                CustomerInfo.GetServiceInstance().UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, string.IsNullOrEmpty(this.tb_Remark.Text) ? string.Empty : this.tb_Remark.Text,
+                var remarkInfo = this.tb_Remark.Text + "\r\n" + System.DateTime.Now.ToShortDateString()+UserInfo.Get_User().UserName+":"+this.tb_AppendRemark.Text;
+                CustomerInfo.GetServiceInstance().UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, remarkInfo.TrimStart('\r').TrimStart('\n'),
                     string.IsNullOrEmpty(this.cb_PhoneStatus.Text) ? string.Empty : this.cb_PhoneStatus.Text, this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
                     !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty,
                      string.IsNullOrEmpty(this.tb_CustomerName.Text) ? string.Empty : this.tb_CustomerName.Text);

@@ -17,8 +17,11 @@ namespace SQLHelper
     {
         public static int a = 12;
         public static readonly string conString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-        public static SqlConnection Con = new SqlConnection(conString);
-     
+         public static SqlConnection Con = null;
+        static SqlServerHelper()
+         {
+             Con = new SqlConnection(conString);
+         }
         #region private utility methods & constructors
 
         // Since this class provides only static methods, make the default constructor private to prevent 

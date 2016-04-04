@@ -44,7 +44,7 @@
             this.comboItemMen = new DevComponents.Editors.ComboItem();
             this.comboItemWomen = new DevComponents.Editors.ComboItem();
             this.tb_CustomerName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.lb_OldRemark = new DevComponents.DotNetBar.LabelX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -54,6 +54,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_CallPhone = new DevComponents.DotNetBar.ButtonX();
             this.bt_RecycleCustomerPhone = new DevComponents.DotNetBar.ButtonX();
+            this.tb_AppendRemark = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lb_NewRemark = new DevComponents.DotNetBar.LabelX();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_SuccessTime)).BeginInit();
             this.panel2.SuspendLayout();
@@ -83,6 +85,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tb_AppendRemark);
+            this.panel1.Controls.Add(this.lb_NewRemark);
             this.panel1.Controls.Add(this.tb_Remark);
             this.panel1.Controls.Add(this.dtp_SuccessTime);
             this.panel1.Controls.Add(this.cb_PhoneStatus);
@@ -90,7 +94,7 @@
             this.panel1.Controls.Add(this.tb_CustomerPhone);
             this.panel1.Controls.Add(this.tb_Agender);
             this.panel1.Controls.Add(this.tb_CustomerName);
-            this.panel1.Controls.Add(this.labelX7);
+            this.panel1.Controls.Add(this.lb_OldRemark);
             this.panel1.Controls.Add(this.labelX6);
             this.panel1.Controls.Add(this.labelX5);
             this.panel1.Controls.Add(this.labelX4);
@@ -108,10 +112,11 @@
             // 
             // 
             this.tb_Remark.Border.Class = "TextBoxBorder";
+            this.tb_Remark.Enabled = false;
             this.tb_Remark.Location = new System.Drawing.Point(491, 34);
             this.tb_Remark.Multiline = true;
             this.tb_Remark.Name = "tb_Remark";
-            this.tb_Remark.Size = new System.Drawing.Size(356, 221);
+            this.tb_Remark.Size = new System.Drawing.Size(356, 169);
             this.tb_Remark.TabIndex = 40;
             // 
             // dtp_SuccessTime
@@ -205,6 +210,7 @@
             // 
             // 
             this.tb_CustomerPhone.Border.Class = "TextBoxBorder";
+            this.tb_CustomerPhone.Enabled = false;
             this.tb_CustomerPhone.Location = new System.Drawing.Point(115, 105);
             this.tb_CustomerPhone.Name = "tb_CustomerPhone";
             this.tb_CustomerPhone.Size = new System.Drawing.Size(176, 21);
@@ -243,13 +249,13 @@
             this.tb_CustomerName.Size = new System.Drawing.Size(176, 21);
             this.tb_CustomerName.TabIndex = 34;
             // 
-            // labelX7
+            // lb_OldRemark
             // 
-            this.labelX7.Location = new System.Drawing.Point(427, 29);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(58, 23);
-            this.labelX7.TabIndex = 33;
-            this.labelX7.Text = "备注：";
+            this.lb_OldRemark.Location = new System.Drawing.Point(400, 29);
+            this.lb_OldRemark.Name = "lb_OldRemark";
+            this.lb_OldRemark.Size = new System.Drawing.Size(85, 23);
+            this.lb_OldRemark.TabIndex = 33;
+            this.lb_OldRemark.Text = "历史备注：";
             // 
             // labelX6
             // 
@@ -332,6 +338,26 @@
             this.bt_RecycleCustomerPhone.Text = "回收电话";
             this.bt_RecycleCustomerPhone.Click += new System.EventHandler(this.bt_RecycleCustomerPhone_Click);
             // 
+            // tb_AppendRemark
+            // 
+            // 
+            // 
+            // 
+            this.tb_AppendRemark.Border.Class = "TextBoxBorder";
+            this.tb_AppendRemark.Location = new System.Drawing.Point(491, 232);
+            this.tb_AppendRemark.Multiline = true;
+            this.tb_AppendRemark.Name = "tb_AppendRemark";
+            this.tb_AppendRemark.Size = new System.Drawing.Size(356, 94);
+            this.tb_AppendRemark.TabIndex = 42;
+            // 
+            // lb_NewRemark
+            // 
+            this.lb_NewRemark.Location = new System.Drawing.Point(400, 218);
+            this.lb_NewRemark.Name = "lb_NewRemark";
+            this.lb_NewRemark.Size = new System.Drawing.Size(71, 23);
+            this.lb_NewRemark.TabIndex = 41;
+            this.lb_NewRemark.Text = "追加备注：";
+            // 
             // Form_CustomerDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -360,7 +386,7 @@
         private DevComponents.DotNetBar.ButtonX bt_CallPhone;
         private DevComponents.DotNetBar.ButtonX bt_RecycleCustomerPhone;
         private DevComponents.DotNetBar.Controls.TextBoxX tb_CustomerName;
-        private DevComponents.DotNetBar.LabelX labelX7;
+        private DevComponents.DotNetBar.LabelX lb_OldRemark;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.LabelX labelX4;
@@ -379,6 +405,8 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx tb_Agender;
         private DevComponents.Editors.ComboItem comboItemMen;
         private DevComponents.Editors.ComboItem comboItemWomen;
+        private DevComponents.DotNetBar.Controls.TextBoxX tb_AppendRemark;
+        private DevComponents.DotNetBar.LabelX lb_NewRemark;
 
     }
 }
