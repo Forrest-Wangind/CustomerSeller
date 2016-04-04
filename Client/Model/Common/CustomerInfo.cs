@@ -90,7 +90,6 @@ namespace CustomerSeller.Common
                 dsOfCustomerInfo.Tables.Add(dataTable);
                 CustomerInfo.GetServiceInstance().BatchImportCustomerInfo(dsOfCustomerInfo);
                 MessageBoxEx.Show("数据导入成功！", "提示");
-
             }
             catch (Exception ex)
             {

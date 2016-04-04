@@ -42,6 +42,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.expandableSplitter1 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbl_user = new System.Windows.Forms.Label();
             this.Date_label = new DevComponents.DotNetBar.LabelX();
             this.Time = new System.Windows.Forms.Panel();
             this.Time_label = new DevComponents.DotNetBar.LabelX();
@@ -64,7 +65,6 @@
             this.RoleManagement = new DevComponents.DotNetBar.SideBarPanelItem();
             this.AllRoles = new DevComponents.DotNetBar.ButtonItem();
             this.RoleDetail = new DevComponents.DotNetBar.ButtonItem();
-            this.lbl_user = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -152,7 +152,7 @@
             this.panel9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel9.BackgroundImage")));
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel9.Location = new System.Drawing.Point(64, 11);
+            this.panel9.Location = new System.Drawing.Point(66, 11);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(36, 48);
             this.panel9.TabIndex = 5;
@@ -230,6 +230,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(923, 27);
             this.panel3.TabIndex = 2;
+            // 
+            // lbl_user
+            // 
+            this.lbl_user.AutoSize = true;
+            this.lbl_user.Location = new System.Drawing.Point(11, 5);
+            this.lbl_user.Name = "lbl_user";
+            this.lbl_user.Size = new System.Drawing.Size(29, 12);
+            this.lbl_user.TabIndex = 3;
+            this.lbl_user.Text = "用户";
             // 
             // Date_label
             // 
@@ -485,15 +494,6 @@
             this.RoleDetail.Name = "RoleDetail";
             this.RoleDetail.Text = "角色明细";
             this.RoleDetail.Click += new System.EventHandler(this.RoleDetail_Click);
-            // 
-            // lbl_user
-            // 
-            this.lbl_user.AutoSize = true;
-            this.lbl_user.Location = new System.Drawing.Point(11, 5);
-            this.lbl_user.Name = "lbl_user";
-            this.lbl_user.Size = new System.Drawing.Size(29, 12);
-            this.lbl_user.TabIndex = 3;
-            this.lbl_user.Text = "用户";
             // 
             // Form_Main
             // 

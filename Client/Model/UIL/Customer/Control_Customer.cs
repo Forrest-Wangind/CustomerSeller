@@ -34,7 +34,7 @@ namespace CustomerSeller
         {
 
             List<KeyValuePair<string, string>> listParameters = new List<KeyValuePair<string, string>>();
-            if (!UserInfo.Get_User().User_Grade.Trim().Equals("admin"))
+            if (!UserInfo.Get_User().User_Grade.Trim().Equals("管理员"))
             listParameters.Add(new KeyValuePair<string, string>("EmployeeID=",UserInfo.Get_User().User_Id ));
             if (!string.IsNullOrEmpty(this.tb_Customer_Name.Text))
                 listParameters.Add(new KeyValuePair<string, string>("CustomerName like ", string.Format("%{0}%", tb_Customer_Name.Text)));

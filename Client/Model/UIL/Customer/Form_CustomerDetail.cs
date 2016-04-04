@@ -75,7 +75,9 @@ namespace CustomerSeller.UIL
             try
             {
                 DateTime? dt = null;
-                var remarkInfo = this.tb_Remark.Text + "\r\n" + System.DateTime.Now.ToShortDateString()+UserInfo.Get_User().UserName+":"+this.tb_AppendRemark.Text;
+                var remarkInfo = this.tb_Remark.Text;
+                if (!string.IsNullOrEmpty(this.tb_AppendRemark.Text))
+                    remarkInfo = this.tb_Remark.Text + "\r\n" + System.DateTime.Now.ToShortDateString() + "  " + UserInfo.Get_User().UserName + ":" + this.tb_AppendRemark.Text;
                 CustomerInfo.GetServiceInstance().UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, remarkInfo.TrimStart('\r').TrimStart('\n'),
                     string.IsNullOrEmpty(this.cb_PhoneStatus.Text) ? string.Empty : this.cb_PhoneStatus.Text, this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
                     !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty,
@@ -118,7 +120,7 @@ namespace CustomerSeller.UIL
         {
             try
             {
-                if(string.IsNullOrEmpty(CustomerPhone))
+                if (string.IsNullOrEmpty(CustomerPhone))
                 {
                     MessageBoxEx.Show("不是有效的电话！", "提示");
                     return;

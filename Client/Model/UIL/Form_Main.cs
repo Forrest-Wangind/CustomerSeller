@@ -36,9 +36,9 @@ namespace CustomerSeller
             InitializeComponent();
             this.loginForm = login;
             this.DoubleBuffered = true;
-            this.lbl_user.Text = "工号：" + loginUser.User_Id;
-            this.lbl_user.Text += "  /姓名" + loginUser.UserName;
-            this.lbl_user.Text += "  /坐席工号" + loginUser.User_Exten;
+            this.lbl_user.Text = "工号/" + loginUser.User_Id;
+            this.lbl_user.Text += "     姓名/" + loginUser.UserName;
+            this.lbl_user.Text += "     坐席工号/" + loginUser.User_Exten;
             set_Text((object)this.Date_label);
             this.WindowState = FormWindowState.Maximized;
             showPermissions();
@@ -115,7 +115,7 @@ namespace CustomerSeller
         {
             if (DialogResult.Yes == MessageBox.Show("是否注销", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                Exit_Message_Notice("正在注销...");
+                //Exit_Message_Notice("正在注销...");
                 if (logout())
                 {
                     this.Main_panel.Controls.Clear();
@@ -180,32 +180,32 @@ namespace CustomerSeller
             App_Exit();
         }
 
-        /// <summary>
-        /// 设置信息条的信息
-        /// </summary>
-        /// <param name="str"></param>
-        private void Exit_Message_Notice(string str)
-        {
-            Label L = new Label();
-            L.Text = str;
-            L.FlatStyle = FlatStyle.Flat;
-            L.BackColor = Color.Transparent;
-            L.ForeColor = Color.Red;
-            L.Font = new Font(L.Font.FontFamily, 18, L.Font.Style);
-            L.SetBounds(this.Main_panel.Location.X + this.Main_panel.Size.Width / 2 - L.Margin.Size.Width,
-            this.Main_panel.Location.Y + this.Main_panel.Size.Height / 2 - L.Margin.Size.Height, L.Width + 200, L.Height + 10);
-            this.Main_panel.Controls.Add(L);
-            Application.DoEvents();
-            Thread.Sleep(500);
-            L.Text = L.Text.ToString() + ".";
-            Application.DoEvents();
-            Thread.Sleep(500);
-            L.Text = L.Text = L.Text.ToString() + ".";
-            Application.DoEvents();
-            Thread.Sleep(500);
-            this.Main_panel.Controls.Remove(L);
-            Application.DoEvents();
-        }
+        ///// <summary>
+        ///// 设置信息条的信息
+        ///// </summary>
+        ///// <param name="str"></param>
+        //private void Exit_Message_Notice(string str)
+        //{
+        //    Label L = new Label();
+        //    L.Text = str;
+        //    L.FlatStyle = FlatStyle.Flat;
+        //    L.BackColor = Color.Transparent;
+        //    L.ForeColor = Color.Red;
+        //    L.Font = new Font(L.Font.FontFamily, 18, L.Font.Style);
+        //    L.SetBounds(this.Main_panel.Location.X + this.Main_panel.Size.Width / 2 - L.Margin.Size.Width,
+        //    this.Main_panel.Location.Y + this.Main_panel.Size.Height / 2 - L.Margin.Size.Height, L.Width + 200, L.Height + 10);
+        //    this.Main_panel.Controls.Add(L);
+        //    Application.DoEvents();
+        //    Thread.Sleep(500);
+        //    L.Text = L.Text.ToString() + ".";
+        //    Application.DoEvents();
+        //    Thread.Sleep(500);
+        //    L.Text = L.Text = L.Text.ToString() + ".";
+        //    Application.DoEvents();
+        //    Thread.Sleep(500);
+        //    this.Main_panel.Controls.Remove(L);
+        //    Application.DoEvents();
+        //}
 
         /// <summary>
         /// 关闭系统
@@ -214,7 +214,7 @@ namespace CustomerSeller
         {
             if (DialogResult.Yes == MessageBox.Show("是否关闭系统", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                Exit_Message_Notice("正在关闭系统.");
+                //Exit_Message_Notice("正在关闭系统.");
                 if (logout())
                 {
                     ShutDown.App_Exit();
@@ -234,7 +234,7 @@ namespace CustomerSeller
         {
             if (DialogResult.Yes == MessageBoxEx.Show("是否返回主界面", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                Exit_Message_Notice("正在返回系统主界面.");
+                //Exit_Message_Notice("正在返回系统主界面.");
                 Application.DoEvents();
                 Thread.Sleep(50);
                 Main m = new Main();
@@ -408,13 +408,13 @@ namespace CustomerSeller
         {
             this.Main_panel.Controls.Clear();
             Application.DoEvents();
-            Thread.Sleep(50);
-            Main m = new Main();
-            m.Dock = DockStyle.Fill;
-            this.Main_panel.Controls.Add(m);
+            Thread.Sleep(10);
+            //Main m = new Main();
+            //m.Dock = DockStyle.Fill;
+            //this.Main_panel.Controls.Add(m);
             if (DialogResult.Yes == MessageBox.Show("是否关闭系统", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                Exit_Message_Notice("正在关闭系统.");
+                //Exit_Message_Notice("正在关闭系统.");
                 if (logout())
                 {
                     ShutDown.App_Exit();
