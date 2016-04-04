@@ -34,6 +34,7 @@ namespace WCFService
                     condition += string.Format("and {0}'{1}' ", item.Key, item.Value);
                 });
                 var execute_sql = string.Format(Sql.customerTotalNumber, condition) + ";" + string.Format(Sql.customerInfoDetail, PageSize, CurrentPage, condition);
+                LoggerWrapper.Instance().LogDebug("GetCustomer:sql:" + execute_sql);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 if (dataSet.Tables.Count > 0)
                     result = dataSet;
@@ -79,7 +80,7 @@ namespace WCFService
                 setStr += string.IsNullOrEmpty(CustomerName) ? string.Empty : string.Format(" CustomerName='{0}' ,", CustomerName.ToString());
                 if (!string.IsNullOrEmpty(setStr))
                     sql = string.Format("update CustomerInfo set {0} where CustomerID='{1}'", setStr.TrimEnd(','), CustomerID);
-                var result = SqlServerHelper.ExecuteNonQuery(SqlServerHelper.Con, CommandType.Text, sql);
+                var result = SqlServerHelper.ExecuteNonQuery(SqlServerHelper.conString, CommandType.Text, sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = setStr, Method = "UpdateCustomerInfo", Result = result.ToString() });
                 return result;
             }
@@ -117,7 +118,7 @@ namespace WCFService
             try
             {
                 var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings[string.Format("{0}_MaxCount", phoneType)], ConfigurationManager.AppSettings[string.Format("{0}_DailyMaxCount", phoneType)], UserID, phoneType);
-                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
+                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "UserID:" + UserID, Method = "AllocateEmployeePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
             }
@@ -134,7 +135,7 @@ namespace WCFService
             try
             {
                 var execute_sql = string.Format(Sql.RecycleCustomerPhone, customerID, employeeID);
-                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.Con, CommandType.Text, execute_sql);
+                var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "customerID:" + customerID + ",employeeID:" + employeeID, Method = "RecycleCustomerPhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
             }
@@ -448,6 +449,7 @@ namespace WCFService
         {
             try
             {
+                LoggerWrapper.Instance().LogInfo("Test:123");
                 return UserDAL.GetUserInfo(user);
             }
             catch(Exception ex)

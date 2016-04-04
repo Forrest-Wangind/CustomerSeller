@@ -1,4 +1,5 @@
-﻿using SQLHelper;
+﻿using Common.Log;
+using SQLHelper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -74,12 +75,13 @@ namespace WCFService.Common
         internal static void BatchWriteToDB(DataSet ds)
         {
 
-            using (DbConnection con = SqlServerHelper.Con)
+            using (DbConnection con = new SqlConnection(SqlServerHelper.conString))
             {
                 con.Open();
                 DbTransaction tran = con.BeginTransaction();
                 try
                 {
+                    LoggerWrapper.Instance().LogInfo("BatchWriteToDB1:" + ds.Tables[0].Rows.Count);
                     SqlBulkCopy sqlbulk1 = new SqlBulkCopy((SqlConnection)con, SqlBulkCopyOptions.Default, (SqlTransaction)tran);
                     sqlbulk1.BatchSize = 100;
                     BuildSqlBulkOfCustomerInfo(sqlbulk1);
@@ -87,14 +89,18 @@ namespace WCFService.Common
                     sqlbulk1.WriteToServer(ds.Tables["CustomerInfo"]);
                     sqlbulk1.Close();
                     tran.Commit();
+                    LoggerWrapper.Instance().LogInfo("BatchWriteToDB2:" + ds.Tables[0].Rows.Count);
                 }
                 catch (Exception ex)
                 {
+                    LoggerWrapper.Instance().LogError("Message:"+ex.Message+"Stack:"+ex.StackTrace);
+                    LoggerWrapper.Instance().LogInfo("BatchWriteToDB_Error1:" + ds.Tables[0].Rows[0][1].ToString());
                     tran.Rollback();
                     throw ex;
                 }
                 finally
                 {
+                    LoggerWrapper.Instance().LogInfo("BatchWriteToDB_Error2:" + ds.Tables[0].Rows[0][1].ToString());
                     con.Close();
                 }
             }
