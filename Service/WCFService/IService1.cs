@@ -95,5 +95,8 @@ namespace WCFService
         [OperationContract]
         bool LogoutUser(string userId);
 
+        [OperationContract]
+        bool LogoutAllUsers();
+
     }
 }

@@ -11,17 +11,19 @@ CREATE PROCEDURE pro_getUsers
 	@entryTimeEnd datetime
 AS
 BEGIN
-	SELECT UserID as '用户编号',
-	UserName as '姓名',
+	SELECT [users].UserID as '用户编号',
+	[users].UserName as '姓名',
 	'性别'=
 	CASE
-		WHEN UserGender = 'm' THEN '男'
-		WHEN UserGender = 'f' THEN '女'
+		WHEN [users].UserGender = 'm' THEN '男'
+		WHEN [users].UserGender = 'f' THEN '女'
 		ELSE '未知'
 	END,
-	EntryTime as '入职时间',
-	Exten as '分机号'
-	FROM UserInfo
+	[users].EntryTime as '入职时间',
+	[users].Exten as '坐席工号',
+	[roles].RoleName as '角色名称'
+	FROM UserInfo [users]
+	INNER JOIN RoleInfo [roles] ON [users].RoleID = [roles].RoleID
 	WHERE 
 		((UserID like '%' + @id + '%') or (@id is null))
 		AND ((UserName like '%' + @name + '%') or (UserName is null))

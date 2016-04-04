@@ -204,5 +204,26 @@ namespace WCFService.DAL
             SqlResult result = new SqlResult(Convert.ToInt16(flagPara.Value), Convert.ToString(messagePara.Value));
             return result;
         }
+
+        internal static SqlResult LogoutAllUser()
+        {
+            int flag = 0;
+            string message = string.Empty;
+            List<SqlParameter> paras = new List<SqlParameter>();
+            SqlParameter flagPara = new SqlParameter("@flag", flag);
+            SqlParameter messagePara = new SqlParameter("@message", message);
+            flagPara.Direction = ParameterDirection.Output;
+            messagePara.Direction = ParameterDirection.Output;
+            messagePara.SqlDbType = SqlDbType.VarChar;
+            messagePara.Size = 100;
+            paras.Add(flagPara);
+            paras.Add(messagePara);
+
+            SqlServerHelper.ExecuteNonQuery(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_logoutAllUsers", paras.ToArray());
+            flag = Convert.ToInt16(flagPara.Value);
+            message = Convert.ToString(messagePara.Value);
+            SqlResult result = new SqlResult(Convert.ToInt16(flagPara.Value), Convert.ToString(messagePara.Value));
+            return result;
+        }
     }
 }

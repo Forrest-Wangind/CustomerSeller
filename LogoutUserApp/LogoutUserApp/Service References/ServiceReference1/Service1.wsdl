@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd3" />
+      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://xb-201601042137:8081/Service1.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/WCFService.Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCustomerDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCustomerDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateCustomerInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateCustomerInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BatchImportCustomerInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:BatchImportCustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BatchImportCustomerInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BatchImportCustomerInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllocateEmployeePhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateEmployeePhone" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllocateEmployeePhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllocateEmployeePhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RecycleCustomerPhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecycleCustomerPhone" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RecycleCustomerPhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecycleCustomerPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPermissions" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRoleFunctions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleFunctions" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRoleFunctions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleFunctionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRoles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissions" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSingleUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingleUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSingleUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingleUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRole" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRole" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRole" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRoleDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleDetail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetRoleDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoleDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_test_InputMessage">
+    <wsdl:part name="parameters" element="tns:test" />
+  </wsdl:message>
+  <wsdl:message name="IService1_test_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CallMobilePhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:CallMobilePhone" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CallMobilePhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CallMobilePhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPhoneParams_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPhoneParams" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPhoneParams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPhoneParamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangeUserPwd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeUserPwd" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangeUserPwd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeUserPwdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LogoutUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LogoutUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LogoutAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LogoutAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCustomer" message="tns:IService1_GetCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCustomerResponse" message="tns:IService1_GetCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCustomerDetail" message="tns:IService1_GetCustomerDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCustomerDetailResponse" message="tns:IService1_GetCustomerDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateCustomerInfo" message="tns:IService1_UpdateCustomerInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateCustomerInfoResponse" message="tns:IService1_UpdateCustomerInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchImportCustomerInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BatchImportCustomerInfo" message="tns:IService1_BatchImportCustomerInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BatchImportCustomerInfoResponse" message="tns:IService1_BatchImportCustomerInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllocateEmployeePhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AllocateEmployeePhone" message="tns:IService1_AllocateEmployeePhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AllocateEmployeePhoneResponse" message="tns:IService1_AllocateEmployeePhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecycleCustomerPhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RecycleCustomerPhone" message="tns:IService1_RecycleCustomerPhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RecycleCustomerPhoneResponse" message="tns:IService1_RecycleCustomerPhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserPermissions" message="tns:IService1_GetUserPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserPermissionsResponse" message="tns:IService1_GetUserPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleFunctions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRoleFunctions" message="tns:IService1_GetRoleFunctions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRoleFunctionsResponse" message="tns:IService1_GetRoleFunctions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserRoles" message="tns:IService1_GetUserRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserRolesResponse" message="tns:IService1_GetUserRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRoles" message="tns:IService1_GetRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRolesResponse" message="tns:IService1_GetRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPermissions" message="tns:IService1_GetPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPermissionsResponse" message="tns:IService1_GetPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsers" message="tns:IService1_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersResponse" message="tns:IService1_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSingleUser" message="tns:IService1_GetSingleUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSingleUserResponse" message="tns:IService1_GetSingleUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUser" message="tns:IService1_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUserResponse" message="tns:IService1_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddRole" message="tns:IService1_AddRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddRoleResponse" message="tns:IService1_AddRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUser" message="tns:IService1_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUserResponse" message="tns:IService1_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateRole" message="tns:IService1_UpdateRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateRoleResponse" message="tns:IService1_UpdateRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteUser" message="tns:IService1_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteUserResponse" message="tns:IService1_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteRole" message="tns:IService1_DeleteRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteRoleResponse" message="tns:IService1_DeleteRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRoleDetail" message="tns:IService1_GetRoleDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRoleDetailResponse" message="tns:IService1_GetRoleDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/test" message="tns:IService1_test_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/testResponse" message="tns:IService1_test_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CallMobilePhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CallMobilePhone" message="tns:IService1_CallMobilePhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CallMobilePhoneResponse" message="tns:IService1_CallMobilePhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPhoneParams">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPhoneParams" message="tns:IService1_SetPhoneParams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPhoneParamsResponse" message="tns:IService1_SetPhoneParams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserInfo" message="tns:IService1_GetUserInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserInfoResponse" message="tns:IService1_GetUserInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserPwd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangeUserPwd" message="tns:IService1_ChangeUserPwd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ChangeUserPwdResponse" message="tns:IService1_ChangeUserPwd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogoutUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LogoutUser" message="tns:IService1_LogoutUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LogoutUserResponse" message="tns:IService1_LogoutUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogoutAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LogoutAllUsers" message="tns:IService1_LogoutAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LogoutAllUsersResponse" message="tns:IService1_LogoutAllUsers_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="service" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCustomer">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDetail">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCustomerDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomerInfo">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateCustomerInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchImportCustomerInfo">
+      <soap:operation soapAction="http://tempuri.org/IService1/BatchImportCustomerInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllocateEmployeePhone">
+      <soap:operation soapAction="http://tempuri.org/IService1/AllocateEmployeePhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecycleCustomerPhone">
+      <soap:operation soapAction="http://tempuri.org/IService1/RecycleCustomerPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPermissions">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleFunctions">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRoleFunctions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRoles">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissions">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSingleUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRole">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleDetail">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetRoleDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <soap:operation soapAction="http://tempuri.org/IService1/test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CallMobilePhone">
+      <soap:operation soapAction="http://tempuri.org/IService1/CallMobilePhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPhoneParams">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPhoneParams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUserPwd">
+      <soap:operation soapAction="http://tempuri.org/IService1/ChangeUserPwd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogoutUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/LogoutUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogoutAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/LogoutAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="service" binding="tns:service">
+      <soap:address location="http://xb-201601042137:8081/Service1.svc/CustomerSellerService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

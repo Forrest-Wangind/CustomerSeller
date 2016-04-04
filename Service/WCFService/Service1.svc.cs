@@ -498,5 +498,25 @@ namespace WCFService
                 return false;
             }
         }
+
+        public bool LogoutAllUsers()
+        {
+            try
+            {
+                SqlResult result = UserDAL.LogoutAllUser();
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when logout all user ");
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when when logout all user. " + ex.Message);
+                return false;
+            }
+        }
     }
 }

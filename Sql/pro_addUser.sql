@@ -22,16 +22,33 @@ BEGIN
 		SELECT @isExisted = COUNT(UserID) FROM UserInfo WHERE UserID = @id;
 		IF(@isExisted=0)
 		BEGIN
-			INSERT INTO UserInfo(UserID,UserName,[Password],UserGender,RoleID,Exten,EntryTime)
-				VALUES(@id,@name,@pass,@gender,@role,@exten,@entryTime);
-			IF(@@error=0)
+			IF(@entryTime='')	--如果入职时间为空
 			BEGIN
-				SET @flag = 1;	--插入成功
-				SET @message = 'success';
+				INSERT INTO UserInfo(UserID,UserName,[Password],UserGender,RoleID,Exten)
+				VALUES(@id,@name,@pass,@gender,@role,@exten);
+				IF(@@error=0)
+				BEGIN
+					SET @flag = 1;	--插入成功
+					SET @message = 'success';
+				END
+				ELSE
+				BEGIN
+					SET @errorCount += 1;
+				END
 			END
 			ELSE
 			BEGIN
-				SET @errorCount += 1;
+				INSERT INTO UserInfo(UserID,UserName,[Password],UserGender,RoleID,Exten,EntryTime)
+					VALUES(@id,@name,@pass,@gender,@role,@exten,@entryTime);
+				IF(@@error=0)
+				BEGIN
+					SET @flag = 1;	--插入成功
+					SET @message = 'success';
+				END
+				ELSE
+				BEGIN
+					SET @errorCount += 1;
+				END
 			END
 		END
 		ELSE
