@@ -204,7 +204,7 @@ namespace CustomerSeller.UIL.User
                     user.role = getSelectedTree(this.tree_role);
                     user.exten = this.tb_extension.Text.Trim();
                     user.gender = this.cb_gender.SelectedValue.ToString();
-                    user.entryTimeStart = this.dt_entryTine.Value;
+                    user.entryTimeStart = this.dt_entryTine.IsEmpty ? DateTime.Now: this.dt_entryTine.Value;
 
                     if (!user.role.Equals(string.Empty))
                     {
