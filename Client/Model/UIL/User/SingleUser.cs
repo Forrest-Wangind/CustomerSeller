@@ -72,6 +72,7 @@ namespace CustomerSeller.UIL.User
                     break;
                 case "delete":
                     this.gp_user_info.Visible = true;
+                    this.gp_role.Visible = true;
                     initButtonSubmit("删除");
                     showUser(userId);
                     break;
