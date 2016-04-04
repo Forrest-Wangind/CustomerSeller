@@ -77,10 +77,10 @@ namespace CustomerSeller
                         this.Import_CustomerInfo.Visible = true;
                         break;
                     case "003002":
-                        this.Add_CustomerInfo.Visible = true;
+                        this.Query_CustomerInfo.Visible = true;
                         break;
                     case "003003":
-                        this.Customer_Management.Visible = true;
+                        this.Add_CustomerInfo.Visible = true;
                         break;
                     default:
                         break;
