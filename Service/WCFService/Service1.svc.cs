@@ -100,14 +100,14 @@ namespace WCFService
                 var dataSet = new DataSet();
                 dataSet.Tables.Add(dataTable);
                 FilterTheSamePhone(dataSet);
-                CustomerInfoHelper.BatchWriteToDB(dataSet);
+                var result=CustomerInfoHelper.BatchWriteToDB(dataSet);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "BatchImportCustomerInfo", Result = true.ToString() });
-                return true;
+                return result;
             }
             catch (Exception ex)
             {
                 LoggerWrapper.Instance().LogError(new LogInfo() { Method = "BatchImportCustomerInfo", Exception = ex.Message });
-                return false;
+                throw ex;
             }
 
         }
