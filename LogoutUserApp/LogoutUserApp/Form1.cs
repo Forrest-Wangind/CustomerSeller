@@ -20,23 +20,12 @@ namespace LogoutUserApp
 
         private bool logoutSingleUser(string userId)
         {
-            if (!string.IsNullOrEmpty(userId))
-            {
-                return CustomerSellerService.getService().LogoutUser(userId);
-            }
-
-            return false;
+            return CustomerSellerService.getService().LogoutUser(userId);
         }
 
         private bool logoutAllUsers()
         {
-            string userId = this.tb_userId.Text.Trim();
-            if (!string.IsNullOrEmpty(userId))
-            {
-                return CustomerSellerService.getService().LogoutAllUsers();
-            }
-
-            return false;
+            return CustomerSellerService.getService().LogoutAllUsers();
         }
 
         private void btn_logout_single_user_Click(object sender, EventArgs e)
@@ -44,13 +33,16 @@ namespace LogoutUserApp
             string userId = this.tb_userId.Text.Trim();
             if (!string.IsNullOrEmpty(userId))
             {
-                if (logoutSingleUser(userId))
+                if (DialogResult.Yes == MessageBox.Show("是否退出该用户", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                 {
-                    MessageBox.Show("成功退出用户!");
-                }
-                else
-                {
-                    MessageBox.Show("用户退出失败, 请联系系统管理员!");
+                    if (logoutSingleUser(userId))
+                    {
+                        MessageBox.Show("成功退出用户!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("用户退出失败, 请联系系统管理员!");
+                    }
                 }
             }
             else
@@ -61,13 +53,16 @@ namespace LogoutUserApp
 
         private void btn_all_users_logout_Click(object sender, EventArgs e)
         {
-            if (logoutAllUsers())
+            if (DialogResult.Yes == MessageBox.Show("是否退出所有用户", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
-                MessageBox.Show("成功退出所有用户!");
-            }
-            else
-            {
-                MessageBox.Show("所有用户退出失败, 请联系系统管理员!");
+                if (logoutAllUsers())
+                {
+                    MessageBox.Show("成功退出所有用户!");
+                }
+                else
+                {
+                    MessageBox.Show("所有用户退出失败, 请联系系统管理员!");
+                }
             }
         }
     }

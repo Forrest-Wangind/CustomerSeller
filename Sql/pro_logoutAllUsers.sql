@@ -11,16 +11,16 @@ BEGIN
 	DECLARE @errorCount INT;
 	SET @errorCount = 0;
 	BEGIN TRAN tranAdd
-		UPDATE UserInfo SET UserStatus = 0
-			IF(@@error=0)
-			BEGIN
-				SET @flag = 1;	--退出成功
-				SET @message = 'success';
-			END
-			ELSE
-			BEGIN
-				SET @errorCount += 1;
-			END
+		UPDATE UserInfo SET UserStatus = 0;
+		IF(@@error=0)
+		BEGIN
+			SET @flag = 1;	--退出成功
+			SET @message = 'success';
+		END
+		ELSE
+		BEGIN
+			SET @errorCount += 1;
+		END
 
 	IF(@errorCount = 0)
 	BEGIN
@@ -32,3 +32,7 @@ BEGIN
 		ROLLBACK TRAN tranAdd;
 	END
 END
+
+
+select OBJECT_ID ( 'pro_logoutAllUsers', 'P' )
+select * from UserInfo
