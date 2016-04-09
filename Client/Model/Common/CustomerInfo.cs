@@ -77,14 +77,19 @@ namespace CustomerSeller.Common
                 var ds = ExcelToDataSet(file, string.Format("SELECT  * FROM [{0}]", sheet));
                 var dataTable = GetCustomerInfoTable();
                 foreach (DataRow dr in ds.Tables[0].Rows)
-                {
+                {   
+                    
                     DataRow _dr = dataTable.NewRow();
-                    _dr["CustomerGender"] = dr["CustomerGender"];
-                    _dr["CustomerPhone"] = dr["CustomerPhone"];
-                    _dr["CustomerAddress"] = dr["CustomerAddress"];
-                    _dr["CustomerName"] = dr["CustomerName"];
-                    _dr["PhoneType"] = dr["PhoneType"];
-                    dataTable.Rows.Add(_dr);
+                    if (!string.IsNullOrEmpty(Convert.ToString(dr["CustomerPhone"])))
+                    {
+                        _dr["CustomerGender"] = dr["CustomerGender"];
+                        _dr["CustomerPhone"] = dr["CustomerPhone"];
+                        _dr["CustomerAddress"] = dr["CustomerAddress"];
+                        _dr["CustomerName"] = dr["CustomerName"];
+                        _dr["PhoneType"] = dr["PhoneType"];
+                        dataTable.Rows.Add(_dr);
+                    }
+                   
                 }
                 DataSet dsOfCustomerInfo = new DataSet();
                 dsOfCustomerInfo.Tables.Add(dataTable);
