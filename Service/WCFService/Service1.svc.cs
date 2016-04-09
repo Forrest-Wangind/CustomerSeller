@@ -450,7 +450,10 @@ namespace WCFService
             try
             {
                 LoggerWrapper.Instance().LogInfo("Test:123");
-                return UserDAL.GetUserInfo(user);
+                if (Login())
+                    return UserDAL.GetUserInfo(user);
+                else
+                    return null;
             }
             catch(Exception ex)
             {
@@ -517,6 +520,44 @@ namespace WCFService
                 LoggerWrapper.Instance().LogError("fail when when logout all user. " + ex.Message);
                 return false;
             }
+        }
+
+        static bool Login()
+        {
+            try
+            {
+                var headCode = "ABCDEFG";
+                var encryptKey = "12345678";
+                var enterCode = ConfigurationManager.AppSettings["Enter"];
+                if (!string.IsNullOrEmpty(enterCode))
+                {
+                    var decryptCode = Encrypt.DESDecrypt(enterCode, "12345678");
+                    var encryptCode = string.Empty;
+                    var codeLists = decryptCode.Split('|').ToList();
+                    if (Convert.ToInt32(codeLists[2]) > 1)
+                    {
+                        if (!codeLists[1].Equals(System.DateTime.Now.ToString("yyyy-MM-dd")))
+                        {
+                            codeLists[2] = (Convert.ToInt32(codeLists[2]) - 1).ToString();
+                            codeLists[1] = System.DateTime.Now.ToString("yyyy-MM-dd");
+                            decryptCode = string.Format("{0}|{1}|{2}", headCode, codeLists[1], codeLists[2]);
+                            encryptCode = Encrypt.DESEncrypt(decryptCode, encryptKey);
+                            Configuration config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                            AppSettingsSection appSettings = config.AppSettings;
+                            config.AppSettings.Settings["Enter"].Value = encryptCode;
+                            config.Save();
+                            System.Configuration.ConfigurationManager.RefreshSection("appSettings");
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+           
         }
     }
 }
