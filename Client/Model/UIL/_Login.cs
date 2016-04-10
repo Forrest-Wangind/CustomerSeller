@@ -66,8 +66,12 @@ namespace CustomerSeller
         {
             try
             {
-                if (this.tb_Pwd.Text.Trim() == "")
+                if (this.tb_Pwd.Text.Trim() == ""||this.tb_userId.Text.Trim()=="")
+                {
+                    MessageBox.Show("提示","用户名和密码不可为空!");
                     return;
+                }
+                   
                 else
                 {
                     UserInfo.Get_User().User_Id = this.tb_userId.Text.Trim();
@@ -96,7 +100,7 @@ namespace CustomerSeller
 
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBoxEx.Show("网络繁忙,请稍后再试!","提示");
             }
