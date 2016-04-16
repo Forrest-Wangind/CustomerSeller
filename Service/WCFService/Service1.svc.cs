@@ -100,7 +100,7 @@ namespace WCFService
                 var dataSet = new DataSet();
                 dataSet.Tables.Add(dataTable);
                 FilterTheSamePhone(dataSet);
-                var result=CustomerInfoHelper.BatchWriteToDB(dataSet);
+                var result = CustomerInfoHelper.BatchWriteToDB(dataSet);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Method = "BatchImportCustomerInfo", Result = true.ToString() });
                 return result;
             }
@@ -455,7 +455,7 @@ namespace WCFService
                 else
                     return null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LoggerWrapper.Instance().LogError("get user permissions fail. " + ex.Message);
                 return null;
@@ -517,7 +517,7 @@ namespace WCFService
             }
             catch (Exception ex)
             {
-                LoggerWrapper.Instance().LogError("fail when when logout all user. " + ex.Message);
+                LoggerWrapper.Instance().LogError("fail when logout all user. " + ex.Message);
                 return false;
             }
         }
@@ -557,7 +557,38 @@ namespace WCFService
             {
                 return false;
             }
-           
+
+        }
+
+        public DataSet GetPhoneDetail(string phoneType, User user)
+        {
+            DataSet phoneDetail = new DataSet();
+
+            try
+            {
+                //传递user的参数
+                List<SqlParameter> paras = new List<SqlParameter>();
+                paras.Add(new SqlParameter("@phoneType", phoneType));
+                paras.Add(new SqlParameter("@userId", user.userID));
+
+                phoneDetail = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_getPhoneDetail", paras.ToArray());
+                if(phoneDetail.Tables != null && phoneDetail.Tables.Count > 1)
+                {
+                    for(int index = 0; index < phoneDetail.Tables[1].Rows.Count; index++)
+                    {
+                        string type = phoneDetail.Tables[1].Rows[index]["电话类型"].ToString();
+                        Phone phone = Phone.getDetail(type);
+                        phoneDetail.Tables[1].Rows[index]["最多取数/天"] = phone.dailyCount;
+                        phoneDetail.Tables[1].Rows[index]["最大取数"] = phone.totalCount;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when get phone detail. " + ex.Message);
+            }
+
+            return phoneDetail;
         }
     }
 }

@@ -98,5 +98,7 @@ namespace WCFService
         [OperationContract]
         bool LogoutAllUsers();
 
+        [OperationContract]
+        DataSet GetPhoneDetail(string phoneType, User user);
     }
 }
