@@ -275,8 +275,8 @@ namespace CustomerSeller
                 var resultFile=string.Empty;
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 openFileDialog1.InitialDirectory = "D:\\Patch";
-                openFileDialog1.Filter = "All files (*.*)|*.*|Excel files (*.excel)|*.xls";
-                openFileDialog1.FilterIndex = 2;
+                openFileDialog1.Filter = "Excel files (*.excel)|*.xls;*.xlsx|All files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
                 openFileDialog1.RestoreDirectory = true;
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
