@@ -40,35 +40,35 @@
             this.comboItemC = new DevComponents.Editors.ComboItem();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dgv_phone_detail = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnSubmit = new DevComponents.DotNetBar.ButtonX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.tbUserId = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.cbPhoneType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.tbUserId = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnSubmit = new DevComponents.DotNetBar.ButtonX();
-            this.dgv_phone_general = new System.Windows.Forms.DataGridView();
-            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.dgv_phone_detail = new System.Windows.Forms.DataGridView();
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.dgv_phone_general = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_detail)).BeginInit();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_general)).BeginInit();
-            this.groupPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_detail)).BeginInit();
+            this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_general)).BeginInit();
             this.SuspendLayout();
             // 
             // labelX1
             // 
-            this.labelX1.Location = new System.Drawing.Point(125, 36);
+            this.labelX1.Location = new System.Drawing.Point(125, 76);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(120, 23);
             this.labelX1.TabIndex = 0;
@@ -80,7 +80,7 @@
             // 
             // 
             this.tb_PhoneTotalNumber.Border.Class = "TextBoxBorder";
-            this.tb_PhoneTotalNumber.Location = new System.Drawing.Point(265, 40);
+            this.tb_PhoneTotalNumber.Location = new System.Drawing.Point(265, 80);
             this.tb_PhoneTotalNumber.Name = "tb_PhoneTotalNumber";
             this.tb_PhoneTotalNumber.Size = new System.Drawing.Size(139, 21);
             this.tb_PhoneTotalNumber.TabIndex = 1;
@@ -136,7 +136,7 @@
             this.comboItemA,
             this.comboItemB,
             this.comboItemC});
-            this.comboBoxExPhoneType.Location = new System.Drawing.Point(265, 84);
+            this.comboBoxExPhoneType.Location = new System.Drawing.Point(265, 33);
             this.comboBoxExPhoneType.Name = "comboBoxExPhoneType";
             this.comboBoxExPhoneType.Size = new System.Drawing.Size(139, 21);
             this.comboBoxExPhoneType.TabIndex = 5;
@@ -155,7 +155,7 @@
             // 
             // labelX3
             // 
-            this.labelX3.Location = new System.Drawing.Point(125, 82);
+            this.labelX3.Location = new System.Drawing.Point(125, 31);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(75, 23);
             this.labelX3.TabIndex = 6;
@@ -171,45 +171,6 @@
             this.panel1.Size = new System.Drawing.Size(1179, 265);
             this.panel1.TabIndex = 7;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupPanel2);
-            this.panel2.Controls.Add(this.groupPanel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 265);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1179, 519);
-            this.panel2.TabIndex = 8;
-            // 
-            // dgv_phone_detail
-            // 
-            this.dgv_phone_detail.AllowUserToAddRows = false;
-            this.dgv_phone_detail.AllowUserToDeleteRows = false;
-            this.dgv_phone_detail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgv_phone_detail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_phone_detail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_phone_detail.Location = new System.Drawing.Point(0, 0);
-            this.dgv_phone_detail.Name = "dgv_phone_detail";
-            this.dgv_phone_detail.RowTemplate.Height = 23;
-            this.dgv_phone_detail.Size = new System.Drawing.Size(616, 495);
-            this.dgv_phone_detail.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.labelX1);
-            this.panel3.Controls.Add(this.bt_save);
-            this.panel3.Controls.Add(this.labelX3);
-            this.panel3.Controls.Add(this.tb_DailyPhoneNumber);
-            this.panel3.Controls.Add(this.tb_PhoneTotalNumber);
-            this.panel3.Controls.Add(this.bt_clear);
-            this.panel3.Controls.Add(this.comboBoxExPhoneType);
-            this.panel3.Controls.Add(this.labelX2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(557, 265);
-            this.panel3.TabIndex = 7;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnSubmit);
@@ -222,6 +183,36 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(622, 265);
             this.panel4.TabIndex = 8;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSubmit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSubmit.Location = new System.Drawing.Point(257, 193);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 11;
+            this.btnSubmit.Text = "查询";
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // labelX5
+            // 
+            this.labelX5.Location = new System.Drawing.Point(175, 132);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(85, 23);
+            this.labelX5.TabIndex = 9;
+            this.labelX5.Text = "员工编号：";
+            // 
+            // tbUserId
+            // 
+            // 
+            // 
+            // 
+            this.tbUserId.Border.Class = "TextBoxBorder";
+            this.tbUserId.Location = new System.Drawing.Point(283, 132);
+            this.tbUserId.Name = "tbUserId";
+            this.tbUserId.Size = new System.Drawing.Size(139, 21);
+            this.tbUserId.TabIndex = 10;
             // 
             // labelX4
             // 
@@ -259,80 +250,31 @@
             // 
             this.comboItem3.Text = "C类型电话";
             // 
-            // labelX5
+            // panel3
             // 
-            this.labelX5.Location = new System.Drawing.Point(175, 132);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(85, 23);
-            this.labelX5.TabIndex = 9;
-            this.labelX5.Text = "员工编号：";
+            this.panel3.Controls.Add(this.labelX1);
+            this.panel3.Controls.Add(this.bt_save);
+            this.panel3.Controls.Add(this.labelX3);
+            this.panel3.Controls.Add(this.tb_DailyPhoneNumber);
+            this.panel3.Controls.Add(this.tb_PhoneTotalNumber);
+            this.panel3.Controls.Add(this.bt_clear);
+            this.panel3.Controls.Add(this.comboBoxExPhoneType);
+            this.panel3.Controls.Add(this.labelX2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(557, 265);
+            this.panel3.TabIndex = 7;
             // 
-            // tbUserId
+            // panel2
             // 
-            // 
-            // 
-            // 
-            this.tbUserId.Border.Class = "TextBoxBorder";
-            this.tbUserId.Location = new System.Drawing.Point(283, 132);
-            this.tbUserId.Name = "tbUserId";
-            this.tbUserId.Size = new System.Drawing.Size(139, 21);
-            this.tbUserId.TabIndex = 10;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSubmit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSubmit.Location = new System.Drawing.Point(257, 193);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 11;
-            this.btnSubmit.Text = "查询";
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // dgv_phone_general
-            // 
-            this.dgv_phone_general.AllowUserToAddRows = false;
-            this.dgv_phone_general.AllowUserToDeleteRows = false;
-            this.dgv_phone_general.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgv_phone_general.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_phone_general.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_phone_general.Location = new System.Drawing.Point(0, 0);
-            this.dgv_phone_general.Name = "dgv_phone_general";
-            this.dgv_phone_general.RowTemplate.Height = 23;
-            this.dgv_phone_general.Size = new System.Drawing.Size(551, 495);
-            this.dgv_phone_general.TabIndex = 0;
-            // 
-            // groupPanel1
-            // 
-            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
-            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.dgv_phone_general);
-            this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupPanel1.Location = new System.Drawing.Point(0, 0);
-            this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(557, 519);
-            // 
-            // 
-            // 
-            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.groupPanel1.Style.BackColorGradientAngle = 90;
-            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderBottomWidth = 1;
-            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderLeftWidth = 1;
-            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderRightWidth = 1;
-            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.groupPanel1.Style.BorderTopWidth = 1;
-            this.groupPanel1.Style.CornerDiameter = 4;
-            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
-            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
-            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
-            this.groupPanel1.TabIndex = 1;
-            this.groupPanel1.Text = "分配规则";
+            this.panel2.Controls.Add(this.groupPanel2);
+            this.panel2.Controls.Add(this.groupPanel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 265);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1179, 519);
+            this.panel2.TabIndex = 8;
             // 
             // groupPanel2
             // 
@@ -366,6 +308,64 @@
             this.groupPanel2.TabIndex = 2;
             this.groupPanel2.Text = "分配明细";
             // 
+            // dgv_phone_detail
+            // 
+            this.dgv_phone_detail.AllowUserToAddRows = false;
+            this.dgv_phone_detail.AllowUserToDeleteRows = false;
+            this.dgv_phone_detail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_phone_detail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_phone_detail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_phone_detail.Location = new System.Drawing.Point(0, 0);
+            this.dgv_phone_detail.Name = "dgv_phone_detail";
+            this.dgv_phone_detail.RowTemplate.Height = 23;
+            this.dgv_phone_detail.Size = new System.Drawing.Size(616, 495);
+            this.dgv_phone_detail.TabIndex = 0;
+            // 
+            // groupPanel1
+            // 
+            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.dgv_phone_general);
+            this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupPanel1.Location = new System.Drawing.Point(0, 0);
+            this.groupPanel1.Name = "groupPanel1";
+            this.groupPanel1.Size = new System.Drawing.Size(557, 519);
+            // 
+            // 
+            // 
+            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            this.groupPanel1.TabIndex = 1;
+            this.groupPanel1.Text = "分配规则";
+            // 
+            // dgv_phone_general
+            // 
+            this.dgv_phone_general.AllowUserToAddRows = false;
+            this.dgv_phone_general.AllowUserToDeleteRows = false;
+            this.dgv_phone_general.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_phone_general.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_phone_general.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_phone_general.Location = new System.Drawing.Point(0, 0);
+            this.dgv_phone_general.Name = "dgv_phone_general";
+            this.dgv_phone_general.RowTemplate.Height = 23;
+            this.dgv_phone_general.Size = new System.Drawing.Size(551, 495);
+            this.dgv_phone_general.TabIndex = 0;
+            // 
             // PhoneParamSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -375,13 +375,13 @@
             this.Name = "PhoneParamSetting";
             this.Size = new System.Drawing.Size(1179, 784);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_detail)).EndInit();
-            this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_general)).EndInit();
-            this.groupPanel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_detail)).EndInit();
+            this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_phone_general)).EndInit();
             this.ResumeLayout(false);
 
         }
