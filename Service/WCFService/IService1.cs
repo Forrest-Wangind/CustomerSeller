@@ -48,6 +48,12 @@ namespace WCFService
         DataSet GetRoles(Role role);
 
         [OperationContract]
+        DataSet GetSaleLevels(SaleLevel saleLevel);
+
+        [OperationContract]
+        SaleLevel GetSaleLevelDetail(string levelId);
+
+        [OperationContract]
         DataSet GetPermissions(string userId);
 
         [OperationContract]
@@ -63,16 +69,25 @@ namespace WCFService
         bool AddRole(Role role);
 
         [OperationContract]
+        bool AddSaleLevel(SaleLevel level);
+
+        [OperationContract]
         bool UpdateUser(User user);
 
         [OperationContract]
         bool UpdateRole(Role role);
 
         [OperationContract]
+        bool UpdateSaleLevel(SaleLevel level);
+
+        [OperationContract]
         bool DeleteUser(string userId);
 
         [OperationContract]
         bool DeleteRole(string roleId);
+
+        [OperationContract]
+        bool DeleteSaleLevel(string levelId);
 
         [OperationContract]
         Role GetRoleDetail(string roleId);

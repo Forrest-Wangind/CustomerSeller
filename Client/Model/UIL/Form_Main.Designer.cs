@@ -65,6 +65,9 @@
             this.RoleManagement = new DevComponents.DotNetBar.SideBarPanelItem();
             this.AllRoles = new DevComponents.DotNetBar.ButtonItem();
             this.RoleDetail = new DevComponents.DotNetBar.ButtonItem();
+            this.SaleLevelManagement = new DevComponents.DotNetBar.SideBarPanelItem();
+            this.AllLevels = new DevComponents.DotNetBar.ButtonItem();
+            this.LevelDetail = new DevComponents.DotNetBar.ButtonItem();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -349,14 +352,15 @@
             this.sideBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolBar;
             this.sideBar1.BorderStyle = DevComponents.DotNetBar.eBorderType.None;
             this.sideBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sideBar1.ExpandedPanel = this.user_ManageMent;
+            this.sideBar1.ExpandedPanel = this.SaleLevelManagement;
             this.sideBar1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.sideBar1.Location = new System.Drawing.Point(0, 0);
             this.sideBar1.Name = "sideBar1";
             this.sideBar1.Panels.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.Customer_Management,
             this.user_ManageMent,
-            this.RoleManagement});
+            this.RoleManagement,
+            this.SaleLevelManagement});
             this.sideBar1.Size = new System.Drawing.Size(170, 376);
             this.sideBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.sideBar1.TabIndex = 0;
@@ -495,6 +499,33 @@
             this.RoleDetail.Text = "角色明细";
             this.RoleDetail.Click += new System.EventHandler(this.RoleDetail_Click);
             // 
+            // SaleLevelManagement
+            // 
+            this.SaleLevelManagement.FontBold = true;
+            this.SaleLevelManagement.Name = "SaleLevelManagement";
+            this.SaleLevelManagement.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.AllLevels,
+            this.LevelDetail});
+            this.SaleLevelManagement.Text = "销售员级别管理";
+            // 
+            // AllLevels
+            // 
+            this.AllLevels.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.AllLevels.ImagePaddingHorizontal = 8;
+            this.AllLevels.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.AllLevels.Name = "AllLevels";
+            this.AllLevels.Text = "所有级别";
+            this.AllLevels.Click += new System.EventHandler(this.AllLevels_Click);
+            // 
+            // LevelDetail
+            // 
+            this.LevelDetail.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText;
+            this.LevelDetail.ImagePaddingHorizontal = 8;
+            this.LevelDetail.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.LevelDetail.Name = "LevelDetail";
+            this.LevelDetail.Text = "级别明细";
+            this.LevelDetail.Click += new System.EventHandler(this.LevelDetail_Click);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -555,6 +586,9 @@
         private DevComponents.DotNetBar.ButtonItem RoleDetail;
         private DevComponents.DotNetBar.ButtonItem btitemPhoneParams;
         private System.Windows.Forms.Label lbl_user;
+        private DevComponents.DotNetBar.SideBarPanelItem SaleLevelManagement;
+        private DevComponents.DotNetBar.ButtonItem AllLevels;
+        private DevComponents.DotNetBar.ButtonItem LevelDetail;
     }
 }
 

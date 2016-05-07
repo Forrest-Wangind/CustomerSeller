@@ -149,7 +149,7 @@ namespace WCFService
         {
             try
             {
-                return UserDAL.GetUser(user);
+                return UserDAL.GetUsers(user);
             }
             catch (Exception ex)
             {
@@ -373,6 +373,21 @@ namespace WCFService
             return null;
         }
 
+        public DataSet GetSaleLevels(SaleLevel saleLevel)
+        {
+            try
+            {
+                DataSet roles = SaleLevelDAL.GetSaleLevels(saleLevel);
+                return roles;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when get sale levels. " + ex.Message);
+            }
+
+            return null;
+        }
+
         public bool DeleteUser(string userId)
         {
             try
@@ -427,6 +442,19 @@ namespace WCFService
             catch (Exception ex)
             {
                 LoggerWrapper.Instance().LogError("get single user fail. " + ex.Message);
+                return null;
+            }
+        }
+
+        public SaleLevel GetSaleLevelDetail(string levelId)
+        {
+            try
+            {
+                return SaleLevelDAL.GetLevelDetail(levelId);
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("get single sale level fail. " + ex.Message);
                 return null;
             }
         }
@@ -589,6 +617,66 @@ namespace WCFService
             }
 
             return phoneDetail;
+        }
+
+        public bool AddSaleLevel(SaleLevel level)
+        {
+            try
+            {
+                SqlResult result = SaleLevelDAL.AddLevel(level);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when add sale level. " + level);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when add sale level. " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool UpdateSaleLevel(SaleLevel level)
+        {
+            try
+            {
+                SqlResult result = SaleLevelDAL.UpdateSaleLevel(level);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when update sale level. " + level);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when update sale level. " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool DeleteSaleLevel(string levelId)
+        {
+            try
+            {
+                SqlResult result = SaleLevelDAL.DeleteSaleLevel(levelId);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when delete sale level. " + levelId);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when delete sale level. " + ex.Message);
+                return false;
+            }
         }
     }
 }

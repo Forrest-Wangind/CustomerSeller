@@ -388,6 +388,14 @@ namespace CustomerSeller
             this.Main_panel.Controls.Add(roleDetail);
         }
 
+        public void addLevelPanel(string panelName, string roleId)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.SaleLevel.LevelDetail levelDetail = new UIL.SaleLevel.LevelDetail(panelName, roleId);
+            levelDetail.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(levelDetail);
+        }
+
         private void AllRoles_Click(object sender, EventArgs e)
         {
             this.Main_panel.Controls.Clear();
@@ -439,6 +447,22 @@ namespace CustomerSeller
             }
 
             return false;
+        }
+
+        private void LevelDetail_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.SaleLevel.LevelDetail levelDetail = new UIL.SaleLevel.LevelDetail();
+            levelDetail.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(levelDetail);
+        }
+
+        private void AllLevels_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.SaleLevel.LevelList levelList = new UIL.SaleLevel.LevelList(this);
+            levelList.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(levelList);
         }
     }
 }

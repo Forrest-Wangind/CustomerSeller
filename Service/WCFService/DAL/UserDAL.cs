@@ -12,12 +12,13 @@ namespace WCFService.DAL
 {
     public class UserDAL
     {
-        internal static DataSet GetUser(User user)
+        internal static DataSet GetUsers(User user)
         {
             //传递users的参数
             List<SqlParameter> paras = new List<SqlParameter>();
             paras.Add(new SqlParameter("@id", user.userID));
             paras.Add(new SqlParameter("@name", user.userName));
+            paras.Add(new SqlParameter("@role", user.role));
             paras.Add(new SqlParameter("@gender", user.gender));
             paras.Add(new SqlParameter("@entryTimeStart", user.entryTimeStart));
             paras.Add(new SqlParameter("@entryTimeEnd", user.entryTimeEnd));

@@ -33,3 +33,6 @@ END
 
 
 EXEC pro_getPhoneDetail '',''
+SELECT * FROM AllocatePhoneDetailInfo
+select * from UserInfo
+update UserInfo set UserStatus = 0 where UserID = 'T04471'

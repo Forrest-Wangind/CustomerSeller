@@ -129,7 +129,7 @@
             this.tsm_update,
             this.tsm_delete});
             this.cms_role.Name = "cms_user";
-            this.cms_role.Size = new System.Drawing.Size(101, 70);
+            this.cms_role.Size = new System.Drawing.Size(153, 92);
             this.cms_role.Text = "操作";
             // 
             // tsm_add
