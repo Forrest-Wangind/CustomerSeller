@@ -82,6 +82,9 @@ namespace CustomerSeller
                     case "003003":
                         this.Add_CustomerInfo.Visible = true;
                         break;
+                    case "004":
+                        this.SaleLevelManagement.Visible = true;
+                        break;
                     default:
                         break;
                 }

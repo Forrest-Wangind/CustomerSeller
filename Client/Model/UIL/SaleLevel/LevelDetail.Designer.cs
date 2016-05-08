@@ -168,9 +168,19 @@
             0,
             0,
             0});
+            this.tbADailyNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.tbADailyNumber.Name = "tbADailyNumber";
             this.tbADailyNumber.Size = new System.Drawing.Size(139, 21);
             this.tbADailyNumber.TabIndex = 3;
+            this.tbADailyNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lblDailyNumber
             // 
@@ -188,9 +198,19 @@
             0,
             0,
             0});
+            this.tbAMaxNumber.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.tbAMaxNumber.Name = "tbAMaxNumber";
             this.tbAMaxNumber.Size = new System.Drawing.Size(139, 21);
             this.tbAMaxNumber.TabIndex = 1;
+            this.tbAMaxNumber.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // lblMaxNumber
             // 
@@ -264,9 +284,19 @@
             0,
             0,
             0});
+            this.tbBDailyNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.tbBDailyNumber.Name = "tbBDailyNumber";
             this.tbBDailyNumber.Size = new System.Drawing.Size(139, 21);
             this.tbBDailyNumber.TabIndex = 3;
+            this.tbBDailyNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // labelX3
             // 
@@ -284,9 +314,19 @@
             0,
             0,
             0});
+            this.tbBMaxNumber.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.tbBMaxNumber.Name = "tbBMaxNumber";
             this.tbBMaxNumber.Size = new System.Drawing.Size(139, 21);
             this.tbBMaxNumber.TabIndex = 1;
+            this.tbBMaxNumber.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // labelX4
             // 
@@ -360,9 +400,19 @@
             0,
             0,
             0});
+            this.tbCDailyNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.tbCDailyNumber.Name = "tbCDailyNumber";
             this.tbCDailyNumber.Size = new System.Drawing.Size(139, 21);
             this.tbCDailyNumber.TabIndex = 3;
+            this.tbCDailyNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // labelX6
             // 
@@ -380,9 +430,19 @@
             0,
             0,
             0});
+            this.tbCMaxNumber.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.tbCMaxNumber.Name = "tbCMaxNumber";
             this.tbCMaxNumber.Size = new System.Drawing.Size(139, 21);
             this.tbCMaxNumber.TabIndex = 1;
+            this.tbCMaxNumber.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // labelX7
             // 
