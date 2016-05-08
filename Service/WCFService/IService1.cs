@@ -115,5 +115,8 @@ namespace WCFService
 
         [OperationContract]
         DataSet GetPhoneDetail(string phoneType, User user);
+        
+        [OperationContract]
+        int AllocateEmployeePhoneByAdmin(string customerID, string userID);
     }
 }

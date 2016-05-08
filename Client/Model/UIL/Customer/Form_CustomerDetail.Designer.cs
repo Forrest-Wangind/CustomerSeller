@@ -31,6 +31,8 @@
             this.bt_Save = new DevComponents.DotNetBar.ButtonX();
             this.bt_Cancer = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_AppendRemark = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.lb_NewRemark = new DevComponents.DotNetBar.LabelX();
             this.tb_Remark = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.dtp_SuccessTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.cb_PhoneStatus = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -54,8 +56,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_CallPhone = new DevComponents.DotNetBar.ButtonX();
             this.bt_RecycleCustomerPhone = new DevComponents.DotNetBar.ButtonX();
-            this.tb_AppendRemark = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.lb_NewRemark = new DevComponents.DotNetBar.LabelX();
+            this.comboItemFollowed = new DevComponents.Editors.ComboItem();
+            this.comboItemNoBodyListen = new DevComponents.Editors.ComboItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_SuccessTime)).BeginInit();
             this.panel2.SuspendLayout();
@@ -105,6 +107,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(894, 338);
             this.panel1.TabIndex = 16;
+            // 
+            // tb_AppendRemark
+            // 
+            // 
+            // 
+            // 
+            this.tb_AppendRemark.Border.Class = "TextBoxBorder";
+            this.tb_AppendRemark.Location = new System.Drawing.Point(491, 232);
+            this.tb_AppendRemark.Multiline = true;
+            this.tb_AppendRemark.Name = "tb_AppendRemark";
+            this.tb_AppendRemark.Size = new System.Drawing.Size(356, 94);
+            this.tb_AppendRemark.TabIndex = 42;
+            // 
+            // lb_NewRemark
+            // 
+            this.lb_NewRemark.Location = new System.Drawing.Point(400, 218);
+            this.lb_NewRemark.Name = "lb_NewRemark";
+            this.lb_NewRemark.Size = new System.Drawing.Size(71, 23);
+            this.lb_NewRemark.TabIndex = 41;
+            this.lb_NewRemark.Text = "追加备注：";
             // 
             // tb_Remark
             // 
@@ -171,7 +193,9 @@
             this.comboItemNearSuccess,
             this.comboItemAlreadySuccess,
             this.comboItemMind,
-            this.comboItemNoMind});
+            this.comboItemNoMind,
+            this.comboItemFollowed,
+            this.comboItemNoBodyListen});
             this.cb_PhoneStatus.Location = new System.Drawing.Point(114, 182);
             this.cb_PhoneStatus.Name = "cb_PhoneStatus";
             this.cb_PhoneStatus.Size = new System.Drawing.Size(176, 21);
@@ -338,25 +362,13 @@
             this.bt_RecycleCustomerPhone.Text = "回收电话";
             this.bt_RecycleCustomerPhone.Click += new System.EventHandler(this.bt_RecycleCustomerPhone_Click);
             // 
-            // tb_AppendRemark
+            // comboItemFollowed
             // 
+            this.comboItemFollowed.Text = "再跟";
             // 
+            // comboItemNoBodyListen
             // 
-            // 
-            this.tb_AppendRemark.Border.Class = "TextBoxBorder";
-            this.tb_AppendRemark.Location = new System.Drawing.Point(491, 232);
-            this.tb_AppendRemark.Multiline = true;
-            this.tb_AppendRemark.Name = "tb_AppendRemark";
-            this.tb_AppendRemark.Size = new System.Drawing.Size(356, 94);
-            this.tb_AppendRemark.TabIndex = 42;
-            // 
-            // lb_NewRemark
-            // 
-            this.lb_NewRemark.Location = new System.Drawing.Point(400, 218);
-            this.lb_NewRemark.Name = "lb_NewRemark";
-            this.lb_NewRemark.Size = new System.Drawing.Size(71, 23);
-            this.lb_NewRemark.TabIndex = 41;
-            this.lb_NewRemark.Text = "追加备注：";
+            this.comboItemNoBodyListen.Text = "无人接听";
             // 
             // Form_CustomerDetail
             // 
@@ -407,6 +419,8 @@
         private DevComponents.Editors.ComboItem comboItemWomen;
         private DevComponents.DotNetBar.Controls.TextBoxX tb_AppendRemark;
         private DevComponents.DotNetBar.LabelX lb_NewRemark;
+        private DevComponents.Editors.ComboItem comboItemFollowed;
+        private DevComponents.Editors.ComboItem comboItemNoBodyListen;
 
     }
 }

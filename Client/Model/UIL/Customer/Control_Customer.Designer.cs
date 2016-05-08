@@ -33,16 +33,27 @@ namespace CustomerSeller
             this.panelData = new System.Windows.Forms.Panel();
             this.dgv_Customer = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_RecyclePhone = new DevComponents.DotNetBar.ButtonX();
+            this.bt_AllocatePhone = new DevComponents.DotNetBar.ButtonX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxExPhoneType = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItemA = new DevComponents.Editors.ComboItem();
+            this.comboItemB = new DevComponents.Editors.ComboItem();
+            this.comboItemC = new DevComponents.Editors.ComboItem();
+            this.bt_GetPhoneOfC = new DevComponents.DotNetBar.ButtonX();
+            this.bt_GetPhoneOfB = new DevComponents.DotNetBar.ButtonX();
             this.cb_status = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.cbItemmind = new DevComponents.Editors.ComboItem();
             this.cbItemNearSuccess = new DevComponents.Editors.ComboItem();
             this.cbItemSuccess = new DevComponents.Editors.ComboItem();
             this.cbItemNoMind = new DevComponents.Editors.ComboItem();
+            this.comboItemFollowed = new DevComponents.Editors.ComboItem();
+            this.comboItemNoBodyListen = new DevComponents.Editors.ComboItem();
             this.dtp_End_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtp_Create_EndTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtp_Create_StartTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dtp_Start_DealTime = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.bt_GetPhone = new DevComponents.DotNetBar.ButtonX();
+            this.bt_GetPhoneOfA = new DevComponents.DotNetBar.ButtonX();
             this.bt_Del = new DevComponents.DotNetBar.ButtonX();
             this.bt_Query = new DevComponents.DotNetBar.ButtonX();
             this.lb_Status = new DevComponents.DotNetBar.LabelX();
@@ -55,8 +66,6 @@ namespace CustomerSeller
             this.lb_Customer_Phone = new DevComponents.DotNetBar.LabelX();
             this.tb_Customer_Phone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.pagerControl1 = new TActionProject.PagerControl();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.panelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Customer)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -100,14 +109,18 @@ namespace CustomerSeller
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.buttonX2);
-            this.groupBox1.Controls.Add(this.buttonX1);
+            this.groupBox1.Controls.Add(this.bt_RecyclePhone);
+            this.groupBox1.Controls.Add(this.bt_AllocatePhone);
+            this.groupBox1.Controls.Add(this.labelX3);
+            this.groupBox1.Controls.Add(this.comboBoxExPhoneType);
+            this.groupBox1.Controls.Add(this.bt_GetPhoneOfC);
+            this.groupBox1.Controls.Add(this.bt_GetPhoneOfB);
             this.groupBox1.Controls.Add(this.cb_status);
             this.groupBox1.Controls.Add(this.dtp_End_DealTime);
             this.groupBox1.Controls.Add(this.dtp_Create_EndTime);
             this.groupBox1.Controls.Add(this.dtp_Create_StartTime);
             this.groupBox1.Controls.Add(this.dtp_Start_DealTime);
-            this.groupBox1.Controls.Add(this.bt_GetPhone);
+            this.groupBox1.Controls.Add(this.bt_GetPhoneOfA);
             this.groupBox1.Controls.Add(this.bt_Del);
             this.groupBox1.Controls.Add(this.bt_Query);
             this.groupBox1.Controls.Add(this.lb_Status);
@@ -127,6 +140,89 @@ namespace CustomerSeller
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
             // 
+            // bt_RecyclePhone
+            // 
+            this.bt_RecyclePhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_RecyclePhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_RecyclePhone.Location = new System.Drawing.Point(713, 113);
+            this.bt_RecyclePhone.Name = "bt_RecyclePhone";
+            this.bt_RecyclePhone.Size = new System.Drawing.Size(75, 23);
+            this.bt_RecyclePhone.TabIndex = 30;
+            this.bt_RecyclePhone.Tag = "C";
+            this.bt_RecyclePhone.Text = "回收电话";
+            this.bt_RecyclePhone.Click += new System.EventHandler(this.bt_RecyclePhone_Click);
+            // 
+            // bt_AllocatePhone
+            // 
+            this.bt_AllocatePhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_AllocatePhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_AllocatePhone.Location = new System.Drawing.Point(602, 113);
+            this.bt_AllocatePhone.Name = "bt_AllocatePhone";
+            this.bt_AllocatePhone.Size = new System.Drawing.Size(75, 23);
+            this.bt_AllocatePhone.TabIndex = 29;
+            this.bt_AllocatePhone.Tag = "B";
+            this.bt_AllocatePhone.Text = "分配电话";
+            this.bt_AllocatePhone.Click += new System.EventHandler(this.bt_AllocatePhone_Click);
+            // 
+            // labelX3
+            // 
+            this.labelX3.Location = new System.Drawing.Point(678, 63);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(75, 23);
+            this.labelX3.TabIndex = 28;
+            this.labelX3.Text = "电话类型:";
+            // 
+            // comboBoxExPhoneType
+            // 
+            this.comboBoxExPhoneType.DisplayMember = "Text";
+            this.comboBoxExPhoneType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxExPhoneType.FormattingEnabled = true;
+            this.comboBoxExPhoneType.ItemHeight = 15;
+            this.comboBoxExPhoneType.Items.AddRange(new object[] {
+            this.comboItemA,
+            this.comboItemB,
+            this.comboItemC});
+            this.comboBoxExPhoneType.Location = new System.Drawing.Point(766, 65);
+            this.comboBoxExPhoneType.Name = "comboBoxExPhoneType";
+            this.comboBoxExPhoneType.Size = new System.Drawing.Size(106, 21);
+            this.comboBoxExPhoneType.TabIndex = 27;
+            // 
+            // comboItemA
+            // 
+            this.comboItemA.Text = "A类型电话";
+            // 
+            // comboItemB
+            // 
+            this.comboItemB.Text = "B类型电话";
+            // 
+            // comboItemC
+            // 
+            this.comboItemC.Text = "C类型电话";
+            // 
+            // bt_GetPhoneOfC
+            // 
+            this.bt_GetPhoneOfC.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_GetPhoneOfC.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_GetPhoneOfC.Location = new System.Drawing.Point(493, 113);
+            this.bt_GetPhoneOfC.Name = "bt_GetPhoneOfC";
+            this.bt_GetPhoneOfC.Size = new System.Drawing.Size(75, 23);
+            this.bt_GetPhoneOfC.TabIndex = 26;
+            this.bt_GetPhoneOfC.Tag = "C";
+            this.bt_GetPhoneOfC.Text = "取C类电话";
+            this.bt_GetPhoneOfC.Click += new System.EventHandler(this.bt_GetPhone_Click);
+            // 
+            // bt_GetPhoneOfB
+            // 
+            this.bt_GetPhoneOfB.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_GetPhoneOfB.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_GetPhoneOfB.Location = new System.Drawing.Point(380, 113);
+            this.bt_GetPhoneOfB.Name = "bt_GetPhoneOfB";
+            this.bt_GetPhoneOfB.Size = new System.Drawing.Size(75, 23);
+            this.bt_GetPhoneOfB.TabIndex = 25;
+            this.bt_GetPhoneOfB.Tag = "B";
+            this.bt_GetPhoneOfB.Text = "取B类电话";
+            this.bt_GetPhoneOfB.Click += new System.EventHandler(this.bt_GetPhone_Click);
+            // 
             // cb_status
             // 
             this.cb_status.DisplayMember = "Text";
@@ -137,7 +233,9 @@ namespace CustomerSeller
             this.cbItemmind,
             this.cbItemNearSuccess,
             this.cbItemSuccess,
-            this.cbItemNoMind});
+            this.cbItemNoMind,
+            this.comboItemFollowed,
+            this.comboItemNoBodyListen});
             this.cb_status.Location = new System.Drawing.Point(93, 65);
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(123, 21);
@@ -158,6 +256,14 @@ namespace CustomerSeller
             // cbItemNoMind
             // 
             this.cbItemNoMind.Text = "无意向";
+            // 
+            // comboItemFollowed
+            // 
+            this.comboItemFollowed.Text = "再跟";
+            // 
+            // comboItemNoBodyListen
+            // 
+            this.comboItemNoBodyListen.Text = "无人接听";
             // 
             // dtp_End_DealTime
             // 
@@ -327,17 +433,17 @@ namespace CustomerSeller
             this.dtp_Start_DealTime.Size = new System.Drawing.Size(106, 21);
             this.dtp_Start_DealTime.TabIndex = 20;
             // 
-            // bt_GetPhone
+            // bt_GetPhoneOfA
             // 
-            this.bt_GetPhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.bt_GetPhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_GetPhone.Location = new System.Drawing.Point(278, 113);
-            this.bt_GetPhone.Name = "bt_GetPhone";
-            this.bt_GetPhone.Size = new System.Drawing.Size(75, 23);
-            this.bt_GetPhone.TabIndex = 19;
-            this.bt_GetPhone.Tag = "A";
-            this.bt_GetPhone.Text = "取A类电话";
-            this.bt_GetPhone.Click += new System.EventHandler(this.bt_GetPhone_Click);
+            this.bt_GetPhoneOfA.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_GetPhoneOfA.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_GetPhoneOfA.Location = new System.Drawing.Point(261, 113);
+            this.bt_GetPhoneOfA.Name = "bt_GetPhoneOfA";
+            this.bt_GetPhoneOfA.Size = new System.Drawing.Size(75, 23);
+            this.bt_GetPhoneOfA.TabIndex = 19;
+            this.bt_GetPhoneOfA.Tag = "A";
+            this.bt_GetPhoneOfA.Text = "取A类电话";
+            this.bt_GetPhoneOfA.Click += new System.EventHandler(this.bt_GetPhone_Click);
             // 
             // bt_Del
             // 
@@ -453,30 +559,6 @@ namespace CustomerSeller
             this.pagerControl1.Size = new System.Drawing.Size(912, 29);
             this.pagerControl1.TabIndex = 1;
             // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(386, 113);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
-            this.buttonX1.TabIndex = 25;
-            this.buttonX1.Tag = "B";
-            this.buttonX1.Text = "取B类电话";
-            this.buttonX1.Click += new System.EventHandler(this.bt_GetPhone_Click);
-            // 
-            // buttonX2
-            // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(493, 113);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(75, 23);
-            this.buttonX2.TabIndex = 26;
-            this.buttonX2.Tag = "C";
-            this.buttonX2.Text = "取C类电话";
-            this.buttonX2.Click += new System.EventHandler(this.bt_GetPhone_Click);
-            // 
             // Control_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -505,7 +587,7 @@ namespace CustomerSeller
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_EndTime;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Create_StartTime;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtp_Start_DealTime;
-        private DevComponents.DotNetBar.ButtonX bt_GetPhone;
+        private DevComponents.DotNetBar.ButtonX bt_GetPhoneOfA;
         private DevComponents.DotNetBar.ButtonX bt_Del;
         private DevComponents.DotNetBar.ButtonX bt_Query;
         private DevComponents.DotNetBar.LabelX lb_Status;
@@ -523,8 +605,17 @@ namespace CustomerSeller
         private DevComponents.Editors.ComboItem cbItemNearSuccess;
         private DevComponents.Editors.ComboItem cbItemSuccess;
         private DevComponents.Editors.ComboItem cbItemNoMind;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX bt_GetPhoneOfC;
+        private DevComponents.DotNetBar.ButtonX bt_GetPhoneOfB;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxExPhoneType;
+        private DevComponents.Editors.ComboItem comboItemA;
+        private DevComponents.Editors.ComboItem comboItemB;
+        private DevComponents.Editors.ComboItem comboItemC;
+        private DevComponents.Editors.ComboItem comboItemFollowed;
+        private DevComponents.Editors.ComboItem comboItemNoBodyListen;
+        private DevComponents.DotNetBar.ButtonX bt_RecyclePhone;
+        private DevComponents.DotNetBar.ButtonX bt_AllocatePhone;
 
 
 
