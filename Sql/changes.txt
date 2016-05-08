@@ -1,0 +1,13 @@
+ 	new file:   Sql/pro_addLevel.sql
+        new file:   Sql/pro_deleteSaleLevel.sql
+        new file:   Sql/pro_getLevelDetail.sql
+        new file:   Sql/pro_getSaleLevels.sql
+        new file:   Sql/pro_updateLevel.sql
+
+ 	modified:   Sql/pro_addUser.sql
+        modified:   Sql/pro_getSingleUser.sql
+        modified:   Sql/pro_updateUser.sql
+        modified:   Sql/pro_getUsers.sql
+        modified:   Sql/pro_getPhoneDetail.sql
+
+  INSERT INTO FunctionInfo VALUES('004', '销售级别管理', 'CRUD');
