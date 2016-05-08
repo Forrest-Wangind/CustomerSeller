@@ -2,13 +2,8 @@
 using DevComponents.DotNetBar;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WCFService.Common;
 
@@ -17,6 +12,7 @@ namespace CustomerSeller.UIL.User
     public partial class SingleUser : UserControl
     {
         string operation = string.Empty;
+        string theRole = string.Empty;
         ServiceReference1.User user;
 
         public SingleUser()
@@ -38,6 +34,8 @@ namespace CustomerSeller.UIL.User
 
             //显示系统中所有的角色
             showRoles(userId);
+
+            showLevels();
 
             switch (operation)
             {
@@ -120,9 +118,39 @@ namespace CustomerSeller.UIL.User
                 int index = 0;
                 while (index < roles.Tables[1].Rows.Count)
                 {
-                    SelectTree(this.tree_role, roles.Tables[1].Rows[index]["id"].ToString());
+                    theRole = roles.Tables[1].Rows[index]["id"].ToString();
+                    if(theRole.Equals("002"))
+                    {
+                        showSaleLevel(true);
+                    }
+
+                    SelectTree(this.tree_role, theRole);
                     index++;
                 }
+            }
+        }
+
+        /// <summary>
+        /// 显示所有的销售级别
+        /// </summary>
+        private void showLevels()
+        {
+            ServiceReference1.SaleLevel level = new ServiceReference1.SaleLevel();
+            level.levelName = string.Empty;
+            level.isSample = true;
+            DataSet levels = CustomerSellerService.getService().GetSaleLevels(level);
+            if (levels != null && levels.Tables.Count > 0)
+            {
+                ArrayList lists = new ArrayList();
+                for (int index = 0; index < levels.Tables[0].Rows.Count; index++)
+                {
+                    string value = levels.Tables[0].Rows[index]["id"].ToString();
+                    string key = levels.Tables[0].Rows[index]["name"].ToString();
+                    lists.Add(new Model.comBoxItem(key, value));
+                }
+                this.cbLevel.DisplayMember = "pkey";
+                this.cbLevel.ValueMember = "pvalue";
+                this.cbLevel.DataSource = lists;
             }
         }
 
@@ -167,6 +195,7 @@ namespace CustomerSeller.UIL.User
                     this.cb_gender.SelectedIndex = user.gender == "m" ? 0 : (user.gender == "f" ? 1 : 2);
                     this.tb_extension.Text = user.exten;
                     this.dt_entryTine.Value = user.entryTimeStart;
+                    this.cbLevel.SelectedValue = user.saleLevel;
                 }
             }
         }
@@ -205,7 +234,8 @@ namespace CustomerSeller.UIL.User
                     user.role = getSelectedTree(this.tree_role);
                     user.exten = this.tb_extension.Text.Trim();
                     user.gender = this.cb_gender.SelectedValue.ToString();
-                    user.entryTimeStart = this.dt_entryTine.IsEmpty ? DateTime.Now: this.dt_entryTine.Value;
+                    user.entryTimeStart = this.dt_entryTine.IsEmpty ? DateTime.Now : this.dt_entryTine.Value;
+                    user.saleLevel = this.cbLevel.Visible ? this.cbLevel.SelectedValue.ToString() : null;
 
                     if (!user.role.Equals(string.Empty))
                     {
@@ -287,6 +317,7 @@ namespace CustomerSeller.UIL.User
                         user.gender = this.cb_gender.SelectedValue.ToString();
                         user.exten = this.tb_extension.Text.Trim();
                         user.entryTimeStart = this.dt_entryTine.Value;
+                        user.saleLevel = this.cbLevel.Visible ? this.cbLevel.SelectedValue.ToString() : null;
 
                         if (!user.role.Equals(string.Empty))
                         {
@@ -344,6 +375,15 @@ namespace CustomerSeller.UIL.User
             {
                 if (e.Node.Checked)
                 {
+                    if (e.Node.Name.Equals("002"))
+                    {
+                        //显示销售级别
+                        showSaleLevel(true);
+                    }
+                    else
+                    {
+                        showSaleLevel(false);
+                    }
 
                     foreach (TreeNode node in tree_role.Nodes)
                     {
@@ -353,7 +393,17 @@ namespace CustomerSeller.UIL.User
                         }
                     }
                 }
+                else
+                {
+                    showSaleLevel(false);
+                }
             }
+        }
+
+        private void showSaleLevel(bool isSaleLevel)
+        {
+            this.lblLevel.Visible = isSaleLevel;
+            this.cbLevel.Visible = isSaleLevel;
         }
     }
 }

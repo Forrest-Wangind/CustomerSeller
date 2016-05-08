@@ -7,9 +7,11 @@ CREATE PROCEDURE pro_updateUser
 	@id NVARCHAR(50),
 	@name NVARCHAR(20),
 	@pass NVARCHAR(50),
+	@role NVARCHAR(50),
 	@gender NVARCHAR(20),
 	@exten NVARCHAR(20),
 	@entryTime DATETIME,
+	@levelId NVARCHAR(50),
 	@flag INT OUTPUT,
 	@message NVARCHAR(100) OUTPUT
 AS
@@ -23,7 +25,7 @@ BEGIN
 		BEGIN
 			IF(@pass IS NULL OR @pass = '')
 			BEGIN
-				UPDATE UserInfo SET UserName = @name,UserGender=@gender,Exten=@exten,EntryTime=@entryTime
+				UPDATE UserInfo SET UserName = @name,UserGender=@gender,Exten=@exten,EntryTime=@entryTime,LevelID=@levelId,RoleID=@role
 				WHERE UserID = @id
 				IF(@@error=0)
 				BEGIN
@@ -37,7 +39,7 @@ BEGIN
 			END
 			ELSE
 			BEGIN
-				UPDATE UserInfo SET UserName = @name,[Password]=@pass,UserGender=@gender,Exten=@exten,EntryTime=@entryTime
+				UPDATE UserInfo SET UserName = @name,[Password]=@pass,UserGender=@gender,Exten=@exten,EntryTime=@entryTime,LevelID=@levelId,RoleID=@role
 					WHERE UserID = @id
 				IF(@@error=0)
 				BEGIN

@@ -22,9 +22,11 @@ BEGIN
 	END,
 	[users].EntryTime as '入职时间',
 	[users].Exten as '坐席工号',
-	[roles].RoleName as '角色名称'
+	[roles].RoleName as '角色名称',
+	sLevel.LevelName as '销售级别名称'
 	FROM UserInfo [users]
 	INNER JOIN RoleInfo [roles] ON [users].RoleID = [roles].RoleID
+	LEFT JOIN SaleLevel sLevel ON [users].LevelID = sLevel.ID
 	WHERE 
 		((UserID like '%' + @id + '%') or (@id is null))
 		AND ((UserName like '%' + @name + '%') OR (@name is null))

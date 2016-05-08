@@ -25,6 +25,9 @@ namespace WCFService.Model
         public string role { get; set; }
 
         [DataMember]
+        public string saleLevel { get; set; }
+
+        [DataMember]
         public string exten { get; set; }
 
         [DataMember]

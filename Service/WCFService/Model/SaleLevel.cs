@@ -17,6 +17,9 @@ namespace WCFService.Model
         public string levelName { get; set; }
 
         [DataMember]
+        public Boolean isSample{ get; set; }
+
+        [DataMember]
         public int AMaxNumber{ get; set; }
 
         [DataMember]

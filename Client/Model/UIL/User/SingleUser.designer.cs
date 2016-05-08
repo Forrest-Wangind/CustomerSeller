@@ -39,6 +39,8 @@
             this.tree_role = new System.Windows.Forms.TreeView();
             this.gp_user_info = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbLevel = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.lblLevel = new DevComponents.DotNetBar.LabelX();
             this.tb_extension = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.cb_change_pass = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -230,6 +232,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbLevel);
+            this.panel2.Controls.Add(this.lblLevel);
             this.panel2.Controls.Add(this.tb_extension);
             this.panel2.Controls.Add(this.labelX9);
             this.panel2.Controls.Add(this.cb_change_pass);
@@ -247,6 +251,27 @@
             this.panel2.Size = new System.Drawing.Size(339, 411);
             this.panel2.TabIndex = 0;
             // 
+            // cbLevel
+            // 
+            this.cbLevel.DisplayMember = "Text";
+            this.cbLevel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbLevel.FormattingEnabled = true;
+            this.cbLevel.ItemHeight = 15;
+            this.cbLevel.Location = new System.Drawing.Point(122, 339);
+            this.cbLevel.Name = "cbLevel";
+            this.cbLevel.Size = new System.Drawing.Size(200, 21);
+            this.cbLevel.TabIndex = 28;
+            this.cbLevel.Visible = false;
+            // 
+            // lblLevel
+            // 
+            this.lblLevel.Location = new System.Drawing.Point(41, 336);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(75, 23);
+            this.lblLevel.TabIndex = 27;
+            this.lblLevel.Text = "销售级别：";
+            this.lblLevel.Visible = false;
+            // 
             // tb_extension
             // 
             // 
@@ -254,14 +279,14 @@
             // 
             this.tb_extension.Border.Class = "TextBoxBorder";
             this.tb_extension.Enabled = false;
-            this.tb_extension.Location = new System.Drawing.Point(118, 285);
+            this.tb_extension.Location = new System.Drawing.Point(122, 241);
             this.tb_extension.Name = "tb_extension";
             this.tb_extension.Size = new System.Drawing.Size(100, 21);
             this.tb_extension.TabIndex = 26;
             // 
             // labelX9
             // 
-            this.labelX9.Location = new System.Drawing.Point(37, 284);
+            this.labelX9.Location = new System.Drawing.Point(41, 240);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(75, 23);
             this.labelX9.TabIndex = 25;
@@ -269,7 +294,7 @@
             // 
             // cb_change_pass
             // 
-            this.cb_change_pass.Location = new System.Drawing.Point(118, 180);
+            this.cb_change_pass.Location = new System.Drawing.Point(122, 136);
             this.cb_change_pass.Name = "cb_change_pass";
             this.cb_change_pass.Size = new System.Drawing.Size(121, 23);
             this.cb_change_pass.TabIndex = 24;
@@ -286,7 +311,7 @@
             this.dt_entryTine.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dt_entryTine.ButtonDropDown.Visible = true;
             this.dt_entryTine.Enabled = false;
-            this.dt_entryTine.Location = new System.Drawing.Point(118, 333);
+            this.dt_entryTine.Location = new System.Drawing.Point(122, 289);
             // 
             // 
             // 
@@ -323,7 +348,7 @@
             // 
             // labelX4
             // 
-            this.labelX4.Location = new System.Drawing.Point(37, 330);
+            this.labelX4.Location = new System.Drawing.Point(41, 286);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 22;
@@ -335,14 +360,14 @@
             this.cb_gender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb_gender.FormattingEnabled = true;
             this.cb_gender.ItemHeight = 15;
-            this.cb_gender.Location = new System.Drawing.Point(118, 236);
+            this.cb_gender.Location = new System.Drawing.Point(122, 192);
             this.cb_gender.Name = "cb_gender";
             this.cb_gender.Size = new System.Drawing.Size(121, 21);
             this.cb_gender.TabIndex = 21;
             // 
             // labelX3
             // 
-            this.labelX3.Location = new System.Drawing.Point(37, 233);
+            this.labelX3.Location = new System.Drawing.Point(41, 189);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(75, 23);
             this.labelX3.TabIndex = 20;
@@ -354,14 +379,14 @@
             // 
             // 
             this.tb_user_name.Border.Class = "TextBoxBorder";
-            this.tb_user_name.Location = new System.Drawing.Point(118, 125);
+            this.tb_user_name.Location = new System.Drawing.Point(122, 81);
             this.tb_user_name.Name = "tb_user_name";
             this.tb_user_name.Size = new System.Drawing.Size(100, 21);
             this.tb_user_name.TabIndex = 19;
             // 
             // labelX2
             // 
-            this.labelX2.Location = new System.Drawing.Point(37, 124);
+            this.labelX2.Location = new System.Drawing.Point(41, 80);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 18;
@@ -374,14 +399,14 @@
             // 
             this.tb_user_id.Border.Class = "TextBoxBorder";
             this.tb_user_id.Enabled = false;
-            this.tb_user_id.Location = new System.Drawing.Point(118, 74);
+            this.tb_user_id.Location = new System.Drawing.Point(122, 30);
             this.tb_user_id.Name = "tb_user_id";
             this.tb_user_id.Size = new System.Drawing.Size(100, 21);
             this.tb_user_id.TabIndex = 17;
             // 
             // labelX1
             // 
-            this.labelX1.Location = new System.Drawing.Point(37, 73);
+            this.labelX1.Location = new System.Drawing.Point(41, 29);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(75, 23);
             this.labelX1.TabIndex = 16;
@@ -430,5 +455,7 @@
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX tb_user_id;
         private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbLevel;
+        private DevComponents.DotNetBar.LabelX lblLevel;
     }
 }

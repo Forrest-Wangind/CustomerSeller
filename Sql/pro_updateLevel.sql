@@ -30,14 +30,15 @@ BEGIN
 			UPDATE SaleLevel SET levelName = @name, Remark = @remark WHERE ID = @id;
 			IF(@@error=0)
 			BEGIN
-				UPDATE PhoneAllocateRule SET MaxNumber = @AMaxNumber,DailyNumber = @ADailyNumber,Remark=@ARemark
-					WHERE UPPER(PhoneType) = 'A' AND LevelID = @id;
+				DELETE PhoneAllocateRule WHERE LevelID = @id;
+				INSERT INTO PhoneAllocateRule(ID,PhoneType,MaxNumber,DailyNumber,LevelID,Remark)
+					VALUES(NEWID(),'A',@AMaxNumber,@ADailyNumber,@id,@ARemark);
 				SET @errorCount += @@error;
-				UPDATE PhoneAllocateRule SET MaxNumber = @BMaxNumber,DailyNumber = @BDailyNumber,Remark=@BRemark
-					WHERE UPPER(PhoneType) = 'B' AND LevelID = @id;
+				INSERT INTO PhoneAllocateRule(ID,PhoneType,MaxNumber,DailyNumber,LevelID,Remark)
+					VALUES(NEWID(),'B',@BMaxNumber,@BDailyNumber,@id,@BRemark);
 				SET @errorCount += @@error;
-				UPDATE PhoneAllocateRule SET MaxNumber = @CMaxNumber,DailyNumber = @CDailyNumber,Remark=@CRemark
-					WHERE UPPER(PhoneType) = 'C' AND LevelID = @id;
+				INSERT INTO PhoneAllocateRule(ID,PhoneType,MaxNumber,DailyNumber,LevelID,Remark)
+					VALUES(NEWID(),'C',@CMaxNumber,@CDailyNumber,@id,@CRemark);
 				SET @errorCount += @@error;
 			END
 			ELSE

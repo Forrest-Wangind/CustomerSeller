@@ -46,6 +46,7 @@ namespace CustomerSeller.UIL.SaleLevel
         {
             ServiceReference1.SaleLevel level = new ServiceReference1.SaleLevel();
             level.levelName = this.tb_level_name.Text.Trim();
+            level.isSample = false;
             DataSet levels = CustomerSellerService.getService().GetSaleLevels(level);
             if (levels != null && levels.Tables[0].Rows.Count > 0)
             {

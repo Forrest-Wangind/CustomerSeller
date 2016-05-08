@@ -59,7 +59,6 @@ namespace CustomerSeller.UIL.SaleLevel
             ServiceReference1.SaleLevel level = DAL.CustomerSellerService.getService().GetSaleLevelDetail(levelId);
             if (level != null)
             {
-                this.tbLevelId.Text = level.levelID;
                 this.tbLevelName.Text = level.levelName;
                 this.tbRemark.Text = level.levelRemark;
                 this.tbAMaxNumber.Value = level.AMaxNumber;
@@ -130,12 +129,24 @@ namespace CustomerSeller.UIL.SaleLevel
 
         private void addLevel()
         {
-            if (!string.IsNullOrEmpty(levelId))
+            if (!string.IsNullOrEmpty(this.tbLevelName.Text.Trim()))
             {
-                if (CustomerSellerService.getService().DeleteSaleLevel(levelId))
-                    MessageBoxEx.Show("删除销售员级别成功！");
+                saleLevel = new ServiceReference1.SaleLevel();
+                saleLevel.levelName = this.tbLevelName.Text.Trim();
+                saleLevel.levelRemark = this.tbRemark.Text.Trim();
+                saleLevel.AMaxNumber = (int)tbAMaxNumber.Value;
+                saleLevel.ADailyNumber = (int)tbADailyNumber.Value;
+                saleLevel.ARemark = this.tbARemark.Text.Trim();
+                saleLevel.BMaxNumber = (int)tbBMaxNumber.Value;
+                saleLevel.BDailyNumber = (int)tbBDailyNumber.Value;
+                saleLevel.BRemark = this.tbBRemark.Text.Trim();
+                saleLevel.CMaxNumber = (int)tbCMaxNumber.Value;
+                saleLevel.CDailyNumber = (int)tbCDailyNumber.Value;
+                saleLevel.CRemark = this.tbCRemark.Text.Trim();
+                if (CustomerSellerService.getService().AddSaleLevel(saleLevel))
+                    MessageBoxEx.Show("添加销售员级别成功！");
                 else
-                    MessageBoxEx.Show("删除销售员级别失败，请仔细核对您输入的信息！");
+                    MessageBoxEx.Show("添加销售员级别失败，请仔细核对您输入的信息！");
             }
         }
     }

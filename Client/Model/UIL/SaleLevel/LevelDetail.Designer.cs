@@ -55,8 +55,6 @@
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btClear = new DevComponents.DotNetBar.ButtonX();
-            this.tbLevelId = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbADailyNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAMaxNumber)).BeginInit();
@@ -70,7 +68,7 @@
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(235, 158);
+            this.lblName.Location = new System.Drawing.Point(235, 121);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(94, 23);
             this.lblName.TabIndex = 0;
@@ -82,7 +80,7 @@
             // 
             // 
             this.tbLevelName.Border.Class = "TextBoxBorder";
-            this.tbLevelName.Location = new System.Drawing.Point(345, 158);
+            this.tbLevelName.Location = new System.Drawing.Point(345, 121);
             this.tbLevelName.Name = "tbLevelName";
             this.tbLevelName.Size = new System.Drawing.Size(139, 21);
             this.tbLevelName.TabIndex = 1;
@@ -93,14 +91,14 @@
             // 
             // 
             this.tbRemark.Border.Class = "TextBoxBorder";
-            this.tbRemark.Location = new System.Drawing.Point(345, 201);
+            this.tbRemark.Location = new System.Drawing.Point(345, 164);
             this.tbRemark.Name = "tbRemark";
             this.tbRemark.Size = new System.Drawing.Size(139, 21);
             this.tbRemark.TabIndex = 3;
             // 
             // lblRemark
             // 
-            this.lblRemark.Location = new System.Drawing.Point(235, 201);
+            this.lblRemark.Location = new System.Drawing.Point(235, 164);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(75, 23);
             this.lblRemark.TabIndex = 2;
@@ -117,7 +115,7 @@
             this.groupPanel1.Controls.Add(this.lblDailyNumber);
             this.groupPanel1.Controls.Add(this.tbAMaxNumber);
             this.groupPanel1.Controls.Add(this.lblMaxNumber);
-            this.groupPanel1.Location = new System.Drawing.Point(576, 62);
+            this.groupPanel1.Location = new System.Drawing.Point(576, 25);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.Size = new System.Drawing.Size(357, 204);
             // 
@@ -213,7 +211,7 @@
             this.groupPanel2.Controls.Add(this.labelX3);
             this.groupPanel2.Controls.Add(this.tbBMaxNumber);
             this.groupPanel2.Controls.Add(this.labelX4);
-            this.groupPanel2.Location = new System.Drawing.Point(195, 314);
+            this.groupPanel2.Location = new System.Drawing.Point(195, 259);
             this.groupPanel2.Name = "groupPanel2";
             this.groupPanel2.Size = new System.Drawing.Size(357, 204);
             // 
@@ -309,7 +307,7 @@
             this.groupPanel3.Controls.Add(this.labelX6);
             this.groupPanel3.Controls.Add(this.tbCMaxNumber);
             this.groupPanel3.Controls.Add(this.labelX7);
-            this.groupPanel3.Location = new System.Drawing.Point(576, 314);
+            this.groupPanel3.Location = new System.Drawing.Point(576, 259);
             this.groupPanel3.Name = "groupPanel3";
             this.groupPanel3.Size = new System.Drawing.Size(357, 204);
             // 
@@ -398,7 +396,7 @@
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(477, 586);
+            this.btnSave.Location = new System.Drawing.Point(477, 531);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -409,37 +407,16 @@
             // 
             this.btClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btClear.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btClear.Location = new System.Drawing.Point(576, 586);
+            this.btClear.Location = new System.Drawing.Point(576, 531);
             this.btClear.Name = "btClear";
             this.btClear.Size = new System.Drawing.Size(75, 23);
             this.btClear.TabIndex = 7;
             this.btClear.Text = "清空";
             // 
-            // tbLevelId
-            // 
-            // 
-            // 
-            // 
-            this.tbLevelId.Border.Class = "TextBoxBorder";
-            this.tbLevelId.Location = new System.Drawing.Point(345, 115);
-            this.tbLevelId.Name = "tbLevelId";
-            this.tbLevelId.Size = new System.Drawing.Size(139, 21);
-            this.tbLevelId.TabIndex = 9;
-            // 
-            // labelX8
-            // 
-            this.labelX8.Location = new System.Drawing.Point(235, 115);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(94, 23);
-            this.labelX8.TabIndex = 8;
-            this.labelX8.Text = "销售级别编号：";
-            // 
             // LevelDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tbLevelId);
-            this.Controls.Add(this.labelX8);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btClear);
             this.Controls.Add(this.groupPanel3);
@@ -450,7 +427,7 @@
             this.Controls.Add(this.tbLevelName);
             this.Controls.Add(this.lblName);
             this.Name = "LevelDetail";
-            this.Size = new System.Drawing.Size(1113, 719);
+            this.Size = new System.Drawing.Size(1113, 606);
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbADailyNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAMaxNumber)).EndInit();
@@ -493,7 +470,5 @@
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.ButtonX btClear;
-        private DevComponents.DotNetBar.Controls.TextBoxX tbLevelId;
-        private DevComponents.DotNetBar.LabelX labelX8;
     }
 }

@@ -107,6 +107,7 @@ namespace WCFService.DAL
             //传递users的参数
             List<SqlParameter> paras = new List<SqlParameter>();
             paras.Add(new SqlParameter("@name", saleLevel.levelName));
+            paras.Add(new SqlParameter("@isSample", saleLevel.isSample ? 1 : 0));
 
             return SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_getLevels", paras.ToArray());
         }
@@ -124,14 +125,14 @@ namespace WCFService.DAL
                     level.levelID = reader[0].ToString();
                     level.levelName = reader[1].ToString();
                     level.levelRemark = reader[2].ToString();
-                    level.AMaxNumber = (int)reader[3];
-                    level.ADailyNumber = (int)reader[4];
+                    level.AMaxNumber = reader[3] != DBNull.Value ? (int)reader[3] : 0;
+                    level.ADailyNumber = reader[4] != DBNull.Value ? (int)reader[4] : 0;
                     level.ARemark = reader[5].ToString();
-                    level.BMaxNumber = (int)reader[6];
-                    level.BDailyNumber = (int)reader[7];
+                    level.BMaxNumber = reader[6] != DBNull.Value ? (int)reader[6] : 0;
+                    level.BDailyNumber = reader[7] != DBNull.Value ? (int)reader[7] : 0;
                     level.BRemark = reader[8].ToString();
-                    level.CMaxNumber = (int)reader[9];
-                    level.CDailyNumber = (int)reader[10];
+                    level.CMaxNumber = reader[9] != DBNull.Value ? (int)reader[9] : 0;
+                    level.CDailyNumber = reader[10] != DBNull.Value ? (int)reader[10] : 0;
                     level.CRemark = reader[11].ToString();
                     break;
                 }

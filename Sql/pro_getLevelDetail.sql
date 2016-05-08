@@ -31,4 +31,4 @@ BEGIN
 END
 
 SELECT * FROM SaleLevel
-execute pro_getLevelDetail '30A75195-3023-4026-B61E-16C63829F382'
+execute pro_getLevelDetail '1A8E928F-A4C8-4EB7-80D4-77DCEC6A44D8'
