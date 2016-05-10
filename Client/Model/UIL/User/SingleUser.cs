@@ -190,9 +190,9 @@ namespace CustomerSeller.UIL.User
                 {
                     this.tb_user_id.Text = user.userID;
                     this.tb_user_name.Text = user.userName;
-                    this.tb_password.Text = user.password;
-                    this.tb_password_again.Text = user.password;
-                    this.cb_gender.SelectedIndex = user.gender == "m" ? 0 : (user.gender == "f" ? 1 : 2);
+                    //this.tb_password.Text = user.password;
+                    //this.tb_password_again.Text = user.password;
+                    this.cb_gender.SelectedIndex = user.gender == "u" ? 0 : (user.gender == "m" ? 1 : 2);
                     this.tb_extension.Text = user.exten;
                     this.dt_entryTine.Value = user.entryTimeStart;
                     this.cbLevel.SelectedValue = user.saleLevel;
@@ -280,6 +280,9 @@ namespace CustomerSeller.UIL.User
         //判断密码是否一致
         private bool isPasswordSame()
         {
+            if (!this.cb_change_pass.Checked)
+                return true;
+
             if (!string.IsNullOrEmpty(this.tb_password.Text))
             {
                 if (this.tb_password.Text != this.tb_password_again.Text)
