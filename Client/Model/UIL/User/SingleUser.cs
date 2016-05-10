@@ -312,7 +312,7 @@ namespace CustomerSeller.UIL.User
                         user = new ServiceReference1.User();
                         user.userID = this.tb_user_id.Text.Trim();
                         user.userName = this.tb_user_name.Text.Trim();
-                        user.password = Encrypt.DESEncrypt(this.tb_password.Text, UserInfo.pwdKey);
+                        user.password = this.cb_change_pass.Checked ? Encrypt.DESEncrypt(this.tb_password.Text, UserInfo.pwdKey) : string.Empty;
                         user.role = getSelectedTree(this.tree_role);
                         user.gender = this.cb_gender.SelectedValue.ToString();
                         user.exten = this.tb_extension.Text.Trim();
