@@ -188,7 +188,7 @@ namespace CustomerSeller
 
                 if (employeePhoneInfo.PhoneID.Count <= 0 || string.IsNullOrEmpty(employeePhoneInfo.EmployeeInfo.EmployeeID))
                 {
-                    MessageBoxEx.Show("没有选择电话或业务员", "提示");
+                    MessageBoxEx.Show("没有选择电话或业务员,或不能指派该电话本身的业务员", "提示");
                     return;
                 }
                 employeePhoneInfo.PhoneID.ForEach(item =>

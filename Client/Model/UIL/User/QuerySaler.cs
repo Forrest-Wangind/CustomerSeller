@@ -36,7 +36,7 @@ namespace CustomerSeller.UIL.User
         {   
             try
             {
-                var ds = CustomerInfo.GetServiceInstance().GetUsers(new ServiceReference1.User() { entryTimeStart = DateTime.Parse("1900-01-01"), entryTimeEnd = DateTime.Parse("2999-12-31"), role = "salesman" });
+                var ds = CustomerInfo.GetServiceInstance().GetUsers(new ServiceReference1.User() { entryTimeStart = DateTime.Parse("1900-01-01"), entryTimeEnd = DateTime.Parse("2999-12-31"), role = "销售员" });
                 if (ds!=null&&ds.Tables[0].Rows.Count>0)
                 {
                     foreach(DataRow dr in ds.Tables[0].Rows)
@@ -58,15 +58,13 @@ namespace CustomerSeller.UIL.User
                 throw new Exception();
             }
 
-           
-
-           
+        
         }
 
         private void bt_OK_Click(object sender, EventArgs e)
         {  
             try
-            {
+            {   
                 employeeInfo.EmployeeID = Convert.ToString(this.dgView.SelectedCells[0].Value.ToString());
                 employeeInfo.EmployeeName = Convert.ToString(this.dgView.SelectedCells[1].Value.ToString());
               
