@@ -78,12 +78,14 @@
     <Compile Include="Common\LogInfo.cs" />
     <Compile Include="Common\SqlHelper.cs" />
     <Compile Include="DAL\RoleDAL.cs" />
+    <Compile Include="DAL\SaleGroupDAL.cs" />
     <Compile Include="DAL\SaleLevelDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="Entity\FlagType.cs" />
     <Compile Include="Entity\Phone.cs" />
     <Compile Include="Entity\SqlResult.cs" />
     <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\SaleGroup.cs" />
     <Compile Include="Model\SaleLevel.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Service1.svc.cs">

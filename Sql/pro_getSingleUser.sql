@@ -7,7 +7,7 @@ CREATE PROCEDURE pro_getSingleUser
 	@id varchar(50)
 AS
 BEGIN
-	SELECT ui.UserID, ui.UserName,ui.[Password],ui.UserGender,ui.RoleID,ui.Exten,ui.EntryTime,ui.LevelID FROM UserInfo ui
+	SELECT ui.UserID, ui.UserName,ui.[Password],ui.UserGender,ui.RoleID,ui.Exten,ui.EntryTime,ui.LevelID,ui.GroupID FROM UserInfo ui
 	WHERE 
 		UserID = @id
 END

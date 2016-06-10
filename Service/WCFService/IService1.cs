@@ -51,7 +51,13 @@ namespace WCFService
         DataSet GetSaleLevels(SaleLevel saleLevel);
 
         [OperationContract]
+        DataSet GetSaleGroups(SaleGroup saleGroup);
+
+        [OperationContract]
         SaleLevel GetSaleLevelDetail(string levelId);
+
+        [OperationContract]
+        SaleGroup GetSaleGroupDetail(string groupId);
 
         [OperationContract]
         DataSet GetPermissions(string userId);
@@ -72,6 +78,9 @@ namespace WCFService
         bool AddSaleLevel(SaleLevel level);
 
         [OperationContract]
+        bool AddSaleGroup(SaleGroup group);
+
+        [OperationContract]
         bool UpdateUser(User user);
 
         [OperationContract]
@@ -81,6 +90,9 @@ namespace WCFService
         bool UpdateSaleLevel(SaleLevel level);
 
         [OperationContract]
+        bool UpdateSaleGroup(SaleGroup group);
+
+        [OperationContract]
         bool DeleteUser(string userId);
 
         [OperationContract]
@@ -88,6 +100,9 @@ namespace WCFService
 
         [OperationContract]
         bool DeleteSaleLevel(string levelId);
+
+        [OperationContract]
+        bool DeleteSaleGroup(string groupId);
 
         [OperationContract]
         Role GetRoleDetail(string roleId);

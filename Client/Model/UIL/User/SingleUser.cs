@@ -36,7 +36,7 @@ namespace CustomerSeller.UIL.User
             showRoles(userId);
 
             showLevels();
-
+            showGroups();
             switch (operation)
             {
                 case "add":
@@ -154,6 +154,29 @@ namespace CustomerSeller.UIL.User
             }
         }
 
+        /// <summary>
+        /// 显示所有的销售部门
+        /// </summary>
+        private void showGroups()
+        {
+            ServiceReference1.SaleGroup group = new ServiceReference1.SaleGroup();
+            group.groupName = string.Empty;
+            DataSet groups = CustomerSellerService.getService().GetSaleGroups(group);
+            if (groups != null && groups.Tables.Count > 0)
+            {
+                ArrayList lists = new ArrayList();
+                for (int index = 0; index < groups.Tables[0].Rows.Count; index++)
+                {
+                    string value = groups.Tables[0].Rows[index][0].ToString();
+                    string key = groups.Tables[0].Rows[index][1].ToString();
+                    lists.Add(new Model.comBoxItem(key, value));
+                }
+                this.cbGroup.DisplayMember = "pkey";
+                this.cbGroup.ValueMember = "pvalue";
+                this.cbGroup.DataSource = lists;
+            }
+        }
+
         private void SelectTree(TreeView tree, string node)
         {
             foreach (TreeNode tn in tree.Nodes)
@@ -196,6 +219,7 @@ namespace CustomerSeller.UIL.User
                     this.tb_extension.Text = user.exten;
                     this.dt_entryTine.Value = user.entryTimeStart;
                     this.cbLevel.SelectedValue = user.saleLevel;
+                    this.cbGroup.SelectedValue = user.saleGroup;
                 }
             }
         }
@@ -321,6 +345,7 @@ namespace CustomerSeller.UIL.User
                         user.exten = this.tb_extension.Text.Trim();
                         user.entryTimeStart = this.dt_entryTine.Value;
                         user.saleLevel = this.cbLevel.Visible ? this.cbLevel.SelectedValue.ToString() : null;
+                        user.saleGroup = this.cbGroup.Visible ? this.cbGroup.SelectedValue.ToString() : null;
 
                         if (!user.role.Equals(string.Empty))
                         {
@@ -407,6 +432,8 @@ namespace CustomerSeller.UIL.User
         {
             this.lblLevel.Visible = isSaleLevel;
             this.cbLevel.Visible = isSaleLevel;
+            this.lblGroup.Visible = isSaleLevel;
+            this.cbGroup.Visible = isSaleLevel;
         }
     }
 }

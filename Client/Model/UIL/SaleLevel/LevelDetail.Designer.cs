@@ -472,6 +472,7 @@
             this.btClear.Size = new System.Drawing.Size(75, 23);
             this.btClear.TabIndex = 7;
             this.btClear.Text = "清空";
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
             // LevelDetail
             // 

@@ -66,7 +66,9 @@ namespace WCFService.DAL
                     user.role = reader[4].ToString();
                     user.exten = reader[5].ToString();
                     user.entryTimeStart = DateTime.Parse(reader[6].ToString());
-                    user.saleLevel = user.role = reader[7].ToString();
+                    //user.saleLevel = user.role = reader[7].ToString();
+                    user.saleLevel = reader[7].ToString();
+                    user.saleGroup = reader[8].ToString();
                     break;
                 }
             }
@@ -87,6 +89,7 @@ namespace WCFService.DAL
             paras.Add(new SqlParameter("@exten", user.exten));
             paras.Add(new SqlParameter("@entryTime", user.entryTimeStart));
             paras.Add(new SqlParameter("@levelId", user.saleLevel));
+            paras.Add(new SqlParameter("@groupId", user.saleGroup));
 
             SqlParameter flagPara = new SqlParameter("@flag", flag);
             SqlParameter messagePara = new SqlParameter("@message", message);
@@ -117,6 +120,7 @@ namespace WCFService.DAL
             paras.Add(new SqlParameter("@exten", user.exten));
             paras.Add(new SqlParameter("@entryTime", user.entryTimeStart));
             paras.Add(new SqlParameter("@levelId", user.saleLevel));
+            paras.Add(new SqlParameter("@groupId", user.saleGroup));
 
             SqlParameter flagPara = new SqlParameter("@flag", flag);
             SqlParameter messagePara = new SqlParameter("@message", message);

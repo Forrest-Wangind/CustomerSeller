@@ -399,6 +399,14 @@ namespace CustomerSeller
             this.Main_panel.Controls.Add(levelDetail);
         }
 
+        public void addGroupPanel(string panelName, string groupId, string groupName)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.SaleGroup.GroupDetail groupDetail = new UIL.SaleGroup.GroupDetail(panelName, groupId, groupName);
+            groupDetail.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(groupDetail);
+        }
+
         private void AllRoles_Click(object sender, EventArgs e)
         {
             this.Main_panel.Controls.Clear();
@@ -466,6 +474,14 @@ namespace CustomerSeller
             UIL.SaleLevel.LevelList levelList = new UIL.SaleLevel.LevelList(this);
             levelList.Dock = DockStyle.Fill;
             this.Main_panel.Controls.Add(levelList);
+        }
+
+        private void AllGroups_Click(object sender, EventArgs e)
+        {
+            this.Main_panel.Controls.Clear();
+            UIL.SaleGroup.GroupList groupList = new UIL.SaleGroup.GroupList(this);
+            groupList.Dock = DockStyle.Fill;
+            this.Main_panel.Controls.Add(groupList);
         }
     }
 }

@@ -96,9 +96,9 @@ namespace CustomerSeller.UIL.SaleLevel
             if (!string.IsNullOrEmpty(levelId))
             {
                 if (CustomerSellerService.getService().DeleteSaleLevel(levelId))
-                    MessageBoxEx.Show("删除销售员级别成功！");
+                    MessageBoxEx.Show("删除销售部门成功！");
                 else
-                    MessageBoxEx.Show("删除销售员级别失败！");
+                    MessageBoxEx.Show("删除销售部门失败！");
             }
         }
 
@@ -148,6 +148,11 @@ namespace CustomerSeller.UIL.SaleLevel
                 else
                     MessageBoxEx.Show("添加销售员级别失败，请仔细核对您输入的信息！");
             }
+        }
+
+        private void btClear_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

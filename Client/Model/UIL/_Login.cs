@@ -57,7 +57,6 @@ namespace CustomerSeller
         //确定
         private void bt_Ok_Click(object sender, EventArgs e)
         {
-
             Login();
         }
 

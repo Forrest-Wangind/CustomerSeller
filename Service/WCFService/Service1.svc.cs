@@ -695,5 +695,87 @@ namespace WCFService
                 return false;
             }
         }
+
+
+        public DataSet GetSaleGroups(SaleGroup saleGroup)
+        {
+            try
+            {
+                DataSet roles = SaleGroupDAL.GetSaleGroups(saleGroup);
+                return roles;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when get sale levels. " + ex.Message);
+            }
+
+            return null;
+        }
+
+        public SaleGroup GetSaleGroupDetail(string groupId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateSaleGroup(SaleGroup group)
+        {
+            try
+            {
+                SqlResult result = SaleGroupDAL.UpdateSaleGroup(group);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when update sale group. " + group);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when update sale group. " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool DeleteSaleGroup(string groupId)
+        {
+            try
+            {
+                SqlResult result = SaleGroupDAL.DeleteSaleGroup(groupId);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when delete sale level. " + groupId);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when delete sale level. " + ex.Message);
+                return false;
+            }
+        }
+
+
+        public bool AddSaleGroup(SaleGroup group)
+        {
+            try
+            {
+                SqlResult result = SaleGroupDAL.AddSaleGroup(group);
+                if (result.flag != FlagType.success)
+                {
+                    LoggerWrapper.Instance().LogError("fail when add sale group. " + group);
+                    LoggerWrapper.Instance().LogError(result.message);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("fail when add sale group. " + ex.Message);
+                return false;
+            }
+        }
     }
 }

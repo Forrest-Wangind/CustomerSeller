@@ -12,6 +12,7 @@ CREATE PROCEDURE pro_addUser
 	@exten NVARCHAR(20),
 	@entryTime DATETIME,
 	@levelId NVARCHAR(50),
+	@groupId NVARCHAR(50),
 	@flag INT OUTPUT,
 	@message NVARCHAR(100) OUTPUT
 AS
@@ -25,8 +26,8 @@ BEGIN
 		BEGIN
 			IF(@entryTime='')	--如果入职时间为空
 			BEGIN
-				INSERT INTO UserInfo(UserID,UserName,[Password],UserGender,RoleID,Exten,LevelID)
-				VALUES(@id,@name,@pass,@gender,@role,@exten,@levelId);
+				INSERT INTO UserInfo(UserID,UserName,[Password],UserGender,RoleID,Exten,LevelID,GroupID)
+				VALUES(@id,@name,@pass,@gender,@role,@exten,@levelId,@groupId);
 				IF(@@error=0)
 				BEGIN
 					SET @flag = 1;	--插入成功
@@ -39,8 +40,8 @@ BEGIN
 			END
 			ELSE
 			BEGIN
-				INSERT INTO UserInfo(UserID,UserName,[Password],UserGender,RoleID,Exten,EntryTime,LevelID)
-					VALUES(@id,@name,@pass,@gender,@role,@exten,@entryTime,@levelId);
+				INSERT INTO UserInfo(UserID,UserName,[Password],UserGender,RoleID,Exten,EntryTime,LevelID,GroupID)
+					VALUES(@id,@name,@pass,@gender,@role,@exten,@entryTime,@levelId,@groupId);
 				IF(@@error=0)
 				BEGIN
 					SET @flag = 1;	--插入成功
