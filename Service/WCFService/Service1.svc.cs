@@ -179,6 +179,19 @@ namespace WCFService
             }
         }
 
+        public DataSet GetUsersForSaleMan(User user, string loginer)
+        {
+            try
+            {
+                return UserDAL.GetUsersForSaleMan(user, loginer);
+            }
+            catch (Exception ex)
+            {
+                LoggerWrapper.Instance().LogError("get users fail. " + ex.Message);
+                return null;
+            }
+        }
+
         public User GetSingleUser(string userId)
         {
             try

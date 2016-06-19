@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[UserGroup](
+CREATE TABLE [dbo].[SaleGroup](
 	[GroupID] [nvarchar](50) NOT NULL,
 	[GroupName] [nvarchar](20) NULL,
 PRIMARY KEY CLUSTERED

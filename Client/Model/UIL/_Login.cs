@@ -118,6 +118,7 @@ namespace CustomerSeller
                 {
                     UserInfo.Get_User().User_Id = ds.Tables[0].Rows[0]["UserID"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["UserID"].ToString();
                     UserInfo.Get_User().User_Exten = ds.Tables[0].Rows[0]["Exten"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["Exten"].ToString();
+                    UserInfo.Get_User().User_Role = ds.Tables[0].Rows[0]["RoleID"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["RoleID"].ToString();
                     UserInfo.Get_User().User_Grade = ds.Tables[0].Rows[0]["RoleName"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["RoleName"].ToString();
                     UserInfo.Get_User().UserName = ds.Tables[0].Rows[0]["UserName"] == DBNull.Value ? string.Empty : ds.Tables[0].Rows[0]["UserName"].ToString();
                     loginStatus = LoginStatus.LoginSuccess;

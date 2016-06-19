@@ -66,6 +66,9 @@ namespace WCFService
         DataSet GetUsers(User user);
 
         [OperationContract]
+        DataSet GetUsersForSaleMan(User user, string loginer);
+
+        [OperationContract]
         User GetSingleUser(string userId);
 
         [OperationContract]

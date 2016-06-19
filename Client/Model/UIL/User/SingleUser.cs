@@ -119,7 +119,7 @@ namespace CustomerSeller.UIL.User
                 while (index < roles.Tables[1].Rows.Count)
                 {
                     theRole = roles.Tables[1].Rows[index]["id"].ToString();
-                    if(theRole.Equals("002"))
+                    if (theRole.Equals("002") || theRole.Equals("003"))
                     {
                         showSaleLevel(true);
                     }
@@ -274,7 +274,8 @@ namespace CustomerSeller.UIL.User
                     }
                 }
             }
-            else {
+            else
+            {
                 MessageBoxEx.Show("请输入用户编号！");
             }
         }
@@ -317,7 +318,8 @@ namespace CustomerSeller.UIL.User
 
                 return true;
             }
-            else {
+            else
+            {
                 MessageBoxEx.Show("密码不能为空");
                 return false;
             }
@@ -369,7 +371,8 @@ namespace CustomerSeller.UIL.User
                     }
                 }
             }
-            else {
+            else
+            {
                 MessageBoxEx.Show("用户编号不能为空！");
             }
         }
@@ -403,7 +406,7 @@ namespace CustomerSeller.UIL.User
             {
                 if (e.Node.Checked)
                 {
-                    if (e.Node.Name.Equals("002"))
+                    if (e.Node.Name.Equals("002") || e.Node.Name.Equals("003"))
                     {
                         //显示销售级别
                         showSaleLevel(true);

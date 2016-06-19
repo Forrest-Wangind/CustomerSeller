@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomerSeller.DAL;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace CustomerSeller.UIL.User
     {
         private Form_Main parentForm;
         private string selectedUserId = string.Empty;
+        private UserInfo loginUser = UserInfo.Get_User();
+
         public UserList()
         {
             initForm();
@@ -35,6 +38,23 @@ namespace CustomerSeller.UIL.User
             this.cb_gender.DisplayMember = "pkey";
             this.cb_gender.ValueMember = "pvalue";
             this.cb_gender.DataSource = lists;
+            foreach (string permission in loginUser.User_permissions)
+            {
+                switch (permission)
+                {
+                    case "001002":
+                        this.tsm_add.Visible = true;
+                        break;
+                    case "001003":
+                        this.tsm_update.Visible = true;
+                        break;
+                    case "001004":
+                        this.tsm_delete.Visible = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private void btn_select_Click(object sender, EventArgs e)
@@ -46,7 +66,10 @@ namespace CustomerSeller.UIL.User
             user.entryTimeStart = this.dti_startDate.IsEmpty ? DateTime.Parse("1900-01-01") : this.dti_startDate.Value;
             user.entryTimeEnd = this.dti_endDate.IsEmpty ? DateTime.Parse("2999-12-31") : this.dti_endDate.Value;
 
-            var users = DAL.CustomerSellerService.getService().GetUsers(user);
+            //如果loginer是销售经理，则显示对应部门下面的所有员工，否则如果是管理员显示全部
+            user.role = loginUser.User_Grade;
+
+            var users = DAL.CustomerSellerService.getService().GetUsersForSaleMan(user, loginUser.User_Id);
             if (users != null)
             {
                 this.dgv_userList.DataSource = users.Tables[0];

@@ -20,6 +20,7 @@ namespace CustomerSeller.DAL
         private string user_Id;//用户编号
         private string user_pwd;//密码
         private string user_grade;//级别
+        private string user_role;//用户角色
         private string user_exten;//分机号
         
         private List<string> user_permissions = new List<string>();//用户权限
@@ -82,6 +83,18 @@ namespace CustomerSeller.DAL
             set
             {
                 user.user_grade = value;
+            }
+        }
+
+        public string User_Role
+        {
+            get
+            {
+                return user.user_role;
+            }
+            set
+            {
+                user.user_role = value;
             }
         }
 

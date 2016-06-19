@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dti_endDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dti_startDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.btn_select = new System.Windows.Forms.Button();
             this.cb_gender = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,15 +49,13 @@
             this.tsm_update = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_delete = new System.Windows.Forms.ToolStripMenuItem();
             this.pagerControl1 = new TActionProject.PagerControl();
-            this.dti_startDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.dti_endDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dti_endDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dti_startDate)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_userList)).BeginInit();
             this.cms_user.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dti_startDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dti_endDate)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -78,6 +78,92 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
+            // 
+            // dti_endDate
+            // 
+            // 
+            // 
+            // 
+            this.dti_endDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dti_endDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dti_endDate.ButtonDropDown.Visible = true;
+            this.dti_endDate.Location = new System.Drawing.Point(367, 156);
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dti_endDate.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dti_endDate.MonthCalendar.DisplayMonth = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
+            this.dti_endDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dti_endDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dti_endDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dti_endDate.MonthCalendar.TodayButtonVisible = true;
+            this.dti_endDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dti_endDate.Name = "dti_endDate";
+            this.dti_endDate.Size = new System.Drawing.Size(200, 21);
+            this.dti_endDate.TabIndex = 13;
+            // 
+            // dti_startDate
+            // 
+            // 
+            // 
+            // 
+            this.dti_startDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dti_startDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dti_startDate.ButtonDropDown.Visible = true;
+            this.dti_startDate.Location = new System.Drawing.Point(121, 156);
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dti_startDate.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dti_startDate.MonthCalendar.DisplayMonth = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
+            this.dti_startDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dti_startDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dti_startDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dti_startDate.MonthCalendar.TodayButtonVisible = true;
+            this.dti_startDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dti_startDate.Name = "dti_startDate";
+            this.dti_startDate.Size = new System.Drawing.Size(200, 21);
+            this.dti_startDate.TabIndex = 12;
             // 
             // btn_select
             // 
@@ -203,6 +289,7 @@
             this.tsm_add.Name = "tsm_add";
             this.tsm_add.Size = new System.Drawing.Size(100, 22);
             this.tsm_add.Text = "添加";
+            this.tsm_add.Visible = false;
             this.tsm_add.Click += new System.EventHandler(this.tsm_add_Click);
             // 
             // tsm_update
@@ -210,6 +297,7 @@
             this.tsm_update.Name = "tsm_update";
             this.tsm_update.Size = new System.Drawing.Size(100, 22);
             this.tsm_update.Text = "修改";
+            this.tsm_update.Visible = false;
             this.tsm_update.Click += new System.EventHandler(this.tsm_update_Click);
             // 
             // tsm_delete
@@ -217,6 +305,7 @@
             this.tsm_delete.Name = "tsm_delete";
             this.tsm_delete.Size = new System.Drawing.Size(100, 22);
             this.tsm_delete.Text = "删除";
+            this.tsm_delete.Visible = false;
             this.tsm_delete.Click += new System.EventHandler(this.tsm_delete_Click);
             // 
             // pagerControl1
@@ -233,92 +322,6 @@
             this.pagerControl1.Size = new System.Drawing.Size(1030, 29);
             this.pagerControl1.TabIndex = 0;
             // 
-            // dti_startDate
-            // 
-            // 
-            // 
-            // 
-            this.dti_startDate.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dti_startDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dti_startDate.ButtonDropDown.Visible = true;
-            this.dti_startDate.Location = new System.Drawing.Point(121, 156);
-            // 
-            // 
-            // 
-            this.dti_startDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dti_startDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.dti_startDate.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dti_startDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dti_startDate.MonthCalendar.DisplayMonth = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
-            this.dti_startDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.dti_startDate.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dti_startDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dti_startDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dti_startDate.MonthCalendar.TodayButtonVisible = true;
-            this.dti_startDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dti_startDate.Name = "dti_startDate";
-            this.dti_startDate.Size = new System.Drawing.Size(200, 21);
-            this.dti_startDate.TabIndex = 12;
-            // 
-            // dti_endDate
-            // 
-            // 
-            // 
-            // 
-            this.dti_endDate.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dti_endDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dti_endDate.ButtonDropDown.Visible = true;
-            this.dti_endDate.Location = new System.Drawing.Point(367, 156);
-            // 
-            // 
-            // 
-            this.dti_endDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dti_endDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.dti_endDate.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dti_endDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dti_endDate.MonthCalendar.DisplayMonth = new System.DateTime(2016, 4, 1, 0, 0, 0, 0);
-            this.dti_endDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.dti_endDate.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dti_endDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dti_endDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dti_endDate.MonthCalendar.TodayButtonVisible = true;
-            this.dti_endDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dti_endDate.Name = "dti_endDate";
-            this.dti_endDate.Size = new System.Drawing.Size(200, 21);
-            this.dti_endDate.TabIndex = 13;
-            // 
             // UserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -329,12 +332,12 @@
             this.Size = new System.Drawing.Size(1030, 691);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dti_endDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dti_startDate)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_userList)).EndInit();
             this.cms_user.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dti_startDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dti_endDate)).EndInit();
             this.ResumeLayout(false);
 
         }

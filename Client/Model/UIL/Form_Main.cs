@@ -56,7 +56,6 @@ namespace CustomerSeller
                         break;
                     case "001001":
                         this.AllUsers.Visible = true;
-                        this.AddUser.Visible = true;
                         break;
                     case "001002":
                         this.AddUser.Visible = true;
