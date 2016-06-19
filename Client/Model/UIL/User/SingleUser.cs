@@ -260,6 +260,7 @@ namespace CustomerSeller.UIL.User
                     user.gender = this.cb_gender.SelectedValue.ToString();
                     user.entryTimeStart = this.dt_entryTine.IsEmpty ? DateTime.Now : this.dt_entryTine.Value;
                     user.saleLevel = this.cbLevel.Visible ? this.cbLevel.SelectedValue.ToString() : null;
+                    user.saleGroup = this.cbGroup.Visible ? this.cbGroup.SelectedValue.ToString() : null;
 
                     if (!user.role.Equals(string.Empty))
                     {

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WCFService
 {
-    public class Sql
+    public class SqlScript
     {
         public static string customerTotalNumber = "select count(1) from(SELECT 1 as column1 FROM CustomerInfo where 1=1 {0})A";
         public static string customerInfoDetail = @" SELECT TOP {0} [CustomerID],RowNumber 序号,rtrim(ltrim([CustomerName])) 客户姓名,[CustomerGender] 客户性别,CustomerPhone 客户的电话,[PhoneStratus] 电话的状态, 
@@ -24,6 +24,19 @@ namespace WCFService
                                                 select 1;
                                                 else
                                                 select -1 ";
+
+        public static string SuccessStatusPhoneNoCount = @" declare @employeeID as nvarchar(20),@oldPhoneStatus nvarchar(20),@phoneType varchar(10),@newPhoneStatus nvarchar(20),@customerID uniqueidentifier;
+                                                     select  @newPhoneStatus='{0}',@customerID='{1}'
+                                                     if(@newPhoneStatus='已成交')
+                                                     begin
+       
+                                                            select @employeeID=EmployeeID,@oldPhoneStatus=[PhoneStratus],@phoneType=[PhoneType] from [dbo].[CustomerInfo] where [CustomerID]='{1}';
+	                                                        if(@oldPhoneStatus is null or @oldPhoneStatus<>'已成交')
+	                                                        begin
+	                                                            update AllocatePhoneDetailInfo set TotalCount=TotalCount-1 where UserID=@employeeID and PhoneType=@phoneType;
+	                                                        end
+	
+                                                     end ;"; 
 
 
     }

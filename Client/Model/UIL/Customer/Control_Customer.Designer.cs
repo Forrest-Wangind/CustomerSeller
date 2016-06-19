@@ -33,6 +33,7 @@ namespace CustomerSeller
             this.panelData = new System.Windows.Forms.Panel();
             this.dgv_Customer = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_DeleteAllocatePhone = new DevComponents.DotNetBar.ButtonX();
             this.bt_RecyclePhone = new DevComponents.DotNetBar.ButtonX();
             this.bt_AllocatePhone = new DevComponents.DotNetBar.ButtonX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
@@ -109,6 +110,7 @@ namespace CustomerSeller
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bt_DeleteAllocatePhone);
             this.groupBox1.Controls.Add(this.bt_RecyclePhone);
             this.groupBox1.Controls.Add(this.bt_AllocatePhone);
             this.groupBox1.Controls.Add(this.labelX3);
@@ -140,13 +142,25 @@ namespace CustomerSeller
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "筛选条件";
             // 
+            // bt_DeleteAllocatePhone
+            // 
+            this.bt_DeleteAllocatePhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.bt_DeleteAllocatePhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.bt_DeleteAllocatePhone.Location = new System.Drawing.Point(780, 113);
+            this.bt_DeleteAllocatePhone.Name = "bt_DeleteAllocatePhone";
+            this.bt_DeleteAllocatePhone.Size = new System.Drawing.Size(92, 23);
+            this.bt_DeleteAllocatePhone.TabIndex = 31;
+            this.bt_DeleteAllocatePhone.Tag = "C";
+            this.bt_DeleteAllocatePhone.Text = "删除已分配电话";
+            this.bt_DeleteAllocatePhone.Click += new System.EventHandler(this.bt_DeleteAllocatePhone_Click);
+            // 
             // bt_RecyclePhone
             // 
             this.bt_RecyclePhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.bt_RecyclePhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_RecyclePhone.Location = new System.Drawing.Point(713, 113);
+            this.bt_RecyclePhone.Location = new System.Drawing.Point(668, 113);
             this.bt_RecyclePhone.Name = "bt_RecyclePhone";
-            this.bt_RecyclePhone.Size = new System.Drawing.Size(75, 23);
+            this.bt_RecyclePhone.Size = new System.Drawing.Size(92, 23);
             this.bt_RecyclePhone.TabIndex = 30;
             this.bt_RecyclePhone.Tag = "C";
             this.bt_RecyclePhone.Text = "回收电话";
@@ -156,9 +170,9 @@ namespace CustomerSeller
             // 
             this.bt_AllocatePhone.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.bt_AllocatePhone.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_AllocatePhone.Location = new System.Drawing.Point(602, 113);
+            this.bt_AllocatePhone.Location = new System.Drawing.Point(560, 113);
             this.bt_AllocatePhone.Name = "bt_AllocatePhone";
-            this.bt_AllocatePhone.Size = new System.Drawing.Size(75, 23);
+            this.bt_AllocatePhone.Size = new System.Drawing.Size(92, 23);
             this.bt_AllocatePhone.TabIndex = 29;
             this.bt_AllocatePhone.Tag = "B";
             this.bt_AllocatePhone.Text = "分配电话";
@@ -176,6 +190,7 @@ namespace CustomerSeller
             // 
             this.comboBoxExPhoneType.DisplayMember = "Text";
             this.comboBoxExPhoneType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxExPhoneType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxExPhoneType.FormattingEnabled = true;
             this.comboBoxExPhoneType.ItemHeight = 15;
             this.comboBoxExPhoneType.Items.AddRange(new object[] {
@@ -203,9 +218,9 @@ namespace CustomerSeller
             // 
             this.bt_GetPhoneOfC.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.bt_GetPhoneOfC.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_GetPhoneOfC.Location = new System.Drawing.Point(493, 113);
+            this.bt_GetPhoneOfC.Location = new System.Drawing.Point(449, 113);
             this.bt_GetPhoneOfC.Name = "bt_GetPhoneOfC";
-            this.bt_GetPhoneOfC.Size = new System.Drawing.Size(75, 23);
+            this.bt_GetPhoneOfC.Size = new System.Drawing.Size(92, 23);
             this.bt_GetPhoneOfC.TabIndex = 26;
             this.bt_GetPhoneOfC.Tag = "C";
             this.bt_GetPhoneOfC.Text = "取C类电话";
@@ -215,9 +230,9 @@ namespace CustomerSeller
             // 
             this.bt_GetPhoneOfB.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.bt_GetPhoneOfB.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_GetPhoneOfB.Location = new System.Drawing.Point(380, 113);
+            this.bt_GetPhoneOfB.Location = new System.Drawing.Point(337, 113);
             this.bt_GetPhoneOfB.Name = "bt_GetPhoneOfB";
-            this.bt_GetPhoneOfB.Size = new System.Drawing.Size(75, 23);
+            this.bt_GetPhoneOfB.Size = new System.Drawing.Size(92, 23);
             this.bt_GetPhoneOfB.TabIndex = 25;
             this.bt_GetPhoneOfB.Tag = "B";
             this.bt_GetPhoneOfB.Text = "取B类电话";
@@ -227,6 +242,7 @@ namespace CustomerSeller
             // 
             this.cb_status.DisplayMember = "Text";
             this.cb_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_status.FormattingEnabled = true;
             this.cb_status.ItemHeight = 15;
             this.cb_status.Items.AddRange(new object[] {
@@ -437,9 +453,9 @@ namespace CustomerSeller
             // 
             this.bt_GetPhoneOfA.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.bt_GetPhoneOfA.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_GetPhoneOfA.Location = new System.Drawing.Point(261, 113);
+            this.bt_GetPhoneOfA.Location = new System.Drawing.Point(229, 113);
             this.bt_GetPhoneOfA.Name = "bt_GetPhoneOfA";
-            this.bt_GetPhoneOfA.Size = new System.Drawing.Size(75, 23);
+            this.bt_GetPhoneOfA.Size = new System.Drawing.Size(92, 23);
             this.bt_GetPhoneOfA.TabIndex = 19;
             this.bt_GetPhoneOfA.Tag = "A";
             this.bt_GetPhoneOfA.Text = "取A类电话";
@@ -449,9 +465,9 @@ namespace CustomerSeller
             // 
             this.bt_Del.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.bt_Del.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bt_Del.Location = new System.Drawing.Point(141, 113);
+            this.bt_Del.Location = new System.Drawing.Point(124, 113);
             this.bt_Del.Name = "bt_Del";
-            this.bt_Del.Size = new System.Drawing.Size(75, 23);
+            this.bt_Del.Size = new System.Drawing.Size(92, 23);
             this.bt_Del.TabIndex = 13;
             this.bt_Del.Text = "清空";
             this.bt_Del.Click += new System.EventHandler(this.bt_Del_Click);
@@ -462,7 +478,7 @@ namespace CustomerSeller
             this.bt_Query.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.bt_Query.Location = new System.Drawing.Point(18, 113);
             this.bt_Query.Name = "bt_Query";
-            this.bt_Query.Size = new System.Drawing.Size(75, 23);
+            this.bt_Query.Size = new System.Drawing.Size(92, 23);
             this.bt_Query.TabIndex = 12;
             this.bt_Query.Text = "查询";
             this.bt_Query.Click += new System.EventHandler(this.bt_Query_Click);
@@ -616,6 +632,7 @@ namespace CustomerSeller
         private DevComponents.Editors.ComboItem comboItemNoBodyListen;
         private DevComponents.DotNetBar.ButtonX bt_RecyclePhone;
         private DevComponents.DotNetBar.ButtonX bt_AllocatePhone;
+        private DevComponents.DotNetBar.ButtonX bt_DeleteAllocatePhone;
 
 
 

@@ -40,6 +40,8 @@
             this.comboItemAlreadySuccess = new DevComponents.Editors.ComboItem();
             this.comboItemMind = new DevComponents.Editors.ComboItem();
             this.comboItemNoMind = new DevComponents.Editors.ComboItem();
+            this.comboItemFollowed = new DevComponents.Editors.ComboItem();
+            this.comboItemNoBodyListen = new DevComponents.Editors.ComboItem();
             this.tb_CustomerAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tb_CustomerPhone = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tb_Agender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -56,8 +58,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_CallPhone = new DevComponents.DotNetBar.ButtonX();
             this.bt_RecycleCustomerPhone = new DevComponents.DotNetBar.ButtonX();
-            this.comboItemFollowed = new DevComponents.Editors.ComboItem();
-            this.comboItemNoBodyListen = new DevComponents.Editors.ComboItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtp_SuccessTime)).BeginInit();
             this.panel2.SuspendLayout();
@@ -187,6 +187,7 @@
             // 
             this.cb_PhoneStatus.DisplayMember = "Text";
             this.cb_PhoneStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cb_PhoneStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_PhoneStatus.FormattingEnabled = true;
             this.cb_PhoneStatus.ItemHeight = 15;
             this.cb_PhoneStatus.Items.AddRange(new object[] {
@@ -217,6 +218,14 @@
             // 
             this.comboItemNoMind.Text = "无意向";
             // 
+            // comboItemFollowed
+            // 
+            this.comboItemFollowed.Text = "再跟";
+            // 
+            // comboItemNoBodyListen
+            // 
+            this.comboItemNoBodyListen.Text = "无人接听";
+            // 
             // tb_CustomerAddress
             // 
             // 
@@ -244,6 +253,7 @@
             // 
             this.tb_Agender.DisplayMember = "Text";
             this.tb_Agender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.tb_Agender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tb_Agender.FormattingEnabled = true;
             this.tb_Agender.ItemHeight = 15;
             this.tb_Agender.Items.AddRange(new object[] {
@@ -361,14 +371,6 @@
             this.bt_RecycleCustomerPhone.TabIndex = 15;
             this.bt_RecycleCustomerPhone.Text = "回收电话";
             this.bt_RecycleCustomerPhone.Click += new System.EventHandler(this.bt_RecycleCustomerPhone_Click);
-            // 
-            // comboItemFollowed
-            // 
-            this.comboItemFollowed.Text = "再跟";
-            // 
-            // comboItemNoBodyListen
-            // 
-            this.comboItemNoBodyListen.Text = "无人接听";
             // 
             // Form_CustomerDetail
             // 

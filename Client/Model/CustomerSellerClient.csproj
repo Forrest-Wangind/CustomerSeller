@@ -20,7 +20,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Administrator\Desktop\121\</PublishUrl>
+    <PublishUrl>D:\Publish\CustomerPublish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -34,7 +34,7 @@
     <ProductName>琪尧财富</ProductName>
     <MinimumRequiredVersion>2.0.0.31</MinimumRequiredVersion>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>74</ApplicationRevision>
+    <ApplicationRevision>76</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -66,9 +66,7 @@
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
@@ -77,6 +75,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>1.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=7.9.0.0, Culture=neutral, PublicKeyToken=5fd520d36328f741, processorArchitecture=MSIL">
@@ -103,7 +104,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonControl.cs" />
     <Compile Include="Common\CustomerInfo.cs" />
     <Compile Include="Common\Encrypt.cs" />
     <Compile Include="Common\HttpHelper.cs" />
@@ -200,6 +200,12 @@
     <EmbeddedResource Include="UIL\Role\RoleList.resx">
       <DependentUpon>RoleList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIL\SaleGroup\GroupDetail.resx">
+      <DependentUpon>GroupDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIL\SaleGroup\GroupList.resx">
+      <DependentUpon>GroupList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIL\SaleLevel\LevelDetail.resx">
       <DependentUpon>LevelDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,7 +230,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="1.pfx" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -263,6 +268,18 @@
     </Compile>
     <Compile Include="UIL\Role\RoleList.Designer.cs">
       <DependentUpon>RoleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIL\SaleGroup\GroupDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIL\SaleGroup\GroupDetail.Designer.cs">
+      <DependentUpon>GroupDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIL\SaleGroup\GroupList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIL\SaleGroup\GroupList.Designer.cs">
+      <DependentUpon>GroupList.cs</DependentUpon>
     </Compile>
     <Compile Include="UIL\SaleLevel\LevelDetail.cs">
       <SubType>UserControl</SubType>
@@ -303,36 +320,39 @@
     <None Include="Service References\ServiceReference1\CustomerSeller.ServiceReference1.Role.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\CustomerSeller.ServiceReference1.SaleGroup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\CustomerSeller.ServiceReference1.SaleLevel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\CustomerSeller.ServiceReference1.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference1\Service1.xsd">
+    <None Include="Service References\ServiceReference1\Service1.wsdl" />
+    <None Include="Service References\ServiceReference1\Service16.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service11.xsd">
+    <None Include="Service References\ServiceReference1\Service161.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service111.wsdl" />
-    <None Include="Service References\ServiceReference1\Service12.xsd">
+    <None Include="Service References\ServiceReference1\Service162.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service13.xsd">
+    <None Include="Service References\ServiceReference1\Service163.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service14.xsd">
+    <None Include="Service References\ServiceReference1\Service164.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service15.xsd">
+    <None Include="Service References\ServiceReference1\Service165.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="1003.ico" />
     <Content Include="Resources\search.png" />
-    <None Include="Service References\ServiceReference1\Service11.disco" />
+    <None Include="Service References\ServiceReference1\Service1.disco" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

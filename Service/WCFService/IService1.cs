@@ -136,5 +136,8 @@ namespace WCFService
         
         [OperationContract]
         int AllocateEmployeePhoneByAdmin(string customerID, string userID);
+
+        [OperationContract]
+        Boolean DeleteAllocatePhone(string customerId);
     }
 }

@@ -33,7 +33,7 @@ namespace WCFService
                 {
                     condition += string.Format("and {0}'{1}' ", item.Key, item.Value);
                 });
-                var execute_sql = string.Format(Sql.customerTotalNumber, condition) + ";" + string.Format(Sql.customerInfoDetail, PageSize, CurrentPage, condition);
+                var execute_sql = string.Format(SqlScript.customerTotalNumber, condition) + ";" + string.Format(SqlScript.customerInfoDetail, PageSize, CurrentPage, condition);
                 LoggerWrapper.Instance().LogDebug("GetCustomer:sql:" + execute_sql);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 if (dataSet.Tables.Count > 0)
@@ -54,7 +54,7 @@ namespace WCFService
         {
             try
             {
-                var execute_sql = string.Format(Sql.CustomerInfo, CustomerID);
+                var execute_sql = string.Format(SqlScript.CustomerInfo, CustomerID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "CustomerID:" + CustomerID, Method = "GetCustomerDetail", Result = dataSet == null ? "null" : "a object" });
                 return dataSet;
@@ -72,14 +72,17 @@ namespace WCFService
             try
             {
                 string sql = string.Empty;
-                setStr = string.IsNullOrEmpty(CustomerAddress) ? string.Empty : string.Format(" CustomerAddress='{0}' ,", CustomerAddress);
-                setStr += string.IsNullOrEmpty(Remark) ? string.Empty : string.Format(" Remark='{0}' ,", Remark);
-                setStr += string.IsNullOrEmpty(PhoneStratus) ? string.Empty : string.Format(" PhoneStratus='{0}' ,", PhoneStratus);
+                setStr = string.IsNullOrEmpty(CustomerAddress) ? string.Empty : string.Format(" CustomerAddress='{0}' ,", CustomerAddress.Trim());
+                setStr += string.IsNullOrEmpty(Remark) ? string.Empty : string.Format(" Remark='{0}' ,", Remark.Trim());
+                setStr += string.IsNullOrEmpty(PhoneStratus) ? string.Empty : string.Format(" PhoneStratus='{0}' ,", PhoneStratus.Trim());
                 setStr += DealTime == null ? string.Empty : string.Format(" DealTime='{0}' ,", DealTime.ToString());
-                setStr += string.IsNullOrEmpty(MobilePhone) ? string.Empty : string.Format(" CustomerPhone='{0}' ,", MobilePhone.ToString());
-                setStr += string.IsNullOrEmpty(CustomerName) ? string.Empty : string.Format(" CustomerName='{0}' ,", CustomerName.ToString());
-                if (!string.IsNullOrEmpty(setStr))
-                    sql = string.Format("update CustomerInfo set {0} where CustomerID='{1}'", setStr.TrimEnd(','), CustomerID);
+                setStr += string.IsNullOrEmpty(MobilePhone) ? string.Empty : string.Format(" CustomerPhone='{0}' ,", MobilePhone.ToString().Trim());
+                setStr += string.IsNullOrEmpty(CustomerName) ? string.Empty : string.Format(" CustomerName='{0}' ,", CustomerName.ToString().Trim());
+                /*判断电话的状态是否修改*/
+                if(!PhoneStratus.Equals(string.Empty))
+                    sql = string.Format(SqlScript.SuccessStatusPhoneNoCount, PhoneStratus, CustomerID);
+               if (!string.IsNullOrEmpty(setStr))
+                    sql += string.Format("update CustomerInfo set {0} where CustomerID='{1}'", setStr.TrimEnd(','), CustomerID);
                 var result = SqlServerHelper.ExecuteNonQuery(SqlServerHelper.conString, CommandType.Text, sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = setStr, Method = "UpdateCustomerInfo", Result = result.ToString() });
                 return result;
@@ -118,7 +121,7 @@ namespace WCFService
             try
             {
                 //var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings[string.Format("{0}_MaxCount", phoneType)], ConfigurationManager.AppSettings[string.Format("{0}_DailyMaxCount", phoneType)], UserID, phoneType);
-                var execute_sql = string.Format(Sql.AllocateEmployeePhone, UserID, phoneType);
+                var execute_sql = string.Format(SqlScript.AllocateEmployeePhone, UserID, phoneType);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "UserID:" + UserID, Method = "AllocateEmployeePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
@@ -135,7 +138,7 @@ namespace WCFService
             int result = 0;
             try
             {
-                var execute_sql = string.Format(Sql.RecycleCustomerPhone, customerID, employeeID);
+                var execute_sql = string.Format(SqlScript.RecycleCustomerPhone, customerID, employeeID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "customerID:" + customerID + ",employeeID:" + employeeID, Method = "RecycleCustomerPhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
@@ -147,13 +150,39 @@ namespace WCFService
             }
         }
 
+        public Boolean DeleteAllocatePhone(string customerId)
+        {
+            try
+            {
+                List<SqlParameter> sqlParameterLists = new List<SqlParameter>() { new SqlParameter("@customerId", System.Guid.Parse(customerId)) };
+                var ds=SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.StoredProcedure, "SP_DeleteAllocatePhone", sqlParameterLists.ToArray());
+                if(ds==null||ds.Tables[0].Rows.Count<=0)
+                {   
+                    LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "customerID:" + customerId, Method = "DeleteAllocatePhone", Result = "null" });
+                    return false;
+                }
+                else
+                {
+                    LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "customerID:" + customerId, Method = "DeleteAllocatePhone", Result = ds.Tables[0].Rows[0][0].ToString() });
+                    return ds.Tables[0].Rows[0][0].ToString().Equals("1");
+                }
+
+            }
+            catch(Exception ex)
+            {
+                LoggerWrapper.Instance().LogError(new LogInfo() { Request = "customerID:" + customerId, Method = "DeleteAllocatePhone", Exception = "Message:"+ex.Message+";strackTrace:"+ex.StackTrace });
+                return false;
+            }
+        }
+
+
         public int AllocateEmployeePhoneByAdmin(string customerID, string userID)
         {
             int result = 0;
             try
             {
                 //var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings[string.Format("{0}_MaxCount", phoneType)], ConfigurationManager.AppSettings[string.Format("{0}_DailyMaxCount", phoneType)], UserID, phoneType);
-                var execute_sql = string.Format(Sql.AllocateEmployeePhoneByAdmin, customerID, userID);
+                var execute_sql = string.Format(SqlScript.AllocateEmployeePhoneByAdmin, customerID, userID);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
                 LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "userID:" + userID, Method = "AllocateEmployeePhoneByAdmin", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
@@ -254,7 +283,7 @@ namespace WCFService
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     //查询数据库
-                    var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, string.Format(Sql.JudgePhoneExists, dr["CustomerPhone"].ToString()));
+                    var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, string.Format(SqlScript.JudgePhoneExists, dr["CustomerPhone"].ToString()));
                     if (dataSet.Tables[0].Rows[0][0].ToString().Equals("1"))
                         dataRowCollection.Add(dr);
                 }

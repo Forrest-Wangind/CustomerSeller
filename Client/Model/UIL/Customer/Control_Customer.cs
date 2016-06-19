@@ -38,17 +38,20 @@ namespace CustomerSeller
             {
                 this.bt_AllocatePhone.Visible = false;
                 this.bt_RecyclePhone.Visible = false;
+                this.bt_DeleteAllocatePhone.Visible = false;
             }
             else
             {
                 Point P_A = this.bt_GetPhoneOfA.Location;
                 Point P_B = this.bt_GetPhoneOfB.Location;
+                Point p_C = this.bt_GetPhoneOfC.Location;
                 this.bt_GetPhoneOfA.Visible = false;
                 this.bt_GetPhoneOfB.Visible = false;
                 this.bt_GetPhoneOfC.Visible = false;
 
                 this.bt_AllocatePhone.Location = P_A;
                 this.bt_RecyclePhone.Location = P_B;
+                this.bt_DeleteAllocatePhone.Location = p_C;
             }
         }
         private List<KeyValuePair<string, string>> GetCondition()
@@ -65,8 +68,8 @@ namespace CustomerSeller
                 listParameters.Add(new KeyValuePair<string, string>("AllocateTime>=", this.dtp_Create_StartTime.Value.ToString("yyyy-MM-dd")));
             if (!this.dtp_Create_EndTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("AllocateTime<=", this.dtp_Create_EndTime.Value.ToString("yyyy-MM-dd")));
-            if (!string.IsNullOrEmpty(this.cb_status.Text))
-                listParameters.Add(new KeyValuePair<string, string>("PhoneStratus=", this.cb_status.Text));
+            if (this.cb_status.SelectedIndex!=-1)
+                listParameters.Add(new KeyValuePair<string, string>("PhoneStratus=", this.cb_status.SelectedItem.ToString().Trim()));
             if (!this.dtp_Start_DealTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("DealTime>=", this.dtp_Start_DealTime.Value.ToString("yyyy-MM-dd")));
             if (!this.dtp_End_DealTime.IsEmpty)
@@ -261,6 +264,43 @@ namespace CustomerSeller
             catch(Exception ex)
             {
                 MessageBoxEx.Show("批量回收出现异常");
+            }
+        }
+
+        private void bt_DeleteAllocatePhone_Click(object sender, EventArgs e)
+        {
+            try
+            {  
+             
+                var _successNumber = 0;
+                var _failNumber = 0;
+                var _customerIdLists = new List<string>();
+                /*检测出选择电话记录*/
+                var _queryCheckedMobile = from DataGridViewRow mobileInfo in this.dgv_Customer.Rows
+                                         where (Convert.ToBoolean(mobileInfo.Cells["Choice"].Value) && !string.IsNullOrEmpty(Convert.ToString(mobileInfo.Cells["分配的员工"].Value)))
+                                         select Convert.ToString(mobileInfo.Cells["CustomerID"].Value);
+                _queryCheckedMobile.ToList().ForEach(Mobile => _customerIdLists.Add(Mobile));
+                if (_customerIdLists.Count <= 0)
+                {
+                    MessageBoxEx.Show("没有选择你要删除的分配电话", "提示");
+                    return;
+                }
+                /*提醒用户，后面将要做执行数据库表里面数据的删除动作*/
+                if (MessageBoxEx.Show("你确认要删除这些电话吗", "提示", MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+                /*批量删除数据库里面的数据*/
+                _customerIdLists.ForEach(item =>
+                {
+                    if (CustomerInfo.GetServiceInstance().DeleteAllocatePhone(item))
+                        _successNumber++;
+                    else
+                        _failNumber++;
+                });
+                MessageBoxEx.Show(string.Format("删除分配的电话,成功个数:{0},失败个数:{1}", _successNumber, _failNumber), "提示");
+            }
+            catch
+            {
+                MessageBoxEx.Show("批量删除出现异常");
             }
         }
     }

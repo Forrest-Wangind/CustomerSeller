@@ -51,23 +51,49 @@ namespace CustomerSeller.UIL
             this.tb_CustomerName.Text = dataset.Tables[0].Rows[0]["CustomerName"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["CustomerName"].ToString();
             this.tb_Remark.Text = dataset.Tables[0].Rows[0]["Remark"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["Remark"].ToString();
             this.dtp_SuccessTime.Value = Convert.ToDateTime(dataset.Tables[0].Rows[0]["DealTime"] == DBNull.Value ? null : dataset.Tables[0].Rows[0]["DealTime"]);
-            SetStatus(dataset, dataset.Tables[0].Rows[0]["PhoneStratus"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["PhoneStratus"].ToString());
+            SetStatus(dataset.Tables[0].Rows[0]["PhoneStratus"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["PhoneStratus"].ToString());
             CustomerPhone = dataset.Tables[0].Rows[0]["CustomerPhone"] == DBNull.Value ? string.Empty : dataset.Tables[0].Rows[0]["CustomerPhone"].ToString();
             this.tb_CustomerPhone.Text = CustomerPhone.Length == 11 ? CustomerPhone.Substring(0, 3) + "*****" + CustomerPhone.Substring(8, 3) : string.Empty;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            /*判断是否是管理员，不过不是的话，我们不允许操作已成交的状态，并且如果是已成交的状态也不允许他修改*/
+            if(!UserInfo.Get_User().User_Grade.Trim().Equals("管理员"))
+            {
+                var _phoneStatus = dataset.Tables[0].Rows[0]["PhoneStratus"] != DBNull.Value ? dataset.Tables[0].Rows[0]["PhoneStratus"].ToString().Trim():string.Empty;
+                if(_phoneStatus.Equals(PhoneStatusInfo.Success))
+                {
+                    this.cb_PhoneStatus.Enabled = false;
+                }
+                else
+                {
+                    this.cb_PhoneStatus.Items.RemoveAt(Convert.ToInt32(PhoneType.Success));
+                }
+            }
 
         }
 
-        public void SetStatus(DataSet ds, string status)
+        public void SetStatus(string status)
         {
-            if (ds.Tables[0].Rows[0]["PhoneStratus"].ToString().Contains("已成交"))
-                this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.Success);
-            if (ds.Tables[0].Rows[0]["PhoneStratus"].ToString().Contains("预成交"))
-                this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.NearSuccess);
-            if (ds.Tables[0].Rows[0]["PhoneStratus"].ToString().Contains("有意向"))
-                this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.Mind);
-            if (ds.Tables[0].Rows[0]["PhoneStratus"].ToString().Contains("无意向"))
-                this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.NoMind);
+            switch (status.Trim())
+            {
+                case "已成交":
+                    this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.Success);
+                    break;
+                case "预成交":
+                    this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.NearSuccess);
+                    break;
+                case "有意向":
+                    this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.Mind);
+                    break;
+                case "无意向":
+                    this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.NoMind);
+                    break;
+                case "再跟":
+                    this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.Followed);
+                    break;
+                case "无人接听":
+                    this.cb_PhoneStatus.SelectedIndex = Convert.ToInt32(PhoneType.NoBodyListen);
+                    break;
+            }
         }
 
         private void bt_Save_Click(object sender, EventArgs e)
@@ -79,7 +105,7 @@ namespace CustomerSeller.UIL
                 if (!string.IsNullOrEmpty(this.tb_AppendRemark.Text))
                     remarkInfo = this.tb_Remark.Text + "\r\n" + System.DateTime.Now.ToShortDateString() + "  " + UserInfo.Get_User().UserName + ":" + this.tb_AppendRemark.Text;
                 CustomerInfo.GetServiceInstance().UpdateCustomerInfo(string.IsNullOrEmpty(this.tb_CustomerAddress.Text) ? string.Empty : this.tb_CustomerAddress.Text, remarkInfo.TrimStart('\r').TrimStart('\n'),
-                    string.IsNullOrEmpty(this.cb_PhoneStatus.Text) ? string.Empty : this.cb_PhoneStatus.Text, this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
+                    this.cb_PhoneStatus.SelectedIndex.Equals(-1) ? string.Empty :  this.cb_PhoneStatus.SelectedItem.ToString(), this.dtp_SuccessTime.Value < DateTime.Now ? dt : this.dtp_SuccessTime.Value, DR["CustomerID"].ToString(),
                     !this.tb_CustomerPhone.Text.Contains("*") && this.tb_CustomerPhone.Text.Length == 11 ? this.tb_CustomerPhone.Text : string.Empty,
                      string.IsNullOrEmpty(this.tb_CustomerName.Text) ? string.Empty : this.tb_CustomerName.Text);
                 MessageBoxEx.Show("用户信息修改成功!");
@@ -140,16 +166,40 @@ namespace CustomerSeller.UIL
 
     }
 
-    public enum PhoneType
-    {
-        //预成交
-        NearSuccess,
-        //已成交
-        Success,
-        //有意向
-        Mind,
-        //无意向
-        NoMind
 
-    }
+
+}
+
+public enum PhoneType
+{
+    //预成交
+    NearSuccess,
+    //已成交
+    Success,
+    //有意向
+    Mind,
+    //无意向
+    NoMind,
+    //再跟
+    Followed,
+    //无人接听
+    NoBodyListen
+
+}
+
+public class PhoneStatusInfo
+{
+    //预成交
+    public const string NearSuccess = "预成交";
+    //已成交
+    public const string Success = "已成交";
+    //有意向
+    public const string Mind = "有意向";
+    //无意向
+    public const string NoMind = "无意向";
+    //再跟
+    public const string Followed = "再跟";
+    //无人接听
+    public const string NoBodyListen = "无人接听";
+
 }
