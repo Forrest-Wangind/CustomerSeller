@@ -3,9 +3,10 @@ GO
 IF OBJECT_ID ( 'pro_getUsers', 'P' ) IS NOT NULL
     DROP PROCEDURE pro_getUsers;
 GO
-CREATE PROCEDURE pro_getUsers
+CREATE PROCEDURE [dbo].[pro_getUsers]
 	@id nvarchar(50),
 	@name nvarchar(20),
+	@role nvarchar(50),
 	@loginerId nvarchar(50),
 	@gender nvarchar(20),
 	@entryTimeStart datetime,
@@ -63,10 +64,12 @@ BEGIN
 		WHERE 
 			((UserID like '%' + @id + '%') or (@id is null))
 			AND ((UserName like '%' + @name + '%') OR (@name is null))
+			AND ((RoleName = @role) or (@role is null))
 			AND ((UserGender = @gender) or (@gender = '') or (@gender is null))
 			AND ((EntryTime BETWEEN @entryTimeStart AND @entryTimeEnd) OR (@entryTimeStart = '') OR (@entryTimeStart is null) OR (@entryTimeEnd = '') OR (@entryTimeEnd is null));
 	END
 END
+GO
 
 select GETDATE();
 

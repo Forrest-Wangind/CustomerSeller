@@ -18,6 +18,8 @@ namespace WCFService.DAL
             List<SqlParameter> paras = new List<SqlParameter>();
             paras.Add(new SqlParameter("@id", user.userID));
             paras.Add(new SqlParameter("@name", user.userName));
+            paras.Add(new SqlParameter("@role", user.role));
+            paras.Add(new SqlParameter("@loginerId", string.Empty));
             paras.Add(new SqlParameter("@gender", user.gender));
             paras.Add(new SqlParameter("@entryTimeStart", user.entryTimeStart));
             paras.Add(new SqlParameter("@entryTimeEnd", user.entryTimeEnd));
@@ -31,6 +33,7 @@ namespace WCFService.DAL
             List<SqlParameter> paras = new List<SqlParameter>();
             paras.Add(new SqlParameter("@id", user.userID));
             paras.Add(new SqlParameter("@name", user.userName));
+            paras.Add(new SqlParameter("@role", user.role));
             paras.Add(new SqlParameter("@loginerId", loginer));
             paras.Add(new SqlParameter("@gender", user.gender));
             paras.Add(new SqlParameter("@entryTimeStart", user.entryTimeStart));

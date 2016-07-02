@@ -57,6 +57,7 @@ namespace CustomerSeller.UIL.User
             }
         }
 
+        //如果loginer是销售经理，则显示对应部门下面的所有员工，否则如果是管理员显示全部
         private void btn_select_Click(object sender, EventArgs e)
         {
             ServiceReference1.User user = new ServiceReference1.User();

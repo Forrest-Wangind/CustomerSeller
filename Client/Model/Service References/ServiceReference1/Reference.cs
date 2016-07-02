@@ -108,6 +108,304 @@ namespace CustomerSeller.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SaleLevel", Namespace="http://schemas.datacontract.org/2004/07/WCFService.Model")]
+    [System.SerializableAttribute()]
+    public partial class SaleLevel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ADailyNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AMaxNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ARemarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BDailyNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BMaxNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BRemarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CDailyNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CMaxNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CRemarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isSampleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string levelIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string levelNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string levelRemarkField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ADailyNumber {
+            get {
+                return this.ADailyNumberField;
+            }
+            set {
+                if ((this.ADailyNumberField.Equals(value) != true)) {
+                    this.ADailyNumberField = value;
+                    this.RaisePropertyChanged("ADailyNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AMaxNumber {
+            get {
+                return this.AMaxNumberField;
+            }
+            set {
+                if ((this.AMaxNumberField.Equals(value) != true)) {
+                    this.AMaxNumberField = value;
+                    this.RaisePropertyChanged("AMaxNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ARemark {
+            get {
+                return this.ARemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ARemarkField, value) != true)) {
+                    this.ARemarkField = value;
+                    this.RaisePropertyChanged("ARemark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BDailyNumber {
+            get {
+                return this.BDailyNumberField;
+            }
+            set {
+                if ((this.BDailyNumberField.Equals(value) != true)) {
+                    this.BDailyNumberField = value;
+                    this.RaisePropertyChanged("BDailyNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BMaxNumber {
+            get {
+                return this.BMaxNumberField;
+            }
+            set {
+                if ((this.BMaxNumberField.Equals(value) != true)) {
+                    this.BMaxNumberField = value;
+                    this.RaisePropertyChanged("BMaxNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BRemark {
+            get {
+                return this.BRemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BRemarkField, value) != true)) {
+                    this.BRemarkField = value;
+                    this.RaisePropertyChanged("BRemark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CDailyNumber {
+            get {
+                return this.CDailyNumberField;
+            }
+            set {
+                if ((this.CDailyNumberField.Equals(value) != true)) {
+                    this.CDailyNumberField = value;
+                    this.RaisePropertyChanged("CDailyNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CMaxNumber {
+            get {
+                return this.CMaxNumberField;
+            }
+            set {
+                if ((this.CMaxNumberField.Equals(value) != true)) {
+                    this.CMaxNumberField = value;
+                    this.RaisePropertyChanged("CMaxNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CRemark {
+            get {
+                return this.CRemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CRemarkField, value) != true)) {
+                    this.CRemarkField = value;
+                    this.RaisePropertyChanged("CRemark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isSample {
+            get {
+                return this.isSampleField;
+            }
+            set {
+                if ((this.isSampleField.Equals(value) != true)) {
+                    this.isSampleField = value;
+                    this.RaisePropertyChanged("isSample");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string levelID {
+            get {
+                return this.levelIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.levelIDField, value) != true)) {
+                    this.levelIDField = value;
+                    this.RaisePropertyChanged("levelID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string levelName {
+            get {
+                return this.levelNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.levelNameField, value) != true)) {
+                    this.levelNameField = value;
+                    this.RaisePropertyChanged("levelName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string levelRemark {
+            get {
+                return this.levelRemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.levelRemarkField, value) != true)) {
+                    this.levelRemarkField = value;
+                    this.RaisePropertyChanged("levelRemark");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SaleGroup", Namespace="http://schemas.datacontract.org/2004/07/WCFService.Model")]
+    [System.SerializableAttribute()]
+    public partial class SaleGroup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string groupIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string groupNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string groupID {
+            get {
+                return this.groupIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.groupIDField, value) != true)) {
+                    this.groupIDField = value;
+                    this.RaisePropertyChanged("groupID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string groupName {
+            get {
+                return this.groupNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.groupNameField, value) != true)) {
+                    this.groupNameField = value;
+                    this.RaisePropertyChanged("groupName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/WCFService.Model")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -135,6 +433,12 @@ namespace CustomerSeller.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string roleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string saleGroupField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string saleLevelField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string userIDField;
@@ -244,6 +548,32 @@ namespace CustomerSeller.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string saleGroup {
+            get {
+                return this.saleGroupField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.saleGroupField, value) != true)) {
+                    this.saleGroupField = value;
+                    this.RaisePropertyChanged("saleGroup");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string saleLevel {
+            get {
+                return this.saleLevelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.saleLevelField, value) != true)) {
+                    this.saleLevelField = value;
+                    this.RaisePropertyChanged("saleLevel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string userID {
             get {
                 return this.userIDField;
@@ -343,6 +673,30 @@ namespace CustomerSeller.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoles", ReplyAction="http://tempuri.org/IService1/GetRolesResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> GetRolesAsync(CustomerSeller.ServiceReference1.Role role);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleLevels", ReplyAction="http://tempuri.org/IService1/GetSaleLevelsResponse")]
+        System.Data.DataSet GetSaleLevels(CustomerSeller.ServiceReference1.SaleLevel saleLevel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleLevels", ReplyAction="http://tempuri.org/IService1/GetSaleLevelsResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetSaleLevelsAsync(CustomerSeller.ServiceReference1.SaleLevel saleLevel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleGroups", ReplyAction="http://tempuri.org/IService1/GetSaleGroupsResponse")]
+        System.Data.DataSet GetSaleGroups(CustomerSeller.ServiceReference1.SaleGroup saleGroup);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleGroups", ReplyAction="http://tempuri.org/IService1/GetSaleGroupsResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetSaleGroupsAsync(CustomerSeller.ServiceReference1.SaleGroup saleGroup);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleLevelDetail", ReplyAction="http://tempuri.org/IService1/GetSaleLevelDetailResponse")]
+        CustomerSeller.ServiceReference1.SaleLevel GetSaleLevelDetail(string levelId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleLevelDetail", ReplyAction="http://tempuri.org/IService1/GetSaleLevelDetailResponse")]
+        System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.SaleLevel> GetSaleLevelDetailAsync(string levelId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleGroupDetail", ReplyAction="http://tempuri.org/IService1/GetSaleGroupDetailResponse")]
+        CustomerSeller.ServiceReference1.SaleGroup GetSaleGroupDetail(string groupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSaleGroupDetail", ReplyAction="http://tempuri.org/IService1/GetSaleGroupDetailResponse")]
+        System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.SaleGroup> GetSaleGroupDetailAsync(string groupId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPermissions", ReplyAction="http://tempuri.org/IService1/GetPermissionsResponse")]
         System.Data.DataSet GetPermissions(string userId);
         
@@ -354,6 +708,12 @@ namespace CustomerSeller.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsers", ReplyAction="http://tempuri.org/IService1/GetUsersResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> GetUsersAsync(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsersForSaleMan", ReplyAction="http://tempuri.org/IService1/GetUsersForSaleManResponse")]
+        System.Data.DataSet GetUsersForSaleMan(CustomerSeller.ServiceReference1.User user, string loginer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsersForSaleMan", ReplyAction="http://tempuri.org/IService1/GetUsersForSaleManResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetUsersForSaleManAsync(CustomerSeller.ServiceReference1.User user, string loginer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetSingleUser", ReplyAction="http://tempuri.org/IService1/GetSingleUserResponse")]
         CustomerSeller.ServiceReference1.User GetSingleUser(string userId);
@@ -373,6 +733,18 @@ namespace CustomerSeller.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddRole", ReplyAction="http://tempuri.org/IService1/AddRoleResponse")]
         System.Threading.Tasks.Task<bool> AddRoleAsync(CustomerSeller.ServiceReference1.Role role);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddSaleLevel", ReplyAction="http://tempuri.org/IService1/AddSaleLevelResponse")]
+        bool AddSaleLevel(CustomerSeller.ServiceReference1.SaleLevel level);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddSaleLevel", ReplyAction="http://tempuri.org/IService1/AddSaleLevelResponse")]
+        System.Threading.Tasks.Task<bool> AddSaleLevelAsync(CustomerSeller.ServiceReference1.SaleLevel level);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddSaleGroup", ReplyAction="http://tempuri.org/IService1/AddSaleGroupResponse")]
+        bool AddSaleGroup(CustomerSeller.ServiceReference1.SaleGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddSaleGroup", ReplyAction="http://tempuri.org/IService1/AddSaleGroupResponse")]
+        System.Threading.Tasks.Task<bool> AddSaleGroupAsync(CustomerSeller.ServiceReference1.SaleGroup group);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateUser", ReplyAction="http://tempuri.org/IService1/UpdateUserResponse")]
         bool UpdateUser(CustomerSeller.ServiceReference1.User user);
         
@@ -385,6 +757,18 @@ namespace CustomerSeller.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateRole", ReplyAction="http://tempuri.org/IService1/UpdateRoleResponse")]
         System.Threading.Tasks.Task<bool> UpdateRoleAsync(CustomerSeller.ServiceReference1.Role role);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSaleLevel", ReplyAction="http://tempuri.org/IService1/UpdateSaleLevelResponse")]
+        bool UpdateSaleLevel(CustomerSeller.ServiceReference1.SaleLevel level);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSaleLevel", ReplyAction="http://tempuri.org/IService1/UpdateSaleLevelResponse")]
+        System.Threading.Tasks.Task<bool> UpdateSaleLevelAsync(CustomerSeller.ServiceReference1.SaleLevel level);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSaleGroup", ReplyAction="http://tempuri.org/IService1/UpdateSaleGroupResponse")]
+        bool UpdateSaleGroup(CustomerSeller.ServiceReference1.SaleGroup group);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateSaleGroup", ReplyAction="http://tempuri.org/IService1/UpdateSaleGroupResponse")]
+        System.Threading.Tasks.Task<bool> UpdateSaleGroupAsync(CustomerSeller.ServiceReference1.SaleGroup group);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
         bool DeleteUser(string userId);
         
@@ -396,6 +780,18 @@ namespace CustomerSeller.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteRole", ReplyAction="http://tempuri.org/IService1/DeleteRoleResponse")]
         System.Threading.Tasks.Task<bool> DeleteRoleAsync(string roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSaleLevel", ReplyAction="http://tempuri.org/IService1/DeleteSaleLevelResponse")]
+        bool DeleteSaleLevel(string levelId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSaleLevel", ReplyAction="http://tempuri.org/IService1/DeleteSaleLevelResponse")]
+        System.Threading.Tasks.Task<bool> DeleteSaleLevelAsync(string levelId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSaleGroup", ReplyAction="http://tempuri.org/IService1/DeleteSaleGroupResponse")]
+        bool DeleteSaleGroup(string groupId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSaleGroup", ReplyAction="http://tempuri.org/IService1/DeleteSaleGroupResponse")]
+        System.Threading.Tasks.Task<bool> DeleteSaleGroupAsync(string groupId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRoleDetail", ReplyAction="http://tempuri.org/IService1/GetRoleDetailResponse")]
         CustomerSeller.ServiceReference1.Role GetRoleDetail(string roleId);
@@ -420,6 +816,48 @@ namespace CustomerSeller.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SetPhoneParams", ReplyAction="http://tempuri.org/IService1/SetPhoneParamsResponse")]
         System.Threading.Tasks.Task<bool> SetPhoneParamsAsync(string dailyNumber, string totalNumber, string phoneType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserInfo", ReplyAction="http://tempuri.org/IService1/GetUserInfoResponse")]
+        System.Data.DataSet GetUserInfo(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserInfo", ReplyAction="http://tempuri.org/IService1/GetUserInfoResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetUserInfoAsync(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangeUserPwd", ReplyAction="http://tempuri.org/IService1/ChangeUserPwdResponse")]
+        bool ChangeUserPwd(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangeUserPwd", ReplyAction="http://tempuri.org/IService1/ChangeUserPwdResponse")]
+        System.Threading.Tasks.Task<bool> ChangeUserPwdAsync(CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogoutUser", ReplyAction="http://tempuri.org/IService1/LogoutUserResponse")]
+        bool LogoutUser(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogoutUser", ReplyAction="http://tempuri.org/IService1/LogoutUserResponse")]
+        System.Threading.Tasks.Task<bool> LogoutUserAsync(string userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogoutAllUsers", ReplyAction="http://tempuri.org/IService1/LogoutAllUsersResponse")]
+        bool LogoutAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogoutAllUsers", ReplyAction="http://tempuri.org/IService1/LogoutAllUsersResponse")]
+        System.Threading.Tasks.Task<bool> LogoutAllUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPhoneDetail", ReplyAction="http://tempuri.org/IService1/GetPhoneDetailResponse")]
+        System.Data.DataSet GetPhoneDetail(string phoneType, CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPhoneDetail", ReplyAction="http://tempuri.org/IService1/GetPhoneDetailResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetPhoneDetailAsync(string phoneType, CustomerSeller.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AllocateEmployeePhoneByAdmin", ReplyAction="http://tempuri.org/IService1/AllocateEmployeePhoneByAdminResponse")]
+        int AllocateEmployeePhoneByAdmin(string customerID, string userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AllocateEmployeePhoneByAdmin", ReplyAction="http://tempuri.org/IService1/AllocateEmployeePhoneByAdminResponse")]
+        System.Threading.Tasks.Task<int> AllocateEmployeePhoneByAdminAsync(string customerID, string userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteAllocatePhone", ReplyAction="http://tempuri.org/IService1/DeleteAllocatePhoneResponse")]
+        bool DeleteAllocatePhone(string customerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteAllocatePhone", ReplyAction="http://tempuri.org/IService1/DeleteAllocatePhoneResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAllocatePhoneAsync(string customerId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -529,6 +967,38 @@ namespace CustomerSeller.ServiceReference1 {
             return base.Channel.GetRolesAsync(role);
         }
         
+        public System.Data.DataSet GetSaleLevels(CustomerSeller.ServiceReference1.SaleLevel saleLevel) {
+            return base.Channel.GetSaleLevels(saleLevel);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetSaleLevelsAsync(CustomerSeller.ServiceReference1.SaleLevel saleLevel) {
+            return base.Channel.GetSaleLevelsAsync(saleLevel);
+        }
+        
+        public System.Data.DataSet GetSaleGroups(CustomerSeller.ServiceReference1.SaleGroup saleGroup) {
+            return base.Channel.GetSaleGroups(saleGroup);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetSaleGroupsAsync(CustomerSeller.ServiceReference1.SaleGroup saleGroup) {
+            return base.Channel.GetSaleGroupsAsync(saleGroup);
+        }
+        
+        public CustomerSeller.ServiceReference1.SaleLevel GetSaleLevelDetail(string levelId) {
+            return base.Channel.GetSaleLevelDetail(levelId);
+        }
+        
+        public System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.SaleLevel> GetSaleLevelDetailAsync(string levelId) {
+            return base.Channel.GetSaleLevelDetailAsync(levelId);
+        }
+        
+        public CustomerSeller.ServiceReference1.SaleGroup GetSaleGroupDetail(string groupId) {
+            return base.Channel.GetSaleGroupDetail(groupId);
+        }
+        
+        public System.Threading.Tasks.Task<CustomerSeller.ServiceReference1.SaleGroup> GetSaleGroupDetailAsync(string groupId) {
+            return base.Channel.GetSaleGroupDetailAsync(groupId);
+        }
+        
         public System.Data.DataSet GetPermissions(string userId) {
             return base.Channel.GetPermissions(userId);
         }
@@ -543,6 +1013,14 @@ namespace CustomerSeller.ServiceReference1 {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> GetUsersAsync(CustomerSeller.ServiceReference1.User user) {
             return base.Channel.GetUsersAsync(user);
+        }
+        
+        public System.Data.DataSet GetUsersForSaleMan(CustomerSeller.ServiceReference1.User user, string loginer) {
+            return base.Channel.GetUsersForSaleMan(user, loginer);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetUsersForSaleManAsync(CustomerSeller.ServiceReference1.User user, string loginer) {
+            return base.Channel.GetUsersForSaleManAsync(user, loginer);
         }
         
         public CustomerSeller.ServiceReference1.User GetSingleUser(string userId) {
@@ -569,6 +1047,22 @@ namespace CustomerSeller.ServiceReference1 {
             return base.Channel.AddRoleAsync(role);
         }
         
+        public bool AddSaleLevel(CustomerSeller.ServiceReference1.SaleLevel level) {
+            return base.Channel.AddSaleLevel(level);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddSaleLevelAsync(CustomerSeller.ServiceReference1.SaleLevel level) {
+            return base.Channel.AddSaleLevelAsync(level);
+        }
+        
+        public bool AddSaleGroup(CustomerSeller.ServiceReference1.SaleGroup group) {
+            return base.Channel.AddSaleGroup(group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddSaleGroupAsync(CustomerSeller.ServiceReference1.SaleGroup group) {
+            return base.Channel.AddSaleGroupAsync(group);
+        }
+        
         public bool UpdateUser(CustomerSeller.ServiceReference1.User user) {
             return base.Channel.UpdateUser(user);
         }
@@ -585,6 +1079,22 @@ namespace CustomerSeller.ServiceReference1 {
             return base.Channel.UpdateRoleAsync(role);
         }
         
+        public bool UpdateSaleLevel(CustomerSeller.ServiceReference1.SaleLevel level) {
+            return base.Channel.UpdateSaleLevel(level);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateSaleLevelAsync(CustomerSeller.ServiceReference1.SaleLevel level) {
+            return base.Channel.UpdateSaleLevelAsync(level);
+        }
+        
+        public bool UpdateSaleGroup(CustomerSeller.ServiceReference1.SaleGroup group) {
+            return base.Channel.UpdateSaleGroup(group);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateSaleGroupAsync(CustomerSeller.ServiceReference1.SaleGroup group) {
+            return base.Channel.UpdateSaleGroupAsync(group);
+        }
+        
         public bool DeleteUser(string userId) {
             return base.Channel.DeleteUser(userId);
         }
@@ -599,6 +1109,22 @@ namespace CustomerSeller.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> DeleteRoleAsync(string roleId) {
             return base.Channel.DeleteRoleAsync(roleId);
+        }
+        
+        public bool DeleteSaleLevel(string levelId) {
+            return base.Channel.DeleteSaleLevel(levelId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteSaleLevelAsync(string levelId) {
+            return base.Channel.DeleteSaleLevelAsync(levelId);
+        }
+        
+        public bool DeleteSaleGroup(string groupId) {
+            return base.Channel.DeleteSaleGroup(groupId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteSaleGroupAsync(string groupId) {
+            return base.Channel.DeleteSaleGroupAsync(groupId);
         }
         
         public CustomerSeller.ServiceReference1.Role GetRoleDetail(string roleId) {
@@ -631,6 +1157,62 @@ namespace CustomerSeller.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> SetPhoneParamsAsync(string dailyNumber, string totalNumber, string phoneType) {
             return base.Channel.SetPhoneParamsAsync(dailyNumber, totalNumber, phoneType);
+        }
+        
+        public System.Data.DataSet GetUserInfo(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.GetUserInfo(user);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetUserInfoAsync(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.GetUserInfoAsync(user);
+        }
+        
+        public bool ChangeUserPwd(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.ChangeUserPwd(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangeUserPwdAsync(CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.ChangeUserPwdAsync(user);
+        }
+        
+        public bool LogoutUser(string userId) {
+            return base.Channel.LogoutUser(userId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LogoutUserAsync(string userId) {
+            return base.Channel.LogoutUserAsync(userId);
+        }
+        
+        public bool LogoutAllUsers() {
+            return base.Channel.LogoutAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<bool> LogoutAllUsersAsync() {
+            return base.Channel.LogoutAllUsersAsync();
+        }
+        
+        public System.Data.DataSet GetPhoneDetail(string phoneType, CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.GetPhoneDetail(phoneType, user);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetPhoneDetailAsync(string phoneType, CustomerSeller.ServiceReference1.User user) {
+            return base.Channel.GetPhoneDetailAsync(phoneType, user);
+        }
+        
+        public int AllocateEmployeePhoneByAdmin(string customerID, string userID) {
+            return base.Channel.AllocateEmployeePhoneByAdmin(customerID, userID);
+        }
+        
+        public System.Threading.Tasks.Task<int> AllocateEmployeePhoneByAdminAsync(string customerID, string userID) {
+            return base.Channel.AllocateEmployeePhoneByAdminAsync(customerID, userID);
+        }
+        
+        public bool DeleteAllocatePhone(string customerId) {
+            return base.Channel.DeleteAllocatePhone(customerId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteAllocatePhoneAsync(string customerId) {
+            return base.Channel.DeleteAllocatePhoneAsync(customerId);
         }
     }
 }

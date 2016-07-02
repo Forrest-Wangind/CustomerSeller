@@ -119,9 +119,15 @@ namespace CustomerSeller.UIL.User
                 while (index < roles.Tables[1].Rows.Count)
                 {
                     theRole = roles.Tables[1].Rows[index]["id"].ToString();
-                    if (theRole.Equals("002") || theRole.Equals("003"))
+                    if (theRole.Equals("002"))
                     {
                         showSaleLevel(true);
+                        showSaleGroup(true);
+                    }
+                    else if (theRole.Equals("003"))
+                    {
+                        showSaleLevel(false);
+                        showSaleGroup(true);
                     }
 
                     SelectTree(this.tree_role, theRole);
@@ -249,7 +255,7 @@ namespace CustomerSeller.UIL.User
         {
             if (!string.IsNullOrEmpty(this.tb_user_name.Text.Trim()))
             {
-                if (isPasswordSame())
+                if (isUserValid())
                 {
                     user = new ServiceReference1.User();
                     user.userID = this.tb_user_id.Text.Trim();
@@ -326,6 +332,30 @@ namespace CustomerSeller.UIL.User
             }
         }
 
+        //判断用户是否有效
+        private bool isUserValid()
+        {
+            bool isValid = isPasswordSame();
+            if (this.cbLevel.Visible)
+            {
+                if (this.cbLevel.SelectedValue == null || this.cbLevel.SelectedValue.ToString().Equals(""))
+                {
+                    MessageBoxEx.Show("销售级别不能为空，请选择销售级别！");
+                    return false;
+                }
+            }
+            if (this.cbGroup.Visible)
+            {
+                if (this.cbGroup.SelectedValue == null || this.cbGroup.SelectedValue.ToString().Equals(""))
+                {
+                    MessageBoxEx.Show("销售部门不能为空，请选择销售部门！");
+                    return false;
+                }
+            }
+
+            return isValid;
+        }
+
         private void cb_change_pass_CheckedChanged(object sender, EventArgs e)
         {
             this.gp_password.Visible = this.cb_change_pass.Checked;
@@ -335,7 +365,7 @@ namespace CustomerSeller.UIL.User
         {
             if (!string.IsNullOrEmpty(this.tb_user_name.Text.Trim()))
             {
-                if (isPasswordSame())
+                if (isUserValid())
                 {
                     try
                     {
@@ -347,7 +377,11 @@ namespace CustomerSeller.UIL.User
                         user.gender = this.cb_gender.SelectedValue.ToString();
                         user.exten = this.tb_extension.Text.Trim();
                         user.entryTimeStart = this.dt_entryTine.Value;
-                        user.saleLevel = this.cbLevel.Visible ? this.cbLevel.SelectedValue.ToString() : null;
+                        //如果不是销售员，则清空其销售级别
+                        if (user.role.Equals("002"))
+                            user.saleLevel = this.cbLevel.Visible ? this.cbLevel.SelectedValue.ToString() : null;
+                        else
+                            user.saleLevel = null;
                         user.saleGroup = this.cbGroup.Visible ? this.cbGroup.SelectedValue.ToString() : null;
 
                         if (!user.role.Equals(string.Empty))
@@ -407,14 +441,22 @@ namespace CustomerSeller.UIL.User
             {
                 if (e.Node.Checked)
                 {
-                    if (e.Node.Name.Equals("002") || e.Node.Name.Equals("003"))
+                    if (e.Node.Name.Equals("002"))
                     {
                         //显示销售级别
                         showSaleLevel(true);
+                        //显示销售部门
+                        showSaleGroup(true);
+                    }
+                    else if (e.Node.Name.Equals("003"))
+                    {
+                        showSaleLevel(false);
+                        showSaleGroup(true);
                     }
                     else
                     {
                         showSaleLevel(false);
+                        showSaleGroup(false);
                     }
 
                     foreach (TreeNode node in tree_role.Nodes)
@@ -428,6 +470,7 @@ namespace CustomerSeller.UIL.User
                 else
                 {
                     showSaleLevel(false);
+                    showSaleGroup(false);
                 }
             }
         }
@@ -436,8 +479,13 @@ namespace CustomerSeller.UIL.User
         {
             this.lblLevel.Visible = isSaleLevel;
             this.cbLevel.Visible = isSaleLevel;
-            this.lblGroup.Visible = isSaleLevel;
-            this.cbGroup.Visible = isSaleLevel;
+        }
+
+        private void showSaleGroup(bool isSaleGroup)
+        {
+
+            this.lblGroup.Visible = isSaleGroup;
+            this.cbGroup.Visible = isSaleGroup;
         }
     }
 }

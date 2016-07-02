@@ -17,7 +17,12 @@ BEGIN
 		IF(@isExisted=1)
 		BEGIN
 			DELETE FROM UserInfo WHERE UserID = @id;
-			IF(@@error=0)
+			SET @errorCount += @@ERROR;
+			UPDATE CustomerInfo SET EmployeeID = NULL, AllocateTime = NULL WHERE EmployeeID = @id;
+			SET @errorCount += @@ERROR;
+			DELETE AllocatePhoneDetailInfo WHERE UserID = @id;
+			SET @errorCount += @@ERROR;
+			IF(@errorCount=0)
 			BEGIN
 				SET @flag = 1;	--É¾³ý³É¹¦
 				SET @message = 'success';

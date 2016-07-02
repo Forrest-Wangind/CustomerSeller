@@ -173,12 +173,12 @@ namespace CustomerSeller
 
         private void panel9_Click(object sender, EventArgs e)
         {
-            this.Main_panel.Controls.Clear();
-            Application.DoEvents();
-            Thread.Sleep(50);
-            Main m = new Main();
-            m.Dock = DockStyle.Fill;
-            this.Main_panel.Controls.Add(m);
+            //this.Main_panel.Controls.Clear();
+            //Application.DoEvents();
+            //Thread.Sleep(50);
+            //Main m = new Main();
+            //m.Dock = DockStyle.Fill;
+            //this.Main_panel.Controls.Add(m);
             App_Exit();
         }
 
@@ -219,6 +219,7 @@ namespace CustomerSeller
                 //Exit_Message_Notice("正在关闭系统.");
                 if (logout())
                 {
+                    this.Main_panel.Controls.Clear();
                     ShutDown.App_Exit();
                 }
                 else
@@ -249,8 +250,6 @@ namespace CustomerSeller
                 return;
             }
         }
-
-       
 
         private void Main_panel_Click(object sender, EventArgs e)
         {
@@ -424,9 +423,9 @@ namespace CustomerSeller
 
         private void Exit(object sender, FormClosingEventArgs e)
         {
-            this.Main_panel.Controls.Clear();
-            Application.DoEvents();
-            Thread.Sleep(10);
+            //this.Main_panel.Controls.Clear();
+            //Application.DoEvents();
+            //Thread.Sleep(10);
             //Main m = new Main();
             //m.Dock = DockStyle.Fill;
             //this.Main_panel.Controls.Add(m);
