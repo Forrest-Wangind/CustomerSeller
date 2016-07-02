@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using CustomerSeller.Common;
 using CustomerSeller.DAL;
-using DevComponents.DotNetBar;
-using System.IO;
-using SQLHelper;
 using CustomerSeller.UIL;
-using System.Data.SqlClient;
-using CustomerSeller.ServiceReference1;
-using CustomerSeller.Common;
-using CustomerSeller.UIL.Customer;
 using CustomerSeller.UIL.User;
+using DevComponents.DotNetBar;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CustomerSeller
 {
@@ -68,7 +61,7 @@ namespace CustomerSeller
                 listParameters.Add(new KeyValuePair<string, string>("AllocateTime>=", this.dtp_Create_StartTime.Value.ToString("yyyy-MM-dd")));
             if (!this.dtp_Create_EndTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("AllocateTime<=", this.dtp_Create_EndTime.Value.ToString("yyyy-MM-dd")));
-            if (this.cb_status.SelectedIndex!=-1)
+            if (this.cb_status.SelectedIndex != -1)
                 listParameters.Add(new KeyValuePair<string, string>("PhoneStratus=", this.cb_status.SelectedItem.ToString().Trim()));
             if (!this.dtp_Start_DealTime.IsEmpty)
                 listParameters.Add(new KeyValuePair<string, string>("DealTime>=", this.dtp_Start_DealTime.Value.ToString("yyyy-MM-dd")));
@@ -131,10 +124,18 @@ namespace CustomerSeller
 
         private void bt_GetPhone_Click(object sender, EventArgs e)
         {
+            /*间隔2分钟才可以取一次电话*/
+            var LastestTimeOfGetPhone = XmlHelper.GetFirstNodeValue("LastestTimeOfGetPhone", System.AppDomain.CurrentDomain.BaseDirectory + @"\Variable.xml");
+            if ((System.DateTime.Now - DateTime.Parse(LastestTimeOfGetPhone)).Minutes <= 2)
+            {
+                MessageBoxEx.Show("取电话频率太高，请2分钟后再取！", "提示", MessageBoxButtons.OK);
+                return;
+            }
             //员工静态信息获取添加进来
             var employeeID = UserInfo.Get_User().User_Id;
             var phoneType = (sender as DevComponents.DotNetBar.ButtonX).Tag.ToString();
             ShowTips(CustomerInfo.GetServiceInstance().AllocateEmployeePhone(employeeID, phoneType));
+
 
         }
 
@@ -144,7 +145,10 @@ namespace CustomerSeller
             {
                 var dataGridRow = this.dgv_Customer.CurrentRow;
                 if (dataGridRow == null)
+                {
                     MessageBoxEx.Show("没有选中任何一条电话记录", "提示");
+                    return;
+                }
                 int index = dataGridRow.Index;    //取得选中行的索引   
                 var row = (this.dgv_Customer.DataSource as DataTable).Rows[index];
                 new Form_CustomerDetail() { DR = row }.ShowDialog();
@@ -181,11 +185,13 @@ namespace CustomerSeller
                 var SuccessNumber = 0;
                 var FailNumber = 0;
                 employeePhoneInfo.PhoneID.Clear();
-                if (new QuerySaler(employeePhoneInfo.EmployeeInfo).ShowDialog() == DialogResult.Cancel)
+                employeePhoneInfo.EmployeeInfo = null;
+                if (new QuerySaler(employeePhoneInfo.EmployeeInfo).ShowDialog() == DialogResult.Cancel || employeePhoneInfo.EmployeeInfo == null
+                    || string.IsNullOrEmpty(employeePhoneInfo.EmployeeInfo.EmployeeID))
                     return;
                 foreach (DataGridViewRow vr in this.dgv_Customer.Rows)
                 {
-                    if (Convert.ToBoolean(vr.Cells["Choice"].Value)&&Convert.ToString(vr.Cells["分配的员工"].Value)!=employeePhoneInfo.EmployeeInfo.EmployeeName)
+                    if (Convert.ToBoolean(vr.Cells["Choice"].Value) && Convert.ToString(vr.Cells["分配的员工"].Value) != employeePhoneInfo.EmployeeInfo.EmployeeName)
                         employeePhoneInfo.PhoneID.Add(Convert.ToString(vr.Cells["CustomerID"].Value));
                 }
 
@@ -211,7 +217,6 @@ namespace CustomerSeller
 
         }
 
-
         private void ShowTips(int result)
         {
             switch (result)
@@ -221,6 +226,7 @@ namespace CustomerSeller
                     break;
                 case 1:
                     MessageBoxEx.Show("电话获取成功，可以在刷新后看到!", "提示");
+                    XmlHelper.SetNodeValue("LastestTimeOfGetPhone", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:mm"), System.AppDomain.CurrentDomain.BaseDirectory + @"\Variable.xml");
                     break;
                 case 2:
                     MessageBoxEx.Show("已经超过你可以获取的电话的总数!", "提示");
@@ -261,7 +267,7 @@ namespace CustomerSeller
                 });
                 MessageBoxEx.Show(string.Format("回收电话,成功个数:{0},失败个数:{1}", SuccessNumber, FailNumber), "提示");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBoxEx.Show("批量回收出现异常");
             }
@@ -270,15 +276,15 @@ namespace CustomerSeller
         private void bt_DeleteAllocatePhone_Click(object sender, EventArgs e)
         {
             try
-            {  
-             
+            {
+
                 var _successNumber = 0;
                 var _failNumber = 0;
                 var _customerIdLists = new List<string>();
                 /*检测出选择电话记录*/
                 var _queryCheckedMobile = from DataGridViewRow mobileInfo in this.dgv_Customer.Rows
-                                         where (Convert.ToBoolean(mobileInfo.Cells["Choice"].Value) && !string.IsNullOrEmpty(Convert.ToString(mobileInfo.Cells["分配的员工"].Value)))
-                                         select Convert.ToString(mobileInfo.Cells["CustomerID"].Value);
+                                          where (Convert.ToBoolean(mobileInfo.Cells["Choice"].Value) && !string.IsNullOrEmpty(Convert.ToString(mobileInfo.Cells["分配的员工"].Value)))
+                                          select Convert.ToString(mobileInfo.Cells["CustomerID"].Value);
                 _queryCheckedMobile.ToList().ForEach(Mobile => _customerIdLists.Add(Mobile));
                 if (_customerIdLists.Count <= 0)
                 {
@@ -303,9 +309,9 @@ namespace CustomerSeller
                 MessageBoxEx.Show("批量删除出现异常");
             }
         }
+
+
     }
-
-
     public class EmployeePhoneInfo
     {
         public List<string> PhoneID { get; set; }

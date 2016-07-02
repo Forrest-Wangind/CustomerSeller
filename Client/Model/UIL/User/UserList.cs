@@ -62,13 +62,10 @@ namespace CustomerSeller.UIL.User
             ServiceReference1.User user = new ServiceReference1.User();
             user.userID = this.tb_user_id.Text.Trim();
             user.userName = this.tb_user_name.Text.Trim();
+            user.role = null;
             user.gender = this.cb_gender.SelectedValue.ToString() == "u" ? "" : this.cb_gender.SelectedValue.ToString();
             user.entryTimeStart = this.dti_startDate.IsEmpty ? DateTime.Parse("1900-01-01") : this.dti_startDate.Value;
             user.entryTimeEnd = this.dti_endDate.IsEmpty ? DateTime.Parse("2999-12-31") : this.dti_endDate.Value;
-
-            //如果loginer是销售经理，则显示对应部门下面的所有员工，否则如果是管理员显示全部
-            user.role = loginUser.User_Grade;
-
             var users = DAL.CustomerSellerService.getService().GetUsersForSaleMan(user, loginUser.User_Id);
             if (users != null)
             {

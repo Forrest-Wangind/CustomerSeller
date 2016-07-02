@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CustomerSeller.Common;
+﻿using CustomerSeller.Common;
 using DevComponents.DotNetBar;
+using System;
+using System.Data;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CustomerSeller.UIL
 {
@@ -31,6 +26,12 @@ namespace CustomerSeller.UIL
         {
             try
             {
+                Regex _mobileRegex = new Regex("^[0-9]{11,11}$", RegexOptions.Singleline);
+                if(!_mobileRegex.IsMatch(this.tb_CustomerPhone.Text.Trim()))
+                {
+                     MessageBoxEx.Show("请输入有效的电话号码");
+                     return;
+                }
                 var phoneType = string.Empty;
                 if (!string.IsNullOrEmpty(this.comboBoxExPhoneType.Text.Trim()))
                     switch (this.comboBoxExPhoneType.Text.Trim())
@@ -42,10 +43,10 @@ namespace CustomerSeller.UIL
                     }
                 var customerInfoDataTable = CustomerInfo.GetCustomerInfoTable();
                 var dr = customerInfoDataTable.NewRow();
-                dr["CustomerGender"] = this.cb_Agender.Text.Trim();
-                dr["CustomerPhone"] = this.tb_CustomerPhone.Text.Trim();
+                dr["CustomerGender"]  = this.cb_Agender.Text.Trim();
+                dr["CustomerPhone"]   = this.tb_CustomerPhone.Text.Trim();
                 dr["CustomerAddress"] = this.tb_CustomerAddress.Text.Trim();
-                dr["CustomerName"] = this.tb_Customer_Name.Text.Trim();
+                dr["CustomerName"]    = this.tb_Customer_Name.Text.Trim();
                 dr["PhoneType"] = phoneType;
                 customerInfoDataTable.Rows.Add(dr);
                 var ds = new DataSet();

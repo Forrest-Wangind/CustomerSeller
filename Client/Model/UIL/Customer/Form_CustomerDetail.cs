@@ -1,14 +1,8 @@
-﻿using DevComponents.DotNetBar;
-using CustomerSeller.Common;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using CustomerSeller.Common;
 using CustomerSeller.DAL;
+using DevComponents.DotNetBar;
+using System;
+using System.Data;
 
 namespace CustomerSeller.UIL
 {

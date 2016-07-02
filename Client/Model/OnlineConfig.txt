@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <system.serviceModel>
+         <bindings>
+            <basicHttpBinding>
+                <binding name="service"  maxReceivedMessageSize="2147483647"  
+  messageEncoding="Text" transferMode="Streamed" sendTimeout="00:10:00"/>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://WIN-J59SFA8OHLD/customerservice/Service1.svc/CustomerSellerService"
+                binding="basicHttpBinding" bindingConfiguration="service" 
+                contract="ServiceReference1.IService1"      name="service" />
+        </client>
+    </system.serviceModel>
+</configuration>
