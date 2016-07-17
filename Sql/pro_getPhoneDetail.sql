@@ -16,7 +16,7 @@ BEGIN
 	WHERE 
 	(PhoneType like '%' + @phoneType + '%' OR @phoneType is null)
 	AND (pdi.UserID like '%' + @userId + '%' OR @userId  is null)
-	AND (ui.UserName like '%' + @userId + '%' OR @userName is null)
+	AND (ui.UserName like '%' + @userName + '%' OR @userName is null)
 	AND (ui.GroupID like '%' + @groupId + '%' OR @groupId is null)
 	ORDER BY pdi.UserID desc, pdi.PhoneType;
 	SELECT AD.PhoneType AS '电话类型',AD.typeAllocate AS '分配电话总数',
@@ -37,7 +37,7 @@ END
 
 
 
-EXEC pro_getPhoneDetail '',''
+EXEC pro_getPhoneDetail '','006','',''
 SELECT * FROM AllocatePhoneDetailInfo
 select * from UserInfo
 update UserInfo set UserStatus = 0 where UserID = 'T04471'

@@ -123,7 +123,7 @@ namespace WCFService
                 //var execute_sql = string.Format(Sql.AllocateEmployeePhone, ConfigurationManager.AppSettings[string.Format("{0}_MaxCount", phoneType)], ConfigurationManager.AppSettings[string.Format("{0}_DailyMaxCount", phoneType)], UserID, phoneType);
                 var execute_sql = string.Format(SqlScript.AllocateEmployeePhone, UserID, phoneType);
                 var dataSet = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.Text, execute_sql);
-                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "UserID:" + UserID, Method = "AllocateEmployeePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
+                LoggerWrapper.Instance().LogInfo(new LogInfo() { Request = "UserID:" + UserID, Method = "AllocateEmployeGetePhone", Result = dataSet.Tables[0].Rows[0][0].ToString() });
                 return Convert.ToInt32(dataSet.Tables[0].Rows[0][0]);
             }
             catch (Exception ex)

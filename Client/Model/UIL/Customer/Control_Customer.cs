@@ -28,13 +28,7 @@ namespace CustomerSeller
         }
         private void InitComponent()
         {
-            if (!UserInfo.Get_User().User_Grade.Trim().Equals("管理员"))
-            {
-                this.bt_AllocatePhone.Visible = false;
-                this.bt_RecyclePhone.Visible = false;
-                this.bt_DeleteAllocatePhone.Visible = false;
-            }
-            else
+            if (UserInfo.Get_User().User_Role.Trim().Equals("001"))
             {
                 Point P_A = this.bt_GetPhoneOfA.Location;
                 Point P_B = this.bt_GetPhoneOfB.Location;
@@ -46,14 +40,58 @@ namespace CustomerSeller
                 this.bt_AllocatePhone.Location = P_A;
                 this.bt_RecyclePhone.Location = P_B;
                 this.bt_DeleteAllocatePhone.Location = p_C;
+
+                /*普通业务员没有业务员查询条件选项和组员选项*/
+                this.checkbox_PhoneSource.Visible = false;
+                this.checkBox_ChoiceAll.Location = this.checkbox_PhoneSource.Location;
+            }
+            else if (UserInfo.Get_User().User_Role.Trim().Equals("003"))
+            {
+                this.bt_AllocatePhone.Visible = false;
+                this.bt_RecyclePhone.Visible = false;
+                this.bt_DeleteAllocatePhone.Visible = false;
+
+                this.lb_EmployeeName.Visible = false;
+                this.tb_EmployeeName.Visible = false;
+                this.checkbox_PhoneSource.Checked = false;
+
+                /*全选功能关闭显示*/
+                this.checkBox_ChoiceAll.Visible = false;
+            }
+            else
+            {
+                this.bt_AllocatePhone.Visible = false;
+                this.bt_RecyclePhone.Visible = false;
+                this.bt_DeleteAllocatePhone.Visible = false;
+
+                /*普通业务员没有业务员查询条件选项和组员选项*/
+                this.lb_EmployeeName.Visible = false;
+                this.tb_EmployeeName.Visible = false;
+                this.checkbox_PhoneSource.Visible = false;
+
+                /*全选功能关闭显示*/
+                this.checkBox_ChoiceAll.Visible = false;
             }
         }
         private List<KeyValuePair<string, string>> GetCondition()
         {
-
             List<KeyValuePair<string, string>> listParameters = new List<KeyValuePair<string, string>>();
-            if (!UserInfo.Get_User().User_Grade.Trim().Equals("管理员"))
-                listParameters.Add(new KeyValuePair<string, string>("EmployeeID=", UserInfo.Get_User().User_Id));
+            {
+                /*处理不同角色电话范围问题*/
+                if (!UserInfo.Get_User().User_Role.Trim().Equals("001"))
+                {
+                    if (UserInfo.Get_User().User_Role.Trim().Equals("003") && this.lb_EmployeeName.Visible && this.tb_EmployeeName.Visible)
+                    {
+                        listParameters.Add(new KeyValuePair<string, string>(string.Format(@"EmployeeID in (select UserID from (select  [UserID] from [dbo].[UserInfo] where GroupID in 
+                        (select GroupID from [dbo].[UserInfo] where UserID='{0}')) UserIDLists where UserID<>'{0}') and '1'=",
+                        UserInfo.Get_User().User_Id.Trim()), "1"));
+                    }
+                    else
+                        listParameters.Add(new KeyValuePair<string, string>("EmployeeID=", UserInfo.Get_User().User_Id));
+                }
+            }
+            if (this.lb_EmployeeName.Visible && this.tb_EmployeeName.Visible && !string.IsNullOrEmpty(this.tb_EmployeeName.Text.Trim()))
+                listParameters.Add(new KeyValuePair<string, string>(string.Format("EmployeeID = (select [UserID] from [dbo].[UserInfo] where [UserName]='{0}') and '1'=", this.tb_EmployeeName.Text.Trim()), "1"));
             if (!string.IsNullOrEmpty(this.tb_Customer_Name.Text))
                 listParameters.Add(new KeyValuePair<string, string>("CustomerName like ", string.Format("%{0}%", tb_Customer_Name.Text)));
             if (!string.IsNullOrEmpty(this.tb_Customer_Phone.Text))
@@ -76,7 +114,9 @@ namespace CustomerSeller
         private void pagerControl1_OnPageChanged(object sender, EventArgs e)
         {
             try
-            {
+            { 
+                /*选择状态清除掉*/
+                this.checkBox_ChoiceAll.Checked = false;
                 var condition = GetCondition();
                 var dataset = CustomerInfo.GetServiceInstance().GetCustomer(this.pagerControl1.PageSize, this.pagerControl1.PageIndex, condition.ToArray());
                 if (UserInfo.Get_User().User_Grade.Trim().Equals("管理员") && !this.dgv_Customer.Columns.Contains("Choice"))
@@ -115,7 +155,11 @@ namespace CustomerSeller
             this.dtp_Start_DealTime.ResetText();
             this.dtp_Create_StartTime.ResetText();
             this.dtp_Create_EndTime.ResetText();
+            this.comboBoxExPhoneType.SelectedIndex = -1;
             this.cb_status.SelectedIndex = -1;
+            this.tb_EmployeeName.Clear();
+            this.checkBox_ChoiceAll.Checked = false;
+            this.checkbox_PhoneSource.Checked = false;
 
         }
         private void bt_Query_Click(object sender, EventArgs e)
@@ -125,17 +169,25 @@ namespace CustomerSeller
 
         private void bt_GetPhone_Click(object sender, EventArgs e)
         {
-            /*间隔2分钟才可以取一次电话*/
-            var LastestTimeOfGetPhone = XmlHelper.GetFirstNodeValue("LastestTimeOfGetPhone", System.AppDomain.CurrentDomain.BaseDirectory + @"\Variable.xml");
-            if ((System.DateTime.Now - DateTime.Parse(LastestTimeOfGetPhone)).Minutes <= 2)
+            try
             {
-                MessageBoxEx.Show("取电话频率太高，请2分钟后再取！", "提示", MessageBoxButtons.OK);
-                return;
+                /*间隔2分钟才可以取一次电话*/
+                var LastestTimeOfGetPhone = XmlHelper.GetFirstNodeValue("LastestTimeOfGetPhone", System.AppDomain.CurrentDomain.BaseDirectory + @"\Variable.xml");
+                if ((System.DateTime.Now - DateTime.Parse(LastestTimeOfGetPhone)).Seconds <= 10)
+                {
+                    MessageBoxEx.Show("取电话频率太高，请10秒后再取！", "提示", MessageBoxButtons.OK);
+                    return;
+                }
+                //员工静态信息获取添加进来
+                var employeeID = UserInfo.Get_User().User_Id;
+                var phoneType = (sender as DevComponents.DotNetBar.ButtonX).Tag.ToString();
+                ShowTips(CustomerInfo.GetServiceInstance().AllocateEmployeePhone(employeeID, phoneType));
             }
-            //员工静态信息获取添加进来
-            var employeeID = UserInfo.Get_User().User_Id;
-            var phoneType = (sender as DevComponents.DotNetBar.ButtonX).Tag.ToString();
-            ShowTips(CustomerInfo.GetServiceInstance().AllocateEmployeePhone(employeeID, phoneType));
+            catch
+            {
+                MessageBox.Show("网络异常，稍后再试!");
+            }
+
 
 
         }
@@ -186,7 +238,7 @@ namespace CustomerSeller
                 var SuccessNumber = 0;
                 var FailNumber = 0;
                 employeePhoneInfo.PhoneID.Clear();
-                employeePhoneInfo.EmployeeInfo = null;
+                employeePhoneInfo.EmployeeInfo = new EmployeePhoneInfo.Employee();
                 if (new QuerySaler(employeePhoneInfo.EmployeeInfo).ShowDialog() == DialogResult.Cancel || employeePhoneInfo.EmployeeInfo == null
                     || string.IsNullOrEmpty(employeePhoneInfo.EmployeeInfo.EmployeeID))
                     return;
@@ -227,7 +279,7 @@ namespace CustomerSeller
                     break;
                 case 1:
                     MessageBoxEx.Show("电话获取成功，可以在刷新后看到!", "提示");
-                    XmlHelper.SetNodeValue("LastestTimeOfGetPhone", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:mm"), Directory.GetCurrentDirectory() + @"\Variable.xml");
+                    XmlHelper.SetNodeValue("LastestTimeOfGetPhone", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), System.AppDomain.CurrentDomain.BaseDirectory + @"\Variable.xml");
                     break;
                 case 2:
                     MessageBoxEx.Show("已经超过你可以获取的电话的总数!", "提示");
@@ -284,7 +336,7 @@ namespace CustomerSeller
                 var _customerIdLists = new List<string>();
                 /*检测出选择电话记录*/
                 var _queryCheckedMobile = from DataGridViewRow mobileInfo in this.dgv_Customer.Rows
-                                          where (Convert.ToBoolean(mobileInfo.Cells["Choice"].Value) && !string.IsNullOrEmpty(Convert.ToString(mobileInfo.Cells["分配的员工"].Value)))
+                                          where (Convert.ToBoolean(mobileInfo.Cells["Choice"].Value))
                                           select Convert.ToString(mobileInfo.Cells["CustomerID"].Value);
                 _queryCheckedMobile.ToList().ForEach(Mobile => _customerIdLists.Add(Mobile));
                 if (_customerIdLists.Count <= 0)
@@ -311,6 +363,17 @@ namespace CustomerSeller
             }
         }
 
+        private void checkbox_PhoneSource_CheckedChanged(object sender, EventArgs e)
+        {
+            this.lb_EmployeeName.Visible = this.checkbox_PhoneSource.Checked;
+            this.tb_EmployeeName.Visible = this.checkbox_PhoneSource.Checked;
+        }
+
+        private void checkBox_ChoiceAll_CheckedChanged(object sender, EventArgs e)
+        {   
+            var datarowLists = from DataGridViewRow item in this.dgv_Customer.Rows select item.Cells["Choice"];
+            datarowLists.ToList().ForEach(item => item.Value = this.checkBox_ChoiceAll.Checked);
+        }
 
     }
     public class EmployeePhoneInfo

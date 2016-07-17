@@ -321,7 +321,7 @@ namespace CustomerSeller
             {
                 this.Main_panel.Controls.Clear();
                 Control_Customer control = new Control_Customer();
-                control.Dock = DockStyle.Left;
+                control.Dock = DockStyle.Fill;
                 this.Main_panel.Controls.Add(control);
        
             }
