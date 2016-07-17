@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -226,7 +227,7 @@ namespace CustomerSeller
                     break;
                 case 1:
                     MessageBoxEx.Show("电话获取成功，可以在刷新后看到!", "提示");
-                    XmlHelper.SetNodeValue("LastestTimeOfGetPhone", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:mm"), System.AppDomain.CurrentDomain.BaseDirectory + @"\Variable.xml");
+                    XmlHelper.SetNodeValue("LastestTimeOfGetPhone", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:mm"), Directory.GetCurrentDirectory() + @"\Variable.xml");
                     break;
                 case 2:
                     MessageBoxEx.Show("已经超过你可以获取的电话的总数!", "提示");

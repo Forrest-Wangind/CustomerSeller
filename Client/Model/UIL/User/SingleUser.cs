@@ -126,7 +126,7 @@ namespace CustomerSeller.UIL.User
                     }
                     else if (theRole.Equals("003"))
                     {
-                        showSaleLevel(false);
+                        showSaleLevel(true);
                         showSaleGroup(true);
                     }
 
@@ -450,7 +450,7 @@ namespace CustomerSeller.UIL.User
                     }
                     else if (e.Node.Name.Equals("003"))
                     {
-                        showSaleLevel(false);
+                        showSaleLevel(true);
                         showSaleGroup(true);
                     }
                     else

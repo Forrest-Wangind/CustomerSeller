@@ -657,6 +657,8 @@ namespace WCFService
                 List<SqlParameter> paras = new List<SqlParameter>();
                 paras.Add(new SqlParameter("@phoneType", phoneType));
                 paras.Add(new SqlParameter("@userId", user.userID));
+                paras.Add(new SqlParameter("@userName", user.userName));
+                paras.Add(new SqlParameter("@groupId", user.saleGroup));
 
                 phoneDetail = SqlServerHelper.ExecuteDataset(SqlServerHelper.conString, CommandType.StoredProcedure, "pro_getPhoneDetail", paras.ToArray());
                 if(phoneDetail.Tables != null && phoneDetail.Tables.Count > 1)

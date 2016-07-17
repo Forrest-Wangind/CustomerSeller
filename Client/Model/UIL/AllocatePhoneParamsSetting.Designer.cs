@@ -56,6 +56,10 @@
             this.dgv_phone_detail = new System.Windows.Forms.DataGridView();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dgv_phone_general = new System.Windows.Forms.DataGridView();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
+            this.tbUserName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.lblGroup = new DevComponents.DotNetBar.LabelX();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -173,6 +177,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.cbGroup);
+            this.panel4.Controls.Add(this.lblGroup);
+            this.panel4.Controls.Add(this.labelX6);
+            this.panel4.Controls.Add(this.tbUserName);
             this.panel4.Controls.Add(this.btnSubmit);
             this.panel4.Controls.Add(this.labelX5);
             this.panel4.Controls.Add(this.tbUserId);
@@ -188,7 +196,7 @@
             // 
             this.btnSubmit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSubmit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSubmit.Location = new System.Drawing.Point(257, 193);
+            this.btnSubmit.Location = new System.Drawing.Point(283, 226);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 11;
@@ -197,7 +205,7 @@
             // 
             // labelX5
             // 
-            this.labelX5.Location = new System.Drawing.Point(175, 132);
+            this.labelX5.Location = new System.Drawing.Point(175, 81);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(85, 23);
             this.labelX5.TabIndex = 9;
@@ -209,14 +217,14 @@
             // 
             // 
             this.tbUserId.Border.Class = "TextBoxBorder";
-            this.tbUserId.Location = new System.Drawing.Point(283, 132);
+            this.tbUserId.Location = new System.Drawing.Point(283, 80);
             this.tbUserId.Name = "tbUserId";
             this.tbUserId.Size = new System.Drawing.Size(139, 21);
             this.tbUserId.TabIndex = 10;
             // 
             // labelX4
             // 
-            this.labelX4.Location = new System.Drawing.Point(175, 76);
+            this.labelX4.Location = new System.Drawing.Point(175, 31);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 8;
@@ -229,11 +237,11 @@
             this.cbPhoneType.FormattingEnabled = true;
             this.cbPhoneType.ItemHeight = 15;
             this.cbPhoneType.Items.AddRange(new object[] {
+            this.comboItem4,
             this.comboItem1,
             this.comboItem2,
-            this.comboItem3,
-            this.comboItem4});
-            this.cbPhoneType.Location = new System.Drawing.Point(283, 78);
+            this.comboItem3});
+            this.cbPhoneType.Location = new System.Drawing.Point(283, 33);
             this.cbPhoneType.Name = "cbPhoneType";
             this.cbPhoneType.Size = new System.Drawing.Size(139, 21);
             this.cbPhoneType.TabIndex = 7;
@@ -366,6 +374,44 @@
             this.dgv_phone_general.Size = new System.Drawing.Size(551, 495);
             this.dgv_phone_general.TabIndex = 0;
             // 
+            // labelX6
+            // 
+            this.labelX6.Location = new System.Drawing.Point(175, 131);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(85, 23);
+            this.labelX6.TabIndex = 12;
+            this.labelX6.Text = "员工姓名：";
+            // 
+            // tbUserName
+            // 
+            // 
+            // 
+            // 
+            this.tbUserName.Border.Class = "TextBoxBorder";
+            this.tbUserName.Location = new System.Drawing.Point(283, 132);
+            this.tbUserName.Name = "tbUserName";
+            this.tbUserName.Size = new System.Drawing.Size(139, 21);
+            this.tbUserName.TabIndex = 13;
+            // 
+            // cbGroup
+            // 
+            this.cbGroup.DisplayMember = "Text";
+            this.cbGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbGroup.FormattingEnabled = true;
+            this.cbGroup.ItemHeight = 15;
+            this.cbGroup.Location = new System.Drawing.Point(283, 184);
+            this.cbGroup.Name = "cbGroup";
+            this.cbGroup.Size = new System.Drawing.Size(200, 21);
+            this.cbGroup.TabIndex = 32;
+            // 
+            // lblGroup
+            // 
+            this.lblGroup.Location = new System.Drawing.Point(175, 184);
+            this.lblGroup.Name = "lblGroup";
+            this.lblGroup.Size = new System.Drawing.Size(75, 23);
+            this.lblGroup.TabIndex = 31;
+            this.lblGroup.Text = "销售部门：";
+            // 
             // PhoneParamSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -416,5 +462,9 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.Editors.ComboItem comboItem4;
+        private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.Controls.TextBoxX tbUserName;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cbGroup;
+        private DevComponents.DotNetBar.LabelX lblGroup;
     }
 }

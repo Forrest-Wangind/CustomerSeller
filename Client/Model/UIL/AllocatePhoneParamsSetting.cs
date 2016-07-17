@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CustomerSeller.Common;
 using DevComponents.DotNetBar;
 using CustomerSeller.DAL;
+using System.Collections;
 
 namespace CustomerSeller.UIL
 {
@@ -20,6 +21,7 @@ namespace CustomerSeller.UIL
         public PhoneParamSetting()
         {
             InitializeComponent();
+            showGroups();
         }
 
         private void bt_clear_Click(object sender, EventArgs e)
@@ -49,11 +51,11 @@ namespace CustomerSeller.UIL
             string phoneType = string.Empty;
             switch (cb.SelectedIndex)
             {
-                case 0:
-                    phoneType = "A"; break;
                 case 1:
-                    phoneType = "B"; break;
+                    phoneType = "A"; break;
                 case 2:
+                    phoneType = "B"; break;
+                case 3:
                     phoneType = "C"; break;
                 default:
                     break;
@@ -62,11 +64,38 @@ namespace CustomerSeller.UIL
             return phoneType;
         }
 
+        /// <summary>
+        /// 显示所有的销售部门
+        /// </summary>
+        private void showGroups()
+        {
+            ServiceReference1.SaleGroup group = new ServiceReference1.SaleGroup();
+            group.groupName = string.Empty;
+            DataSet groups = CustomerSellerService.getService().GetSaleGroups(group);
+            if (groups != null && groups.Tables.Count > 0)
+            {
+                ArrayList lists = new ArrayList();
+                lists.Add(new Model.comBoxItem(" ", ""));
+                for (int index = 0; index < groups.Tables[0].Rows.Count; index++)
+                {
+                    string value = groups.Tables[0].Rows[index][0].ToString();
+                    string key = groups.Tables[0].Rows[index][1].ToString();
+                    lists.Add(new Model.comBoxItem(key, value));
+                }
+
+                this.cbGroup.DisplayMember = "pkey";
+                this.cbGroup.ValueMember = "pvalue";
+                this.cbGroup.DataSource = lists;
+            }
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string phoneType = getPhoneType(cbPhoneType);
             user = new ServiceReference1.User();
             user.userID = this.tbUserId.Text.Trim();
+            user.userName = this.tbUserName.Text.Trim();
+            user.saleGroup = this.cbGroup.SelectedValue.ToString().Trim();
 
             DataSet phoneDs = CustomerSellerService.getService().GetPhoneDetail(phoneType, user);
             if(phoneDs != null && phoneDs.Tables.Count > 1)
